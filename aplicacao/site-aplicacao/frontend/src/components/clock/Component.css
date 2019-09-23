@@ -1,0 +1,11 @@
+.Clock-box {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 50px;
+    font-size: 5em;
+}
+
+.Clock-minute,
+.Clock-colon,
+.Clock-hour {}

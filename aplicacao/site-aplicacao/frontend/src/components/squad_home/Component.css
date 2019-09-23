@@ -1,0 +1,69 @@
+.squad-box {
+    background: #1b1e24;
+    width: 50vw;
+    height: 40vh;
+    margin: 50px;
+    border-radius: 4px;
+    padding: 8px
+}
+
+.title {
+    display: block;
+    padding-left: 8px;
+    border-bottom: 1px solid #fff;
+}
+
+.list {
+    display: flex;
+    overflow-y: auto;
+    max-height: 90%;
+}
+
+.squad {
+    display: flex;
+    margin: 8px;
+    align-items: center;
+    border-radius: 4px;
+    padding: 8px;
+    background: #293652;
+}
+
+.status {
+    background: #fff;
+    text-align: center;
+    border-radius: 100%;
+    margin: 0 4px;
+    height: 15px;
+    width: 15px;
+}
+
+.status-green {
+    background: #00ff00;
+}
+
+.status-orange {
+    background: #ff6600;
+}
+
+.status-red {
+    background: #ff0000;
+}
+
+.name {
+    margin: 0 4px;
+}
+
+.employers {
+    margin: 0 4px;
+    border-radius: 4px;
+    background: #fff;
+    padding: 0 8px;
+}
+
+.employers-online {
+    background: #379637;
+}
+
+.employers-offline {
+    background: #812121;
+}
