@@ -96,19 +96,19 @@
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="lbNomeSquad" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel1" min="-2" pref="52" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lbUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="lbSair" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                          <Component id="lbNomeSquad" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -122,7 +122,7 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Ultim\Desktop\BandTec\PI\SM2\git\PMSys_\aplicacao\software\PMSys\src\main\java\com\mycompany\pmsys\imgs\small_logo.png"/>
+              <Image iconType="2" name="C:\Users\Aluno\Desktop\aa\PMSys_\aplicacao\software\PMSys\src\main\java\com\mycompany\pmsys\imgs\small_logo.png"/>
             </Property>
           </Properties>
         </Component>
@@ -162,7 +162,7 @@
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Ultim\Desktop\BandTec\PI\SM2\git\PMSys_\aplicacao\software\PMSys\src\main\java\com\mycompany\pmsys\imgs\rsz_profileicon.png"/>
+              <Image iconType="2" name="C:\Users\Aluno\Desktop\aa\PMSys_\aplicacao\software\PMSys\src\main\java\com\mycompany\pmsys\imgs\rsz_profileicon.png"/>
             </Property>
           </Properties>
         </Component>
