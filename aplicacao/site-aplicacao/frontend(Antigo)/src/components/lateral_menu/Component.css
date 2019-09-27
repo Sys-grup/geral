@@ -1,0 +1,47 @@
+.Lateral-menu {
+  position: fixed;
+  text-align: center;
+  width: 100px;
+  height: 100%;
+  background: var(--menu);
+  /* background-image: linear-gradient(#1E58A8, #08336D); */
+  color: white;
+}
+
+.Menu-logo {
+  margin: 20px 0;
+  height: 75px;
+}
+
+.Menu-perfil {
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+
+.Menu-button {
+  display: block;
+  cursor: pointer;
+  padding: 8px 0;
+  margin: 15px 5px;
+  font-size: 0.8em;
+  background: #08336D;
+  border-radius: 4px;
+}
+
+.Selected {
+  margin: 15px 0;
+  margin-left: 4px;
+  background: #282c34;
+  cursor: default;
+  border-radius: 4px 0 0 4px;
+  /* box-shadow: inset 9px -1px 10px -2px rgba(0,0,0,0.1); */
+}
+
+
+.Logout {
+  position: absolute;
+  /* background: #05254e; */
+  width: 90%;
+  bottom: 0;
+}
