@@ -31,13 +31,6 @@
 
 <body>
 
-    <div class="loader-bg">
-        <div class="loader-track">
-            <div class="loader-fill"></div>
-        </div>
-    </div>
-
-
     <nav class="pcoded-navbar">
         <div class="navbar-wrapper">
             <div class="navbar-brand header-logo">
@@ -59,8 +52,8 @@
                                     data-feather="pie-chart"></i></span><span class="pcoded-mtext">Dashboards</span></a>
                     </li>
                     <li data-username="Animations" class="nav-item active"><a href="crud-funcionario.html"
-                        class="nav-link"><span class="pcoded-micon"><i class="feather icon-aperture"
-                                data-feather="users"></i></span><span class="pcoded-mtext">Funcionários</span></a>
+                            class="nav-link"><span class="pcoded-micon"><i class="feather icon-aperture"
+                                    data-feather="users"></i></span><span class="pcoded-mtext">Funcionários</span></a>
                     </li>
                 </ul>
             </div>
@@ -86,20 +79,104 @@
                 <li><a href="#!" class="full-screen" onclick="javascript:toggleFullScreen()"><i
                             data-feather="maximize"></i></a></li>
                 <li class="nav-item">
-                    <div class="main-search">
-                        <div class="input-group">
-                            <input type="text" id="m-search" class="form-control" placeholder="Search . . .">
-                            <a href="#!" class="input-group-append search-close adjust-search">
-                                <i class="feather icon-x input-group-text" data-feather="x" width="13" style=""></i>
-                            </a>
-                            <span class="input-group-append search-btn btn">
+                    <a href="#!" class="icon feather user-check"></i>
+                        <i data-feather="user-check"></i>
 
-                                <i data-feather="search" width="15"></i>
-                            </span>
-                        </div>
-                    </div>
-                </li>
-            </ul>
+                        <section class="header-user-list open">
+                            <div class="h-list-header">
+                                <div class="input-group">
+                                    <input type="text" id="" class="form-control" placeholder="Encontre Funcionario">
+                                </div>
+                            </div>
+                            <div class="h-list-body">
+                                <a href="#!" class="h-close-text"><i class="feather icon-chevrons-right"></i></a>
+                                <div class="main-friend-cont scroll-div ps ps--active-y">
+                                    <div class="main-friend-list">
+                                        <div class="media userlist-box" data-id="1" data-status="online"
+                                            data-username="Josephin Doe">
+                                            <a class="media-left" href="#!"><img class="media-object img-radius"
+                                                    src="../assets/images/user/avatar-1.jpg"
+                                                    alt="Generic placeholder image ">
+                                                <div class="live-status">3</div>
+                                            </a>
+                                            <div class="media-body">
+                                                <h6 class="chat-header">Josephin Doe<small
+                                                        class="d-block text-c-green">Typing . . </small></h6>
+                                            </div>
+                                        </div>
+                                        <div class="media userlist-box" data-id="2" data-status="online"
+                                            data-username="Lary Doe">
+                                            <a class="media-left" href="#!"><img class="media-object img-radius"
+                                                    src="../assets/images/user/avatar-2.jpg"
+                                                    alt="Generic placeholder image">
+                                                <div class="live-status">1</div>
+                                            </a>
+                                            <div class="media-body">
+                                                <h6 class="chat-header">Lary Doe<small
+                                                        class="d-block text-c-green">online</small></h6>
+                                            </div>
+                                        </div>
+                                        <div class="media userlist-box" data-id="3" data-status="online"
+                                            data-username="Alice">
+                                            <a class="media-left" href="#!"><img class="media-object img-radius"
+                                                    src="../assets/images/user/avatar-3.jpg"
+                                                    alt="Generic placeholder image"></a>
+                                            <div class="media-body">
+                                                <h6 class="chat-header">Alice<small
+                                                        class="d-block text-c-green">online</small></h6>
+                                            </div>
+                                        </div>
+                                        <div class="media userlist-box" data-id="4" data-status="offline"
+                                            data-username="Alia">
+                                            <a class="media-left" href="#!"><img class="media-object img-radius"
+                                                    src="../assets/images/user/avatar-1.jpg"
+                                                    alt="Generic placeholder image">
+                                                <div class="live-status">1</div>
+                                            </a>
+                                            <div class="media-body">
+                                                <h6 class="chat-header">Alia<small class="d-block text-muted">10 min
+                                                        ago</small></h6>
+                                            </div>
+                                        </div>
+                                        <div class="media userlist-box" data-id="5" data-status="offline"
+                                            data-username="Suzen">
+                                            <a class="media-left" href="#!"><img class="media-object img-radius"
+                                                    src="../assets/images/user/avatar-4.jpg"
+                                                    alt="Generic placeholder image"></a>
+                                            <div class="media-body">
+                                                <h6 class="chat-header">Suzen<small class="d-block text-muted">15 min
+                                                        ago</small></h6>
+                                            </div>
+                                        </div>
+                                        <div class="media userlist-box" data-id="1" data-status="online"
+                                            data-username="Josephin Doe">
+                                            <a class="media-left" href="#!"><img class="media-object img-radius"
+                                                    src="../assets/images/user/avatar-1.jpg"
+                                                    alt="Generic placeholder image ">
+                                                <div class="live-status">3</div>
+                                            </a>
+                                            <div class="media-body">
+                                                <h6 class="chat-header">Diego <small class="d-block text-c-green">Typing
+                                                        . . </small></h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                                        <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                                    </div>
+                                    <div class="ps__rail-y" style="top: 0px; height: 591px; right: 0px;">
+                                        <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 218px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <span class="input-group-append search-btn btn">
+                    </a></li>
+        </div>
+        </div>
+        </li>
+        </ul>
         </div>
     </header>
 
@@ -113,12 +190,12 @@
                             <div class="row align-items-center">
                                 <div class="col-md-12">
                                     <div class="page-header-title">
-                                        <h5 class="m-b-10">Dashboard</h5>
+                                        <h3 class="m-b-10">QUADRO DE FUNCIONÁRIOS</h3>
                                     </div>
                                     <ul class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"
-                                                    width="13" class="feather icon-anchor"></i></a></li>
-                                        <li class="breadcrumb-item"><a href="#!">Project Dashboard</a></li>
+                                        <li class="breadcrumb-item"><a href="dashboard-project.html"><i
+                                                    data-feather="server" width="13" class="server"></i></a></li>
+                                        <li class="breadcrumb-item"><a href="#!">Equipe Alpha</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -127,32 +204,82 @@
 
                     <div class="main-body">
                         <div class="page-wrapper">
-                            aaa
+                            Cadastrar Funcionários
+                            <p>
+
+                            <div class="card-block">
+                                <form id="validation-form123" action="#!" novalidate="novalidate">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label">Nome</label>
+                                                <input type="text" class="form-control" name="validation-email"
+                                                    placeholder="Nome do Funcionário">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label">Identificador</label>
+                                                <input type="password" class="form-control"
+                                                    name="validation-identificador" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label">E-mail</label>
+                                                <input type="password" class="form-control" name="validation-email"
+                                                    placeholder="E-mail">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label">Nome do PC</label>
+                                                <input type="text" class="form-control" name="validation-pc"
+                                                    placeholder="Nome do PC">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label">Mac Adress</label>
+                                                <input type="text" class="form-control" name="validation-mcadress"
+                                                    placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label">Cargo</label>
+                                                <input type="text" class="form-control" name="validation-cargo"
+                                                    placeholder="Cargo">
+                                            </div>
+                                        </div>
+
+                                       <p></p> <button type="submit" style='margin-left: 15px' class="btn btn-primary">Cadastrar</button></p>
+                                    </p>
+                                    </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <script src="../assets/js/vendor-all.min.js"></script>
-    <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/js/pcoded.min.js"></script>
-    <script src="../assets/js/menu-setting.min.js"></script>
+            <script src="../assets/js/vendor-all.min.js"></script>
+            <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+            <script src="../assets/js/pcoded.min.js"></script>
+            <script src="../assets/js/menu-setting.min.js"></script>
 
-    <script src="../assets/plugins/amchart/js/amcharts.js"></script>
-    <script src="../assets/plugins/amchart/js/gauge.js"></script>
-    <script src="../assets/plugins/amchart/js/serial.js"></script>
-    <script src="../assets/plugins/amchart/js/light.js"></script>
-    <script src="../assets/plugins/amchart/js/pie.min.js"></script>
-    <script src="../assets/plugins/amchart/js/ammap.min.js"></script>
-    <script src="../assets/plugins/amchart/js/usaLow.js"></script>
-    <script src="../assets/plugins/amchart/js/radar.js"></script>
-    <script src="../assets/plugins/amchart/js/worldLow.js"></script>
-    <script>
-        feather.replace()
-    </script>
-    <script src="../assets/js/pages/dashboard-project.js"></script>
+            <script src="../assets/plugins/amchart/js/amcharts.js"></script>
+            <script src="../assets/plugins/amchart/js/gauge.js"></script>
+            <script src="../assets/plugins/amchart/js/serial.js"></script>
+            <script src="../assets/plugins/amchart/js/light.js"></script>
+            <script src="../assets/plugins/amchart/js/pie.min.js"></script>
+            <script src="../assets/plugins/amchart/js/ammap.min.js"></script>
+            <script src="../assets/plugins/amchart/js/usaLow.js"></script>
+            <script src="../assets/plugins/amchart/js/radar.js"></script>
+            <script src="../assets/plugins/amchart/js/worldLow.js"></script>
+            <script>
+                feather.replace()
+            </script>
+            <script src="../assets/js/pages/dashboard-project.js"></script>
 </body>
 
 </html>
