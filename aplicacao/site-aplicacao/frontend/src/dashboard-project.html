@@ -20,6 +20,7 @@
         type="image/x-icon">
 
     <link rel="stylesheet" href="../assets/fonts/fontawesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
     <script src="https://unpkg.com/feather-icons"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <link rel="stylesheet" href="../assets/plugins/animation/css/animate.min.css">
@@ -127,7 +128,51 @@
 
                     <div class="main-body">
                         <div class="page-wrapper">
+                            <div class="titulos-dashboard">Periodo :</div>
+                            <select class="js-example-basic-single form-control">
+                                <option value="AL">Selecione um período...</option>
+                                <option value="AL">Mensal</option>
+                                <option value="WY">Semanal</option>
+                                <option value="WY">Diário</option>
+                            </select>
+                            <div class="sub-titulos-dashboard">Notificações dos squads:</div>
+                            <div class="col-xl-12 col-md-6">
+                                    <div class="card">
+                                    <div class="card-header">
+                                    <h5>Média de notificações por período</h5>
+                                    </div>
+                                    <div class="card-block">
+                                    <canvas id="chart-line"></canvas>
+                                    </div>
+                                    </div>
+                                    </div>
+                            <div class="sub-titulos-dashboard">Tempo Online dos squads:</div>
+                            <div class="col-xl-12 col-md-6 sub-graficos">
+                                    <div class="card sub-graficos">
+                                    <div class="card-header">
+                                    <h5>Média de notificações por período</h5>
+                                    </div>
+                                    <div class="card-block">
+                                    <canvas id="chart-bar"></canvas>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    <div class="sub-titulos-dashboard">Realização de tarefas:</div>
+                                    <div class="col-xl-12 col-md-6 ">
+                                            <div class="card">
+                                            <div class="card-header">
+                                            <h5>Porcentagem de produtividade</h5>
+                                            </div>
+                                            <div class="card-block">
+                                            <canvas id="chart-pie"></canvas>
+                                            </div>
+                                            </div>
+                                            </div>
+                                    </div>
                         </div>
+                        
+                            
+                        
                     </div>
                 </div>
             </div>
@@ -148,10 +193,14 @@
     <script src="../assets/plugins/amchart/js/usaLow.js"></script>
     <script src="../assets/plugins/amchart/js/radar.js"></script>
     <script src="../assets/plugins/amchart/js/worldLow.js"></script>
+    <script src="../assets/plugins/chart-chartjs/js/Chart.min.js"></script>
+    <script src="../assets/js/pages/chart-chart-custom.js"></script>
     <script>
         feather.replace()
     </script>
     <script src="../assets/js/pages/dashboard-project.js"></script>
+    <script src="../assets/js/dashboards.js"></script>
+    
 </body>
 
 </html>
