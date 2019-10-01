@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+<head>
+    <title>Teste</title>
+    <script src="https://code.iconify.design/1/1.0.3/iconify.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description"
+        content="Datta Able Bootstrap admin template made using Bootstrap 4 and it has huge amount of ready made feature, UI components, pages which completely fulfills any dashboard needs." />
+    <meta name="keywords"
+        content="admin templates, bootstrap admin templates, bootstrap 4, dashboard, dashboard templets, sass admin templets, html admin templates, responsive, bootstrap admin templates free download,premium bootstrap admin templates, datta able, datta able bootstrap admin template">
+    <meta name="author" content="Codedthemes" />
+
+    <link rel="icon" href="http://html.codedthemes.com/datta-able/bootstrap/assets/images/favicon.ico"
+        type="image/x-icon">
+
+    <link rel="stylesheet" href="../assets/fonts/fontawesome/css/fontawesome-all.min.css">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <link rel="stylesheet" href="../assets/plugins/animation/css/animate.min.css">
+    <link href="../assets/css/feather.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/squad.css">
+
+
+</head>
+
+<body>
+
+    <!-- <div class="loader-bg">
+        <div class="loader-track">
+            <div class="loader-fill"></div>
+        </div>
+    </div> -->
+
+
+    <nav class="pcoded-navbar">
+        <div class="navbar-wrapper">
+            <div class="navbar-brand header-logo">
+                <a href="index.html" class="b-brand">
+                    <div class="b-bg">
+                        <i class="feather icon-trending-up" data-feather="trending-up"></i>
+                    </div>
+                    <span class="b-title">.PMSys_</span>
+                </a>
+                <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
+            </div>
+            <div class="navbar-content scroll-div">
+                <ul class="nav pcoded-inner-navbar">
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>Navigation</label>
+                    </li>
+                    <li data-username="Animations" class="nav-item active"><a href="dashboard-project.html"
+                            class="nav-link"><span class="pcoded-micon"><i class="feather icon-aperture"
+                                    data-feather="pie-chart"></i></span><span class="pcoded-mtext">Dashboards</span></a>
+                    </li>
+                    <li data-username="Animations" class="nav-item"><a href="crud-funcionario.html"
+                            class="nav-link"><span class="pcoded-micon"><i class="feather icon-aperture"
+                                    data-feather="users"></i></span><span class="pcoded-mtext">Funcionários</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <header class="navbar pcoded-header navbar-expand-lg navbar-light">
+        <div class="m-header">
+            <a class="mobile-menu" id="mobile-collapse1" href="#!"><span></span></a>
+            <a href="index.html" class="b-brand">
+                <div class="b-bg">
+                    <i data-feather="trending-up" class="feather icon-trending-up"></i>
+                </div>
+                <span class="b-title">.PMSys_</span>
+            </a>
+        </div>
+        <a class="mobile-menu" id="mobile-header" href="#!">
+            <i class="feather icon-more-horizontal"></i>
+        </a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li><a href="#!" class="full-screen" onclick="javascript:toggleFullScreen()"><i
+                            data-feather="maximize"></i></a></li>
+                <li class="nav-item">
+                    <div class="main-search">
+                        <div class="input-group">
+                            <input type="text" id="m-search" class="form-control" placeholder="Search . . .">
+                            <a href="#!" class="input-group-append search-close adjust-search">
+                                <i class="feather icon-x input-group-text" data-feather="x" width="13"></i>
+                            </a>
+                            <span class="input-group-append search-btn btn">
+
+                                <i data-feather="search" width="15"></i>
+                            </span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="pcoded-main-container">
+        <div class="pcoded-wrapper">
+            <div class="pcoded-content">
+                <div class="pcoded-inner-content">
+
+                    <div class="page-header">
+                        <div class="page-block">
+                            <div class="row align-items-center">
+                                <div class="col-md-12">
+                                    <div class="page-header-title">
+                                        <h5 class="m-b-10">Gerenciamaneto de Esquadrões</h5>
+                                    </div>
+                                    <ul class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"
+                                                    width="13" class="feather icon-anchor"></i></a></li>
+                                        <li class="breadcrumb-item"><a href="#!">Esquadrões</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="main-body">
+                        <div class="page-wrapper">
+                            <!-- Div onde serão inseridos os cards de cada esquadrão -->
+                            <div id="conteudo" class="card-group"></div>
+                            <!-- Script para criar cards dos squads no array, simulando o retorno da API -->
+                            <script>
+                                const squads = [{
+                                        nome: "Alpha",
+                                        status: "danger",
+                                        info: "Alpha está com o muitos funcionarios offline."
+                                    },
+                                    {
+                                        nome: "Beta",
+                                        status: "success",
+                                        info: "Beta está com a tarefa pronta."
+                                    },
+                                    {
+                                        nome: "Charlie",
+                                        status: "warning",
+                                        info: "Charlie está proximo da data de entrega."
+                                    },
+                                    {
+                                        nome: "Delta",
+                                        status: "info",
+                                        info: "Delta já entregou a tarefa, está aguardando outra."
+                                    }
+                                ]
+                                let divs = "";
+                                squads.map(squad => {
+                                    divs += `
+                                        <div class="col-md-4">
+                                            <div class="card card-squad">
+                                                <div class="card-header">
+                                                    <span>${squad.nome}</span>
+                                                    <button class="btn btn-icon btn-rounded card-header-right" onclick="criarFuncionarios()"
+                                                    data-toggle="modal" data-target="#modalSquad" data-squad="Alpha">
+                                                        <i data-feather="more-horizontal" width="15"></i>
+                                                    </button>
+                                                </div>
+                                                <div class="card-body">
+                                                    <span>Ultima notificação:</span>
+                                                    <div class="alert alert-${squad.status}">${squad.info}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                `
+                                });
+                                document.getElementById("conteudo").innerHTML = divs;
+                            </script>
+                            <!-- Modal de detalhes do squad -->
+                            <div id="modalSquad" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="modalSquadLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="modalSquadLabel">Esquadrão Alpha</h5>
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <h6>Objetivo:</h6>
+                                                    <p>Squad alocado no projeto 12467, em desenvolvimento de uma
+                                                        aplicação
+                                                        WEB para gerenciamento de lojas.</p>
+                                                    <h6>Descrição:</h6>
+                                                    <p>Squad Alpha alocado no 8° andar da empresa com 7 intregantes.</p>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="table-responsive squad-modal-lista-funcionarios border-left">
+                                                        <table class="table table-hover">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Funcionário</th>
+                                                                    <th>Status</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody id="funcionariosSquad">
+                                                                <!-- Script para gerar funcionarios aleatorios para testes -->
+                                                                <script>
+                                                                    function criarFuncionarios() {
+                                                                        const numero = Math.floor(Math.random() * 10)+1;
+                                                                        const horarios = [];
+                                                                        for (i = 0; i < 10; i++) {
+                                                                            horarios.push("08:5" + i)
+                                                                            horarios.push("09:0" + i)
+                                                                            horarios.push("09:1" + i)
+                                                                        };
+                                                                        const homensNomes = ["José", "Enzo", "Carlos",
+                                                                            "Gustavo", "Gabriel", "Alexandre",
+                                                                            "Henrique", "Lucas"
+                                                                        ];
+                                                                        const mulheresNomes = ["Beatriz", "Alice",
+                                                                            "Melissa", "Anna", "Raquel"
+                                                                        ];
+                                                                        const sobrenome = ["Melo", "Sousa", "Silva",
+                                                                            "Rocha", "Correia", "Castro", "Ribeiro",
+                                                                            "Gomes", "Dias", "Azevedo", "Ferreira",
+                                                                            "Cunha", "Cardoso"
+                                                                        ];
+                                                                        let funcionarios = "";
+                                                                        for (i = 0; i < numero; i++) {
+                                                                            const genero = Math.floor(Math.random() * 2);
+                                                                            const funcionario = {
+                                                                                avatar: genero + 1,
+                                                                                nome: genero? homensNomes[Math.floor(Math.random() * homensNomes.length)] : mulheresNomes[Math.floor(Math.random() * mulheresNomes.length)],
+                                                                                sobrenome: sobrenome[Math.floor(Math.random() * sobrenome.length)]+" "+sobrenome[Math.floor(Math.random() * sobrenome.length)],
+                                                                                status: Math.floor(Math.random() * 10)? "Online desde as "+horarios[Math.floor(Math.random() * horarios.length)]:"Offline"
+                                                                            }
+                                                                            funcionarios += `
+                                                                                <tr>
+                                                                                    <td><img class="rounded-circle" style="width:40px;"
+                                                                                            src="../assets/images/user/avatar-${funcionario.avatar}.jpg"
+                                                                                            alt="activity-user">
+                                                                                        <span>${funcionario.nome} ${funcionario.sobrenome}</span>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        ${funcionario.status}
+                                                                                    </td>
+                                                                                </tr>
+                                                                            `;
+                                                                        }
+                                                                        document.getElementById('funcionariosSquad').innerHTML = funcionarios;
+
+                                                                    }
+                                                                </script>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <!-- <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!--(NÃO CONSEGUI FAZER FUNCIONAR) Script para Inserir dados no modal referente ao o esquadrão do botão -->
+                            <script>
+                                $('#modalSquad').on('show.bs.modal', function (event) {
+                                    var button = $(event.relatedTarget)
+                                    var squad = button.data('squad')
+                                    console.log(squad)
+                                    var modal = $(this)
+                                    modal.find('.modal-title').text('Esquadrão')
+                                })
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/vendor-all.min.js"></script>
+    <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/js/pcoded.min.js"></script>
+    <script src="../assets/js/menu-setting.min.js"></script>
+
+    <script src="../assets/plugins/amchart/js/amcharts.js"></script>
+    <script src="../assets/plugins/amchart/js/gauge.js"></script>
+    <script src="../assets/plugins/amchart/js/serial.js"></script>
+    <script src="../assets/plugins/amchart/js/light.js"></script>
+    <script src="../assets/plugins/amchart/js/pie.min.js"></script>
+    <script src="../assets/plugins/amchart/js/ammap.min.js"></script>
+    <script src="../assets/plugins/amchart/js/usaLow.js"></script>
+    <script src="../assets/plugins/amchart/js/radar.js"></script>
+    <script src="../assets/plugins/amchart/js/worldLow.js"></script>
+
+    <script>
+        feather.replace()
+    </script>
+    <script src="../assets/js/pages/dashboard-project.js"></script>
+</body>
+
+</html>
