@@ -19,8 +19,7 @@
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
-            <version>7.2.2.jre11</version>
-            <type>jar</type>
+            <version>7.4.1.jre12</version>
         </dependency>
     </dependencies>
 </project>

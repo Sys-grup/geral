@@ -9,7 +9,7 @@ package com.mycompany.pmsys;
  *
  * @author Aluno
  */
-    import java.sql.Connection;
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,18 +23,43 @@ import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 
 public class ConnectURL {
-static String login1 = "";
-static String senha1 = "";
     
-    public static void main(String[] args) throws SQLException {
+    public static Connection conexao(){
+        
+        Connection conexao = null;
+        
+        String URL = "jdbc:sqlserver://srvdotsys.database.windows.net:1433;databaseName=bddotsys;user=userdotsys;password=#Gfgrupo6";
+        
+        
+        try{
+            conexao = DriverManager.getConnection(URL);
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Erro do Sql \n" + ex, "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        return conexao;
+                
+    }
+    
+    public static boolean FecharConexao(){
+        try{
+            ConnectURL.conexao().close();
+            return true;
+        }catch(SQLException e){
+            return false;
+        }
+    }
+        
+        
         
         
         
          //Create a variable for the connection string.
-        String connectionUrl = "jdbc:sqlserver://srvdotsys.database.windows.net:1433;database=bddotsys;user=userdotsys@srvdotsys;password='#Gfgrupo6';encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
+        /*String connectionUrl = "jdbc:sqlserver://srvdotsys.database.windows.net:1433;database=bddotsys;user=userdotsys@srvdotsys;password='#Gfgrupo6';encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
 
         try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
             //String SQL = "SELECT TOP 10 * FROM AcessoUsuario";
@@ -56,60 +81,8 @@ static String senha1 = "";
         // Handle any errors that may have occurred.
         catch (SQLException e) {
             e.printStackTrace();
-        }
+        }*/
         
-        
-        
-        
-        
-//        String serverName = "srvdotsys";
-//        String portNumber = "1433";
-//        String databaseName = "bddotsys";
-//        String username = "userdotsys";
-//        String password = "#Gfgrupo6";
-//        String authentication = "";
-//        String hostNameInCertificate = "";
-//
-//        
-//            SQLServerDataSource ds = new SQLServerDataSource();
-//            ds.setServerName(serverName);
-//            ds.setPortNumber(Integer.parseInt(portNumber));
-//            ds.setDatabaseName(databaseName);
-//            ds.setUser(username);
-//            ds.setPassword(password);
-//            //ds.setAuthentication(authentication);
-//            //ds.setHostNameInCertificate(hostNameInCertificate);
-//
-//            try (Connection con = ds.getConnection(); Statement stmt = con.createStatement();) {
-//                System.out.println();
-//                System.out.println("Connection established successfully.");
-//
-//                // Create and execute an SQL statement that returns user name.
-//                String SQL = "SELECT SUSER_SNAME()";
-//                try (ResultSet rs = stmt.executeQuery(SQL)) {
-//
-//                    // Iterate through the data in the result set and display it.
-//                    while (rs.next()) {
-//                        System.out.println("user name: " + rs.getString(1));
-//                    }
-//                }
-//            } catch (SQLServerException ex) {
-//            Logger.getLogger(ConnectURL.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(ConnectURL.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-        
-        // Handle any errors that may have occurred.
-//        catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//}
-
-
-
-
     
-    
-    }
-}
+   }
 

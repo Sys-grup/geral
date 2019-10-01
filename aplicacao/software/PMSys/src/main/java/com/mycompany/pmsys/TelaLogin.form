@@ -97,7 +97,7 @@
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Aluno\Desktop\aa\PMSys_\aplicacao\software\PMSys\src\main\java\com\mycompany\pmsys\imgs\rsz_11rsz_1rsz_logo.png"/>
+              <Image iconType="2" name="C:\Users\Ultim\Desktop\BandTec\PI\SM2\git\PMSys_\aplicacao\software\PMSys\src\main\java\com\mycompany\pmsys\imgs\rsz_11rsz_1rsz_logo.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="jLabel9"/>
           </Properties>
@@ -148,7 +148,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Aluno\Desktop\aa\PMSys_\aplicacao\software\PMSys\src\main\java\com\mycompany\pmsys\imgs\rsz_user-icon.png"/>
+                  <Image iconType="2" name="C:\Users\Ultim\Desktop\BandTec\PI\SM2\git\PMSys_\aplicacao\software\PMSys\src\main\java\com\mycompany\pmsys\imgs\rsz_profileicon.png"/>
                 </Property>
               </Properties>
             </Component>
@@ -207,7 +207,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Aluno\Desktop\aa\PMSys_\aplicacao\software\PMSys\src\main\java\com\mycompany\pmsys\imgs\rsz_password-icon.png"/>
+                  <Image iconType="2" name="C:\Users\Ultim\Desktop\BandTec\PI\SM2\git\PMSys_\aplicacao\software\PMSys\src\main\java\com\mycompany\pmsys\imgs\rsz_password-icon.png"/>
                 </Property>
               </Properties>
             </Component>
