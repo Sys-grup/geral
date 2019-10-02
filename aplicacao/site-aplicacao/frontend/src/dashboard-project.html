@@ -60,8 +60,8 @@
                                     data-feather="pie-chart"></i></span><span class="pcoded-mtext">Dashboards</span></a>
                     </li>
                     <li data-username="Animations" class="nav-item"><a href="crud-funcionario.html"
-                        class="nav-link"><span class="pcoded-micon"><i class="feather icon-aperture"
-                                data-feather="users"></i></span><span class="pcoded-mtext">Funcionários</span></a>
+                            class="nav-link"><span class="pcoded-micon"><i class="feather icon-aperture"
+                                    data-feather="users"></i></span><span class="pcoded-mtext">Funcionários</span></a>
                     </li>
                 </ul>
             </div>
@@ -137,46 +137,49 @@
                             </select>
                             <div class="sub-titulos-dashboard">Notificações dos squads:</div>
                             <div class="col-xl-12 col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>Média de notificações por período</h5>
+                                    </div>
+                                    <div class="card-block">
+                                        <canvas id="chart-line"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="sub-titulos-dashboard">Tempo Online dos squads:</div>
                                     <div class="card">
-                                    <div class="card-header">
-                                    <h5>Média de notificações por período</h5>
+                                        <div class="card-header">
+                                            <h5>Média de notificações por período</h5>
+                                        </div>
+                                        <div class="card-block">
+                                            <canvas id="chart-bar"></canvas>
+                                        </div>
                                     </div>
-                                    <div class="card-block">
-                                    <canvas id="chart-line"></canvas>
-                                    </div>
-                                    </div>
-                                    </div>
-                            <div class="sub-titulos-dashboard">Tempo Online dos squads:</div>
-                            <div class="col-xl-12 col-md-6 sub-graficos">
-                                    <div class="card sub-graficos">
-                                    <div class="card-header">
-                                    <h5>Média de notificações por período</h5>
-                                    </div>
-                                    <div class="card-block">
-                                    <canvas id="chart-bar"></canvas>
-                                    </div>
-                                    </div>
-                                    </div>
+                                </div>
+                                <div class="col-md-6">
                                     <div class="sub-titulos-dashboard">Realização de tarefas:</div>
-                                    <div class="col-xl-12 col-md-6 ">
-                                            <div class="card">
-                                            <div class="card-header">
+                                    <div class="card ">
+                                        <div class="card-header">
                                             <h5>Porcentagem de produtividade</h5>
-                                            </div>
-                                            <div class="card-block">
+                                        </div>
+                                        <div class="card-block">
                                             <canvas id="chart-pie"></canvas>
-                                            </div>
-                                            </div>
-                                            </div>
+                                        </div>
                                     </div>
+                                </div>
+                            </div>
                         </div>
-                        
-                            
-                        
                     </div>
                 </div>
+
+
+
             </div>
         </div>
+    </div>
+    </div>
     </div>
 
     <script src="../assets/js/vendor-all.min.js"></script>
@@ -200,7 +203,7 @@
     </script>
     <script src="../assets/js/pages/dashboard-project.js"></script>
     <script src="../assets/js/dashboards.js"></script>
-    
+
 </body>
 
 </html>

@@ -14,8 +14,15 @@
 
 }
 
-.sub-graficos{
+.sub-graficos-barra{
 
     width: 45%;
-
+    position: absolute;
+    
 }
+.sub-graficos-pizza{
+    width: 45%;
+    position:relative;
+    float: left;
+}
+
