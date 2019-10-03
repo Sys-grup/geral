@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="../assets/css/style.css">
 
 
+
 </head>
 
 <body>
@@ -81,6 +82,8 @@
                 <li class="nav-item">
                     <a href="#!" class="icon feather user-check"></i>
                         <i data-feather="user-check"></i>
+                <li><a href="cadastro-funcionario.html"
+                    class="label theme-bg2 text-white f-12">Cadastrar</a></li>        
 
                         <!-- <section class="header-user-list open">
                             <div class="h-list-header">
@@ -194,9 +197,9 @@
                                     </div>
                                     <ul class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="dashboard-project.html"><i
-                                            data-feather="home" width="13" class="server"></i></a></li><p></p>
+                                                    data-feather="home" width="13" class="server"></i></a></li>
+                                        <p></p>
                                         <li class="breadcrumb-item"><a href="funcionario.html"> Funcionários </a></li>
-                                        <li><a href="cadastro-funcionario.html" class="label theme-bg2 text-white f-12">Cadastrar</a></li>
                                     </ul>
                                     <div class="card-header">
                                         <h5>Funcionários</h5>
@@ -214,14 +217,48 @@
                                                                 <p class="m-0">Supervisor</p>
                                                             </td>
                                                             <td>
-                                                                <h6 class="text-muted">11
+                                                                <h6 class="text-muted"><i data-feather="bookmark" color="#32CD32"></i>
+                                                                    11
                                                                     MAY 12:56</h6>
+                                                                <p>Online</p>
                                                             </td>
-                                                            <td><a href="#!"
-                                                                    class="label theme-bg text-white f-12">Editar</a><a
-                                                                    href="cadastro-funcionario.html"
-                                                                    class="label theme-bg2 text-white f-12">Excluir</a>
+                                                            <td><a href="cadastro-funcionario.html"
+                                                                    class="label theme-bg text-white f-12">Editar</a>
+                                                                <div id="exampleModalCenter" class="modal fade"
+                                                                    tabindex="-1" role="dialog"
+                                                                    aria-labelledby="exampleModalCenterTitle"
+                                                                    aria-hidden="true">
+                                                                    <div class="modal-dialog modal-dialog-centered"
+                                                                        role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title"
+                                                                                    id="exampleModalCenterTitle">Excluir
+                                                                                    Funcionário</h5>
+                                                                                <button type="button" class="close"
+                                                                                    data-dismiss="modal"
+                                                                                    aria-label="Close"><span
+                                                                                        aria-hidden="true">×</span></button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <p>Tem certeza que deseja excluir esse
+                                                                                    funcionário?</p>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button"
+                                                                                    class="btn btn-secondary"
+                                                                                    data-dismiss="modal">Cancelar</button>
+                                                                                <button type="button"
+                                                                                    class="btn btn-primary">Confirmar</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <a href="#!" class="label theme-bg2 text-white f-12"
+                                                                    data-toggle="modal"
+                                                                    data-target="#exampleModalCenter"> Excluir</a>
                                                             </td>
+
                                                         </tr>
                                                         <tr class="unread">
                                                             <td><img class="rounded-circle" style="width:40px;"
@@ -232,13 +269,45 @@
                                                                 <p class="m-0">Analista Pleno</p>
                                                             </td>
                                                             <td>
-                                                                <h6 class="text-muted">11
+                                                                 <h6 class="text-muted"><i data-feather="bookmark" color="#ff6861"></i>11
                                                                     MAY 10:35</h6>
+                                                                <p> Offline</p>
                                                             </td>
-                                                            <td><a href="#!"
-                                                                    class="label theme-bg text-white f-12">Editar</a><a
-                                                                    href="cadastro-funcionario.html"
-                                                                    class="label theme-bg2 text-white f-12">Excluir</a>
+                                                            <td><a href="cadastro-funcionario.html"
+                                                                    class="label theme-bg text-white f-12">Editar</a>
+                                                                <div id="exampleModalCenter" class="modal fade"
+                                                                    tabindex="-1" role="dialog"
+                                                                    aria-labelledby="exampleModalCenterTitle"
+                                                                    aria-hidden="true">
+                                                                    <div class="modal-dialog modal-dialog-centered"
+                                                                        role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title"
+                                                                                    id="exampleModalCenterTitle">Excluir
+                                                                                    Funcionário</h5>
+                                                                                <button type="button" class="close"
+                                                                                    data-dismiss="modal"
+                                                                                    aria-label="Close"><span
+                                                                                        aria-hidden="true">×</span></button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <p>Tem certeza que deseja excluir esse
+                                                                                    funcionário?</p>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button"
+                                                                                    class="btn btn-secondary"
+                                                                                    data-dismiss="modal">Cancelar</button>
+                                                                                <button type="button"
+                                                                                    class="btn btn-primary">Confirmar</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <a href="#!" class="label theme-bg2 text-white f-12"
+                                                                    data-toggle="modal"
+                                                                    data-target="#exampleModalCenter">Excluir</a>
                                                             </td>
                                                         </tr>
                                                         <tr class="unread">
@@ -250,13 +319,45 @@
                                                                 <p class="m-0">Estagiário</p>
                                                             </td>
                                                             <td>
-                                                                <h6 class="text-muted"></i>9
+                                                                <h6 class="text-muted"><i data-feather="bookmark" color="#ff6861"></i>9
                                                                     MAY 17:38</h6>
+                                                                <p>Offline</p> 
                                                             </td>
-                                                            <td><a href="#!"
-                                                                    class="label theme-bg text-white f-12">Editar</a><a
-                                                                    href="cadastro-funcionario.html"
-                                                                    class="label theme-bg2 text-white f-12">Excluir</a>
+                                                            <td><a href="cadastro-funcionario.html"
+                                                                    class="label theme-bg text-white f-12">Editar</a>
+                                                                <div id="exampleModalCenter" class="modal fade"
+                                                                    tabindex="-1" role="dialog"
+                                                                    aria-labelledby="exampleModalCenterTitle"
+                                                                    aria-hidden="true">
+                                                                    <div class="modal-dialog modal-dialog-centered"
+                                                                        role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title"
+                                                                                    id="exampleModalCenterTitle">Excluir
+                                                                                    Funcionário</h5>
+                                                                                <button type="button" class="close"
+                                                                                    data-dismiss="modal"
+                                                                                    aria-label="Close"><span
+                                                                                        aria-hidden="true">×</span></button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <p>Tem certeza que deseja excluir esse
+                                                                                    funcionário?</p>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button"
+                                                                                    class="btn btn-secondary"
+                                                                                    data-dismiss="modal">Cancelar</button>
+                                                                                <button type="button"
+                                                                                    class="btn btn-primary">Confirmar</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <a href="#!" class="label theme-bg2 text-white f-12"
+                                                                    data-toggle="modal"
+                                                                    data-target="#exampleModalCenter">Excluir</a>
                                                             </td>
                                                         </tr>
                                                         <tr class="unread">
@@ -268,13 +369,45 @@
                                                                 <p class="m-0">Desenvolvedor Júnior</p>
                                                             </td>
                                                             <td>
-                                                                <h6 class="text-muted f-w-300">19
+                                                                <h6 class="text-muted f-w-300"><i data-feather="bookmark" color="#32CD32"></i>19
                                                                     MAY 12:56</h6>
+                                                                <p>Online</p>
                                                             </td>
-                                                            <td><a href="#!"
-                                                                    class="label theme-bg text-white f-12">Editar</a><a
-                                                                    href="cadastro-funcionario.html"
-                                                                    class="label theme-bg2 text-white f-12">Excluir</a>
+                                                            <td><a href="cadastro-funcionario.html"
+                                                                    class="label theme-bg text-white f-12">Editar</a>
+                                                                <div id="exampleModalCenter" class="modal fade"
+                                                                    tabindex="-1" role="dialog"
+                                                                    aria-labelledby="exampleModalCenterTitle"
+                                                                    aria-hidden="true">
+                                                                    <div class="modal-dialog modal-dialog-centered"
+                                                                        role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title"
+                                                                                    id="exampleModalCenterTitle">Excluir
+                                                                                    Funcionário</h5>
+                                                                                <button type="button" class="close"
+                                                                                    data-dismiss="modal"
+                                                                                    aria-label="Close"><span
+                                                                                        aria-hidden="true">×</span></button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <p>Tem certeza que deseja excluir esse
+                                                                                    funcionário?</p>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button"
+                                                                                    class="btn btn-secondary"
+                                                                                    data-dismiss="modal">Cancelar</button>
+                                                                                <button type="button"
+                                                                                    class="btn btn-primary">Confirmar</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <a href="#!" class="label theme-bg2 text-white f-12"
+                                                                    data-toggle="modal"
+                                                                    data-target="#exampleModalCenter">Excluir</a>
                                                             </td>
                                                         </tr>
                                                         <tr class="unread">
@@ -286,13 +419,45 @@
                                                                 <p class="m-0">Estagiário</p>
                                                             </td>
                                                             <td>
-                                                                <h6 class="text-muted"></i>21
+                                                                <h6 class="text-muted"><i data-feather="bookmark" color="#ff6861"></i>21
                                                                     July 12:56</h6>
+                                                                <p>Offline</p>
                                                             </td>
-                                                            <td><a href="#!"
-                                                                    class="label theme-bg text-white f-12">Editar</a><a
-                                                                    href="cadastro-funcionario.html"
-                                                                    class="label theme-bg2 text-white f-12">Excluir</a>
+                                                            <td><a href="cadastro-funcionario.html"
+                                                                    class="label theme-bg text-white f-12">Editar</a>
+                                                                <div id="exampleModalCenter" class="modal fade"
+                                                                    tabindex="-1" role="dialog"
+                                                                    aria-labelledby="exampleModalCenterTitle"
+                                                                    aria-hidden="true">
+                                                                    <div class="modal-dialog modal-dialog-centered"
+                                                                        role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title"
+                                                                                    id="exampleModalCenterTitle">Excluir
+                                                                                    Funcionário</h5>
+                                                                                <button type="button" class="close"
+                                                                                    data-dismiss="modal"
+                                                                                    aria-label="Close"><span
+                                                                                        aria-hidden="true">×</span></button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <p>Tem certeza que deseja excluir esse
+                                                                                    funcionário?</p>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button"
+                                                                                    class="btn btn-secondary"
+                                                                                    data-dismiss="modal">Cancelar</button>
+                                                                                <button type="button"
+                                                                                    class="btn btn-primary">Confirmar</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <a href="#!" class="label theme-bg2 text-white f-12"
+                                                                    data-toggle="modal"
+                                                                    data-target="#exampleModalCenter">Excluir</a>
                                                             </td>
                                                         </tr>
                                                         <tr class="unread">
@@ -304,13 +469,45 @@
                                                                 <p class="m-0">Analista Júnior</p>
                                                             </td>
                                                             <td>
-                                                                <h6 class="text-muted"></i>11
+                                                                <h6 class="text-muted"><i data-feather="bookmark" color="#32CD32"></i>11
                                                                     MAY 12:56</h6>
+                                                                <p>Online</p>
                                                             </td>
                                                             <td><a href="cadastro-funcionario.html"
-                                                                    class="label theme-bg text-white f-12">Editar</a><a
-                                                                    href="#!"
-                                                                    class="label theme-bg2 text-white f-12">Excluir</a>
+                                                                    class="label theme-bg text-white f-12">Editar</a>
+                                                                <div id="exampleModalCenter" class="modal fade"
+                                                                    tabindex="-1" role="dialog"
+                                                                    aria-labelledby="exampleModalCenterTitle"
+                                                                    aria-hidden="true">
+                                                                    <div class="modal-dialog modal-dialog-centered"
+                                                                        role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title"
+                                                                                    id="exampleModalCenterTitle">Excluir
+                                                                                    Funcionário</h5>
+                                                                                <button type="button" class="close"
+                                                                                    data-dismiss="modal"
+                                                                                    aria-label="Close"><span
+                                                                                        aria-hidden="true">×</span></button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <p>Tem certeza que deseja excluir esse
+                                                                                    funcionário?</p>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button"
+                                                                                    class="btn btn-secondary"
+                                                                                    data-dismiss="modal">Cancelar</button>
+                                                                                <button type="button"
+                                                                                    class="btn btn-primary">Confirmar</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <a href="#!" class="label theme-bg2 text-white f-12"
+                                                                    data-toggle="modal"
+                                                                    data-target="#exampleModalCenter">Excluir</a>
                                                             </td>
                                                         </tr>
                                                     </tbody>
