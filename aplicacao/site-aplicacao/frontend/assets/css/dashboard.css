@@ -14,15 +14,8 @@
 
 }
 
-.sub-graficos-barra{
-
-    width: 45%;
-    position: absolute;
-    
-}
-.sub-graficos-pizza{
-    width: 45%;
-    position:relative;
-    float: left;
+.check-dash-squad{
+    width: 50%;
+    padding: 8px;
 }
 
