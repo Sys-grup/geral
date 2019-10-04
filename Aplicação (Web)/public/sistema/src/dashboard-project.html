@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+<head>
+    <title>PMSys_ - Dashboards</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="../assets/fonts/fontawesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/plugins/animation/css/animate.min.css">
+    <link href="../assets/css/feather.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="https://code.iconify.design/1/1.0.3/iconify.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+</head>
+
+<body>
+    <div id="nav"></div>
+
+    <div class="pcoded-main-container">
+        <div class="pcoded-wrapper">
+            <div class="pcoded-content">
+                <div class="pcoded-inner-content">
+                    <div class="page-header">
+                        <div class="page-block">
+                            <div class="row align-items-center">
+                                <div class="col-md-12">
+                                    <div class="page-header-title">
+                                        <h5 class="m-b-10">Dashboard</h5>
+                                    </div>
+                                    <ul class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="#"><i data-feather="home" width="13"
+                                                    class="feather icon-anchor"></i></a></li>
+                                        <li class="breadcrumb-item"><a href="#!">Project Dashboard</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-body">
+                        <div class="page-wrapper">
+                            <div class="titulos-dashboard">Periodo :</div>
+                            <select class="js-example-basic-single form-control">
+                                <option value="AL">Selecione um período...</option>
+                                <option value="AL">Mensal</option>
+                                <option value="WY">Semanal</option>
+                                <option value="WY">Diário</option>
+                            </select>
+                            <div class="sub-titulos-dashboard">Notificações dos squads:</div>
+                            <div class="col-xl-12 col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>Média de notificações por período</h5>
+                                    </div>
+                                    <div class="card-block">
+                                        <canvas id="chart-line"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sub-titulos-dashboard">Tempo Online dos squads:</div>
+                            <div class="col-xl-12 col-md-6 sub-graficos">
+                                <div class="card sub-graficos">
+                                    <div class="card-header">
+                                        <h5>Média de notificações por período</h5>
+                                    </div>
+                                    <div class="card-block">
+                                        <canvas id="chart-bar"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sub-titulos-dashboard">Realização de tarefas:</div>
+                            <div class="col-xl-12 col-md-6 ">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>Porcentagem de produtividade</h5>
+                                    </div>
+                                    <div class="card-block">
+                                        <canvas id="chart-pie"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#nav').load('barra-lateral.html');
+    });
+    console.log(document.querySelector('#squad'));
+    document.querySelector('#squad').classList.add("active");
+</script>
+<!-- Configurações menu lateral -->
+<script src="../assets/js/vendor-all.min.js"></script>
+
+<!-- Charts -->
+<script src="../assets/plugins/chart-chartjs/js/Chart.min.js"></script>
+<script>
+    feather.replace()
+</script>
+<script src="../assets/js/pages/dashboard-project.js"></script>
+<script src="../assets/js/dashboards.js"></script>
