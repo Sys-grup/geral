@@ -1,8 +1,7 @@
-<!-- Menu lateral -->
-<nav class="pcoded-navbar">
+<nav class="pcoded-navbar" id="nav">
     <div class="navbar-wrapper">
         <div class="navbar-brand header-logo">
-            <a href="#" class="b-brand">
+            <a href="index.html" class="b-brand">
                 <div class="b-bg">
                     <i class="feather icon-trending-up" data-feather="trending-up"></i>
                 </div>
@@ -19,16 +18,20 @@
                         class="nav-link"><span class="pcoded-micon"><i class="feather icon-aperture"
                                 data-feather="pie-chart"></i></span><span class="pcoded-mtext">Dashboards</span></a>
                 </li>
-                <li data-username="Animations" class="nav-item"><a href="crud-funcionario.html" class="nav-link"><span
+                <li data-username="Animations" class="nav-item"><a href="funcionario.html" class="nav-link"><span
                             class="pcoded-micon"><i class="feather icon-aperture" data-feather="users"></i></span><span
                             class="pcoded-mtext">Funcionários</span></a>
+                </li>
+                <li data-username="Animations" class="nav-item" id="squad"><a href="squad.html" class="nav-link"><span
+                            class="pcoded-micon"><i class="feather icon-aperture" data-feather="users"></i></span><span
+                            class="pcoded-mtext">Squad</span></a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
 
-<!-- Menu mobile -->
+
 <header class="navbar pcoded-header navbar-expand-lg navbar-light">
     <div class="m-header">
         <a class="mobile-menu" id="mobile-collapse1" href="#!"><span></span></a>
@@ -63,6 +66,12 @@
         </ul>
     </div>
 </header>
+<!-- Bootstrap -->
+<script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<!-- Funções menu lateral -->
+<script src="../assets/js/pcoded.min.js"></script>
+<!-- Menu de configurações -->
+<script src="../assets/js/menu-setting.min.js"></script>
 <script>
-    feather.replace()
+    feather.replace();
 </script>
