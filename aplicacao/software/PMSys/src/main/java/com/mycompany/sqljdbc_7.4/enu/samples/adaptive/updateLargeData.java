@@ -27,7 +27,7 @@ import java.sql.Statement;
 import com.microsoft.sqlserver.jdbc.SQLServerStatement;
 
 
-public class UpdateLargeData {
+public class updateLargeData {
 
     public static void main(String[] args) {
 

@@ -29,7 +29,7 @@ import java.sql.Statement;
 
 import com.microsoft.sqlserver.jdbc.SQLServerStatement;
 
-public class ReadLargeData {
+public class readLargeData {
 
     public static void main(String[] args) {
         // Create a variable for the connection string.

@@ -7,11 +7,9 @@ package com.mycompany.pmsys;
 
 import java.awt.Color;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,6 +25,10 @@ public class TelaLogin extends javax.swing.JFrame {
     public TelaLogin() {
         initComponents();
         btEntrarSys.requestFocus();
+        
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rsz_11rsz_1rsz_logo.png"))); // NOI18N
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rsz_profileicon.png"))); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rsz_password-icon.png"))); // NOI18N
     }
 
     /**
@@ -55,7 +57,6 @@ public class TelaLogin extends javax.swing.JFrame {
 
         jPanel5.setBackground(java.awt.SystemColor.activeCaption);
 
-        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ultim\\Desktop\\BandTec\\PI\\SM2\\git\\PMSys_\\aplicacao\\software\\PMSys\\src\\main\\java\\com\\mycompany\\pmsys\\imgs\\rsz_11rsz_1rsz_logo.png")); // NOI18N
         jLabel9.setText("jLabel9");
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
@@ -75,7 +76,6 @@ public class TelaLogin extends javax.swing.JFrame {
         });
 
         jLabel11.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel11.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ultim\\Desktop\\BandTec\\PI\\SM2\\git\\PMSys_\\aplicacao\\software\\PMSys\\src\\main\\java\\com\\mycompany\\pmsys\\imgs\\rsz_profileicon.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -114,7 +114,6 @@ public class TelaLogin extends javax.swing.JFrame {
         });
 
         jLabel12.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel12.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ultim\\Desktop\\BandTec\\PI\\SM2\\git\\PMSys_\\aplicacao\\software\\PMSys\\src\\main\\java\\com\\mycompany\\pmsys\\imgs\\rsz_password-icon.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);

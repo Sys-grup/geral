@@ -113,8 +113,6 @@ public class TelaMonitoramento extends javax.swing.JFrame {
 
         jPanel1.setBackground(java.awt.SystemColor.activeCaption);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Aluno\\Desktop\\aa\\PMSys_\\aplicacao\\software\\PMSys\\src\\main\\java\\com\\mycompany\\pmsys\\imgs\\small_logo.png")); // NOI18N
-
         lbNomeSquad.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         lbNomeSquad.setForeground(new java.awt.Color(255, 255, 255));
         lbNomeSquad.setText("Squad Alfa");
@@ -130,8 +128,6 @@ public class TelaMonitoramento extends javax.swing.JFrame {
                 lbSairMouseClicked(evt);
             }
         });
-
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Aluno\\Desktop\\aa\\PMSys_\\aplicacao\\software\\PMSys\\src\\main\\java\\com\\mycompany\\pmsys\\imgs\\rsz_profileicon.png")); // NOI18N
 
         jButton13.setText("CPU ");
 
