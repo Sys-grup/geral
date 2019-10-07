@@ -6,6 +6,10 @@
 package com.mycompany.pmsys;
 
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,14 +17,18 @@ import javax.swing.JOptionPane;
  * @author Aluno
  */
 public class TelaLogin extends javax.swing.JFrame {
-Login login = new Login();
-TelaMonitoramento monitoramento = new TelaMonitoramento();
+
+    TelaMonitoramento monitoramento = new TelaMonitoramento();
     /**
      * Creates new form TelaLogin
      */
     public TelaLogin() {
         initComponents();
         btEntrarSys.requestFocus();
+        
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rsz_11rsz_1rsz_logo.png"))); // NOI18N
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rsz_profileicon.png"))); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rsz_password-icon.png"))); // NOI18N
     }
 
     /**
@@ -49,7 +57,6 @@ TelaMonitoramento monitoramento = new TelaMonitoramento();
 
         jPanel5.setBackground(java.awt.SystemColor.activeCaption);
 
-        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ultim\\Desktop\\BandTec\\PI\\SM2\\git\\PMSys_\\aplicacao\\software\\PMSys\\src\\main\\java\\com\\mycompany\\pmsys\\imgs\\rsz_11rsz_1rsz_logo.png")); // NOI18N
         jLabel9.setText("jLabel9");
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
@@ -69,7 +76,6 @@ TelaMonitoramento monitoramento = new TelaMonitoramento();
         });
 
         jLabel11.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel11.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ultim\\Desktop\\BandTec\\PI\\SM2\\git\\PMSys_\\aplicacao\\software\\PMSys\\src\\main\\java\\com\\mycompany\\pmsys\\imgs\\rsz_user-icon.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -108,7 +114,6 @@ TelaMonitoramento monitoramento = new TelaMonitoramento();
         });
 
         jLabel12.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel12.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ultim\\Desktop\\BandTec\\PI\\SM2\\git\\PMSys_\\aplicacao\\software\\PMSys\\src\\main\\java\\com\\mycompany\\pmsys\\imgs\\rsz_password-icon.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -118,8 +123,7 @@ TelaMonitoramento monitoramento = new TelaMonitoramento();
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(pfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,15 +199,28 @@ TelaMonitoramento monitoramento = new TelaMonitoramento();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btEntrarSysActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarSysActionPerformed
- if (tfLogin.getText().equals(login.user) && pfPassword.getText().equals(login.password)){
-     dispose();
-     monitoramento.setVisible(true);
-     
- }else{
-     JOptionPane.showMessageDialog(rootPane, "Erro ao efetuar o login \n" +
-            "Verifique se seu login e sua senha estão corretos", "Erro", HEIGHT);
- }
-     
+       
+        Connection conn;
+        conn = ConnectURL.conexao();
+        try{
+            String stringSql = "Select * from AcessoUsuario where usuario = ? and senha = ?";
+            PreparedStatement stmt = conn.prepareStatement(stringSql);
+            stmt.setString(1, tfLogin.getText().toString().trim());
+            stmt.setString(2, pfPassword.getText().toString().trim());
+            
+            ResultSet result = stmt.executeQuery();
+            if(result.next()){
+                monitoramento.setVisible(true);
+                this.dispose();
+            }else{
+                JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos!", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+            
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Erro do Sql \n" + e, "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+        
+         
     }//GEN-LAST:event_btEntrarSysActionPerformed
 
     private void tfLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfLoginActionPerformed

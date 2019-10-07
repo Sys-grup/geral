@@ -113,8 +113,6 @@ public class TelaMonitoramento extends javax.swing.JFrame {
 
         jPanel1.setBackground(java.awt.SystemColor.activeCaption);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ultim\\Desktop\\BandTec\\PI\\SM2\\git\\PMSys_\\aplicacao\\software\\PMSys\\src\\main\\java\\com\\mycompany\\pmsys\\imgs\\small_logo.png")); // NOI18N
-
         lbNomeSquad.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         lbNomeSquad.setForeground(new java.awt.Color(255, 255, 255));
         lbNomeSquad.setText("Squad Alfa");
@@ -130,8 +128,6 @@ public class TelaMonitoramento extends javax.swing.JFrame {
                 lbSairMouseClicked(evt);
             }
         });
-
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ultim\\Desktop\\BandTec\\PI\\SM2\\git\\PMSys_\\aplicacao\\software\\PMSys\\src\\main\\java\\com\\mycompany\\pmsys\\imgs\\rsz_profileicon.png")); // NOI18N
 
         jButton13.setText("CPU ");
 
@@ -533,16 +529,16 @@ public class TelaMonitoramento extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(lbNomeSquad))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lbUsuario)
-                                .addComponent(lbSair))
-                            .addComponent(jLabel5)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(lbNomeSquad)))
+                                .addComponent(lbSair)))))
                 .addGap(18, 18, 18)
                 .addComponent(jTabbedPane1)
                 .addContainerGap())
