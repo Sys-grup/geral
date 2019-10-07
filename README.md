@@ -14,7 +14,7 @@ $ npm i
 
 #### Iniciar servidor node
 
-Lembrar de executar este comando dentro da pasta PMSys_/Aplicação (Web)/PMSys_.
+Lembrar de executar este comando dentro da pasta PMSys_/Aplicação (Web)/.
 ```
 $ npm start
 ```
