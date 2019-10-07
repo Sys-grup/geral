@@ -182,13 +182,12 @@
 </body>
 
 </html>
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#nav').load('barra-lateral.html');
+        $('#nav').load('barra-lateral.html', () => $( "#dashboardsId" ).addClass( "active"))
     });
-    console.log(document.querySelector('#squad'));
-    document.querySelector('#squad').classList.add("active");
 </script>
 <!-- Configurações menu lateral -->
 <script src="../assets/js/vendor-all.min.js"></script>
