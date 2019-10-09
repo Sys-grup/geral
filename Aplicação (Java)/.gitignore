@@ -24,7 +24,6 @@ hs_err_pid*
 
 #OSHI
 # Output
-target
 .project
 .settings
 .classpath
