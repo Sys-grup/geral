@@ -26,9 +26,9 @@ public class TelaLogin extends javax.swing.JFrame {
         initComponents();
         btEntrarSys.requestFocus();
         
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rsz_11rsz_1rsz_logo.png"))); // NOI18N
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rsz_profileicon.png"))); // NOI18N
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rsz_password-icon.png"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("img/rsz_11rsz_1rsz_logo.png"))); // NOI18N
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("img/rsz_profileicon.png"))); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("img/rsz_password-icon.png"))); // NOI18N
     }
 
     /**

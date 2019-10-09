@@ -34,7 +34,7 @@ public class DadosCPU {
     
     private void usoCPU(){
         
-        cpuName = cpu.getProcessorIdentifier().getName();
+        cpuName = cpu.getName();
         
         long[] cpuTicks;
         long[] prevCpuTicks;
