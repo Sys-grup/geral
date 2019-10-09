@@ -21,6 +21,7 @@ import java.sql.Connection;
 
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
+import com.microsoft.sqlserver.jdbc.SQLServerDriver;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -32,13 +33,18 @@ public class ConnectURL {
         
         Connection conexao = null;
         
-        String URL = "jdbc:sqlserver://srvdotsys.database.windows.net:1433;databaseName=bddotsys;user=userdotsys;password=#Gfgrupo6";
-        
-        
         try{
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            
+            String URL = "jdbc:sqlserver://srvdotsys.database.windows.net:1433;databaseName=bddotsys;user=userdotsys;password=#Gfgrupo6";
+        
+        
+        
             conexao = DriverManager.getConnection(URL);
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Erro do Sql \n" + ex, "Erro", JOptionPane.ERROR_MESSAGE);
+        } catch(ClassNotFoundException e){
+            JOptionPane.showMessageDialog(null, "Classe não encontrada \n" + e, "Erro", JOptionPane.ERROR_MESSAGE);
         }
         
         return conexao;
