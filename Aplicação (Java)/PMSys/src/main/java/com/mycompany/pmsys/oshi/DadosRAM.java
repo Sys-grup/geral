@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import org.springframework.jdbc.core.JdbcTemplate;
 import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
 import oshi.hardware.GlobalMemory;
@@ -43,24 +44,37 @@ public class DadosRAM {
     }
     
     public void insereDadosRam(){
-        Connection conn = ConnectURL.conexao();
         
-        try{
-            String insertCPU = "INSERT INTO tblInfoRAM values (?, ?, ?)";
-            PreparedStatement stmt = conn.prepareStatement(insertCPU);
-            
-            this.usoRAM();
-            
-            stmt.setDouble(1, this.totalRamUsado);
-            stmt.setDouble(2, this.totalDisponivel);
-            stmt.setInt(3, 1000);
-            
-            stmt.execute();
-            
-            System.out.println("Dados de RAM inseridos com sucesso!");
-        }catch(SQLException ex){
-            JOptionPane.showMessageDialog(null, "Erro do Sql \n" + ex, "Erro", JOptionPane.ERROR_MESSAGE);
-        }
-    }
+                ConnectURL dadosConexao = new ConnectURL();
+       JdbcTemplate jdbcTemplate = new JdbcTemplate(dadosConexao.getDataSource());
+       
+       try{
+       jdbcTemplate.update("INSERT INTO tblInfoRAM values (?, ?, ?)", this.totalRamUsado, this.totalDisponivel, 1000);
+       }
+       catch (Exception e){
+           JOptionPane.showMessageDialog(null, "Erro do Sql \n" + e, "Erro", JOptionPane.ERROR_MESSAGE);
     
+       }
+        
+        
+//        Connection conn = ConnectURL.conexao();
+//        
+//        try{
+//            String insertCPU = "INSERT INTO tblInfoRAM values (?, ?, ?)";
+//            PreparedStatement stmt = conn.prepareStatement(insertCPU);
+//            
+//            this.usoRAM();
+//            
+//            stmt.setDouble(1, this.totalRamUsado);
+//            stmt.setDouble(2, this.totalDisponivel);
+//            stmt.setInt(3, 1000);
+//            
+//            stmt.execute();
+//            
+//            System.out.println("Dados de RAM inseridos com sucesso!");
+//        }catch(SQLException ex){
+//            JOptionPane.showMessageDialog(null, "Erro do Sql \n" + ex, "Erro", JOptionPane.ERROR_MESSAGE);
+//        }
+//    }
+    }
 }

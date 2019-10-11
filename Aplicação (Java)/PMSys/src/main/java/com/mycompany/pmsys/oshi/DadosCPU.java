@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import org.springframework.jdbc.core.JdbcTemplate;
 import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
 import oshi.hardware.HardwareAbstractionLayer;
@@ -64,28 +65,40 @@ public class DadosCPU {
     }
     
     public void insereDadosCPU(){
-        Connection conn = ConnectURL.conexao();
         
-        try{
-            String insertCPU = "INSERT INTO tblInfoCPU values (?, ?, ?, ?, ?)";
-            PreparedStatement stmt = conn.prepareStatement(insertCPU);
-            
-            this.usoCPU();
-            
-            stmt.setString(1, this.cpuName);
-            stmt.setDouble(2, this.user);
-            stmt.setDouble(3, this.system);
-            stmt.setDouble(4, this.totalUsadoCPU);
-            stmt.setInt(5, 1000);
-            
-            stmt.execute();
-            
-            System.out.println("Dados de CPU inseridos com sucesso!");
-        }catch(SQLException ex){
-            JOptionPane.showMessageDialog(null, "Erro do Sql \n" + ex, "Erro", JOptionPane.ERROR_MESSAGE);
-        }
-    }
+                ConnectURL dadosConexao = new ConnectURL();
+       JdbcTemplate jdbcTemplate = new JdbcTemplate(dadosConexao.getDataSource());
+       
+       try{
+       jdbcTemplate.update("INSERT INTO tblInfoCPU values (?, ?, ?, ?, ?)", this.cpuName, this.user,this.system, this.totalUsadoCPU, 1000);
+       }
+       catch (Exception e){
+           JOptionPane.showMessageDialog(null, "Erro do Sql \n" + e, "Erro", JOptionPane.ERROR_MESSAGE);
+    
+       }
+//        
+//        Connection conn = ConnectURL.conexao();
+//        
+//        try{
+//            String insertCPU = "INSERT INTO tblInfoCPU values (?, ?, ?, ?, ?)";
+//            PreparedStatement stmt = conn.prepareStatement(insertCPU);
+//            
+//            this.usoCPU();
+//            
+//            stmt.setString(1, this.cpuName);
+//            stmt.setDouble(2, this.user);
+//            stmt.setDouble(3, this.system);
+//            stmt.setDouble(4, this.totalUsadoCPU);
+//            stmt.setInt(5, 1000);
+//            
+//            stmt.execute();
+//            
+//            System.out.println("Dados de CPU inseridos com sucesso!");
+//        }catch(SQLException ex){
+//            JOptionPane.showMessageDialog(null, "Erro do Sql \n" + ex, "Erro", JOptionPane.ERROR_MESSAGE);
+//        }
+//    }
     
     
-    
+    }   
 }

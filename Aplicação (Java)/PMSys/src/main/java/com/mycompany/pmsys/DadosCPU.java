@@ -9,7 +9,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import javax.swing.JOptionPane;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
  *
@@ -24,24 +26,35 @@ public class DadosCPU {
     
     public DadosCPU(String maqina){
         
-     Connection conn = ConnectURL.conexao();
+         ConnectURL dadosConexao = new ConnectURL();
+         JdbcTemplate jdbcTemplate = new JdbcTemplate(dadosConexao.getDataSource());
         
-        try{
-            String selectCPU = "SELECT * tblInfoCPU where fkMaquina = 1000";
-            PreparedStatement stmt = conn.prepareStatement(selectCPU);
-            ResultSet rs = stmt.executeQuery(selectCPU);
-            
-            while (rs.next()){
-                nomeCpu = rs.getString("nomeCPU");
-                byUser = rs.getDouble(3);
-                bySystem = rs.getDouble(4);
-                totalUso = rs.getDouble(5);
-                
-            }
-            
-    }catch(SQLException ex){
-            JOptionPane.showMessageDialog(null, "Erro do Sql \n" + ex, "Erro", JOptionPane.ERROR_MESSAGE);
-        }
+         List selectCPU = jdbcTemplate.queryForList("SELECT * tblInfoCPU where fkMaquina = 1000");
+        //System.out.println("Todos:\n"+ selectCPU);
+        
+        
+         
+
+    /* Dados CPU via JDBC Puro  */        
+//        
+//     Connection conn = ConnectURL.conexao();
+//        
+//        try{
+//            String selectCPU = "SELECT * tblInfoCPU where fkMaquina = 1000";
+//            PreparedStatement stmt = conn.prepareStatement(selectCPU);
+//            ResultSet rs = stmt.executeQuery(selectCPU);
+//            
+//            while (rs.next()){
+//                nomeCpu = rs.getString("nomeCPU");
+//                byUser = rs.getDouble(3);
+//                bySystem = rs.getDouble(4);
+//                totalUso = rs.getDouble(5);
+//                
+//            }
+//            
+//    }catch(SQLException ex){
+//            JOptionPane.showMessageDialog(null, "Erro do Sql \n" + ex, "Erro", JOptionPane.ERROR_MESSAGE);
+//        }
         
         
         
