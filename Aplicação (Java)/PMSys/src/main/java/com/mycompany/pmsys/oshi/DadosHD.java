@@ -9,7 +9,9 @@ import com.mycompany.pmsys.ConnectURL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import javax.swing.JOptionPane;
+import org.springframework.jdbc.core.JdbcTemplate;
 import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
 import oshi.hardware.HardwareAbstractionLayer;
@@ -45,24 +47,38 @@ public class DadosHD {
     }
     
     public void insereDadosHD(){
-        Connection conn = ConnectURL.conexao();
         
-        try{
-            String insertCPU = "INSERT INTO tblInfoHD values (?, ?, ?)";
-            PreparedStatement stmt = conn.prepareStatement(insertCPU);
-            
-            this.usoHD();
-            
-            stmt.setDouble(1, this.espacoTotal);
-            stmt.setDouble(2, this.espacoUsavel);
-            stmt.setInt(3, 1000);
-            
-            stmt.execute();
-            
-            System.out.println("Dados de HD inseridos com sucesso!");
-        }catch(SQLException ex){
-            JOptionPane.showMessageDialog(null, "Erro do Sql \n" + ex, "Erro", JOptionPane.ERROR_MESSAGE);
-        }
+        ConnectURL dadosConexao = new ConnectURL();
+       JdbcTemplate jdbcTemplate = new JdbcTemplate(dadosConexao.getDataSource());
+       
+       try{
+       jdbcTemplate.update("INSERT INTO tblInfoHD values (?, ?, ?)", this.espacoTotal, this.espacoUsavel, 1000);
+       }
+       catch (Exception e){
+           JOptionPane.showMessageDialog(null, "Erro do Sql \n" + e, "Erro", JOptionPane.ERROR_MESSAGE);
+    
+       }
+        
+        
+//        Connection conn = ConnectURL.conexao();
+//        
+//        try{
+//            String insertCPU = "INSERT INTO tblInfoHD values (?, ?, ?)";
+//            PreparedStatement stmt = conn.prepareStatement(insertCPU);
+//            
+//            this.usoHD();
+//            
+//            stmt.setDouble(1, this.espacoTotal);
+//            stmt.setDouble(2, this.espacoUsavel);
+//            stmt.setInt(3, 1000);
+//            
+//            stmt.execute();
+//            
+//            System.out.println("Dados de HD inseridos com sucesso!");
+//        }catch(SQLException ex){
+//            JOptionPane.showMessageDialog(null, "Erro do Sql \n" + ex, "Erro", JOptionPane.ERROR_MESSAGE);
+//        }
+//    }
     }
     
 }

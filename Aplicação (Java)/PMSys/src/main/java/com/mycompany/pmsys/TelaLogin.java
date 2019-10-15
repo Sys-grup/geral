@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.mycompany.pmsys;
+import java.util.List;
 
 import java.awt.Color;
 import java.sql.Connection;
@@ -11,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
  *
@@ -25,6 +27,8 @@ public class TelaLogin extends javax.swing.JFrame {
     public TelaLogin() {
         initComponents();
         btEntrarSys.requestFocus();
+        
+        DadosFuncionarios dadosFuncionario = new DadosFuncionarios(1);
         
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("img/rsz_11rsz_1rsz_logo.png"))); // NOI18N
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("img/rsz_profileicon.png"))); // NOI18N
@@ -200,25 +204,29 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void btEntrarSysActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarSysActionPerformed
        
-        Connection conn;
-        conn = ConnectURL.conexao();
+        ConnectURL dadosConexao = new ConnectURL();
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(dadosConexao.getDataSource());
         try{
-            String stringSql = "Select * from AcessoUsuario where usuario = ? and senha = ?";
-            PreparedStatement stmt = conn.prepareStatement(stringSql);
-            stmt.setString(1, tfLogin.getText().toString().trim());
-            stmt.setString(2, pfPassword.getText().toString().trim());
             
-            ResultSet result = stmt.executeQuery();
-            if(result.next()){
+            List login= jdbcTemplate.queryForList("SELECT * AcessoUsuario where usuario = ? and senha = ?", tfLogin.getText(), pfPassword.getText().toString());
+            /* conexao JDBC PURO*/
+//            String stringSql = "Select * from AcessoUsuario where usuario = ? and senha = ?";
+//            PreparedStatement stmt = conn.prepareStatement(stringSql);
+//            stmt.setString(1, tfLogin.getText().toString().trim());
+//            stmt.setString(2, pfPassword.getText().toString().trim());
+//                      
+//            ResultSet result = stmt.executeQuery();
+            if(login!=null){
                 monitoramento.setVisible(true);
                 this.dispose();
             }else{
                 JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos!", "Erro", JOptionPane.ERROR_MESSAGE);
             }
             
-        }catch(SQLException e){
+        }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Erro do Sql \n" + e, "Erro", JOptionPane.ERROR_MESSAGE);
         }
+    
         
          
     }//GEN-LAST:event_btEntrarSysActionPerformed

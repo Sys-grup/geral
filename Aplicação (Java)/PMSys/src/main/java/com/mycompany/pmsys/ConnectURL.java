@@ -21,38 +21,65 @@ import java.sql.Connection;
 
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
+import com.microsoft.sqlserver.jdbc.SQLServerDriver;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.sql.DataSource;
 import javax.swing.JOptionPane;
+
+import org.apache.commons.dbcp2.BasicDataSource;
 
 
 public class ConnectURL {
     
-    public static Connection conexao(){
+    private BasicDataSource dataSource;
+    public ConnectURL(){
         
-        Connection conexao = null;
+        /* Conexão Via Spring JDBC */
+        dataSource = new BasicDataSource();
+        dataSource.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        dataSource.setUrl("jdbc:sqlserver://srvdotsys.database.windows.net:1433");
         
-        String URL = "jdbc:sqlserver://srvdotsys.database.windows.net:1433;databaseName=bddotsys;user=userdotsys;password=#Gfgrupo6";
+        dataSource.setUsername("userdotsys");
+        dataSource.setPassword("#Gfgrupo6");
+  
         
+    }
+        public BasicDataSource getDataSource() {
+        return dataSource;
+    }
+}
         
-        try{
-            conexao = DriverManager.getConnection(URL);
-        }catch(SQLException ex){
-            JOptionPane.showMessageDialog(null, "Erro do Sql \n" + ex, "Erro", JOptionPane.ERROR_MESSAGE);
-        }
-        
-        return conexao;
+        /* Conexão Via JDBC Puro */
+//
+//      Connection conexao = null;
+//        
+//        try{
+//            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+//            
+//            String URL = "jdbc:sqlserver://srvdotsys.database.windows.net:1433;databaseName=bddotsys;user=userdotsys;password=#Gfgrupo6";
+//        
+//        
+//        
+//            conexao = DriverManager.getConnection(URL);
+//        }catch(SQLException ex){
+//            JOptionPane.showMessageDialog(null, "Erro do Sql \n" + ex, "Erro", JOptionPane.ERROR_MESSAGE);
+//        } catch(ClassNotFoundException e){
+//            JOptionPane.showMessageDialog(null, "Classe não encontrada \n" + e, "Erro", JOptionPane.ERROR_MESSAGE);
+//        }
+//        
+//        return conexao;
                 
-    }
-    
-    public static boolean FecharConexao(){
-        try{
-            ConnectURL.conexao().close();
-            return true;
-        }catch(SQLException e){
-            return false;
-        }
-    }
+//    }
+//    
+//    public static boolean FecharConexao(){
+//        try{
+//            ConnectURL.datSource().close();
+//            return true;
+//        }catch(SQLException e){
+//            return false;
+//        }
+//    }
         
         
         
@@ -84,5 +111,5 @@ public class ConnectURL {
         }*/
         
     
-   }
+   
 
