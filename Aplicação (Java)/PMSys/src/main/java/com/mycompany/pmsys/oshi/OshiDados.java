@@ -10,19 +10,19 @@ package com.mycompany.pmsys.oshi;
  */
 public class OshiDados {
     public static void main(String[] args) {
+        
         DadosCPU dCpu = new DadosCPU();
         DadosRAM dRam = new DadosRAM();
         DadosHD dHd = new DadosHD();
         DadosProcessos dProcessos = new DadosProcessos();
-        
-        //dProcessos.processosAtuais();
-        //dProcessos.processosAtuais();
         
         dCpu.insereDadosCPU();
         
         dRam.insereDadosRam();
         
         dHd.insereDadosHD();
+        
+        dProcessos.processosAtuais();
         
     }
     //Pega informações gerais do hardware do PC

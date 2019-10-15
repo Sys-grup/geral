@@ -5,13 +5,16 @@
  */
 package com.mycompany.pmsys.oshi;
 
+import com.mycompany.pmsys.ConnectURL;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
+import org.springframework.jdbc.core.JdbcTemplate;
 import oshi.SystemInfo;
 import oshi.software.os.FileSystem;
 import oshi.software.os.OSProcess;
@@ -29,9 +32,13 @@ public class DadosProcessos {
     private OperatingSystem os = si.getOperatingSystem();
     private FileSystem fs = os.getFileSystem();
     
+    private String nomeProcesso;
+    private String tempoDeUso;
+    private Date dataCapturada;
+    
     public void processosAtuais(){
         //Pegar os 10 primeiros dados de processos de acordo com a memoria
-        List<OSProcess> procs = Arrays.asList(os.getProcesses(0, OperatingSystem.ProcessSort.MEMORY));
+        List<OSProcess> procs = Arrays.asList(os.getProcesses(10, OperatingSystem.ProcessSort.MEMORY));
         
         for(int i = 0; i < procs.size(); i++){
             OSProcess p = procs.get(i);
@@ -51,7 +58,7 @@ public class DadosProcessos {
             
             while(true){
                 if(linha != null){
-                    if(p.getName().equals(linha)){
+                    if(p.getUser().equals("") || p.getName().equals(linha)){
                         processoUser = false;
                         break;
                     }else{
@@ -64,7 +71,14 @@ public class DadosProcessos {
             }
             
             if(processoUser){
-                System.out.format("Process ID: %s, Process Name: %s, Tempo de Uso: %.2f\n", p.getParentProcessID(), p.getName(), (((1d * p.getUpTime())/1000)/60)/60);
+//                System.out.print("User: " + p.getUser() + " | ");
+//                System.out.format("Process ID: %s, Process Name: %s, Tempo de Uso: %.2f\n", p.getParentProcessID(), p.getName(), (((1d * p.getUpTime())/1000)/60)/60);
+                this.nomeProcesso = p.getName();
+                Double aux = (((1d * p.getUpTime())/1000)/60)/60;
+                this.tempoDeUso = String.format("%.2f", aux);
+                this.dataCapturada = new Date();
+                
+                insereDadosProcessos();
             }
             
         } catch (FileNotFoundException e) {
@@ -72,6 +86,19 @@ public class DadosProcessos {
         } catch(IOException e){
             JOptionPane.showMessageDialog(null, "Não foi possivel ler o arquivo!", "Erro", JOptionPane.ERROR_MESSAGE);
         }
+    }
+    
+    private void insereDadosProcessos(){
+        
+        ConnectURL conn = new ConnectURL();
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(conn.getDataSource());
+        
+        try{
+            jdbcTemplate.update("INSERT INTO tblInfoProcessos values (?, ?, ?, ?)", this.nomeProcesso, this.tempoDeUso, this.dataCapturada, 1000);
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Erro do Sql \n" + e, "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+        
     }
     
 }

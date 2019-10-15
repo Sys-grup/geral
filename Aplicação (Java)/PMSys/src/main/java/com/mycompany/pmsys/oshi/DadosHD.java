@@ -56,7 +56,6 @@ public class DadosHD {
         }
         catch (Exception e){
             JOptionPane.showMessageDialog(null, "Erro do Sql \n" + e, "Erro", JOptionPane.ERROR_MESSAGE);
-    
         }
 
     }
