@@ -26,8 +26,8 @@ public class DadosRAM {
          ConnectURL dadosConexao = new ConnectURL();
          JdbcTemplate jdbcTemplate = new JdbcTemplate(dadosConexao.getDataSource());
         
-         List selectRAM = jdbcTemplate.queryForList("SELECT * tblInfoRAM where fkMaquina = 1000");
-        //System.out.println("Todos:\n"+ selectHD);
+         List selectRAM = jdbcTemplate.queryForList("SELECT * from tblInfoRAM where fkMaquina = 1000");
+        System.out.println("Todos:\n"+ selectRAM);
     }
     /* Dados RAM via JDBC Puro  */ 
 //         Connection conn = ConnectURL.conexao();

@@ -23,8 +23,10 @@ public class DadosHD {
          ConnectURL dadosConexao = new ConnectURL();
          JdbcTemplate jdbcTemplate = new JdbcTemplate(dadosConexao.getDataSource());
         
-         List selectHD = jdbcTemplate.queryForList("SELECT * tblInfoHD where fkMaquina = 1000");
+         List selectHD = jdbcTemplate.queryForList("SELECT * from tblInfoHD where fkMaquina = 1000");
         //System.out.println("Todos:\n"+ selectHD);
+        
+        System.out.println(selectHD);
         
     }
         /* Dados HD via JDBC Puro  */   

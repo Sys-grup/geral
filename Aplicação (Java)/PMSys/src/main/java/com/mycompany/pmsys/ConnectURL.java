@@ -7,25 +7,9 @@ package com.mycompany.pmsys;
 
 /**
  *
- * @author Aluno
+ * @author Alex
  */
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.sql.Connection;
 
-
-import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
-import com.microsoft.sqlserver.jdbc.SQLServerException;
-import com.microsoft.sqlserver.jdbc.SQLServerDriver;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.sql.DataSource;
-import javax.swing.JOptionPane;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 
@@ -33,19 +17,21 @@ import org.apache.commons.dbcp2.BasicDataSource;
 public class ConnectURL {
     
     private BasicDataSource dataSource;
+    
     public ConnectURL(){
         
         /* Conexão Via Spring JDBC */
         dataSource = new BasicDataSource();
         dataSource.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        dataSource.setUrl("jdbc:sqlserver://srvdotsys.database.windows.net:1433");
+        dataSource.setUrl("jdbc:sqlserver://srvdotsys.database.windows.net:1433;database=bddotsys");
+        
         
         dataSource.setUsername("userdotsys");
         dataSource.setPassword("#Gfgrupo6");
-  
         
     }
-        public BasicDataSource getDataSource() {
+    
+    public BasicDataSource getDataSource() {
         return dataSource;
     }
 }

@@ -15,13 +15,14 @@ public class OshiDados {
         DadosHD dHd = new DadosHD();
         DadosProcessos dProcessos = new DadosProcessos();
         
-        dProcessos.processosAtuais();
         //dProcessos.processosAtuais();
-//        dCpu.insereDadosCPU();
-//        
-//        dRam.insereDadosRam();
-//        
-//        dHd.insereDadosHD();
+        //dProcessos.processosAtuais();
+        
+        dCpu.insereDadosCPU();
+        
+        dRam.insereDadosRam();
+        
+        dHd.insereDadosHD();
         
     }
     //Pega informações gerais do hardware do PC

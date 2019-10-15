@@ -6,30 +6,26 @@
 package com.mycompany.pmsys.oshi;
 
 import com.mycompany.pmsys.ConnectURL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.time.LocalDateTime;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import org.springframework.jdbc.core.JdbcTemplate;
 import oshi.SystemInfo;
-import oshi.hardware.CentralProcessor;
-import oshi.hardware.HardwareAbstractionLayer;
 import oshi.software.os.FileSystem;
 import oshi.software.os.OSFileStore;
 import oshi.software.os.OperatingSystem;
 
 /**
  *
- * @author Ultim
+ * @author Alex
  */
 public class DadosHD {
     
     //Variaveis de HD
     private double espacoTotal = 0;
     private double espacoUsavel = 0;
+    private Date dataHora;
     
-    private SystemInfo si = new SystemInfo();
+    private final SystemInfo si = new SystemInfo();
     OperatingSystem os = si.getOperatingSystem();
     FileSystem fs = os.getFileSystem();
     
@@ -44,41 +40,25 @@ public class DadosHD {
         espacoTotal = (((espacoTotal/1024)/1024)/1024);
         espacoUsavel = (((espacoUsavel/1024)/1024)/1024);
         
+        dataHora = new Date();
+        
     }
     
     public void insereDadosHD(){
         
+        usoHD();
+        
         ConnectURL dadosConexao = new ConnectURL();
-       JdbcTemplate jdbcTemplate = new JdbcTemplate(dadosConexao.getDataSource());
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(dadosConexao.getDataSource());
        
-       try{
-       jdbcTemplate.update("INSERT INTO tblInfoHD values (?, ?, ?)", this.espacoTotal, this.espacoUsavel, 1000);
-       }
-       catch (Exception e){
-           JOptionPane.showMessageDialog(null, "Erro do Sql \n" + e, "Erro", JOptionPane.ERROR_MESSAGE);
+        try{
+            jdbcTemplate.update("INSERT INTO tblInfoHD values (?, ?, ?, ?)", this.espacoTotal, this.espacoUsavel, 1000, this.dataHora);
+        }
+        catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Erro do Sql \n" + e, "Erro", JOptionPane.ERROR_MESSAGE);
     
-       }
-        
-        
-//        Connection conn = ConnectURL.conexao();
-//        
-//        try{
-//            String insertCPU = "INSERT INTO tblInfoHD values (?, ?, ?)";
-//            PreparedStatement stmt = conn.prepareStatement(insertCPU);
-//            
-//            this.usoHD();
-//            
-//            stmt.setDouble(1, this.espacoTotal);
-//            stmt.setDouble(2, this.espacoUsavel);
-//            stmt.setInt(3, 1000);
-//            
-//            stmt.execute();
-//            
-//            System.out.println("Dados de HD inseridos com sucesso!");
-//        }catch(SQLException ex){
-//            JOptionPane.showMessageDialog(null, "Erro do Sql \n" + ex, "Erro", JOptionPane.ERROR_MESSAGE);
-//        }
-//    }
+        }
+
     }
     
 }

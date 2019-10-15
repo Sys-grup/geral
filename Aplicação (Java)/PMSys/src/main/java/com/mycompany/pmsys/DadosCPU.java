@@ -26,14 +26,12 @@ public class DadosCPU {
     
     public DadosCPU(String maqina){
         
-         ConnectURL dadosConexao = new ConnectURL();
-         JdbcTemplate jdbcTemplate = new JdbcTemplate(dadosConexao.getDataSource());
+        ConnectURL dadosConexao = new ConnectURL();
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(dadosConexao.getDataSource());
         
-         List selectCPU = jdbcTemplate.queryForList("SELECT * tblInfoCPU where fkMaquina = 1000");
-        //System.out.println("Todos:\n"+ selectCPU);
+        List selectCPU = jdbcTemplate.queryForList("SELECT * from tblInfoCPU where fkMaquina = 1000");
+        System.out.println("Todos:\n"+ selectCPU);
         
-        
-         
 
     /* Dados CPU via JDBC Puro  */        
 //        
@@ -60,7 +58,7 @@ public class DadosCPU {
         
         
         
-}
+    }
 
     public String getNomeCpu() {
         return nomeCpu;

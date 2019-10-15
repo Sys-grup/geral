@@ -24,7 +24,7 @@ public class TelaMonitoramento extends javax.swing.JFrame {
     public TelaMonitoramento() {
         initComponents();
         
-        DadosFuncionarios dadosFunc = new DadosFuncionarios(2);
+        DadosFuncionarios dadosFunc = new DadosFuncionarios(1);
         DadosRAM ram = new DadosRAM("1000");
         DadosCPU cpu = new DadosCPU("1000");
         DadosHD hd = new DadosHD("1000");

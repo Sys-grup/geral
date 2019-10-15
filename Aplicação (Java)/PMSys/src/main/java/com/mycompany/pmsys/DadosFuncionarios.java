@@ -22,8 +22,8 @@ public class DadosFuncionarios {
         ConnectURL dadosConexao = new ConnectURL();
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dadosConexao.getDataSource());
 
-        List selectFuncionario = jdbcTemplate.queryForList("SELECT * tblFuncionario where tblSquad_idSquad = ?",  squad);
-        //System.out.println("Todos:\n"+ selectHD);
+        List selectFuncionario = jdbcTemplate.queryForList("select * from tblFuncionario where fkSquad = ?", squad);
+//      System.out.println("Todos:\n"+ selectFuncionario);
 
 //     Connection conn = ConnectURL.conexao();
 //        

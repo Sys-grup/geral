@@ -19,7 +19,7 @@ import oshi.software.os.OperatingSystem;
 
 /**
  *
- * @author Ultim
+ * @author Alex
  */
 public class DadosProcessos {
     
