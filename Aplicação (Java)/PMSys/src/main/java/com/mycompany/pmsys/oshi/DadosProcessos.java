@@ -5,8 +5,13 @@
  */
 package com.mycompany.pmsys.oshi;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import javax.swing.JOptionPane;
 import oshi.SystemInfo;
 import oshi.software.os.FileSystem;
 import oshi.software.os.OSProcess;
@@ -30,11 +35,43 @@ public class DadosProcessos {
         
         for(int i = 0; i < procs.size(); i++){
             OSProcess p = procs.get(i);
-
-            System.out.format("Process ID: %s, Process Name: %s, Tempo de Uso: %.2f\n", p.getParentProcessID(), p.getName(), (((1d * p.getUpTime())/1000)/60)/60);
+            
+            analisaProcessosValidos(p);
             
         }
         
+    }
+    
+    private void analisaProcessosValidos(OSProcess p){
+        
+        try {
+            BufferedReader buffRead = new BufferedReader(new FileReader("src/main/java/com/mycompany/pmsys/systemProccess.txt"));
+            String linha = "";
+            boolean processoUser = false;
+            
+            while(true){
+                if(linha != null){
+                    if(p.getName().equals(linha)){
+                        processoUser = false;
+                        break;
+                    }else{
+                        processoUser = true;
+                    }
+                }else
+                    break;
+                
+                linha = buffRead.readLine();
+            }
+            
+            if(processoUser){
+                System.out.format("Process ID: %s, Process Name: %s, Tempo de Uso: %.2f\n", p.getParentProcessID(), p.getName(), (((1d * p.getUpTime())/1000)/60)/60);
+            }
+            
+        } catch (FileNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "Arquivo de processos de sistema não encontrado!", "Erro", JOptionPane.ERROR_MESSAGE);
+        } catch(IOException e){
+            JOptionPane.showMessageDialog(null, "Não foi possivel ler o arquivo!", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
     }
     
 }
