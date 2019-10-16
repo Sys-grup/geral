@@ -9,10 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="../assets/fonts/fontawesome/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/squad.css">
     <link rel="stylesheet" href="../assets/plugins/animation/css/animate.min.css">
     <link href="../assets/css/feather.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_o5hd5vvqpoqiwwmi.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <script src="https://code.iconify.design/1/1.0.3/iconify.min.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
@@ -34,7 +33,7 @@
                             <div class="row align-items-center">
                                 <div class="col-md-12">
                                     <div class="page-header-title">
-                                        <h5 class="m-b-10">Gerenciamaneto de Esquadrões</h5>
+                                        <h5 class="m-b-10">Esquadrões</h5>
                                     </div>
                                     <ul class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"
@@ -49,173 +48,67 @@
                     <div class="main-body">
                         <div class="page-wrapper">
                             <!-- Div onde serão inseridos os cards de cada esquadrão -->
-                            <div id="conteudo" class="card-group"></div>
-                            <!-- Script para criar cards dos squads no array, simulando o retorno da API -->
-                            <script>
-                                const squads = [{
-                                        nome: "Alpha",
-                                        status: "danger",
-                                        info: "Alpha está com o muitos funcionarios offline."
-                                    },
-                                    {
-                                        nome: "Beta",
-                                        status: "success",
-                                        info: "Beta está com a tarefa pronta."
-                                    },
-                                    {
-                                        nome: "Charlie",
-                                        status: "warning",
-                                        info: "Charlie está proximo da data de entrega."
-                                    },
-                                    {
-                                        nome: "Delta",
-                                        status: "info",
-                                        info: "Delta já entregou a tarefa, está aguardando outra."
-                                    }
-                                ]
-                                let divs = "";
-                                squads.map(squad => {
-                                    divs += `
-                                        <div class="col-md-4">
-                                            <div class="card card-squad">
-                                                <div class="card-header">
-                                                    <span>${squad.nome}</span>
-                                                    <button class="btn btn-icon btn-rounded card-header-right" onclick="criarFuncionarios()"
-                                                    data-toggle="modal" data-target="#modalSquad" data-squad="Alpha">
-                                                        <i data-feather="more-horizontal" width="15"></i>
-                                                    </button>
-                                                </div>
-                                                <div class="card-body">
-                                                    <span>Ultima notificação:</span>
-                                                    <div class="alert alert-${squad.status}">${squad.info}</div>
-                                                </div>
-                                            </div>
+                            <div id="conteudo" class="card-group">
+                                <!-- <div class="col-md-4">
+                                    <div class="card card-squad">
+                                        <div class="card-body" onclick="criarFuncionarios()" data-toggle="modal"
+                                            data-target="#modalSquad" data-squad="Alpha">
+                                            <i class="status" style="background:#55DD55"></i>
+                                            <span>ALPHA</span>
+                                            <i data-feather="users" class="feather icon-anchor background"></i>
                                         </div>
-                                `
-                                });
-                                document.getElementById("conteudo").innerHTML = divs;
-                            </script>
-                            <!-- Modal de detalhes do squad -->
-                            <div id="modalSquad" class="modal fade" tabindex="-1" role="dialog"
-                                aria-labelledby="modalSquadLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-lg" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="modalSquadLabel">Esquadrão Alpha</h5>
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                aria-label="Close"><span aria-hidden="true">×</span></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <h6>Objetivo:</h6>
-                                                    <p>Squad alocado no projeto 12467, em desenvolvimento de uma
-                                                        aplicação
-                                                        WEB para gerenciamento de lojas.</p>
-                                                    <h6>Descrição:</h6>
-                                                    <p>Squad Alpha alocado no 8° andar da empresa com 7 intregantes.</p>
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <div
-                                                        class="table-responsive squad-modal-lista-funcionarios border-left">
-                                                        <table class="table table-hover">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>Funcionário</th>
-                                                                    <th>Status</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody id="funcionariosSquad">
-                                                                <!-- Script para gerar funcionarios aleatorios para testes -->
-                                                                <script>
-                                                                    function criarFuncionarios() {
-                                                                        const numero = Math.floor(Math.random() * 10) +
-                                                                            1;
-                                                                        const horarios = [];
-                                                                        for (i = 0; i < 10; i++) {
-                                                                            horarios.push("08:5" + i)
-                                                                            horarios.push("09:0" + i)
-                                                                            horarios.push("09:1" + i)
-                                                                        };
-                                                                        const homensNomes = ["José", "Enzo", "Carlos",
-                                                                            "Gustavo", "Gabriel", "Alexandre",
-                                                                            "Henrique", "Lucas"
-                                                                        ];
-                                                                        const mulheresNomes = ["Beatriz", "Alice",
-                                                                            "Melissa", "Anna", "Raquel"
-                                                                        ];
-                                                                        const sobrenome = ["Melo", "Sousa", "Silva",
-                                                                            "Rocha", "Correia", "Castro", "Ribeiro",
-                                                                            "Gomes", "Dias", "Azevedo", "Ferreira",
-                                                                            "Cunha", "Cardoso"
-                                                                        ];
-                                                                        let funcionarios = "";
-                                                                        for (i = 0; i < numero; i++) {
-                                                                            const genero = Math.floor(Math.random() *
-                                                                                2);
-                                                                            const funcionario = {
-                                                                                avatar: genero + 1,
-                                                                                nome: genero ? homensNomes[Math
-                                                                                        .floor(Math.random() *
-                                                                                            homensNomes.length)] :
-                                                                                    mulheresNomes[Math.floor(Math
-                                                                                        .random() *
-                                                                                        mulheresNomes.length)],
-                                                                                sobrenome: sobrenome[Math.floor(Math
-                                                                                    .random() * sobrenome
-                                                                                    .length)] + " " + sobrenome[
-                                                                                    Math.floor(Math.random() *
-                                                                                        sobrenome.length)],
-                                                                                status: Math.floor(Math.random() *
-                                                                                        10) ? "Online desde as " +
-                                                                                    horarios[Math.floor(Math
-                                                                                        .random() * horarios
-                                                                                        .length)] : "Offline"
-                                                                            }
-                                                                            funcionarios += `
-                                                                                <tr>
-                                                                                    <td><img class="rounded-circle" style="width:40px;"
-                                                                                            src="../assets/images/user/avatar-${funcionario.avatar}.jpg"
-                                                                                            alt="activity-user">
-                                                                                        <span>${funcionario.nome} ${funcionario.sobrenome}</span>
-                                                                                    </td>
-                                                                                    <td>
-                                                                                        ${funcionario.status}
-                                                                                    </td>
-                                                                                </tr>
-                                                                            `;
-                                                                        }
-                                                                        document.getElementById('funcionariosSquad')
-                                                                            .innerHTML = funcionarios;
-
-                                                                    }
-                                                                </script>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <!-- <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
-                                        </div> -->
                                     </div>
+                                </div> -->
+                            </div>
+                        </div>
+                        <!-- Modal de detalhes do squad -->
+                        <div id="modalSquad" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="modalSquadLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modalSquadLabel">Esquadrão Alpha</h5>
+                                        <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close"><span aria-hidden="true">×</span></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <h6>Objetivo:</h6>
+                                                <p>Squad alocado no projeto 12467, em desenvolvimento de uma
+                                                    aplicação
+                                                    WEB para gerenciamento de lojas.</p>
+                                                <h6>Descrição:</h6>
+                                                <p>Squad Alpha alocado no 8° andar da empresa com 7 intregantes.</p>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div
+                                                    class="table-responsive squad-modal-lista-funcionarios border-left">
+                                                    <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Funcionário</th>
+                                                                <th>Status</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="funcionariosSquad">
+
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div> -->
                                 </div>
                             </div>
-                            <!--(NÃO CONSEGUI FAZER FUNCIONAR) Script para Inserir dados no modal referente ao o esquadrão do botão -->
-                            <script>
-                                $('#modalSquad').on('show.bs.modal', function (event) {
-                                    var button = $(event.relatedTarget)
-                                    var squad = button.data('squad')
-                                    console.log(squad)
-                                    var modal = $(this)
-                                    modal.find('.modal-title').text(`Esquadrão ${squad}`)
-                                })
-                            </script>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -225,9 +118,120 @@
 </body>
 
 </html>
+<!-- Script para criar cards dos squads no array, simulando o retorno da API -->
+<script>
+    const squads = [{
+        nome: "Alpha",
+        status: "danger",
+    },
+    {
+        nome: "Beta",
+        status: "success",
+    },
+    {
+        nome: "Charlie",
+        status: "warning",
+    },
+    {
+        nome: "Delta",
+        status: "info",
+    }
+    ]
+    let divs = "";
+    squads.map(squad => {
+        divs += `
+                <div class="col-md-3">
+                    <div class="card card-squad">
+                        <div class="card-body" onclick="criarFuncionarios()" data-toggle="modal"
+                            data-target="#modalSquad" data-squad="${squad.nome}">
+                            <i class="status" style="background:var(--${squad.status})"></i>
+                            <span>${squad.nome}</span>
+                            <i data-feather="users" class="feather icon-anchor background"></i>
+                        </div>
+                    </div>
+                </div>
+            `
+    });
+    document.getElementById("conteudo").innerHTML = divs;
+</script>
+<!-- Script para gerar funcionarios aleatorios para testes -->
+<script>
+    function criarFuncionarios() {
+        const numero = Math.floor(Math.random() * 10) +
+            1;
+        const horarios = [];
+        for (i = 0; i < 10; i++) {
+            horarios.push("08:5" + i)
+            horarios.push("09:0" + i)
+            horarios.push("09:1" + i)
+        };
+        const homensNomes = ["José", "Enzo", "Carlos",
+            "Gustavo", "Gabriel", "Alexandre",
+            "Henrique", "Lucas"
+        ];
+        const mulheresNomes = ["Beatriz", "Alice",
+            "Melissa", "Anna", "Raquel"
+        ];
+        const sobrenome = ["Melo", "Sousa", "Silva",
+            "Rocha", "Correia", "Castro", "Ribeiro",
+            "Gomes", "Dias", "Azevedo", "Ferreira",
+            "Cunha", "Cardoso"
+        ];
+        let funcionarios = "";
+        for (i = 0; i < numero; i++) {
+            const genero = Math.floor(Math.random() *
+                2);
+            const funcionario = {
+                avatar: genero + 1,
+                nome: genero ? homensNomes[Math
+                    .floor(Math.random() *
+                        homensNomes.length)] :
+                    mulheresNomes[Math.floor(Math
+                        .random() *
+                        mulheresNomes.length)],
+                sobrenome: sobrenome[Math.floor(Math
+                    .random() * sobrenome
+                        .length)] + " " + sobrenome[
+                    Math.floor(Math.random() *
+                        sobrenome.length)],
+                status: Math.floor(Math.random() *
+                    10) ? "Online desde as " +
+                    horarios[Math.floor(Math
+                        .random() * horarios
+                            .length)] : "Offline"
+            }
+            funcionarios += `
+                <tr>
+                    <td><img class="rounded-circle" style="width:40px;"
+                            src="../assets/images/user/avatar-${funcionario.avatar}.jpg"
+                            alt="activity-user">
+                        <span>${funcionario.nome} ${funcionario.sobrenome}</span>
+                    </td>
+                    <td>
+                        ${funcionario.status}
+                    </td>
+                </tr>
+            `;
+        }
+        document.getElementById('funcionariosSquad')
+            .innerHTML = funcionarios;
+
+    }
+</script>
+<!--(NÃO CONSEGUI FAZER FUNCIONAR) Script para Inserir dados no modal referente ao o esquadrão do botão -->
+<script>
+    $('#modalSquad').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget)
+        var squad = button.data('squad')
+        console.log(squad)
+        var modal = $(this)
+        modal.find('.modal-title').text(`Esquadrão ${squad}`)
+    })
+</script>
+
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#nav').load('barra-lateral.html', () => $("#squadId").addClass("active"))
+        $('#nav').load('barra-lateral.html');
     });
 </script>
 <!-- Bootstrap -->

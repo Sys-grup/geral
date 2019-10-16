@@ -14,5 +14,41 @@
 }
 
 .card-squad{
-    height: 250px;
+    height: 150px;
+    border-radius: 30px !important;
+    transition: all .25s ease-in-out;
+}
+
+.card-squad:hover {
+    background: #fbfbfb;
+    height: 160px;
+}
+
+.card-squad .card-body {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    cursor: pointer;
+}
+
+.card-squad .card-body span {
+    font-size: 200%;
+    text-align: center;
+    color: #252525;
+    z-index: 1;
+}
+
+.card-squad .card-body .status {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.card-squad .card-body .background {
+    position: absolute;
+    color: #f0f0f0;
+    z-index: 0;
+    width: 90%;
+    height: 90%;
 }
