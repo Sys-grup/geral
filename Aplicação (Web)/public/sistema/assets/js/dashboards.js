@@ -230,7 +230,7 @@ var myChart3 = new Chart(ctu, {
     data: {
         labels: ['Delta','Charlie','Alpha','Bravo'],
         datasets: [{
-            label: 'CPU',
+            label: 'Horas',
             data: [12, 19, 3, 5],
             backgroundColor: [
                 'rgba(54, 162, 235)',
@@ -261,6 +261,19 @@ var myChart3 = new Chart(ctu, {
         tooltips: {
             mode: 'index',
             intersect: false,
+            callbacks: {
+                label: function(tooltipItem, data) {
+                    console.log(tooltipItem);
+                    console.log(data);
+                    var label = data.datasets[tooltipItem.datasetIndex].label || '';
+
+                    if (label) {
+                        label += ': ';
+                    }
+                    label += (data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index])+'h';
+                    return label;
+                }
+            }
         },
         hover: {
             mode: 'nearest',

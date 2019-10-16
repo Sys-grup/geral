@@ -15,19 +15,21 @@
 }
 
 .check-dash-squad {
-    width: 50%;
-    padding: 8px;
+    width: 40%;
+    padding: 8px 0;
+    margin-left: 15px;
 }
 
 .radio-dash-squad {
     width: 60%;
-    padding: 5px;
-    margin-left: 10%;
+    padding: 16px 0;
+    margin-left: 15px;
 }
 
 .check-dash-squad2 {
-    width: 50%;
-    padding: 8px;
+    width: 90%;
+    padding: 8px 0;
+    margin-left: 15px;
 }
 
 .card-squad {
@@ -37,4 +39,9 @@
 .div-scroll {
     overflow-y: scroll;
     height: 371px;
+}
+.BONECO{
+
+    border-left: 1px solid #dddddd;
+
 }
