@@ -36,14 +36,22 @@ public class DadosProcessos {
     private String tempoDeUso;
     private Date dataCapturada;
     
+    private int contador = 1;
+    
     public void processosAtuais(){
         //Pegar os 10 primeiros dados de processos de acordo com a memoria
-        List<OSProcess> procs = Arrays.asList(os.getProcesses(10, OperatingSystem.ProcessSort.MEMORY));
+        List<OSProcess> procs = Arrays.asList(os.getProcesses(0, OperatingSystem.ProcessSort.MEMORY));
         
         for(int i = 0; i < procs.size(); i++){
             OSProcess p = procs.get(i);
             
-            analisaProcessosValidos(p);
+            
+            if(this.contador > 10){
+                break;
+            }else{
+                analisaProcessosValidos(p);
+            }
+            
             
         }
         
@@ -63,6 +71,7 @@ public class DadosProcessos {
                         break;
                     }else{
                         processoUser = true;
+                        
                     }
                 }else
                     break;
@@ -70,15 +79,23 @@ public class DadosProcessos {
                 linha = buffRead.readLine();
             }
             
-            if(processoUser){
-//                System.out.print("User: " + p.getUser() + " | ");
-//                System.out.format("Process ID: %s, Process Name: %s, Tempo de Uso: %.2f\n", p.getParentProcessID(), p.getName(), (((1d * p.getUpTime())/1000)/60)/60);
-                this.nomeProcesso = p.getName();
-                Double aux = (((1d * p.getUpTime())/1000)/60)/60;
-                this.tempoDeUso = String.format("%.2f", aux);
-                this.dataCapturada = new Date();
-                
-                insereDadosProcessos();
+            if(this.contador <= 10){
+                if(processoUser){
+//                  System.out.print("User: " + p.getUser() + " | ");
+//                  System.out.format("Process ID: %s, Process Name: %s, Tempo de Uso: %.2f\n", p.getParentProcessID(), p.getName(), (((1d * p.getUpTime())/1000)/60)/60);
+                    this.nomeProcesso = p.getName();
+
+                    long minutos = (p.getUpTime() / 60000) % 60;
+                    long horas = (p.getUpTime() / 3600000);
+                    String upTime = String.format("%3d:%02d", horas, minutos);
+
+                    this.tempoDeUso = upTime;
+                    this.dataCapturada = new Date();
+                    
+                    this.contador++;
+                    
+                    insereDadosProcessos();
+                }
             }
             
         } catch (FileNotFoundException e) {
