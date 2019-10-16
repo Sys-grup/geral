@@ -1,4 +1,4 @@
-.titulos-dashboard{
+.titulos-dashboard {
 
     font-size: 40px;
     margin-bottom: 2%;
@@ -6,24 +6,35 @@
 
 }
 
-.sub-titulos-dashboard{
+.sub-titulos-dashboard {
 
-    font-size: 30px;
-    margin-bottom: 2%;
+    font-size: 18px;
+    margin-bottom: 1%;
     margin-top: 2%;
 
 }
 
-.check-dash-squad{
+.check-dash-squad {
     width: 50%;
     padding: 8px;
 }
-.radio-dash-squad{
+
+.radio-dash-squad {
     width: 60%;
     padding: 5px;
     margin-left: 10%;
 }
-.check-dash-squad2{
+
+.check-dash-squad2 {
     width: 50%;
     padding: 8px;
+}
+
+.card-squad {
+    height: 300px;
+}
+
+.div-scroll {
+    overflow-y: scroll;
+    height: 371px;
 }
