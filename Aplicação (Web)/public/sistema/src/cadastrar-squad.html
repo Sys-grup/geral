@@ -9,17 +9,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="../assets/fonts/fontawesome/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="../assets/css/dashboard.css">
     <link rel="stylesheet" href="../assets/plugins/animation/css/animate.min.css">
     <link href="../assets/css/feather.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="../assets/plugins/multi-select/css/multi-select.css">
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_o5hd5vvqpoqiwwmi.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://code.iconify.design/1/1.0.3/iconify.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#nav').load('barra-lateral.html', () => $("#funcionariosId").addClass("active"))
+            $('#nav').load('barra-lateral.html', () => $("#squadId").addClass("active"))
         });
     </script>
 </head>
@@ -28,7 +29,7 @@
 
     <div id="nav"></div>
 
-    <div class="pcoded-main-container">
+    <div class="pcoded-main-container container-squad squad-container">
         <div class="pcoded-wrapper">
             <div class="pcoded-content">
                 <div class="pcoded-inner-content">
@@ -78,7 +79,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <label class="form-label">Funcionários</label>
+                                            <label class="form-label">Adicione funcionários</label>
                                             <select id='custom-headers' class="searchable" multiple='multiple'>
                                                 <option value='elem_1' selected>João Alfredo</option>
                                                 <option value='elem_2'>João Pedro</option>
@@ -94,7 +95,7 @@
                             <br>
                             <div class="row">
                                 <div class="col-md-6 offset-md-6 bd-highlight">
-                                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                                    <button type="submit" class="btn btn-primary btn-cadastro">Cadastrar</button>
                                 </div>
                             </div>
                             </form>

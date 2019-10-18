@@ -151,7 +151,7 @@ p.text-muted {
     position: relative
 }
 
-.card .card-header h5 { 
+.card .card-header h5 {
     margin-bottom: 0;
     color: #000;
     font-size: 17px;
@@ -3338,6 +3338,15 @@ p.text-muted {
     position: relative;
     display: block;
     padding: 0 30px;
+}
+
+.btn-cadastro {
+    float: right;
+    margin-right: 0 !important;
+}
+
+.squad-container {
+    min-height: 0 !important;
 }
 
 .pcoded-main-container {
@@ -10556,7 +10565,6 @@ a.btn-theme.active {
     position: relative;
     padding: 15px 20px;
     border-radius: 0
-
 }
 
 .alert-link {
