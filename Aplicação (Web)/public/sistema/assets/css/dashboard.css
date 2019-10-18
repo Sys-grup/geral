@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 .titulos-dashboard{
+=======
+.titulos-dashboard {
+>>>>>>> master
 
     font-size: 40px;
     margin-bottom: 2%;
@@ -6,14 +10,22 @@
 
 }
 
+<<<<<<< HEAD
 .sub-titulos-dashboard{
 
     font-size: 30px;
     margin-bottom: 2%;
+=======
+.sub-titulos-dashboard {
+
+    font-size: 18px;
+    margin-bottom: 1%;
+>>>>>>> master
     margin-top: 2%;
 
 }
 
+<<<<<<< HEAD
 .check-dash-squad{
     width: 50%;
     padding: 8px;
@@ -26,4 +38,36 @@
 .check-dash-squad2{
     width: 50%;
     padding: 8px;
+=======
+.check-dash-squad {
+    width: 40%;
+    padding: 8px 0;
+    margin-left: 15px;
+}
+
+.radio-dash-squad {
+    width: 60%;
+    padding: 16px 0;
+    margin-left: 15px;
+}
+
+.check-dash-squad2 {
+    width: 90%;
+    padding: 8px 0;
+    margin-left: 15px;
+}
+
+.card-squad {
+    height: 300px;
+}
+
+.div-scroll {
+    overflow-y: scroll;
+    height: 371px;
+}
+.division{
+
+    border-left: 1px solid #dddddd;
+
+>>>>>>> master
 }

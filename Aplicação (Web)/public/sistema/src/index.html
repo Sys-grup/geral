@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+<head>
+    <title>PMSys_ - Dashboards</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="../assets/fonts/fontawesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/plugins/animation/css/animate.min.css">
+    <link href="../assets/css/feather.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="https://code.iconify.design/1/1.0.3/iconify.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <div id="nav"></div>
+
+    <div class="pcoded-main-container">
+        <div class="pcoded-wrapper">
+            <div class="pcoded-content">
+                <div class="pcoded-inner-content">
+
+                    <div class="page-header">
+                        <div class="page-block">
+                            <div class="row align-items-center">
+                                <div class="col-md-12">
+                                    <div class="page-header-title">
+                                        <h5 class="m-b-10">Home</h5>
+                                    </div>
+                                    <ul class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"
+                                                    width="13" class="feather icon-anchor"></i></a></li>
+                                        <li class="breadcrumb-item"><a href="#!">Home</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="main-body">
+                        <div class="page-wrapper">
+                            <!-- Div onde serão inseridos os cards de cada esquadrão -->
+                            <div id="conteudo" class="card-group"></div>
+                            <!-- Script para criar cards dos squads no array, simulando o retorno da API -->
+                            <script>
+                                const squads = [{
+                                    nome: "Alpha",
+                                    status: "danger",
+                                    info: "Alpha está com o muitos funcionarios offline."
+                                },
+                                {
+                                    nome: "Beta",
+                                    status: "success",
+                                    info: "Beta está com a tarefa pronta."
+                                },
+                                {
+                                    nome: "Beta",
+                                    status: "danger",
+                                    info: "Funcionário com alto nível de consumo de RAM."
+                                },
+                                {
+                                    nome: "Charlie",
+                                    status: "warning",
+                                    info: "Charlie está proximo da data de entrega."
+                                },
+                                {
+                                    nome: "Delta",
+                                    status: "info",
+                                    info: "Delta já entregou a tarefa, está aguardando outra."
+                                }
+                                ]
+                                let divs = "";
+                                squads.map(squad => {
+                                    divs += `
+                                        <div class="col-md-4">
+                                            <div class="card card-squad">
+                                                <div class="card-header">
+                                                    <span>${squad.nome}</span>
+                                                    
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="alert alert-${squad.status}">${squad.info}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                `
+                                });
+                                document.getElementById("conteudo").innerHTML = divs;
+                            </script>   
+                        </div>
+                    </div>
+                    <!-- <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div> -->
+                </div>
+            </div>
+        </div>
+        <!--(NÃO CONSEGUI FAZER FUNCIONAR) Script para Inserir dados no modal referente ao o esquadrão do botão -->
+        
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+</body>
+
+</html>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#nav').load('barra-lateral.html', () => $("#squadId").addClass("active"))
+    });
+</script>
+<!-- Bootstrap -->
+<script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<!-- Funções menu lateral -->
+<script src="../assets/js/vendor-all.min.js"></script>
+<script>
+    feather.replace();
+</script>
