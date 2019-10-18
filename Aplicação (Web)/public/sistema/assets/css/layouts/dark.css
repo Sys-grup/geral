@@ -1163,8 +1163,8 @@ pre[class*=language-] {
 }
 
 .pcoded-navbar.theme-horizontal~.pcoded-header:not([class*=header-]) .b-bg i {
-    color: #1de9b6;
-    background-image: linear-gradient(-135deg, #1de9b6 0%, #1dc4e9 100%);
+   
+    background-image: linear-gradient(-135deg,  #1391aa   0%, #2f5158 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: unset
 }
