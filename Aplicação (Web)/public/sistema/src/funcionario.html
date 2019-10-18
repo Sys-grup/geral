@@ -10,6 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="../assets/fonts/fontawesome/css/fontawesome-all.min.css">
     <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/default.css">
     <link rel="stylesheet" href="../assets/plugins/animation/css/animate.min.css">
     <link href="../assets/css/feather.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_o5hd5vvqpoqiwwmi.css">
@@ -17,6 +18,28 @@
     <script src="https://code.iconify.design/1/1.0.3/iconify.min.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+
+    <style>
+        .botao-flutuante {
+            display: block;
+            border-radius: 50%;
+            padding: 0;
+            border: none;
+            outline: none;
+            background: var(--success);
+            color: var(--white);
+            height: 45px;
+            width: 45px;
+            transition: ease-in-out 0.1s;
+
+        }
+
+        .botao-flutuante:hover {
+            color: #fff;
+            margin-bottom: 2px;
+            background-color: #218037;
+        }
+    </style>
 </head>
 
 <body>
@@ -37,10 +60,12 @@
                                     <ul class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="dashboard-project.html"><i
                                                     data-feather="home" width="13" class="server"></i></a></li>
-                                        <p></p>
                                         <li class="breadcrumb-item"><a href="#"> Funcionários </a></li>
-                                        <li><a href="cadastro-funcionario.html"
-                                                class="label theme-bg2 text-white f-12">Cadastrar</a></li>
+
+
+
+
+
                                     </ul>
                                     <div class="card-header">
                                         <h5>Funcionários</h5>
@@ -370,6 +395,13 @@
                 </div>
             </div>
         </div>
+        <div class="botoes-flutuantes-container">
+            <a href="cadastro-funcionario.html" class="botao-flutuante">
+                <i data-feather="plus" width="45px" height="45px"></i>
+            </a>
+
+        </div>
+
     </div>
 </body>
 

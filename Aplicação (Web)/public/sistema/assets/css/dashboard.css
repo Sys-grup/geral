@@ -45,3 +45,17 @@
     border-left: 1px solid #dddddd;
 
 }
+.float{
+	position:fixed;
+	width:45px;
+	height:45px;
+	bottom:50px;
+	right:50px;
+	background-color: var(--success);
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+	
+}
+
