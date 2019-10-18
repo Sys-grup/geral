@@ -114,8 +114,8 @@ $(document).ready(function () {
         selectableOptgroup: true
     });
     $('.searchable').multiSelect({
-        selectableHeader: "<input type='text' class='form-control' autocomplete='off' placeholder='try \"12\"'>",
-        selectionHeader: "<input type='text' class='form-control' autocomplete='off' placeholder='try \"4\"'>",
+        selectableHeader: "<input type='text' class='form-control' autocomplete='off' placeholder='Procure por um funcionário'>",
+        selectionHeader: "<input type='text' class='form-control' autocomplete='off' placeholder='Procure por um funcionário'>",
         afterInit: function (ms) {
             var that = this,
                 $selectableSearch = that.$selectableUl.prev(),
