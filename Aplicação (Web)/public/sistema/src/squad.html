@@ -13,8 +13,9 @@
     <link rel="stylesheet" href="../assets/plugins/animation/css/animate.min.css">
     <link href="../assets/css/feather.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="shortcut icon" href="../../img/logo.png" type="image/icon">
+    <link rel="stylesheet" href="../assets/css/default.css">
     <link rel="icon" href="../../img/logo.png" type="image/icon"> 
+    <link rel="shortcut icon" href="../../img/logo.png" type="image/icon">
     <script src="https://code.iconify.design/1/1.0.3/iconify.min.js"></script>
     <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_o5hd5vvqpoqiwwmi.css">
     <script src="https://unpkg.com/feather-icons"></script>
@@ -36,12 +37,12 @@
                             <div class="row align-items-center">
                                 <div class="col-md-12">
                                     <div class="page-header-title">
-                                        <h5 class="m-b-10">Esquadrões</h5>
+                                        <h5 class="m-b-10">Squads</h5>
                                     </div>
                                     <ul class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="index.html" title="Voltar para home"><i data-feather="home"
                                                     width="13" class="feather icon-anchor"></i></a></li>
-                                        <li class="breadcrumb-item"><a href="#!">Esquadrões</a></li>
+                                        <li class="breadcrumb-item"><a href="#!">Squads</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -50,7 +51,7 @@
 
                     <div class="main-body">
                         <div class="page-wrapper">
-                            <!-- Div onde serão inseridos os cards de cada esquadrão -->
+                            <!-- Div onde serão inseridos os cards de cada Squad -->
                             <div id="conteudo" class="card-group">
                                 <!-- <div class="col-md-4">
                                     <div class="card card-squad">
@@ -70,9 +71,15 @@
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="modalSquadLabel">Esquadrão Alpha</h5>
-                                        <button type="button" class="close" data-dismiss="modal"
-                                            aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <h5 class="modal-title" id="modalSquadLabel">Squad Alpha</h5>
+                                        <div>
+                                            <a data-dismiss="modal" class="close" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </a>
+                                            <a href="cadastrar-squad.html" class="close squad-edit">
+                                                <i data-feather="settings" width="14px" height="14px"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                     <div class="modal-body">
                                         <div class="row">
@@ -115,6 +122,11 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="botoes-flutuantes-container">
+            <a href="cadastrar-squad.html" class="botao-flutuante" title="Adicionar Squad">
+                <i data-feather="plus" width="35px" height="35px" ></i>
+            </a>
         </div>
     </div>
 
@@ -221,20 +233,20 @@
 
     }
 </script>
-<!--(NÃO CONSEGUI FAZER FUNCIONAR) Script para Inserir dados no modal referente ao o esquadrão do botão -->
+<!--(NÃO CONSEGUI FAZER FUNCIONAR) Script para Inserir dados no modal referente ao o Squad do botão -->
 <script>
     $('#modalSquad').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget)
         var squad = button.data('squad')
         console.log(squad)
         var modal = $(this)
-        modal.find('.modal-title').text(`Esquadrão ${squad}`)
+        modal.find('.modal-title').text(`Squad ${squad}`)
     })
 </script>
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#nav').load('barra-lateral.html');
+        $('#nav').load('barra-lateral.html', () => $("#squadId").addClass("active"))
     });
 </script>
 <!-- Bootstrap -->
