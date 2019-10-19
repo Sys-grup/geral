@@ -14,18 +14,20 @@
 }
 
 .card-squad{
+    height: 100px;
     border-radius: 30px !important;
-    transition: all .25s ease-in-out;
+    transition: ease-in-out .2s !important;
 }
 .alert-squad{
     margin-bottom: 0 !important;
     height: 130px;
     border-bottom-right-radius: 30px !important;
     border-bottom-left-radius: 30px !important;
-
 }
 .card-squad:hover {
-    background: #fbfbfb;
+    background: #fafafa;
+    height: 110px;
+    margin-top: -5px
 }
 
 .card-squad .card-body {
