@@ -7,6 +7,7 @@ package com.mycompany.pmsys;
 import java.util.List;
 
 import java.awt.Color;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import org.springframework.jdbc.JdbcUpdateAffectedIncorrectNumberOfRowsException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -17,15 +18,18 @@ import org.springframework.jdbc.core.JdbcTemplate;
  */
 public class TelaLogin extends javax.swing.JFrame {
 
-    TelaMonitoramento monitoramento = new TelaMonitoramento();
+    
+    private Integer idGerente;
+    private String nomeGerente;
+    
+    private ConnectURL dadosConexao = new ConnectURL();
+    private JdbcTemplate jdbcTemplate = new JdbcTemplate(dadosConexao.getDataSource());
     /**
      * Creates new form TelaLogin
      */
     public TelaLogin() {
         initComponents();
         btEntrarSys.requestFocus();
-        
-        DadosFuncionarios dadosFuncionario = new DadosFuncionarios(1);
         
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("img/rsz_11rsz_1rsz_logo.png"))); // NOI18N
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("img/rsz_profileicon.png"))); // NOI18N
@@ -198,16 +202,34 @@ public class TelaLogin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+ 
+    private void buscaGerente(Integer fkConta){
+        List<Map<String, Object>> gerente = jdbcTemplate.queryForList("select * from tblFuncionario where fkConta = ?", fkConta);
+        
+        for(Map row : gerente){
+            this.idGerente = Integer.parseInt(row.get("idFuncionario").toString());
+            this.nomeGerente = row.get("nomeFuncionario").toString();
+        }
+    }
+    
     private void btEntrarSysActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarSysActionPerformed
        
-        ConnectURL dadosConexao = new ConnectURL();
-        JdbcTemplate jdbcTemplate = new JdbcTemplate(dadosConexao.getDataSource());
+       int fkConta = 0;
+        
         try{
             
-            List login= jdbcTemplate.queryForList("SELECT * from AcessoUsuario where usuario = ? and senha = ?", tfLogin.getText(), pfPassword.getText().toString());
+            List<Map<String, Object>> login= jdbcTemplate.queryForList("SELECT * from tblContas where login = ? and senha = ?", tfLogin.getText(), pfPassword.getText().toString());
             
             if(login != null){
+                
+                for(Map row : login){
+                    fkConta = Integer.parseInt(row.get("idConta").toString());
+                    
+                    buscaGerente(fkConta);
+                }
+                
+                TelaMonitoramento monitoramento = new TelaMonitoramento(this.nomeGerente);
+                
                 monitoramento.setVisible(true);
                 this.dispose();
             }else{

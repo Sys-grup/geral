@@ -13,51 +13,34 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.util.List;
+import java.util.Map;
 /**
  *
  * @author Aluno
  */
 public class DadosCPU {
     
-    private String nomeCpu;
-    private Double byUser;
-    private Double bySystem;
-    private Double totalUso;
+    private String nomeCpu = "";
+    private Double byUser = 0.0;
+    private Double bySystem = 0.0;
+    private Double totalUso = 0.0;
     
-    public DadosCPU(String maqina){
+    
+    public DadosCPU(Integer maquina){
         
         ConnectURL dadosConexao = new ConnectURL();
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dadosConexao.getDataSource());
         
-        List selectCPU = jdbcTemplate.queryForList("SELECT * from tblInfoCPU where fkMaquina = 1000");
-        System.out.println("Todos:\n"+ selectCPU);
+        List<Map<String, Object>> selectCPU = jdbcTemplate.queryForList("select top 1 * from tblInfoCPU where fkMaquina = ? order by idInfoCPU desc", maquina);
         
-
-    /* Dados CPU via JDBC Puro  */        
-//        
-//     Connection conn = ConnectURL.conexao();
-//        
-//        try{
-//            String selectCPU = "SELECT * tblInfoCPU where fkMaquina = 1000";
-//            PreparedStatement stmt = conn.prepareStatement(selectCPU);
-//            ResultSet rs = stmt.executeQuery(selectCPU);
-//            
-//            while (rs.next()){
-//                nomeCpu = rs.getString("nomeCPU");
-//                byUser = rs.getDouble(3);
-//                bySystem = rs.getDouble(4);
-//                totalUso = rs.getDouble(5);
-//                
-//            }
-//            
-//    }catch(SQLException ex){
-//            JOptionPane.showMessageDialog(null, "Erro do Sql \n" + ex, "Erro", JOptionPane.ERROR_MESSAGE);
-//        }
-        
-        
-        
-        
-        
+        for (Map row: selectCPU){
+            nomeCpu = row.get("nomeCPU").toString();
+            byUser = Double.parseDouble(row.get("byUser").toString());
+            bySystem = Double.parseDouble(row.get("bySystem").toString());
+            totalUso = Double.parseDouble(row.get("totalUso").toString());
+        }
+      
     }
 
     public String getNomeCpu() {

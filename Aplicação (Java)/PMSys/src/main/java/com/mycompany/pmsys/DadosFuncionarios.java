@@ -1,11 +1,6 @@
 package com.mycompany.pmsys;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
-import javax.swing.JOptionPane;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
@@ -14,43 +9,47 @@ import org.springframework.jdbc.core.JdbcTemplate;
  */
 public class DadosFuncionarios {
 
-    private String idFunc;
+    private Integer idFunc;
     private String nomeFunc;
+    private String identificador;
+    private Integer idSquad;
+    private Integer idMaquina;
+    private Integer idCargo;
 
-    public DadosFuncionarios(Integer squad) {
+    public DadosFuncionarios(Integer squad, Integer idMaquina, Integer idCargo, String nomeFunc, String identificador, Integer idFunc) {
 
-        ConnectURL dadosConexao = new ConnectURL();
-        JdbcTemplate jdbcTemplate = new JdbcTemplate(dadosConexao.getDataSource());
+        this.idCargo = idCargo;
+        this.idFunc = idFunc;
+        this.idMaquina = idMaquina;
+        this.identificador = identificador;
+        this.idSquad = squad;
+        this.nomeFunc = nomeFunc;
 
-        List selectFuncionario = jdbcTemplate.queryForList("select * from tblFuncionario where fkSquad = ?", squad);
-//      System.out.println("Todos:\n"+ selectFuncionario);
-
-//     Connection conn = ConnectURL.conexao();
-//        
-//        try{
-//            String selectFuncionario = "SELECT * tblFuncionario where tblSquad_idSquad =" + squad;
-//            PreparedStatement stmt = conn.prepareStatement(selectFuncionario);
-//            ResultSet rs = stmt.executeQuery(selectFuncionario);
-//            
-//            while (rs.next()){
-//                
-//                this.idFunc = rs.getString(2);
-//                this.nomeFunc = rs.getString(3);
-//                
-//            }
-//  
-//            
-//    }catch(SQLException ex){
-//            JOptionPane.showMessageDialog(null, "Erro do Sql \n" + ex, "Erro", JOptionPane.ERROR_MESSAGE);
-//        }
-    }
-
-    public String getIdFunc() {
-        return idFunc;
     }
 
     public String getNomeFunc() {
         return nomeFunc;
     }
 
+    public Integer getIdCargo() {
+        return idCargo;
+    }
+
+    public Integer getIdFunc() {
+        return idFunc;
+    }
+
+    public Integer getIdMaquina() {
+        return idMaquina;
+    }
+
+    public Integer getIdSquad() {
+        return idSquad;
+    }
+
+    public String getIdentificador() {
+        return identificador;
+    }
+
+    
 }
