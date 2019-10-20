@@ -7,13 +7,16 @@ package com.mycompany.pmsys;
 
 
 import java.awt.Component;
+import java.awt.Font;
 import java.awt.GridLayout;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import javax.swing.GroupLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
+import javax.swing.JProgressBar;
 import javax.swing.plaf.PanelUI;
 import org.springframework.jdbc.core.JdbcTemplate;
 /**
@@ -64,6 +67,7 @@ public class TelaMonitoramento extends javax.swing.JFrame {
     }
 
     private void definirLayout(List<DadosFuncionarios> listFunc){
+        Font statusFont = new Font("Tahoma", Font.PLAIN, 40);
         int contador = 0;
         
         for (DadosFuncionarios func : listFunc) {
@@ -81,29 +85,47 @@ public class TelaMonitoramento extends javax.swing.JFrame {
             nomeJPanel.setLayout(null);
             
 
-                
-            JLabel lbNomePc = new JLabel("Nome do Computador: ");                
+            //Nome do processador    
+            JLabel lbNomePc = new JLabel("Nome do Processador: ");                
             lbNomePc.setBounds(40, 10, 200, 20);
-            JLabel lbCPUStatus = new JLabel("CPU Status: ");                
+            JLabel lbNomeCpu = new JLabel(cpu.getNomeCpu());
+            lbNomeCpu.setBounds(170, 10, 2000, 20);
+            
+            //Status em porcentagem da CPU
+            JLabel lbCPUStatus = new JLabel("CPU Status: ");
             lbCPUStatus.setBounds(40, 50, 200, 20);
-            JLabel lbRAMStatus = new JLabel("RAM Status ");                
+            JLabel lbCPU = new JLabel(cpu.getTotalUso().toString() + "%");
+            lbCPU.setFont(statusFont);
+            lbCPU.setBounds(35, 70, 200, 50);
+            
+            //Barra de porcentagem CPU
+            JProgressBar barCPU = new JProgressBar(0, 100);
+            barCPU.setBounds(20, 120, 150, 20);
+            
+            //Status da memoria RAM
+            JLabel lbRAMStatus = new JLabel("Uso atual da RAM: ");                
             lbRAMStatus.setBounds(240, 50, 200, 20);
-            JLabel lbHDStatus = new JLabel("HD Status: ");                
+            String ramAntes = ram.getTotalRamUsado().toString();
+            String statusRamUsada = ramAntes.substring(0, 3);
+            JLabel lbRAM = new JLabel(statusRamUsada);
+            lbRAM.setBounds(280, 70, 200, 20);
+            
+            //Status do HD
+            JLabel lbHDStatus = new JLabel("Espaço dísponivel do HD: ");                
             lbHDStatus.setBounds(440, 50, 200, 20);
+            JLabel lbHD = new JLabel(hd.getEspacoTotalDispoivel().toString() + " GB");
+            lbHD.setBounds(480, 70, 200, 20);  
+            
             JLabel lbProcessos = new JLabel("Processos: ");                
             lbProcessos.setBounds(640, 50, 200, 20);  
             
-            JLabel lbCPU = new JLabel(cpu.getTotalUso().toString());
-            lbCPU.setBounds(60, 70, 200, 20);
+            
         
-            JLabel lbRAM = new JLabel(ram.getTotalRamUsado().toString());
-            lbRAM.setBounds(260, 70, 200, 20);
             
-            JLabel lbHD = new JLabel(hd.getEspacoTotalDispoivel().toString());
-            lbHD.setBounds(460, 70, 200, 20);            
             
-            JLabel lbNomeCpu = new JLabel(cpu.getNomeCpu());
-            lbNomeCpu.setBounds(170, 10, 2000, 20);
+                      
+            
+            
 
             nomeJPanel.add(lbNomePc);
             nomeJPanel.add(lbNomeCpu);
@@ -114,7 +136,7 @@ public class TelaMonitoramento extends javax.swing.JFrame {
             nomeJPanel.add(lbCPU);
             nomeJPanel.add(lbRAM);
             nomeJPanel.add(lbHD);
-            
+            nomeJPanel.add(barCPU);
 
             
             
