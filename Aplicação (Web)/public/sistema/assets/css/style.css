@@ -13,6 +13,23 @@ body {
     position: relative
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+
 *:focus {
     outline: none
 }
@@ -3356,7 +3373,8 @@ p.text-muted {
     clear: both;
     float: unset;
     right: 0;
-    margin-left: 264px;
+    /* margin-left: 264px; */
+    margin-left: 80px;
     min-height: 100vh;
     -webkit-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out
