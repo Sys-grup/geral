@@ -56,6 +56,7 @@
   <link rel="stylesheet" href="js/vendor/jquery.fullpage.min.css">
   <link rel="stylesheet" href="js/vegas/vegas.min.css">
   <script src="js/index.js"></script>
+  <script src="js/login.js"></script>
   <!-- Main CSS files -->
   <link rel="stylesheet" href="css/main.css">
 
@@ -115,20 +116,19 @@
 
       <!-- Begin of hamburger mainmenu menu -->
       <nav class="navbar-mainmenu">
-        <form class="send_email_form form-container form-container-transparent form-container-white" method="post"
-          action="http://demo.highhay.com/simpleux/ajaxserver/serverfile.php">
+        <form class="send_email_form form-container form-container-transparent form-container-white">
           <div class="form-desc">
             <h2 class="display-4 display-title  anim-2">Login</h2>
           </div>
           <div class="form-input  anim-4">
             <div class="form-group form-success-gone">
               <label for="reg-name">Login</label>
-              <input id="reg-name" name="login" placeholder="Digite seu login:" required
+              <input id="regname" name="login" placeholder="Digite seu login:" required
                 class="form-control-line form-control-white" type="text" />
             </div>
             <div class="form-group form-success-gone">
               <label for="reg-email">Senha</label>
-              <input id="reg-email" name="senha" class="form-control-line form-control-white" type="password" required
+              <input id="regemail" name="senha" class="form-control-line form-control-white" type="password" required
                 placeholder="****" data-validation-type="password" />
             </div>
             <div class="form-group mb-0">
@@ -137,7 +137,7 @@
                   thank you.</p>
               </div>
               <button id="submit-email" type="button" class="btn btn-white btn-round btn-full form-success-gone"
-                name="submit_email" onclick="window.location.href='sistema/src/dashboard-project.html'">Fazer
+                name="submit_email" onclick="efetuar_login(regname.value, regemail.value)">Fazer
                 login</button>
             </div>
           </div>
@@ -1005,6 +1005,8 @@
   <script src="js/particlejs/particles-init.js"></script>
 
 </body>
+
+
 
 
 <!-- Mirrored from demo.highhay.com/simpleux/index-particle.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 30 Aug 2019 01:31:22 GMT -->
