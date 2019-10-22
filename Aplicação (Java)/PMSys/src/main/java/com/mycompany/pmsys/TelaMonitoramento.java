@@ -6,6 +6,7 @@
 package com.mycompany.pmsys;
 
 
+import com.mycompany.pmsys.DadosProcessos;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -19,6 +20,10 @@ import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 import javax.swing.plaf.PanelUI;
 import java.lang.Math;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JList;
+import javax.swing.JTable;
 import org.springframework.jdbc.core.JdbcTemplate;
 /**
  *
@@ -76,16 +81,12 @@ public class TelaMonitoramento extends javax.swing.JFrame {
             DadosRAM ram = new DadosRAM(func.getIdMaquina());
             DadosCPU cpu = new DadosCPU(func.getIdMaquina());
             DadosHD hd = new DadosHD(func.getIdMaquina());
+            DadosProcessos processos = new DadosProcessos(func.getIdMaquina()); 
             
             contador++;
             
-            String nomePanel = "panel" + contador;
-            String nomeLayout = "layout" + contador;
-            
-            
             javax.swing.JPanel nomeJPanel = new javax.swing.JPanel();
             nomeJPanel.setLayout(null);
-            
 
             //Nome do processador    
             JLabel lbNomePc = new JLabel("Nome do Processador: ");                
@@ -95,10 +96,10 @@ public class TelaMonitoramento extends javax.swing.JFrame {
             
             //Status em porcentagem da CPU
             JLabel lbCPUStatus = new JLabel("CPU Status: ");
-            lbCPUStatus.setBounds(40, 50, 200, 20);
+            lbCPUStatus.setBounds(65, 50, 200, 20);
             JLabel lbCPU = new JLabel(cpu.getTotalUso().toString() + "%");
-            lbCPU.setFont(statusFont);
-            lbCPU.setBounds(35, 70, 2000, 50);
+            lbCPU.setFont(statusFontHD);
+            lbCPU.setBounds(65, 70, 200, 50);
             
             //Barra de porcentagem CPU
             JProgressBar barCPU = new JProgressBar(0, 100);
@@ -106,66 +107,70 @@ public class TelaMonitoramento extends javax.swing.JFrame {
             barCPU.setValue((int) Math.round(cpu.getTotalUso()));
             
             //Status da memoria RAM
-            JLabel lbRAMStatus = new JLabel("Uso atual da RAM: ");                
-            lbRAMStatus.setBounds(240, 50, 200, 20);
+            JLabel lbRAMStatus = new JLabel("Uso atual da RAM: ");               
+            lbRAMStatus.setBounds(255, 50, 200, 20);
             String ramAntes = ram.getTotalRamUsado().toString();
             String statusRamUsada = ramAntes.substring(0, 3);
-            JLabel lbRAM = new JLabel(statusRamUsada + "%");
-            lbRAM.setBounds(280, 70, 2000,  50);
-            lbRAM.setFont(statusFont);
+            JLabel lbRAM = new JLabel(statusRamUsada + " GB");
+            lbRAM.setBounds(265, 70, 200,  50);
+            lbRAM.setFont(statusFontHD);
 
             //Barra de porcentagem RAM
-            JProgressBar barRAM = new JProgressBar(0, 100);
-            barRAM.setBounds(225, 120, 150, 20);
-            //barRAM.setValue(Math.round(Integer.valueOf(statusRamUsada)));
-
+            String ramBarraTotalAntes = ram.getTotalRam().toString();
+            JProgressBar barRAM = new JProgressBar(0, Integer.parseInt(ramBarraTotalAntes.substring(0, 1)));
+            barRAM.setBounds(235, 120, 150, 20);
+            String ramBarraStatus = ram.getTotalRamUsado().toString();
+            barRAM.setValue(Integer.parseInt(ramBarraStatus.substring(0, 1)));
             
             //Status do HD
             JLabel lbHDStatus = new JLabel("Espaço dísponivel do HD: ");                
-            lbHDStatus.setBounds(440, 50, 200, 20);
+            lbHDStatus.setBounds(130, 170, 200, 20);
             JLabel lbHD = new JLabel(hd.getEspacoTotalDispoivel().toString() + " GB");
-            lbHD.setBounds(450, 70, 2000, 50);  
+            lbHD.setBounds(138, 190, 200, 50);  
             lbHD.setFont(statusFontHD);
             
             //Barra de porcentagem HD
-            JProgressBar barHD = new JProgressBar(0, 100);
-            barHD.setBounds(440, 120, 150, 20);
-            //barHD.setValue();
+            Integer hdTotal = (int) Math.round(hd.getTotalEspaco());
+            JProgressBar barHD = new JProgressBar(0, hdTotal);
+            barHD.setBounds(123, 240, 150, 20);
+            Integer hdTotalDisponivel = (int) Math.round(hd.getEspacoTotalDispoivel());
+            Integer hdTotalUsado = hdTotal - hdTotalDisponivel;
+            barHD.setValue(hdTotalUsado);
             
-            JLabel lbProcessos = new JLabel("Processos: ");                
-            lbProcessos.setBounds(640, 50, 200, 50);  
+            //Processos
+            JLabel lbProcessos = new JLabel("Processos:");
+            JLabel lbTempoDeUso = new JLabel("Tempo de Uso:");
+            lbProcessos.setBounds(450, 37, 100, 50);
+            lbTempoDeUso.setBounds(600, 37, 400, 50);
             
+            String colunas[] = {"Nome Processo", "Tempo de Uso"};
             
-        
+            JTable tableProcessos = new JTable(processos.getDados(), colunas);
             
+            tableProcessos.setBounds(450, 80, 300, 160);
             
-                      
+            JButton btnTeamViewer = new JButton("Ver Tela do Usuário");
+            btnTeamViewer.setBounds(600, 270, 150, 30);
             
-            
-
+            //Adicionando componentes no JPanel
             nomeJPanel.add(lbNomePc);
             nomeJPanel.add(lbNomeCpu);
             nomeJPanel.add(lbCPUStatus);
             nomeJPanel.add(lbRAMStatus);
             nomeJPanel.add(lbHDStatus);
-            nomeJPanel.add(lbProcessos);   
+            nomeJPanel.add(lbProcessos); 
+            nomeJPanel.add(lbTempoDeUso);
             nomeJPanel.add(lbCPU);
             nomeJPanel.add(lbRAM);
             nomeJPanel.add(lbHD);
             nomeJPanel.add(barCPU);
             nomeJPanel.add(barRAM);
             nomeJPanel.add(barHD);
+            nomeJPanel.add(tableProcessos);
+            nomeJPanel.add(btnTeamViewer);
             
-            
-            jTabbedPane1.addTab(func.getNomeFunc(), nomeJPanel);
-            
-            
-            
+            jTabbedPane1.addTab(func.getNomeFunc(), nomeJPanel);  
         }
-        
-        
-        
-        
     }
     
     @SuppressWarnings("unchecked")
@@ -368,6 +373,11 @@ public class TelaMonitoramento extends javax.swing.JFrame {
         jButton19.setText("Mandar Alerta");
 
         jButton20.setText("Monitorar Tela");
+        jButton20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton20ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -671,6 +681,17 @@ public class TelaMonitoramento extends javax.swing.JFrame {
      TelaLogin inicio = new TelaLogin();
      inicio.setVisible(true);
     }//GEN-LAST:event_lbSairMouseClicked
+
+    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton20ActionPerformed
+    
+    private void btnTeamViewerActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        TeamViewer tv = new TeamViewer();
+        tv.abrirTeamViewer();
+        System.out.println("Alo");
+    } 
+    
     /**
      * @param args the command line arguments
      */

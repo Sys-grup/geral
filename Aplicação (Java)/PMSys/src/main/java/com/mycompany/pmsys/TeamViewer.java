@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  *
  * @author Ultim
  */
-public class TesteInovacao {
+public class TeamViewer {
          
     public void abrirTeamViewer(){
         try {
