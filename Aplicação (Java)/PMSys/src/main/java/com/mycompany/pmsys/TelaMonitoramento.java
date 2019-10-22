@@ -7,22 +7,15 @@ package com.mycompany.pmsys;
 
 
 import com.mycompany.pmsys.DadosProcessos;
-import java.awt.Component;
 import java.awt.Font;
-import java.awt.GridLayout;
-import java.text.DecimalFormat;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import javax.swing.GroupLayout;
-import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
-import javax.swing.plaf.PanelUI;
-import java.lang.Math;
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
-import javax.swing.JList;
 import javax.swing.JTable;
 import org.springframework.jdbc.core.JdbcTemplate;
 /**
@@ -151,6 +144,15 @@ public class TelaMonitoramento extends javax.swing.JFrame {
             
             JButton btnTeamViewer = new JButton("Ver Tela do Usuário");
             btnTeamViewer.setBounds(600, 270, 150, 30);
+            
+            btnTeamViewer.addActionListener(new ActionListener(){
+                @Override
+                public void actionPerformed(ActionEvent e){
+                    TeamViewer tv = new TeamViewer();
+                    tv.abrirTeamViewer();
+                    System.out.println("Alo");
+                }
+            });
             
             //Adicionando componentes no JPanel
             nomeJPanel.add(lbNomePc);
@@ -685,13 +687,7 @@ public class TelaMonitoramento extends javax.swing.JFrame {
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton20ActionPerformed
-    
-    private void btnTeamViewerActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        TeamViewer tv = new TeamViewer();
-        tv.abrirTeamViewer();
-        System.out.println("Alo");
-    } 
-    
+
     /**
      * @param args the command line arguments
      */
