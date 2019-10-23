@@ -1,14 +1,6 @@
 <!doctype html>
-<!--
-Website By Miradontsoa / MiVFX
-http://twitter.com/miradontsoa
-http://miradontsoa.com
--->
 
 <html class="no-js" lang="en">
-
-
-<!-- Mirrored from demo.highhay.com/simpleux/index-particle.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 30 Aug 2019 01:31:21 GMT -->
 
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -51,6 +43,10 @@ http://miradontsoa.com
   <link rel="stylesheet" href="fonts/ionicons.min.css">
   <link rel="stylesheet" href="fonts/font-awesome.min.css">
 
+
+  <link rel="shortcut icon" href="img/logo.png" type="image/icon">
+  <link rel="icon" href="img/logo.png" type="image/icon"> .
+
   <!-- Vendor CSS style -->
   <link rel="stylesheet" href="css/pageloader.css">
 
@@ -60,6 +56,7 @@ http://miradontsoa.com
   <link rel="stylesheet" href="js/vendor/jquery.fullpage.min.css">
   <link rel="stylesheet" href="js/vegas/vegas.min.css">
   <script src="js/index.js"></script>
+  <script src="js/login.js"></script>
   <!-- Main CSS files -->
   <link rel="stylesheet" href="css/main.css">
 
@@ -119,20 +116,19 @@ http://miradontsoa.com
 
       <!-- Begin of hamburger mainmenu menu -->
       <nav class="navbar-mainmenu">
-        <form class="send_email_form form-container form-container-transparent form-container-white" method="post"
-          action="http://demo.highhay.com/simpleux/ajaxserver/serverfile.php">
+        <form class="send_email_form form-container form-container-transparent form-container-white">
           <div class="form-desc">
             <h2 class="display-4 display-title  anim-2">Login</h2>
           </div>
           <div class="form-input  anim-4">
             <div class="form-group form-success-gone">
               <label for="reg-name">Login</label>
-              <input id="reg-name" name="login" placeholder="Digite seu login:" required
+              <input id="regname" name="login" placeholder="Digite seu login:" required
                 class="form-control-line form-control-white" type="text" />
             </div>
             <div class="form-group form-success-gone">
               <label for="reg-email">Senha</label>
-              <input id="reg-email" name="senha" class="form-control-line form-control-white" type="password" required
+              <input id="regemail" name="senha" class="form-control-line form-control-white" type="password" required
                 placeholder="****" data-validation-type="password" />
             </div>
             <div class="form-group mb-0">
@@ -141,7 +137,7 @@ http://miradontsoa.com
                   thank you.</p>
               </div>
               <button id="submit-email" type="button" class="btn btn-white btn-round btn-full form-success-gone"
-                name="submit_email" onclick="window.location.href='sistema/src/dashboard-project.html'">Fazer
+                name="submit_email" onclick="efetuar_login(regname.value, regemail.value)">Fazer
                 login</button>
             </div>
           </div>
@@ -416,14 +412,14 @@ http://miradontsoa.com
                   <div class="img-avatar-alpha">
                     <div class="img-1 shadow">
                       <a>
-                        <img class="img" src="img/items/marcelo.png" alt="Image">
+                        <img class="img" src="img/items/marcelo.jpg" alt="Image">
                       </a>
                     </div>
                     <div class="legend text-center pos-abs">
                       <h5>Marcelo Augusto</h5>
                       <p class="small">Desenvolvedor / UI Designer</p>
                       <div class="icons">
-                        <a class="icon-btn" href="#">
+                        <a class="icon-btn" href="https://www.linkedin.com/in/marcelo-augusto-santos-960796196">
                           <i class="icon fa fa-linkedin"></i>
                         </a>
                         <a class="icon-btn" href="https://github.com/celoaugusto">
@@ -587,22 +583,22 @@ http://miradontsoa.com
     <!-- End of list feature section -->
 
     <!-- Begin of slider section -->
-    <div class="section section-twoside fp-auto-height-responsive " data-section="projects">
+    <!-- <div class="section section-twoside fp-auto-height-responsive " data-section="projects"> -->
       <!-- Begin of section wrapper -->
-      <div class="section-wrapper twoside">
+      <!-- <div class="section-wrapper twoside"> -->
         <!-- title -->
-        <div class="section-title text-center">
+        <!-- <div class="section-title text-center">
           <h5 class="title-bg ">Projects</h5>
-        </div>
+        </div> -->
 
 
         <!-- begin of carousel-swiper-beta -->
-        <div class="slider-wrapper carousel-swiper-beta carousel-smalls carousel-swiper-beta-demo mt-40">
+        <!-- <div class="slider-wrapper carousel-swiper-beta carousel-smalls carousel-swiper-beta-demo mt-40"> -->
           <!-- slider -->
-          <div class="slider-container swiper-container">
-            <ul class="item-list swiper-wrapper">
+          <!-- <div class="slider-container swiper-container">
+            <ul class="item-list swiper-wrapper"> -->
               <!-- item -->
-              <li class="slide-item swiper-slide">
+              <!-- <li class="slide-item swiper-slide">
                 <div class="item-wrapper">
                   <div class="illustr">
                     <img src="img/items/img-sample3-small.jpg" alt="Image" class="img">
@@ -611,7 +607,7 @@ http://miradontsoa.com
                     <h1 class="display-3">PMSys_</h1>
                   </a>
                 </div>
-              </li>
+              </li> -->
               <!-- item -->
               <!-- <li class="slide-item swiper-slide">
                 <div class="item-wrapper">
@@ -648,10 +644,10 @@ http://miradontsoa.com
                   </a>
                 </div>
               </li> -->
-            </ul>
-          </div>
+            <!-- </ul>
+          </div> -->
           <!-- pagination -->
-          <div class="items-pagination bar"></div>
+          <!-- <div class="items-pagination bar"></div> -->
 
           <!-- navigation -->
           <!-- <div class="items-button bottom fit items-button-prev">
@@ -666,7 +662,7 @@ http://miradontsoa.com
               <span class="text">Próximo</span>
             </a>
           </div> -->
-        </div>
+        <!-- </div> -->
         <!-- end of carousel-swiper-beta -->
 
 
@@ -840,7 +836,7 @@ http://miradontsoa.com
                     <div class="row">
                       <div class="col-12 col-md-12 col-lg-6">
                         <h4>Contato</h4>
-                        <p>Call: 01 234 567 89</p>
+                        <p>Telefone: +55 (11) 2341-59768</p>
                         <p>Email: dotesys@hotmail.com</p>
                       </div>
                       <div class="col-12 col-md-12 col-lg-6">
@@ -1009,6 +1005,8 @@ http://miradontsoa.com
   <script src="js/particlejs/particles-init.js"></script>
 
 </body>
+
+
 
 
 <!-- Mirrored from demo.highhay.com/simpleux/index-particle.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 30 Aug 2019 01:31:22 GMT -->
