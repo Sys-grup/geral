@@ -1,0 +1,85 @@
+.modalCustom {
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    padding: 68px 94px !important;
+    padding-bottom: 0 !important;
+    background-color: #000000ee;
+    z-index: 1031;
+    display: none;
+    overflow: hidden;
+    outline: 0;
+}
+
+.modal-backdrop {
+    z-index: 1030 !important;
+}
+
+.modalCustom-content {
+    z-index: 1032;
+    height: 100%;
+    outline: 0;
+}
+
+.modalCustom-info {
+    color: #fff !important;
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.modalCustom-header {
+    display: flex;
+    align-items: center;
+}
+
+.modalCustom-title {
+    font-size: 3.5em;
+}
+
+.modalCustom-status {
+    height: 20px;
+    margin: 0 20px;
+    border-radius: 50%;
+    width: 20px;
+    display: inline-flex;
+    background-color: var(--white);
+}
+
+.modalCustom-status.danger {
+    background-color: var(--danger)
+}
+
+.modalCustom-status.success {
+    background-color: var(--success)
+}
+
+.modalCustom-status.warning {
+    background-color: var(--warning)
+}
+
+.modalCustom-status.info {
+    background-color: var(--info)
+}
+
+.modalCustom-info-text{
+    text-align: justify;
+    margin: 60px 0;
+}
+
+.modalCustom-subtitle {
+    display: block;
+    font-size: 1.8em;
+}
+
+.modalCustom-description {
+    display: block;
+    font-weight: lighter;
+    color: #cacaca;
+    font-size: 1.4em;
+    margin-top: 10px;
+    margin-bottom: 70px;
+}
