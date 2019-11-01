@@ -52,7 +52,7 @@ public class DadosRAM {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dadosConexao.getDataSource());
        
         try{
-            jdbcTemplate.update("INSERT INTO tblInfoRAM values (?, ?, ?, ?)", this.totalRamUsado, this.totalDisponivel, 1000, this.dataHora);
+            jdbcTemplate.update("INSERT INTO tblInfoRAM values (?, ?, ?, ?)", this.totalRamUsado, this.totalDisponivel, 1001, this.dataHora);
         }
         catch (Exception e){
             JOptionPane.showMessageDialog(null, "Erro do Sql \n" + e, "Erro", JOptionPane.ERROR_MESSAGE);

@@ -72,7 +72,7 @@ public class DadosCPU {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dadosConexao.getDataSource());
        
         try{
-            jdbcTemplate.update("INSERT INTO tblInfoCPU values (?, ?, ?, ?, ?, ?)", this.cpuName, this.user, this.system, this.totalUsadoCPU, 1000, this.dataHora);
+            jdbcTemplate.update("INSERT INTO tblInfoCPU values (?, ?, ?, ?, ?, ?)", this.cpuName, this.user, this.system, this.totalUsadoCPU, 1001, this.dataHora);
         }
         catch (Exception e){
             JOptionPane.showMessageDialog(null, "Erro do Sql \n" + e, "Erro", JOptionPane.ERROR_MESSAGE);

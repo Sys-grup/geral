@@ -80,7 +80,7 @@ public class TelaMonitoramento extends javax.swing.JFrame {
             
             javax.swing.JPanel nomeJPanel = new javax.swing.JPanel();
             nomeJPanel.setLayout(null);
-
+  
             //Nome do processador    
             JLabel lbNomePc = new JLabel("Nome do Processador: ");                
             lbNomePc.setBounds(40, 10, 200, 20);

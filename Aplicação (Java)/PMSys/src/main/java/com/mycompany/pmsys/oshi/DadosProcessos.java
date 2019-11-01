@@ -111,7 +111,7 @@ public class DadosProcessos {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(conn.getDataSource());
         
         try{
-            jdbcTemplate.update("INSERT INTO tblInfoProcessos values (?, ?, ?, ?)", this.nomeProcesso, this.tempoDeUso, this.dataCapturada, 1000);
+            jdbcTemplate.update("INSERT INTO tblInfoProcessos values (?, ?, ?, ?)", this.nomeProcesso, this.tempoDeUso, this.dataCapturada, 1001);
         }catch (Exception e){
             JOptionPane.showMessageDialog(null, "Erro do Sql \n" + e, "Erro", JOptionPane.ERROR_MESSAGE);
         }

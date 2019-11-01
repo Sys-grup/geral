@@ -8,7 +8,12 @@ package com.mycompany.pmsys.oshi;
  *
  * @author Ultim
  */
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+@Component
+        
 public class OshiDados {
+    @Scheduled (cron= "0 0/1 * 1/1 * ? *")
     public static void main(String[] args) {
         
         DadosCPU dCpu = new DadosCPU();
