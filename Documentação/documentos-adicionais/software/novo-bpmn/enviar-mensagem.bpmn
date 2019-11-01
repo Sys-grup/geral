@@ -117,7 +117,6 @@
     <bpmn:sequenceFlow id="SequenceFlow_0529j0u" name="Não" sourceRef="ExclusiveGateway_1lb65sr" targetRef="EndEvent_01bq8mw" />
     <bpmn:sequenceFlow id="SequenceFlow_12ee7gn" name="Sim" sourceRef="ExclusiveGateway_1lb65sr" targetRef="IntermediateThrowEvent_0uvim54" />
     <bpmn:sequenceFlow id="SequenceFlow_1mg3zin" sourceRef="IntermediateThrowEvent_020iykq" targetRef="Task_13z9che" />
-    <bpmn:textAnnotation id="TextAnnotation_1198cth" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_11tcen4">
@@ -278,9 +277,6 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="UserTask_076jjgq_di" bpmnElement="Task_1y8ey0p">
         <dc:Bounds x="623" y="393" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_1198cth_di" bpmnElement="TextAnnotation_1198cth">
-        <dc:Bounds x="730" y="310" width="100" height="30" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="UserTask_0b453rd_di" bpmnElement="Task_0oqby8j">
         <dc:Bounds x="773" y="393" width="100" height="80" />
