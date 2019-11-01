@@ -6,8 +6,8 @@ const routes = express.Router();
 
 // Squads
 const SquadController = require('./controllers/SquadController');
-routes.get('/squad', (req, res) => {
-    const response = SquadController.get(req, res);
+routes.get('/squad',  async (req, res) => {
+    const response = await SquadController.get(req, res);
     return response;
 })
 
