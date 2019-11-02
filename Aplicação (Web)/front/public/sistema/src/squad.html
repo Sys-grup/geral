@@ -85,50 +85,11 @@
                                     </div>
                                 </div>
                                 <div class="modalCustom-func">
-                                    <div class="modalCustom-superior">
-
-                                        <div class="funcinario">
-                                            <div class="funcinario-avatar" title="Online desde as 09:20.">
-                                                <img class="rounded-circle funcionario-foto success"
-                                                    src="../assets/images/user/avatar-1.jpg"
-                                                    alt="activity-user">
-                                                <div class="funcionario-status success"></div>
-                                            </div>
-                                            <span class="funcionario-nome">Lujero Lideraio</span>
-                                            <span class="funcionario-cargo">Lider</span>
-                                        </div>
+                                    <div id="lista-superior" class="modalCustom-superior">
+                                        <!-- Div preenchida com superiores -->
                                     </div>
-                                    <div class="modalCustom-funcionarios">
-                                        <div class="funcinario">
-                                            <div class="funcinario-avatar" title="Online desde as 09:20.">
-                                                <img class="rounded-circle funcionario-foto success"
-                                                    src="../assets/images/user/avatar-1.jpg"
-                                                    alt="activity-user">
-                                                <div class="funcionario-status success"></div>
-                                            </div>
-                                            <span class="funcionario-nome">Lujero Lideraio</span>
-                                            <span class="funcionario-cargo">Lider</span>
-                                        </div>
-                                        <div class="funcinario">
-                                            <div class="funcinario-avatar" title="Online desde as 09:20.">
-                                                <img class="rounded-circle funcionario-foto success"
-                                                    src="../assets/images/user/avatar-1.jpg"
-                                                    alt="activity-user">
-                                                <div class="funcionario-status success"></div>
-                                            </div>
-                                            <span class="funcionario-nome">Lujero Lideraio</span>
-                                            <span class="funcionario-cargo">Lider</span>
-                                        </div>
-                                        <div class="funcinario">
-                                            <div class="funcinario-avatar" title="Online desde as 09:20.">
-                                                <img class="rounded-circle funcionario-foto success"
-                                                    src="../assets/images/user/avatar-1.jpg"
-                                                    alt="activity-user">
-                                                <div class="funcionario-status success"></div>
-                                            </div>
-                                            <span class="funcionario-nome">Lujero Lideraio</span>
-                                            <span class="funcionario-cargo">Lider</span>
-                                        </div>
+                                    <div id="lista-funcionarios" class="modalCustom-funcionarios">
+                                        <!-- Div preenchida com funcionarios -->
                                     </div>
                                 </div>
                                 <!-- <div class="modal-header">
@@ -233,7 +194,7 @@
 <script>
     function criarFuncionarios() {
         const numero = Math.floor(Math.random() * 10) +
-            1;
+            2;
         const horarios = [];
         for (i = 0; i < 10; i++) {
             horarios.push("08:5" + i)
@@ -252,7 +213,13 @@
             "Gomes", "Dias", "Azevedo", "Ferreira",
             "Cunha", "Cardoso"
         ];
+        const cargos = ["DESENVOLVEDOR BACKEND", 
+            "DESENVOLVEDOR FRONTEND", 
+            "GERENTE DE PROJETOS",];
+
         let funcionarios = "";
+        let superior = "";
+
         for (i = 0; i < numero; i++) {
             const genero = Math.floor(Math.random() *
                 2);
@@ -263,8 +230,8 @@
                         homensNomes.length)] :
                     mulheresNomes[Math.floor(Math
                         .random() *
-                        mulheresNomes.length)],
-                sobrenome: sobrenome[Math.floor(Math
+                        mulheresNomes.length)]
+                        +" "+ sobrenome[Math.floor(Math
                     .random() * sobrenome
                         .length)] + " " + sobrenome[
                     Math.floor(Math.random() *
@@ -273,23 +240,43 @@
                     10) ? "Online desde as " +
                     horarios[Math.floor(Math
                         .random() * horarios
-                            .length)] : "Offline"
+                            .length)] : "Offline",
+                cargo: 
+                    cargos[Math.floor(Math
+                        .random() *
+                        cargos.length)],
             }
-            funcionarios += `
-                <tr>
-                    <td><img class="rounded-circle" style="width:40px;"
+            i===0 ? 
+            superior += `
+                <div class="funcionario">
+                    <div class="funcionario-avatar" title="${funcionario.status}">
+                        <img class="rounded-circle funcionario-foto success"
                             src="../assets/images/user/avatar-${funcionario.avatar}.jpg"
                             alt="activity-user">
-                        <span>${funcionario.nome} ${funcionario.sobrenome}</span>
-                    </td>
-                    <td>
-                        ${funcionario.status}
-                    </td>
-                </tr>
+                        <div class="funcionario-status success"></div>
+                    </div>
+                    <span class="funcionario-nome" title="${funcionario.nome}">${funcionario.nome}</span>
+                    <span class="funcionario-cargo">${Math.floor(Math.random()*2)? 'Supervisor':'Gerente'}</span>
+                </div>
+            `
+            :
+            funcionarios += `
+                <div class="funcionario">
+                    <div class="funcionario-avatar" title="${funcionario.status}">
+                        <img class="rounded-circle funcionario-foto success"
+                            src="../assets/images/user/avatar-${funcionario.avatar}.jpg"
+                            alt="activity-user">
+                        <div class="funcionario-status success"></div>
+                    </div>
+                    <span class="funcionario-nome" title="${funcionario.nome}">${funcionario.nome}</span>
+                    <span class="funcionario-cargo">${funcionario.cargo}</span>
+                </div>
             `;
         }
-        document.getElementById('funcionariosSquad')
+        document.getElementById('lista-funcionarios')
             .innerHTML = funcionarios;
+        document.getElementById('lista-superior')
+            .innerHTML = superior;
 
     }
 </script>
