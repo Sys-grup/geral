@@ -19,9 +19,10 @@
 }
 
 .card-squad{
-    height: 100px;
+    height: 80px;
     border-radius: 30px !important;
     transition: ease-in-out .2s !important;
+    border: solid 6px #ff0000d4 !important;
 }
 .alert-squad{
     margin-bottom: 0 !important;
@@ -42,12 +43,13 @@
     justify-content: space-around;
     align-items: center;
     cursor: pointer;
+    padding: 0 !important;
 }
 
 .card-squad .card-body span {
     font-size: 200%;
     text-align: center;
-    color: #252525;
+    color: #4f4f4f;
     z-index: 1;
 }
 

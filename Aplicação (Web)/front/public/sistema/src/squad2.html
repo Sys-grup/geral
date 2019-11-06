@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+<head>
+    <title>PMSys_ - Dashboards</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="../assets/fonts/fontawesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="../assets/css/squad2.css">
+    <link rel="stylesheet" href="../assets/css/modalCustom.css">
+    <link rel="stylesheet" href="../assets/plugins/animation/css/animate.min.css">
+    <link href="../assets/css/feather.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/default.css">
+    <link rel="icon" href="../../img/logo.png" type="image/icon"> 
+    <link rel="shortcut icon" href="../../img/logo.png" type="image/icon">
+    <script src="https://code.iconify.design/1/1.0.3/iconify.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_o5hd5vvqpoqiwwmi.css">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <div id="nav"></div>
+
+    <div class="pcoded-main-container">
+        <div class="pcoded-wrapper">
+            <div class="pcoded-content">
+                <div class="pcoded-inner-content">
+
+                    <div class="page-header">
+                        <div class="page-block">
+                            <div class="row align-items-center">
+                                <div class="col-md-12">
+                                    <div class="page-header-title">
+                                        <h5 class="m-b-10">Squads</h5>
+                                    </div>
+                                    <ul class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="index.html" title="Voltar para home"><i data-feather="home"
+                                                    width="13" class="feather icon-anchor"></i></a></li>
+                                        <li class="breadcrumb-item"><a href="#!">Squads</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-body">
+                        <div class="page-wrapper">
+                            <!-- Div onde serão inseridos os cards de cada Squad -->
+                            <div class="squad-header" id="squads">
+                                <div class="content col-md-2" id="squad1">
+                                    A
+                                </div>
+                                <div class="content col-md-2" id="squad2">
+                                    B
+                                </div>
+                                <div class="content col-md-2" id="squad3">
+                                    C
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="botoes-flutuantes-container">
+            <a href="cadastrar-squad.html" class="botao-flutuante" title="Adicionar Squad">
+                <i data-feather="plus" width="35px" height="35px" ></i>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
+
+<script src="../assets/js/squad/squad.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#nav').load('barra-lateral.html', () => $("#squadId").addClass("active"));
+        var element = document.getElementById("squad2");
+        element.classList.add("offline");
+    });
+</script>
+<!-- Bootstrap -->
+<script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<!-- Funções menu lateral -->
+<script src="../assets/js/vendor-all.min.js"></script>
+<script>
+    feather.replace();
+</script>

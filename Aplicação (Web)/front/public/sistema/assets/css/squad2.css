@@ -1,0 +1,24 @@
+.content {
+    border: solid var(--color-status) 3px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    display: flex;
+    height: 40px;
+}
+
+.online {
+    --color-status: #00ff00;
+}
+
+.offline {
+    --color-status: #ff0000;
+}
+
+.atention {
+    --color-status: #ffff00;
+}
+
+.error {
+
+}
