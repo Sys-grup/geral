@@ -20,12 +20,12 @@ public class TelaLogin extends javax.swing.JFrame {
 
     
     private Integer idGerente;
-    private String nomeGerente;
+    private String nomeGerente; 
     
     private ConnectURL dadosConexao = new ConnectURL();
     private JdbcTemplate jdbcTemplate = new JdbcTemplate(dadosConexao.getDataSource());
     /**
-     * Creates new form TelaLogin
+     * Creates new form Tela    Login
      */
     public TelaLogin() {
         initComponents();
