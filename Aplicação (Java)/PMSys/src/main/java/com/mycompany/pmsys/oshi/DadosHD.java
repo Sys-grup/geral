@@ -24,6 +24,11 @@ public class DadosHD {
     private double espacoTotal = 0;
     private double espacoUsavel = 0;
     private Date dataHora;
+    private int idMaquina;
+    
+    public DadosHD(int i){
+        this.idMaquina = i;
+    }
     
     private final SystemInfo si = new SystemInfo();
     OperatingSystem os = si.getOperatingSystem();
@@ -52,7 +57,7 @@ public class DadosHD {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dadosConexao.getDataSource());
        
         try{
-            jdbcTemplate.update("INSERT INTO tblInfoHD values (?, ?, ?, ?)", this.espacoTotal, this.espacoUsavel, 1001, this.dataHora);
+            jdbcTemplate.update("INSERT INTO tblInfoHD values (?, ?, ?, ?)", this.espacoTotal, this.espacoUsavel, this.idMaquina, this.dataHora);
         }
         catch (Exception e){
             JOptionPane.showMessageDialog(null, "Erro do Sql \n" + e, "Erro", JOptionPane.ERROR_MESSAGE);
