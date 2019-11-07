@@ -5,54 +5,94 @@
  */
 package com.mycompany.pmsys;
 
-
 import com.mycompany.pmsys.DadosProcessos;
+import com.mycompany.pmsys.oshi.OshiDados;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 import javax.swing.JButton;
 import javax.swing.JTable;
+import org.quartz.CronScheduleBuilder;
+import org.quartz.Job;
+import org.quartz.JobBuilder;
+import org.quartz.JobDetail;
+import org.quartz.JobExecutionContext;
+import org.quartz.JobExecutionException;
+import org.quartz.Scheduler;
+import org.quartz.SchedulerException;
+import org.quartz.Trigger;
+import org.quartz.TriggerBuilder;
+import org.quartz.impl.StdSchedulerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
+
 /**
  *
  * @author Aluno
  */
-public class TelaMonitoramento extends javax.swing.JFrame {
+public class TelaMonitoramento extends javax.swing.JFrame implements Job {
+
+    public void execute(JobExecutionContext args0) throws JobExecutionException {
+
+            buscaFuncionarios();
+//              
+
+    }
+    
 
     ConnectURL dadosConexao = new ConnectURL();
     DadosSquads dadosSquads = new DadosSquads(1);
     JdbcTemplate jdbcTemplate = new JdbcTemplate(dadosConexao.getDataSource());
     private Integer idSquad = 0;
-    
-    public TelaMonitoramento(String nomeGerente) {
+
+    public TelaMonitoramento(String nomeGerente)  {
         initComponents();
-        
+
         DadosSquads dadosSquads = new DadosSquads(1);
         lbUsuario.setText(nomeGerente);
         lbArea.setText(dadosSquads.getAreaSquad());
-        
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("img/small_logo.png"))); // NOI18N
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("img/rsz_profileicon.png"))); // NOI18N
+
         
-        buscaFuncionarios();
-    }
+        //buscaFuncionarios();
+        //atualizarFuncionarios();
+        
+             } 
     
-    public void buscaFuncionarios(){
+    public void atualizarFuncionarios(){
+        while (true){
+            try {
+                Thread.sleep(2000);
+                buscaFuncionarios();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(TelaMonitoramento.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+        
+
+    public void buscaFuncionarios() {
+        
+        
         String stringSql = "select * from tblFuncionario where fkSquad = ?";
-        
+
         List<DadosFuncionarios> funcionarios = new ArrayList<>();
-        
+
         this.idSquad = 1;
-        
+
         List<Map<String, Object>> rows = jdbcTemplate.queryForList(stringSql, this.idSquad); //idSquad virá do site
-        
-        for(Map row : rows){
-            DadosFuncionarios func = new DadosFuncionarios(this.idSquad, 
+
+        for (Map row : rows) {
+            DadosFuncionarios func = new DadosFuncionarios(this.idSquad,
                     Integer.parseInt(row.get("fkMaquina").toString()),
                     Integer.parseInt(row.get("fkCargo").toString()),
                     row.get("nomeFuncionario").toString(),
@@ -60,52 +100,52 @@ public class TelaMonitoramento extends javax.swing.JFrame {
                     Integer.parseInt(row.get("idFuncionario").toString()));
             funcionarios.add(func);
         }
-        
+
         definirLayout(funcionarios);
-        
+
     }
 
-    private void definirLayout(List<DadosFuncionarios> listFunc){
+    private void definirLayout(List<DadosFuncionarios> listFunc) {
         Font statusFont = new Font("Tahoma", Font.PLAIN, 40);
-        Font statusFontHD = new Font("Tahoma", Font.PLAIN, 28 );
+        Font statusFontHD = new Font("Tahoma", Font.PLAIN, 28);
         int contador = 0;
-        
+
         for (DadosFuncionarios func : listFunc) {
             DadosRAM ram = new DadosRAM(func.getIdMaquina());
             DadosCPU cpu = new DadosCPU(func.getIdMaquina());
             DadosHD hd = new DadosHD(func.getIdMaquina());
-            DadosProcessos processos = new DadosProcessos(func.getIdMaquina()); 
-            
+            DadosProcessos processos = new DadosProcessos(func.getIdMaquina());
+
             contador++;
-            
+
             javax.swing.JPanel nomeJPanel = new javax.swing.JPanel();
             nomeJPanel.setLayout(null);
-  
+
             //Nome do processador    
-            JLabel lbNomePc = new JLabel("Nome do Processador: ");                
+            JLabel lbNomePc = new JLabel("Nome do Processador: ");
             lbNomePc.setBounds(40, 10, 200, 20);
             JLabel lbNomeCpu = new JLabel(cpu.getNomeCpu());
             lbNomeCpu.setBounds(170, 10, 2000, 20);
-            
+
             //Status em porcentagem da CPU
             JLabel lbCPUStatus = new JLabel("CPU Status: ");
             lbCPUStatus.setBounds(65, 50, 200, 20);
             JLabel lbCPU = new JLabel(cpu.getTotalUso().toString() + "%");
             lbCPU.setFont(statusFontHD);
             lbCPU.setBounds(65, 70, 200, 50);
-            
+
             //Barra de porcentagem CPU
             JProgressBar barCPU = new JProgressBar(0, 100);
             barCPU.setBounds(20, 120, 150, 20);
             barCPU.setValue((int) Math.round(cpu.getTotalUso()));
-            
+
             //Status da memoria RAM
-            JLabel lbRAMStatus = new JLabel("Uso atual da RAM: ");               
+            JLabel lbRAMStatus = new JLabel("Uso atual da RAM: ");
             lbRAMStatus.setBounds(255, 50, 200, 20);
             String ramAntes = ram.getTotalRamUsado().toString();
             String statusRamUsada = ramAntes.substring(0, 3);
             JLabel lbRAM = new JLabel(statusRamUsada + " GB");
-            lbRAM.setBounds(265, 70, 200,  50);
+            lbRAM.setBounds(265, 70, 200, 50);
             lbRAM.setFont(statusFontHD);
 
             //Barra de porcentagem RAM
@@ -114,14 +154,14 @@ public class TelaMonitoramento extends javax.swing.JFrame {
             barRAM.setBounds(235, 120, 150, 20);
             String ramBarraStatus = ram.getTotalRamUsado().toString();
             barRAM.setValue(Integer.parseInt(ramBarraStatus.substring(0, 1)));
-            
+
             //Status do HD
-            JLabel lbHDStatus = new JLabel("Espaço dísponivel do HD: ");                
+            JLabel lbHDStatus = new JLabel("Espaço dísponivel do HD: ");
             lbHDStatus.setBounds(130, 170, 200, 20);
             JLabel lbHD = new JLabel(hd.getEspacoTotalDispoivel().toString() + " GB");
-            lbHD.setBounds(138, 190, 200, 50);  
+            lbHD.setBounds(138, 190, 200, 50);
             lbHD.setFont(statusFontHD);
-            
+
             //Barra de porcentagem HD
             Integer hdTotal = (int) Math.round(hd.getTotalEspaco());
             JProgressBar barHD = new JProgressBar(0, hdTotal);
@@ -129,42 +169,42 @@ public class TelaMonitoramento extends javax.swing.JFrame {
             Integer hdTotalDisponivel = (int) Math.round(hd.getEspacoTotalDispoivel());
             Integer hdTotalUsado = hdTotal - hdTotalDisponivel;
             barHD.setValue(hdTotalUsado);
-            
+
             //Processos
             JLabel lbProcessos = new JLabel("Processos:");
             JLabel lbTempoDeUso = new JLabel("Tempo de Uso:");
             lbProcessos.setBounds(450, 37, 100, 50);
             lbTempoDeUso.setBounds(600, 37, 400, 50);
-            
+
             String colunas[] = {"Nome Processo", "Tempo de Uso"};
-            
+
             JTable tableProcessos = new JTable(processos.getDados(), colunas);
-            
+
             tableProcessos.setBounds(450, 80, 300, 160);
-            
+
             //Botão mandar mensagem
             JButton btnEnviarMensagem = new JButton("Enviar Mensagem");
             btnEnviarMensagem.setBounds(425, 270, 150, 30);
-            
+
             //Botão para cessar TeamViewer
             JButton btnTeamViewer = new JButton("Ver Tela do Usuário");
             btnTeamViewer.setBounds(625, 270, 150, 30);
-            
-            btnTeamViewer.addActionListener(new ActionListener(){
+
+            btnTeamViewer.addActionListener(new ActionListener() {
                 @Override
-                public void actionPerformed(ActionEvent e){
+                public void actionPerformed(ActionEvent e) {
                     TeamViewer tv = new TeamViewer();
                     tv.abrirTeamViewer();
                 }
             });
-            
+
             //Adicionando componentes no JPanel
             nomeJPanel.add(lbNomePc);
             nomeJPanel.add(lbNomeCpu);
             nomeJPanel.add(lbCPUStatus);
             nomeJPanel.add(lbRAMStatus);
             nomeJPanel.add(lbHDStatus);
-            nomeJPanel.add(lbProcessos); 
+            nomeJPanel.add(lbProcessos);
             nomeJPanel.add(lbTempoDeUso);
             nomeJPanel.add(lbCPU);
             nomeJPanel.add(lbRAM);
@@ -175,11 +215,12 @@ public class TelaMonitoramento extends javax.swing.JFrame {
             nomeJPanel.add(tableProcessos);
             nomeJPanel.add(btnTeamViewer);
             nomeJPanel.add(btnEnviarMensagem);
-            
-            jTabbedPane1.addTab(func.getNomeFunc(), nomeJPanel);  
+
+            jTabbedPane1.addTab(func.getNomeFunc(), nomeJPanel);
         }
+        
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -303,15 +344,30 @@ public class TelaMonitoramento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lbSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbSairMouseClicked
-     dispose();
-     TelaLogin inicio = new TelaLogin();
-     inicio.setVisible(true);
+        dispose();
+        TelaLogin inicio = new TelaLogin();
+        inicio.setVisible(true);
     }//GEN-LAST:event_lbSairMouseClicked
 
     /**
      * @param args the command line arguments
+     * @throws org.quartz.SchedulerException
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) throws SchedulerException  {
+
+        
+        JobDetail job1 = JobBuilder.newJob(TelaMonitoramento.class).build();													  //("0 0 10 1/1 * ? *") Produção
+        Trigger tarefa1 = (Trigger) TriggerBuilder.newTrigger()
+                .withIdentity("CronTrigger")
+                    .withSchedule(CronScheduleBuilder
+                        .cronSchedule("0/30 0/1 * 1/1 * ? *")).build();
+        Scheduler sc;
+        sc = StdSchedulerFactory.getDefaultScheduler();
+        sc.start();
+        sc.scheduleJob(job1, (org.quartz.Trigger) tarefa1);
+        System.out.println("Recebendo dados do Banco");
+        
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -339,9 +395,10 @@ public class TelaMonitoramento extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new TelaMonitoramento("").setVisible(true);
-                
+
             }
         });
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -356,4 +413,5 @@ public class TelaMonitoramento extends javax.swing.JFrame {
     private javax.swing.JLabel lbSair;
     private javax.swing.JLabel lbUsuario;
     // End of variables declaration//GEN-END:variables
+
 }

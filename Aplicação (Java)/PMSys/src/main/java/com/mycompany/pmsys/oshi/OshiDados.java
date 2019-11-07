@@ -10,16 +10,10 @@ package com.mycompany.pmsys.oshi;
  * @author Ultim
  */
 
-import org.quartz.CronScheduleBuilder;
-import org.quartz.JobBuilder;
-import org.quartz.JobDetail;
-import org.quartz.Scheduler;
-import org.quartz.SchedulerException;
+
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
-import org.quartz.TriggerBuilder;
-import org.quartz.impl.StdSchedulerFactory;
 
 
 public class OshiDados implements Job{
@@ -29,10 +23,10 @@ public class OshiDados implements Job{
 
     
 
-        DadosCPU dCpu = new DadosCPU();
-        DadosRAM dRam = new DadosRAM();
-        DadosHD dHd = new DadosHD();
-        DadosProcessos dProcessos = new DadosProcessos();
+        DadosCPU dCpu = new DadosCPU(1002);
+        DadosRAM dRam = new DadosRAM(1002);
+        DadosHD dHd = new DadosHD(1002);
+        DadosProcessos dProcessos = new DadosProcessos(1002);
         
         try{
         System.out.println("Inserindo dados de CPU...");
