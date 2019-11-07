@@ -9,18 +9,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="../assets/fonts/fontawesome/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="../assets/css/squad.css">
+    <link rel="stylesheet" href="../assets/css/pages/home.css">
     <link rel="stylesheet" href="../assets/plugins/animation/css/animate.min.css">
     <link href="../assets/css/feather.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_o5hd5vvqpoqiwwmi.css">
     <link rel="shortcut icon" href="../../img/logo.png" type="image/icon">
-    <link rel="icon" href="../../img/logo.png" type="image/icon"> 
+    <link rel="icon" href="../../img/logo.png" type="image/icon">
     <script src="https://code.iconify.design/1/1.0.3/iconify.min.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
+
 
 <body>
 
@@ -47,12 +48,40 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="main-body">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="row">
+                                <div class="titulos-dashboard">BEM VINDO VIRGOLINO, ESSA É SUA PLATAFORMA DE
+                                    MONITORAMENTO
+                                    .SYS
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="titulos-dashboard">BEM VINDO VIRGOLINO, ESSA É SUA PLATAFORMA DE
+                                    MONITORAMENTO
+                                    .SYS
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 offset-1">
+                            <div class="card">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>Squads</h5>
+                                    </div>
+                                    <div class="card-block div-scroll">
+                                            <div id="conteudo" class="card-group">
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="main-body">
                         <div class="page-wrapper">
-                            <!-- Div onde serão inseridos os cards de cada esquadrão -->
+                             Div onde serão inseridos os cards de cada esquadrão 
                             <div id="conteudo" class="card-group"></div>
-                            <!-- Script para criar cards dos squads no array, simulando o retorno da API -->
+                             Script para criar cards dos squads no array, simulando o retorno da API 
                             <script>
                                 const squads = [{
                                     nome: "Alpha",
@@ -97,7 +126,7 @@
                                 document.getElementById("conteudo").innerHTML = divs;
                             </script>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                 data-dismiss="modal">Close</button>
@@ -118,6 +147,7 @@
 </body>
 
 </html>
+
 <script type="text/javascript">
     $(document).ready(function () {
         $('#nav').load('barra-lateral.html')
@@ -129,4 +159,39 @@
 <script src="../assets/js/vendor-all.min.js"></script>
 <script>
     feather.replace();
+</script>
+<script>
+    const squads = [{
+        nome: "Alpha",
+        status: "danger",
+    },
+    {
+        nome: "Beta",
+        status: "success",
+    },
+    {
+        nome: "Charlie",
+        status: "warning",
+    },
+    {
+        nome: "Delta",
+        status: "info",
+    }
+    ]
+    let divs = "";
+    squads.map(squad => {
+        divs += `
+                    <div class="col-md-6">
+                        <div class="card card-squad">
+                            <div class="card-body" onclick="criarFuncionarios()" data-toggle="modal"
+                                data-target="#modalSquad" data-squad='${JSON.stringify(squad)}'>
+                                <i class="status" style="background:var(--${squad.status})"></i>
+                                <span>${squad.nome}</span>
+                                <i data-feather="users" class="feather icon-anchor background"></i>
+                            </div>
+                        </div>
+                    </div>
+                `
+    });
+    document.getElementById("conteudo").innerHTML = divs;
 </script>
