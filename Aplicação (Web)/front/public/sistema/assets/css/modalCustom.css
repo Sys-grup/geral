@@ -23,6 +23,25 @@
     outline: 0;
 }
 
+.modalCustom-icons {
+    display: flex;
+    position: fixed;
+    right: 50px;
+    top: 50px;
+    width: auto;
+    align-items: center;
+}
+
+.modalCustom-icons a {
+    color: #fff !important;
+    font-size: 3em;
+    width: 30px;
+    display: flex;
+    height: 30px;
+    margin: 0 10px;
+    text-align: center;
+}
+
 
 .modalCustom ::-webkit-scrollbar {
     width: 6px;
