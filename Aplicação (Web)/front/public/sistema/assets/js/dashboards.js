@@ -142,67 +142,7 @@ window.onload = function () {
             }
         }
     });
-    // var cty = document.getElementById('chart-pie').getContext('2d');
-    // var myChart2 = new Chart(cty, {
-    //     type: 'pie',
-    //     data: {
-    //         labels: ["Delta","Charlie"],
-    //         datasets: [{
-    //             label: '# of Votes',
-    //             data: [12, 19],
-    //             backgroundColor: [
-    //                 'rgba(255, 99, 132, 0.2)',
-    //                 'rgba(54, 162, 235, 0.2)',
-    //                 'rgba(255, 206, 86, 0.2)',
-    //                 'rgba(75, 192, 192, 0.2)',
-    //                 'rgba(153, 102, 255, 0.2)',
-    //                 'rgba(255, 159, 64, 0.2)'   
-    //             ],
-    //             borderColor: [
-    //                 'rgba(255, 99, 132, 1)',
-    //                 'rgba(54, 162, 235, 1)',
-    //                 'rgba(255, 206, 86, 1)',
-    //                 'rgba(75, 192, 192, 1)',
-    //                 'rgba(153, 102, 255, 1)',
-    //                 'rgba(255, 159, 64, 1)'
-    //             ],
-    //             borderWidth: 1
-    //         },
-    //         ]
-    //     },
-    //     options: {
-    //         responsive: true,
-    //         title: {
-    //             display: true,
-    //             text: 'Chart.js Line Chart'
-    //         },
-    //         tooltips: {
-    //             mode: 'index',
-    //             intersect: false,
-    //         },
-    //         hover: {
-    //             mode: 'nearest',
-    //             intersect: true
-    //         },
-    //         scales: {
-    //             xAxes: [{
-    //                 display: false,
-    //                 scaleLabel: {
-    //                     display: true,
-    //                     labelString: 'Month'
-    //                 }
-    //             }],
-    //             yAxes: [{
-    //                 display: false,
-    //                 scaleLabel: {
-    //                     display: true,
-    //                     labelString: 'Value'
-    //                 }
-    //             }]
-    //         }
-    //     }
-    // }
-    // );
+
     var ctu = document.getElementById('chart-horizontal-bar').getContext('2d');
     var myChart3 = new Chart(ctu, {
         type: 'doughnut',
@@ -245,4 +185,43 @@ window.onload = function () {
             },
         }
     });
+}
+
+/////////////////////Relatorios////////////////////////////////////////////////////////
+
+function teste(){
+    var radio1 = document.getElementById('radio-1');
+    var radio2 = document.getElementById('radio-2');
+    var radio3 = document.getElementById('radio-3');
+    var dash1 = document.getElementById('dash1');
+    var dash2 = document.getElementById('dash2');
+    var dash3 = document.getElementById('dash3');
+
+
+    // for(var k in squadsData) {
+    //     console.log(squadsData[k].nome);
+    // }
+
+    
+
+    if(radio1.checked){
+        console.log("Mensal");
+    }else if(radio2.checked){
+        console.log("Semanal");
+    }else{
+        console.log("Diário");
+    }
+
+    if(dash1.checked){
+        console.log("Alertas dos squads");
+    }
+    if(dash2.checked){
+        console.log("Informações de Hardware e Software");
+    }
+    if(dash3.checked){
+        console.log("Programas mais usados");
+    }
+
+
+
 }

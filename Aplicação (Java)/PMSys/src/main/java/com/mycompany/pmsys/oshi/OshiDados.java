@@ -23,10 +23,10 @@ public class OshiDados implements Job{
 
     
 
-        DadosCPU dCpu = new DadosCPU(1004);
-        DadosRAM dRam = new DadosRAM(1004);
-        DadosHD dHd = new DadosHD(1004);
-        DadosProcessos dProcessos = new DadosProcessos(1004);
+        DadosCPU dCpu = new DadosCPU(1002);
+        DadosRAM dRam = new DadosRAM(1002);
+        DadosHD dHd = new DadosHD(1002);
+        DadosProcessos dProcessos = new DadosProcessos(1002);
         
         try{
         System.out.println("Inserindo dados de CPU...");
