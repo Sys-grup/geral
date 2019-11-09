@@ -25,6 +25,11 @@ public class DadosRAM {
     private double totalRamUsado;
     private double porcentagemBarra;
     private Date dataHora;
+    private int idMaquina;
+    
+    public DadosRAM(int i){
+        this.idMaquina = i;
+    }
     
     private final HardwareAbstractionLayer dados = new SystemInfo().getHardware();
     private final CentralProcessor cpu = dados.getProcessor();

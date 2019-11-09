@@ -3369,6 +3369,7 @@ p.text-muted {
 .pcoded-main-container {
     position: relative;
     margin: 0 auto;
+    margin-top: 35px !important;
     display: block;
     clear: both;
     float: unset;

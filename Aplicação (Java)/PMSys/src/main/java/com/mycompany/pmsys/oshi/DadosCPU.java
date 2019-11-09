@@ -27,6 +27,11 @@ public class DadosCPU {
     private String cpuName;
     private Double totalUsadoCPU;
     private Date dataHora;
+    private int idMaquina;
+    
+    public DadosCPU(int s){
+        this.idMaquina = s;
+    }
     
     private final HardwareAbstractionLayer dados = new SystemInfo().getHardware();
     private final CentralProcessor cpu = dados.getProcessor();
@@ -72,7 +77,7 @@ public class DadosCPU {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dadosConexao.getDataSource());
        
         try{
-            jdbcTemplate.update("INSERT INTO tblInfoCPU values (?, ?, ?, ?, ?, ?)", this.cpuName, this.user, this.system, this.totalUsadoCPU, 1001, this.dataHora);
+            jdbcTemplate.update("INSERT INTO tblInfoCPU values (?, ?, ?, ?, ?, ?)", this.cpuName, this.user, this.system, this.totalUsadoCPU, this.idMaquina, this.dataHora);
         }
         catch (Exception e){
             JOptionPane.showMessageDialog(null, "Erro do Sql \n" + e, "Erro", JOptionPane.ERROR_MESSAGE);
