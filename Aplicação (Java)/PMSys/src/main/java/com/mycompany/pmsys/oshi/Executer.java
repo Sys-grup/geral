@@ -33,7 +33,7 @@ public class Executer {
         Trigger tarefa = (Trigger) TriggerBuilder.newTrigger()
                 .withIdentity("CronTrigger")
                     .withSchedule(CronScheduleBuilder
-                        .cronSchedule("0 0/5 * 1/1 * ? *")).build();
+                        .cronSchedule("0 0/1 * 1/1 * ? *")).build();
         
         Scheduler sc = StdSchedulerFactory.getDefaultScheduler();
         sc.start();

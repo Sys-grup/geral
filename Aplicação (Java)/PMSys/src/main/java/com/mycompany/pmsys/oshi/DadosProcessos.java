@@ -92,7 +92,7 @@ public class DadosProcessos {
 
                     long minutos = (p.getUpTime() / 60000) % 60;
                     long horas = (p.getUpTime() / 3600000);
-                    String upTime = String.format("%3d:%02d", horas, minutos);
+                    String upTime = String.format("%3dh:%02dmin", horas, minutos);
 
                     this.tempoDeUso = upTime;
                     this.dataCapturada = new Date();
