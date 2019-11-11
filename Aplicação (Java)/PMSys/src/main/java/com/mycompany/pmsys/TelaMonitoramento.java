@@ -185,7 +185,16 @@ public class TelaMonitoramento extends javax.swing.JFrame implements Job {
             //Botão mandar mensagem
             JButton btnEnviarMensagem = new JButton("Enviar Mensagem");
             btnEnviarMensagem.setBounds(425, 270, 150, 30);
-
+            
+            btnEnviarMensagem.addActionListener(new ActionListener(){
+                @Override
+                public void actionPerformed(ActionEvent e){
+                    TelaMensagem tm = new TelaMensagem(
+                            func.getIdentificador(), func.getNomeFunc());
+                    tm.setVisible(true);
+                }
+            });
+            
             //Botão para cessar TeamViewer
             JButton btnTeamViewer = new JButton("Ver Tela do Usuário");
             btnTeamViewer.setBounds(625, 270, 150, 30);
