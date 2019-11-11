@@ -29,11 +29,7 @@ O servidor será inicializado em localhost:3000.
 
   Utilizar padrão kebab-case, todas as palavras ficam em caixa baixa e cada palavra é separada por um hífen (-). 
   
-### Para executar Aplicação Java
- 
-  Versão do JDK: jdk-11.0.4
-  
-### Para mudar a versão do JDK no NetBeans
+## Para mudar a versão do JDK no NetBeans
  
   1° - Ir na pasta do NetBeans
   2° - Abrir pasta 'etc'
@@ -44,3 +40,7 @@ $ netbeans_jdkhome="C:\java\jdk-11.0.4"
 ```
 
   4° - Executar NetBeans
+
+## Requisitos
+ 
+  Versão do JDK: jdk-11.0.4
