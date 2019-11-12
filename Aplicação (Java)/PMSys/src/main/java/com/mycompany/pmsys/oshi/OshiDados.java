@@ -21,12 +21,10 @@ public class OshiDados implements Job{
 
     public void execute(JobExecutionContext args0) throws JobExecutionException {
 
-    
-
-        DadosCPU dCpu = new DadosCPU(1002);
-        DadosRAM dRam = new DadosRAM(1002);
-        DadosHD dHd = new DadosHD(1002);
-        DadosProcessos dProcessos = new DadosProcessos(1002);
+        DadosCPU dCpu = new DadosCPU(1003);
+        DadosRAM dRam = new DadosRAM(1003);
+        DadosHD dHd = new DadosHD(1003);
+        DadosProcessos dProcessos = new DadosProcessos(1003);
         
         try{
         System.out.println("Inserindo dados de CPU...");
