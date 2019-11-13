@@ -11,4 +11,12 @@ routes.get('/squad',  async (req, res) => {
     return response;
 })
 
+// Funcionários
+
+const FuncController = require('./controllers/FuncController');
+routes.get('/func',  async (req, res) => {
+    const response = await FuncController.list(req, res);
+    return response;
+})
+
 module.exports = routes;
