@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="../assets/fonts/fontawesome/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="../assets/css/pages/home.css">
+    <link rel="stylesheet" href="../assets/css/home.css">
     <link rel="stylesheet" href="../assets/plugins/animation/css/animate.min.css">
     <link href="../assets/css/feather.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="../assets/css/style.css">
@@ -26,13 +26,42 @@
 <body>
 
     <div id="nav"></div>
-
+    <div class="dropdown alerta-drop">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Botão dropdown
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <div class="card card-squad">
+                    <!-- <div class="card">
+                                    <div class="card-header">
+                                        <h5>Notificações frequentes</h5>
+                                    </div>
+                                    <div class="card-block div-scroll ">
+                                        <div class="alert alert-danger ">
+                                            Alpha está com o muitos funcionarios offline.
+                                        </div>
+                                        <div class="alert alert-danger">
+                                            Beta está com a tarefa pronta.
+                                        </div>
+                                        <div class="alert alert-danger">
+                                            Charlie está proximo da data de entrega.
+                                        </div>
+                                        <div class="alert alert-danger">
+                                            Delta já entregou a tarefa, está aguardando outra.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                </div>
+            </div>
+        </div>
     <div class="pcoded-main-container">
         <div class="pcoded-wrapper">
             <div class="pcoded-content">
                 <div class="pcoded-inner-content">
 
-                    <div class="page-header">
+                    <!-- <div class="page-header">
                         <div class="page-block">
                             <div class="row align-items-center">
                                 <div class="col-md-12">
@@ -47,33 +76,47 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-7">
-                            <div class="row">
-                                <div class="titulos-dashboard">BEM VINDO VIRGOLINO, ESSA É SUA PLATAFORMA DE
-                                    MONITORAMENTO
-                                    .SYS
+                    </div> -->
+                    
+                    <div class="row div-linha-pai">
+                        <div class="col-md-8 div-esquerda">
+                            <div class="row div-linha-filho">
+                                <div class="titulos-dashboard">
+                                    <div>BEM VINDO <a>VIRGOLINO</a>,</div>
+                                    <span> ESSA É SUA PLATAFORMA DE
+                                        MONITORAMENTO
+                                        .SYS</span>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="titulos-dashboard">BEM VINDO VIRGOLINO, ESSA É SUA PLATAFORMA DE
-                                    MONITORAMENTO
-                                    .SYS
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 offset-1">
-                            <div class="card">
-                                <div class="card">
+
+                            <div class="row ">
+                                <div class="card card-Dash">
+
                                     <div class="card-header">
-                                        <h5>Squads</h5>
+
+                                        <h5>Dashboards</h5>
+
                                     </div>
-                                    <div class="card-block div-scroll">
-                                            <div id="conteudo" class="card-group">
-                                            </div>
+
+                                    <a class="card-block card-Dash-tamanho" href="dashboard-project.html">
+
+                                    </a>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-2">
+                            <div class="card card-Squad">
+
+                                <div class="card-header">
+                                    <h5>Squads</h5>
+                                </div>
+                                <div class="card-block div-scroll ">
+                                    <div id="conteudo" class="card-group">
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -181,7 +224,7 @@
     let divs = "";
     squads.map(squad => {
         divs += `
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="card card-squad">
                             <div class="card-body" onclick="criarFuncionarios()" data-toggle="modal"
                                 data-target="#modalSquad" data-squad='${JSON.stringify(squad)}'>
