@@ -53,25 +53,36 @@
                         <div class="page-wrapper">
                             <!-- Div onde serão inseridos os cards de cada Squad -->
                             <div class="squad-header" id="squads">
-                                <div class="content col-md-2" id="squad1">
-                                    A
+                            </div>
+                            <div class="squad-body">
+                                <div class="squad-info">
+                                    <div class="Objetivo">
+                                        <h2>Objetivo</h2>
+                                        <p>Squad trabalhando no projeto 12467, em desenvolvimento de uma aplicação WEB para gerenciamento de lojas.</p>
+                                    </div>
+                                    <div class="Descricao">
+                                        <h2>Descrição</h2>
+                                        <p>Squad Alpha alocado no 8° andar da empresa com 7 intregantes.</p>
+                                    </div>
+                                    <div class="squad-func">
+                                        <h4>Funcionários</h4>
+                                        <div class="func">
+                                            <i class="feather icon-aperture" data-feather="users" width="45" height="45"></i>
+                                            <div class="point"></div>
+                                            5/10
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="content col-md-2" id="squad2">
-                                    B
-                                </div>
-                                <div class="content col-md-2" id="squad3">
-                                    C
+                                <div class="squad-dash">
+                                    <div class="card-block">
+                                        <canvas id="chart-line"></canvas>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="botoes-flutuantes-container">
-            <a href="cadastrar-squad.html" class="botao-flutuante" title="Adicionar Squad">
-                <i data-feather="plus" width="35px" height="35px" ></i>
-            </a>
         </div>
     </div>
 </body>
@@ -89,6 +100,10 @@
 <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 <!-- Funções menu lateral -->
 <script src="../assets/js/vendor-all.min.js"></script>
+<!-- Charts -->
+<script src="../assets/plugins/chart-chartjs/js/Chart.min.js"></script>
+
 <script>
     feather.replace();
 </script>
+<script src="../assets/js/squad/graphs.js"></script>

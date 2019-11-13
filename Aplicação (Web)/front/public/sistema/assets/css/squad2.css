@@ -1,3 +1,6 @@
+html{
+    overflow: hidden;
+}
 .content {
     border: solid var(--color-status) 3px;
     justify-content: center;
@@ -5,18 +8,90 @@
     border-radius: 25px;
     display: flex;
     height: 40px;
+    margin-left: 15px;
+    background-color: #ffffff;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.content .add {
+    font-size: 30px;
+}
+
+.content:hover {
+    transition: all 0.3s;
+    opacity: 0.5;
+}
+
+.squad-header {
+    display: flex;
+    overflow-x: scroll;
+    padding: 20px;
+}
+
+.squad-body{
+    display: flex;
+}
+
+.squad-info {
+    width: 400px;
+}
+
+.squad-info h2 {
+    font-size: 36px;
+}
+
+.squad-info p {
+    font-size: 15px;
+    text-align: justify;
+}
+
+.squad-func {
+    box-shadow: 3px 4px 8px 0px #999999ad;
+    height: 150px;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.squad-func:hover {
+    transition: all 0.3s;
+    opacity: 0.5;
+}
+
+.point {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: #007500;
+    margin: 0 15px;
+}
+
+.func {
+    display: flex;
+    align-items: center;
+    height: 70px;
+    font-size: 30px;
+}
+
+.squad-dash {
+    width: 900px;
+    height: 450px;
+}
+
+.Objetivo {
+    margin: 40px 0 60px 0;
 }
 
 .online {
-    --color-status: #00ff00;
+    --color-status:var(--success);
 }
 
 .offline {
-    --color-status: #ff0000;
+    --color-status: var(--danger);
 }
 
 .atention {
-    --color-status: #ffff00;
+    --color-status: var(--warning);
 }
 
 .error {

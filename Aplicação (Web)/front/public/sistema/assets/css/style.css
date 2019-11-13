@@ -1985,7 +1985,7 @@ p.text-muted {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    min-height: 70px;
+    /* min-height: 70px; */
     padding: 0;
     position: relative;
     top: 0;
