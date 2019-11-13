@@ -74,8 +74,14 @@ html{
 }
 
 .squad-dash {
-    width: 900px;
-    height: 450px;
+    display: block;
+    width: 700px;
+    margin: auto;
+}
+
+#chart-line {
+    display: block;
+    width: 700px;
 }
 
 .Objetivo {
