@@ -14,7 +14,9 @@ routes.get('/squad',  async (req, res) => {
 // Funcionários
 
 const FuncController = require('./controllers/FuncController');
-routes.get('/func',  async (req, res) => {
+
+// Retorna a lista de funcionários
+routes.get('/funcionarios',  async (req, res) => {
     const response = await FuncController.list(req, res);
     return response;
 })

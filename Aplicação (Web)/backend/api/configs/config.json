@@ -10,17 +10,5 @@
 	},
 	"security":{
 		"key": "CHAVE_SEGURANCA"
-	},
-	"database2": {
-		"server": "srvdotsys.database.windows.net",
-		"user": "userdotsys",
-		"password": "#Gfgrupo6",
-		"database": "bddotsys",
-		"options": {
-			"encrypt": true
-		}
-	},
-	"security":{
-		"key": "CHAVE_SEGURANCA"
 	}
 }

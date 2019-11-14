@@ -1,18 +1,19 @@
 'use strict';
 
 const { query } = require('./utilModel');
-const database = require('../Database');
+const connection = require('../configs/connection');
+
 class FuncModel {
-    constructor() {
-    }
     
     async select() {
+
         const sql = `
             select * from tblFuncionario
         `;
 
-        let listaFuncionarios = await query(database, sql);
+        let listaFuncionarios = await query(connection, sql);
         return listaFuncionarios.recordsets[0];
+
     }
 
 }

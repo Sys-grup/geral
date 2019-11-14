@@ -1,5 +1,5 @@
 'use strict';
-var config = require("./config").database2;
+var config = require("./config").database;
 var isNull = require("./script").isNull;
 var sql = require('mssql');
 
