@@ -44,7 +44,6 @@ public class TelaMonitoramento extends javax.swing.JFrame {
     JdbcTemplate jdbcTemplate = new JdbcTemplate(dadosConexao.getDataSource());
     private Integer idSquad = 0;
     List<ComponentesTela> componentes = new ArrayList<>();
-    Boolean metodoFinalizado = false; 
 
     public TelaMonitoramento(String nomeGerente) {
         initComponents();
@@ -183,6 +182,8 @@ public class TelaMonitoramento extends javax.swing.JFrame {
             JTable tableProcessos = new JTable(processos.getDados(), colunas);
 
             tableProcessos.setBounds(450, 80, 300, 160);
+            tableProcessos.setEnabled(false);
+            
 
             //Botão mandar mensagem
             JButton btnEnviarMensagem = new JButton("Enviar Mensagem");
@@ -234,7 +235,6 @@ public class TelaMonitoramento extends javax.swing.JFrame {
 
             
         }
-        metodoFinalizado = true;
         
 
     }
