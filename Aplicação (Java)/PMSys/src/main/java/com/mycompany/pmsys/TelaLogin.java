@@ -225,10 +225,12 @@ public class TelaLogin extends javax.swing.JFrame {
         Point p = this.getLocation();
         TelaLogin tl = this;
 
-        int fkConta = 0;
+        int fkConta;
 
         try {
-            if (tfLogin.getText().equals("") && pfPassword.getText().equals("")) {
+            if (tfLogin.getText().equals("") || pfPassword.getText().equals("")
+                    || tfLogin.getText().equals("Digite seu usuário")
+                    || pfPassword.getPassword().equals("jPasswordField1")) {
 
                 new Thread() {
                     @Override
@@ -240,7 +242,7 @@ public class TelaLogin extends javax.swing.JFrame {
                                 tl.setLocation(p.x + 10, p.y);
                                 sleep(20);
                             }
-                            tl.setLocation(p.x , p.y);
+                            tl.setLocation(p.x, p.y);
                         } catch (InterruptedException ex) {
                             Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
                         }
