@@ -7,11 +7,24 @@ class FuncModel {
     
     async select() {
 
-        const sql = `
-            select * from tblFuncionario
+        const sqlTEMP = `
+            SELECT 
+                F.idFuncionario as id,
+                F.identificador as tag,
+                F.nomeFuncionario as nome,
+                F.sexo as sexo,
+                C.nomeCargo as cargo,
+                S.apelidoSquad as squad,
+                F.fkMaquina as idMaquina,
+                F.fkSquad as idSquad
+            FROM tblFuncionario F
+            INNER JOIN tblCargo C
+                ON F.fkCargo = C.idCargo
+            INNER JOIN tblSquad S
+                ON F.fkSquad = S.idSquad
         `;
 
-        let listaFuncionarios = await query(connection, sql);
+        const listaFuncionarios = await query(connection, sqlTEMP);
         return listaFuncionarios.recordsets[0];
 
     }
