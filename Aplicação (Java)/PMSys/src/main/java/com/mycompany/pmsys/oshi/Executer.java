@@ -7,7 +7,7 @@ package com.mycompany.pmsys.oshi;
 
 import com.mycompany.pmsys.ConnectURL;
 import java.util.Date;
-import javax.swing.JOptionPane;
+import log.GerarLog;
 import org.quartz.CronScheduleBuilder;
 import org.quartz.JobBuilder;
 import org.quartz.JobDetail;
@@ -52,7 +52,7 @@ public class Executer {
             System.out.println("Usuário Logado");
         }
         catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Erro do Sql \n" + e, "Erro", JOptionPane.ERROR_MESSAGE);
+            GerarLog.escreverLog("Erro ao inserir dados de logon: " + e.getMessage());
         }
     }
 }

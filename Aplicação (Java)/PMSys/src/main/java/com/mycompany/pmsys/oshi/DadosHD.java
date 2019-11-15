@@ -7,7 +7,7 @@ package com.mycompany.pmsys.oshi;
 
 import com.mycompany.pmsys.ConnectURL;
 import java.util.Date;
-import javax.swing.JOptionPane;
+import log.GerarLog;
 import org.springframework.jdbc.core.JdbcTemplate;
 import oshi.SystemInfo;
 import oshi.software.os.FileSystem;
@@ -60,7 +60,7 @@ public class DadosHD {
             jdbcTemplate.update("INSERT INTO tblInfoHD values (?, ?, ?, ?)", this.espacoTotal, this.espacoUsavel, this.idMaquina, this.dataHora);
         }
         catch (Exception e){
-            JOptionPane.showMessageDialog(null, "Erro do Sql \n" + e, "Erro", JOptionPane.ERROR_MESSAGE);
+            GerarLog.escreverLog("Erro ao inserir Dados do HD: " + e.getMessage());
         }
 
     }

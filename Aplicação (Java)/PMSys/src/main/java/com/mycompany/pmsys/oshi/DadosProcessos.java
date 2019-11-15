@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-import javax.swing.JOptionPane;
+import log.GerarLog;
 import org.springframework.jdbc.core.JdbcTemplate;
 import oshi.SystemInfo;
 import oshi.software.os.FileSystem;
@@ -104,9 +104,9 @@ public class DadosProcessos {
             }
             
         } catch (FileNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "Arquivo de processos de sistema não encontrado!", "Erro", JOptionPane.ERROR_MESSAGE);
+            GerarLog.escreverLog("Erro ao encontrar arquivo de ignore dos processos: " + e.getMessage());
         } catch(IOException e){
-            JOptionPane.showMessageDialog(null, "Não foi possivel ler o arquivo!", "Erro", JOptionPane.ERROR_MESSAGE);
+            GerarLog.escreverLog("Erro ao ler arquivo de ignore dos processos: " + e.getMessage());
         }
     }
     
@@ -118,7 +118,7 @@ public class DadosProcessos {
         try{
             jdbcTemplate.update("INSERT INTO tblInfoProcessos values (?, ?, ?, ?)", this.nomeProcesso, this.tempoDeUso, this.dataCapturada, this.idMaquina);
         }catch (Exception e){
-            JOptionPane.showMessageDialog(null, "Erro do Sql \n" + e, "Erro", JOptionPane.ERROR_MESSAGE);
+            GerarLog.escreverLog("Erro ao inserir Dados dos Processos: " + e.getMessage());
         }
         
     }

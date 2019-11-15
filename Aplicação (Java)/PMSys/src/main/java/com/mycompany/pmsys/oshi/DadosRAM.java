@@ -7,7 +7,7 @@ package com.mycompany.pmsys.oshi;
 
 import com.mycompany.pmsys.ConnectURL;
 import java.util.Date;
-import javax.swing.JOptionPane;
+import log.GerarLog;
 import org.springframework.jdbc.core.JdbcTemplate;
 import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
@@ -60,7 +60,7 @@ public class DadosRAM {
             jdbcTemplate.update("INSERT INTO tblInfoRAM values (?, ?, ?, ?)", this.totalRamUsado, this.totalDisponivel, 1001, this.dataHora);
         }
         catch (Exception e){
-            JOptionPane.showMessageDialog(null, "Erro do Sql \n" + e, "Erro", JOptionPane.ERROR_MESSAGE);
+            GerarLog.escreverLog("Erro ao inserir Dados da RAM: " + e.getMessage());
     
         }
     

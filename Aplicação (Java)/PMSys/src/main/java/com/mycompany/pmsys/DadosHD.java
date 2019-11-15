@@ -1,7 +1,6 @@
 
 package com.mycompany.pmsys;
 
-import java.util.List;
 import java.util.Map;
 
 import java.util.List;
@@ -9,7 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
  *
- * @author Aluno
+ * @author Alex Gusmão
  */
 public class DadosHD {
     
