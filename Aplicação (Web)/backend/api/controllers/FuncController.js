@@ -6,7 +6,7 @@ const list = async (req, res) => {
     
     const listaFuncionarios  = await model.select();
     
-    return res.json(listaFuncionarios);
+    return res.status(200).json(listaFuncionarios);
 }
 
 const getSessions = async (req, res) => {
@@ -15,7 +15,7 @@ const getSessions = async (req, res) => {
 
     const session = await model.index();
 
-    return res.json(session);
+    return res.status(200).json(session);
 } 
 
 module.exports = {

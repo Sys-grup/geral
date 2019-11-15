@@ -11,11 +11,11 @@ const list = async (req, res) => {
 
         const listaSquads = await model.select(id);
 
-        return res.json(listaSquads);
+        return res.status(200).json(listaSquads);
 
     }else{
 
-        return res.json({});
+        return res.status(400).end();
         
     }
 
@@ -23,32 +23,59 @@ const list = async (req, res) => {
 
 const getSquad = async (req, res) => {
 
+    const { idSquad } = req.query;
+    const { id } = req.headers;
+
     const model = new SquadModel();
 
-    const dadosSquad = await model.index();
+    if(id && idSquad) {
+    
+        const dadosSquad = await model.index(id, idSquad);
 
-    return res.json(dadosSquad);
+        return res.status(200).json(dadosSquad);
+    
+    }else{
 
+        return res.status(400).end();
+
+    }
 }
 
 const createSquad = async (req, res) => {
 
+    const { id } = req.headers;
+    const { nome: apelido, area, descricao, objetivo } = req.body;
     const model = new SquadModel();
 
-    const response = await model.create();
+    if(id && apelido && area && descricao && objetivo){
 
-    return res.json(response);
+        await model.create(apelido, area, descricao, objetivo, id);
+        return res.status(201).end();
+
+    } else {
+
+        return res.status(400).end();
+    
+    }
 
 }
 
 const updateSquad = async ( req, res ) => {
 
+    const { id } = req.query;
+    const { nome: apelido, area, descricao, objetivo } = req.body;
     const model = new SquadModel();
 
-    const response = await model.update();
+    if(id && apelido && area && descricao && objetivo){
 
-    return res.json(response);
+        await model.update(apelido, area, descricao, objetivo, id);
+        return res.status(201).end();
 
+    } else {
+
+        return res.status(400).end();
+    
+    }
 }
 
 module.exports = {

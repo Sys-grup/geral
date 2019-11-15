@@ -12,7 +12,6 @@ const SquadController = require('./controllers/SquadController');
 routes.get('/squad',  async (req, res) => {
     const response = await SquadController.list(req, res);
     return response;
-
 });
 
 // Retorna os dados de um squad
@@ -21,11 +20,13 @@ routes.get('/getSquad',  async (req, res) => {
     return response;
 });
 
+// Cadastro de squad
 routes.post('/squad', async (req, res) => {
     const response = await SquadController.createSquad(req, res);
     return response;
 });
 
+// Edição de squad
 routes.put('/squad', async (req, res) => {
     const response = await SquadController.updateSquad(req, res);
     return response;

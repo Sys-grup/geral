@@ -11,8 +11,10 @@ class SquadModel {
             select 
             idSquad, 
             apelidoSquad, 
-            areaSquad 
-            FROM tblSquad 
+            areaSquad,
+            Descricao,
+            Objetivo
+            FROM  tblSquad 
             WHERE fkConta = ${id};
         `;
 
@@ -21,10 +23,19 @@ class SquadModel {
 
     }
 
-    async index() {
+    async index(id, idSquad) {
 
         const sql = `
-            
+            SELECT
+                apelidoSquad, 
+                areaSquad,
+                Descricao,
+                Objetivo
+            FROM  tblSquad
+            WHERE
+            fkConta = ${id}
+            AND   
+            idSquad= ${idSquad};
         `;
 
         let squad = await query(connection, sql);
@@ -32,25 +43,31 @@ class SquadModel {
 
     }
 
-    async create() {
+    async create(apelido, area, descricao, objetivo, id) {
         
         const sql = `
-
+            INSERT 
+            INTO tblSquad(apelidoSquad, areaSquad, Descricao, Objetivo, fkConta)
+            VALUES
+            ('${apelido}', '${area}', '${descricao}', '${objetivo}', ${id});
         `;
 
-        let response = await query(connection, sql);
-        return response.recordsets[0];
+        await query(connection, sql);
 
     }
     
-    async update() {
+    async update(apelido, area, descricao, objetivo, id) {
         
         const sql = `
-
+            UPDATE
+                tblSquad
+            SET
+                apelidoSquad = '${apelido}', areaSquad = '${area}', Descricao = '${descricao}', Objetivo = '${objetivo}'
+            WHERE
+                idSquad = ${id}
         `;
 
-        let response = await query(connection, sql);
-        return response.recordsets[0];
+        await query(connection, sql);
 
     }
 

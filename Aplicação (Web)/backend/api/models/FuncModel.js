@@ -7,7 +7,7 @@ class FuncModel {
     
     async select() {
 
-        const sqlTEMP = `
+        const sql = `
             SELECT 
                 F.idFuncionario as id,
                 F.identificador as tag,
@@ -24,7 +24,7 @@ class FuncModel {
                 ON F.fkSquad = S.idSquad
         `;
 
-        const listaFuncionarios = await query(connection, sqlTEMP);
+        const listaFuncionarios = await query(connection, sql);
         return listaFuncionarios.recordsets[0];
 
     }
@@ -32,7 +32,7 @@ class FuncModel {
     async index() {
 
         const sql = `
-        
+            
         `;
 
         let response = await query(connection, sql);
