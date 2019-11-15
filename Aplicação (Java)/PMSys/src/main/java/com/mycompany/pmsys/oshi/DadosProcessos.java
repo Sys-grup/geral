@@ -104,9 +104,9 @@ public class DadosProcessos {
             }
             
         } catch (FileNotFoundException e) {
-            GerarLog.escreverLog("Erro ao encontrar arquivo de ignore dos processos: " + e.getMessage());
+            GerarLog.escreverLog("Erro ao encontrar arquivo de ignore dos processos: " + e.getMessage(), "B");
         } catch(IOException e){
-            GerarLog.escreverLog("Erro ao ler arquivo de ignore dos processos: " + e.getMessage());
+            GerarLog.escreverLog("Erro ao ler arquivo de ignore dos processos: " + e.getMessage(), "B");
         }
     }
     
@@ -117,8 +117,10 @@ public class DadosProcessos {
         
         try{
             jdbcTemplate.update("INSERT INTO tblInfoProcessos values (?, ?, ?, ?)", this.nomeProcesso, this.tempoDeUso, this.dataCapturada, this.idMaquina);
+            
+            GerarLog.escreverLog("Dados de CPU inseridos com sucesso!", "B");
         }catch (Exception e){
-            GerarLog.escreverLog("Erro ao inserir Dados dos Processos: " + e.getMessage());
+            GerarLog.escreverLog("Erro ao inserir Dados dos Processos: " + e.getMessage(), "B");
         }
         
     }

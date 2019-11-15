@@ -58,9 +58,11 @@ public class DadosHD {
        
         try{
             jdbcTemplate.update("INSERT INTO tblInfoHD values (?, ?, ?, ?)", this.espacoTotal, this.espacoUsavel, this.idMaquina, this.dataHora);
+            
+            GerarLog.escreverLog("Dados de CPU inseridos com sucesso!", "B");
         }
         catch (Exception e){
-            GerarLog.escreverLog("Erro ao inserir Dados do HD: " + e.getMessage());
+            GerarLog.escreverLog("Erro ao inserir Dados do HD: " + e.getMessage(), "B");
         }
 
     }

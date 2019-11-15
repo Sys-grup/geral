@@ -23,6 +23,7 @@ import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 import javax.swing.JButton;
 import javax.swing.JTable;
+import log.GerarLog;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
@@ -35,7 +36,7 @@ public class TelaMonitoramento extends javax.swing.JFrame {
     DadosSquads dadosSquads = new DadosSquads(1);
     JdbcTemplate jdbcTemplate = new JdbcTemplate(dadosConexao.getDataSource());
     private Integer idSquad = 0;
-    private String nomeGerente;
+    private final String nomeGerente;
 
     public TelaMonitoramento(String nomeGerente) {
         initComponents();
@@ -57,6 +58,7 @@ public class TelaMonitoramento extends javax.swing.JFrame {
         
         buscaFuncionarios();
         
+        GerarLog.escreverLog("Tela de monitoramento do squad do gerente " + nomeGerente + " foi aberta", "A");
         //atualizarFuncionarios();
 
     }    
@@ -354,6 +356,9 @@ public class TelaMonitoramento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lbSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbSairMouseClicked
+        
+        GerarLog.escreverLog("Tela de monitoramento do squad do gerente " + nomeGerente + " foi fechada", "A");
+        
         dispose();
         TelaLogin inicio = new TelaLogin();
         inicio.setVisible(true);

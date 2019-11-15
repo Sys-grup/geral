@@ -58,9 +58,11 @@ public class DadosRAM {
        
         try{
             jdbcTemplate.update("INSERT INTO tblInfoRAM values (?, ?, ?, ?)", this.totalRamUsado, this.totalDisponivel, 1001, this.dataHora);
+            
+            GerarLog.escreverLog("Dados de CPU inseridos com sucesso!", "B");
         }
         catch (Exception e){
-            GerarLog.escreverLog("Erro ao inserir Dados da RAM: " + e.getMessage());
+            GerarLog.escreverLog("Erro ao inserir Dados da RAM: " + e.getMessage(), "B");
     
         }
     

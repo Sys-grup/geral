@@ -11,6 +11,7 @@ package com.mycompany.pmsys.oshi;
  */
 
 
+import log.GerarLog;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
@@ -21,27 +22,23 @@ public class OshiDados implements Job{
 
     public void execute(JobExecutionContext args0) throws JobExecutionException {
 
-    
-
         DadosCPU dCpu = new DadosCPU(1002);
         DadosRAM dRam = new DadosRAM(1002);
         DadosHD dHd = new DadosHD(1002);
         DadosProcessos dProcessos = new DadosProcessos(1002);
         
         try{
-        System.out.println("Inserindo dados de CPU...");
+        GerarLog.escreverLog("Inserindo dados de CPU...", "B");
         dCpu.insereDadosCPU();
-        System.out.println("Inserindo dados de RAM...");
+        GerarLog.escreverLog("Inserindo dados de RAM...", "B");
         dRam.insereDadosRam();
-        System.out.println("Inserindo dadosde HD...");
+        GerarLog.escreverLog("Inserindo dadosde HD...", "B");
         dHd.insereDadosHD();
-        System.out.println("Enviando processos...");
+        GerarLog.escreverLog("Enviando processos...", "B");
         dProcessos.processosAtuais();
         }catch(Exception e){
-            System.err.print("Erro ao inserir dados : " +e);
+            GerarLog.escreverLog("Erro ao inserir dados : " +e, "B");
         }
-        
-        System.out.println("Dados Inseridos");
 
     }
     //Pega informações gerais do hardware do PC

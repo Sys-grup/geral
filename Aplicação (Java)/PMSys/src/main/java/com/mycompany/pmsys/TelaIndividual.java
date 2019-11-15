@@ -50,6 +50,8 @@ public class TelaIndividual extends javax.swing.JFrame {
 
         criarTela(func);
         
+        GerarLog.escreverLog("Tela de monitoramento individual do colaborador " + func.getNomeFunc() + " foi aberta", "A");
+        
         t1.start();
         
     }
@@ -57,7 +59,6 @@ public class TelaIndividual extends javax.swing.JFrame {
     Thread t1 = new Thread(new Runnable() {
         @Override
         public void run() {
-            System.out.println("Entrou thread");
             try{
                 while(true){
                     
@@ -98,10 +99,10 @@ public class TelaIndividual extends javax.swing.JFrame {
                 }
             }catch(UnsupportedOperationException e){
                 JOptionPane.showMessageDialog(null, "Não suportado \n" + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
-                GerarLog.escreverLog("Não suportado: " + e.getMessage());
+                GerarLog.escreverLog("Não suportado: " + e.getMessage(), "A");
             }catch(InterruptedException e){
                 JOptionPane.showMessageDialog(null, "Coleta interrompida! \n" + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
-                GerarLog.escreverLog("Coleta interrompida: " + e.getMessage());
+                GerarLog.escreverLog("Coleta interrompida: " + e.getMessage(), "A");
             }
         }
     });
@@ -228,6 +229,9 @@ public class TelaIndividual extends javax.swing.JFrame {
         btnVoltar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                
+                GerarLog.escreverLog("Tela de monitoramento individual do colaborador " + func.getNomeFunc() + " foi fechada", "A");
+                
                 dispose();
             }
         });
