@@ -16,6 +16,17 @@ class FuncModel {
 
     }
 
+    async index() {
+
+        const sql = `
+        
+        `;
+
+        let response = await query(connection, sql);
+        return response.recordsets[0];
+
+    }
+
 }
 
 module.exports = FuncModel;
