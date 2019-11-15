@@ -218,6 +218,11 @@ public class TelaLogin extends javax.swing.JFrame {
         for (Map row : gerente) {
             this.idGerente = Integer.parseInt(row.get("idFuncionario").toString());
             this.nomeGerente = row.get("nomeFuncionario").toString();
+            
+            TelaMonitoramento tm = new TelaMonitoramento(nomeGerente);
+            tm.setVisible(true);
+            dispose();
+            
         }
     }
 
@@ -250,24 +255,18 @@ public class TelaLogin extends javax.swing.JFrame {
                 }.start();
 
             } else {
-                List<Map<String, Object>> login = jdbcTemplate.queryForList("SELECT * from tblContas where login = ? and senha = ?", tfLogin.getText(), pfPassword.getPassword().toString());
-
-                if (login != null) {
-
+                System.out.println(tfLogin.getText() + "|" + pfPassword.getText());
+                List<Map<String, Object>> login = jdbcTemplate.queryForList("SELECT * from tblContas where login = ? and senha = ?", tfLogin.getText(), pfPassword.getText());
+                
+                if(!login.isEmpty()){
                     for (Map row : login) {
-                        fkConta = Integer.parseInt(row.get("idConta").toString());
+                            fkConta = Integer.parseInt(row.get("idConta").toString());
 
-                        buscaGerente(fkConta);
+                            buscaGerente(fkConta);
                     }
-
-                    TelaMonitoramento monitoramento = new TelaMonitoramento(this.nomeGerente);
-
-                    monitoramento.setVisible(true);
-                    this.dispose();
-                } else {
-
+                }else{
                     JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos!", "Erro", JOptionPane.ERROR_MESSAGE);
-                }
+                }       
             }
 
         } catch (JdbcUpdateAffectedIncorrectNumberOfRowsException e) {
