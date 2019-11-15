@@ -10,9 +10,9 @@
 
 .card-squad:hover {
     background: #fafafa;
-    height: 82.5px;
+    height: 81.5px;
     margin-top: -2px
-}
+}   
 
 
 .card-squad .card-body {
@@ -93,7 +93,68 @@
 }
 .alerta-drop{
 position: absolute;
-top: 0;
-right: 0;
+height: 50px;
+top: 40px;
+}
+
+.botao-alerta{
+float: right;
+margin-right: 100px;
+border-radius: 50%;
+padding: 0;
+border: solid;
+outline: none;
+display: inline-flex;
+justify-content: center;
+align-items: center;
+height: 50px;
+width: 50px;
+transition: ease-in-out 0.1s;
+
+}
+    
+.tamanho-alerta{
+    font-size: 30px !important;
+}
+.div-scroll-notificacao {
+    overflow-y: scroll;
+    height: 400px;
+    
+}
+.card-squad-notificacao{
+    width:100%;
+    height:100%;
+    
+}
+.card .card-squad-notificacao{
+
+    margin-bottom: 0 !important;
+
+}
+.card-corection{
+
+    margin-bottom: 0 !important;
+    padding: 0 !important;
+}
+
+.div-alerta{
+    border-radius: 10px !important;
+    top: 20px;
+    text-align: center;
+}
+html, body {
+  overflow: hidden;
+}
+
+div#dropdownMenuButton:hover{
+    background-color:#EEEEEE;
+    border-radius: 50%;
+    height: 53px;
+    width: 53px;
+    
+}
+.espaco-correto{
+
+    flex: 0 0 20% !important;
 
 }

@@ -20,6 +20,8 @@
     <script src="https://unpkg.com/feather-icons"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
 </head>
 
 
@@ -27,35 +29,21 @@
 
     <div id="nav"></div>
     <div class="dropdown alerta-drop">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Botão dropdown
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <div class="card card-squad">
-                    <!-- <div class="card">
-                                    <div class="card-header">
-                                        <h5>Notificações frequentes</h5>
-                                    </div>
-                                    <div class="card-block div-scroll ">
-                                        <div class="alert alert-danger ">
-                                            Alpha está com o muitos funcionarios offline.
-                                        </div>
-                                        <div class="alert alert-danger">
-                                            Beta está com a tarefa pronta.
-                                        </div>
-                                        <div class="alert alert-danger">
-                                            Charlie está proximo da data de entrega.
-                                        </div>
-                                        <div class="alert alert-danger">
-                                            Delta já entregou a tarefa, está aguardando outra.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
+        <div onclick="adicionarNotificacao()" class="botao-alerta" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            <i data-feather="alert" height="50px" class="feather icon-bell tamanho-alerta"></i>
+        </div>
+        <div  class="dropdown-menu card-corection" aria-labelledby="dropdownMenuButton">
+            <div class="card card-squad-notificacao card-corection">
+                <div class="card-header">
+                    <h5>Notificações frequentes</h5>
+                </div>
+                <div id="div-drop-conteudo" class="card div-scroll-notificacao card-corection">
+
                 </div>
             </div>
         </div>
+    </div>
     <div class="pcoded-main-container">
         <div class="pcoded-wrapper">
             <div class="pcoded-content">
@@ -77,7 +65,7 @@
                             </div>
                         </div>
                     </div> -->
-                    
+
                     <div class="row div-linha-pai">
                         <div class="col-md-8 div-esquerda">
                             <div class="row div-linha-filho">
@@ -114,6 +102,16 @@
                                 </div>
                                 <div class="card-block div-scroll ">
                                     <div id="conteudo" class="card-group">
+                                        <!-- <div class="col-md-4">
+                                            <div class="card card-squad">
+                                                <div class="card-body" onclick="criarFuncionarios()" data-toggle="modal"
+                                                    data-target="#modalSquad" data-squad="Alpha">
+                                                    <i class="status" style="background:#55DD55"></i>
+                                                    <span>ALPHA</span>
+                                                    <i data-feather="users" class="feather icon-anchor background"></i>
+                                                </div>
+                                            </div>
+                                        </div> -->
                                     </div>
                                 </div>
 
@@ -224,17 +222,64 @@
     let divs = "";
     squads.map(squad => {
         divs += `
-                    <div class="col-md-12">
-                        <div class="card card-squad">
-                            <div class="card-body" onclick="criarFuncionarios()" data-toggle="modal"
-                                data-target="#modalSquad" data-squad='${JSON.stringify(squad)}'>
-                                <i class="status" style="background:var(--${squad.status})"></i>
-                                <span>${squad.nome}</span>
-                                <i data-feather="users" class="feather icon-anchor background"></i>
-                            </div>
+                <div class="col-md-12">
+                    <div class="card card-squad">
+                        <div class="card-body" onclick="criarFuncionarios()" data-toggle="modal"
+                            data-target="#modalSquad" data-squad='${JSON.stringify(squad)}'>
+                            <i class="status" style="background:var(--${squad.status})"></i>
+                            <span>${squad.nome}</span>
+                        </div>
+                    </div>
+                </div>
+            `
+    });
+    document.getElementById("conteudo").innerHTML = divs;
+</script>
+<script>
+    function adicionarNotificacao(){
+    const alertas = [{
+        mensagem: "Sobrecarga de RAM",
+        status: "danger",
+    },
+    {
+        mensagem: "Sobrecarga de HD",
+        status: "success",
+    },
+    {
+        mensagem: "Sobrecarga de RAM",
+        status: "warning",
+    },
+    {
+        mensagem: "Sobrecarga de CPU",
+        status: "info",
+    },
+    {
+        mensagem: "Muito tempo Offline",
+        status: "warning",
+    },
+    {
+        mensagem: "Toda Equipe Online",
+        status: "info",
+    },
+    {
+        mensagem: "Todos da equipe Offline",
+        status: "warning",
+    },
+    {
+        mensagem: "Tempo Ocioso",
+        status: "info",
+    }
+    ]
+    let divs = "";
+    alertas.map(alerta => {
+        divs += `
+                    <div class="col-md-12 espaco-correto">
+                        <div class="alert alert-${alerta.status} div-alerta">
+                            ${alerta.mensagem}
                         </div>
                     </div>
                 `
     });
-    document.getElementById("conteudo").innerHTML = divs;
+    document.getElementById("div-drop-conteudo").innerHTML = divs;
+}
 </script>

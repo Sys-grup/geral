@@ -8,7 +8,9 @@ package com.mycompany.pmsys;
 import com.mycompany.pmsys.ConnectURL;
 import com.mycompany.pmsys.DadosProcessos;
 import com.mycompany.pmsys.oshi.OshiDados;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.Format;
@@ -35,8 +37,6 @@ public class TelaMonitoramento extends javax.swing.JFrame {
     private Integer idSquad = 0;
     List<ComponentesTela> componentes = new ArrayList<>();
     private String nomeGerente;
-    
-    Boolean metodoFinalizado = false; 
 
     public TelaMonitoramento(String nomeGerente) {
         initComponents();
@@ -51,6 +51,11 @@ public class TelaMonitoramento extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("img/small_logo.png"))); // NOI18N
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("img/rsz_profileicon.png"))); // NOI18N
 
+        
+        Toolkit toolkit = getToolkit();
+        Dimension size  = toolkit.getScreenSize();
+        setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);
+        
         buscaFuncionarios();
         
         //atualizarFuncionarios();
@@ -156,6 +161,8 @@ public class TelaMonitoramento extends javax.swing.JFrame {
             JTable tableProcessos = new JTable(processos.getDados(), colunas);
 
             tableProcessos.setBounds(450, 80, 300, 160);
+            tableProcessos.setEnabled(false);
+            
 
             //Botão mandar mensagem
             JButton btnEnviarMensagem = new JButton("Enviar Mensagem");
