@@ -14,8 +14,8 @@ com\mycompany\pmsys\TelaLogin$1.class
 com\mycompany\pmsys\DadosSquads.class
 com\mycompany\pmsys\TelaMensagem.class
 com\mycompany\pmsys\TeamViewer.class
-com\mycompany\pmsys\oshi\OshiDados.class
 com\mycompany\pmsys\oshi\DadosProcessos.class
+com\mycompany\pmsys\oshi\OshiDados.class
 com\mycompany\pmsys\TelaMonitoramento$2.class
 com\mycompany\pmsys\TelaMensagem$2.class
 com\mycompany\pmsys\TelaLogin$5.class
