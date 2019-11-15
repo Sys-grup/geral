@@ -8,13 +8,13 @@ class SquadModel {
     async select(id) {
 
         const sql = `
-            select 
-            idSquad, 
-            apelidoSquad, 
-            areaSquad,
-            Descricao,
-            Objetivo
-            FROM  tblSquad 
+            SELECT
+                idSquad AS id,
+                apelidoSquad AS nome,
+                areaSquad AS area,
+                Descricao AS descricao,
+                Objetivo AS objetivo
+            FROM  tblSquad
             WHERE fkConta = ${id};
         `;
 
@@ -27,14 +27,14 @@ class SquadModel {
 
         const sql = `
             SELECT
-                apelidoSquad, 
+                apelidoSquad,
                 areaSquad,
                 Descricao,
                 Objetivo
             FROM  tblSquad
             WHERE
             fkConta = ${id}
-            AND   
+            AND
             idSquad= ${idSquad};
         `;
 
@@ -44,9 +44,9 @@ class SquadModel {
     }
 
     async create(apelido, area, descricao, objetivo, id) {
-        
+
         const sql = `
-            INSERT 
+            INSERT
             INTO tblSquad(apelidoSquad, areaSquad, Descricao, Objetivo, fkConta)
             VALUES
             ('${apelido}', '${area}', '${descricao}', '${objetivo}', ${id});
@@ -55,9 +55,9 @@ class SquadModel {
         await query(connection, sql);
 
     }
-    
+
     async update(apelido, area, descricao, objetivo, id) {
-        
+
         const sql = `
             UPDATE
                 tblSquad

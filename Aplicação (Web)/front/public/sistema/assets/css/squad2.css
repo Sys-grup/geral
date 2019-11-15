@@ -2,12 +2,12 @@ html{
     overflow: hidden;
 }
 .content {
-    border: solid var(--color-status) 3px;
     justify-content: center;
     align-items: center;
     border-radius: 25px;
     display: flex;
     height: 40px;
+    color: #888 !important;
     margin-left: 15px;
     background-color: #ffffff;
     cursor: pointer;
@@ -27,6 +27,16 @@ html{
     display: flex;
     overflow-x: scroll;
     padding: 20px;
+    text-decoration: none;
+}
+
+
+.squad-header::-webkit-scrollbar {
+    height: 10px;
+}
+
+.squad-header::-webkit-scrollbar-thumb {
+    background: #dedede;
 }
 
 .squad-body{
@@ -88,16 +98,24 @@ html{
     margin: 40px 0 60px 0;
 }
 
+.selected {
+    border: solid #8cc7f7 2px;
+}
+
+.default {
+    border: solid #d6d6d6 2px;
+}
+
 .online {
-    --color-status:var(--success);
+    border: solid var(--success) 3px;
 }
 
 .offline {
-    --color-status: var(--danger);
+    border: solid var(--danger) 3px;
 }
 
 .atention {
-    --color-status: var(--warning);
+    border: solid var(--warning) 3px;
 }
 
 .error {
