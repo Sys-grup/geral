@@ -17,9 +17,15 @@ import javax.swing.JOptionPane;
 public class GerarLog {
     
     private static void verificaExistencia(File arquivo){
+        File diretorio = new File("C:/temp");
+        boolean drExiste = diretorio.exists();
         boolean existe = arquivo.exists();
         
         try{
+            if(!drExiste){
+                diretorio.mkdir();
+            }
+            
             if(!existe){
                 arquivo.createNewFile();
             }
