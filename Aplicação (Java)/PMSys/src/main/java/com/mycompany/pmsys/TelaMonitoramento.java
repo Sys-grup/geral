@@ -7,7 +7,9 @@ package com.mycompany.pmsys;
 
 import com.mycompany.pmsys.DadosProcessos;
 import com.mycompany.pmsys.oshi.OshiDados;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -37,25 +39,19 @@ import org.springframework.jdbc.core.JdbcTemplate;
  *
  * @author Aluno
  */
-public class TelaMonitoramento extends javax.swing.JFrame implements Job {
-
-    public void execute(JobExecutionContext args0) throws JobExecutionException {
-
-            buscaFuncionarios();
-//              
-
-    }
-    
+public class TelaMonitoramento extends javax.swing.JFrame {
 
     ConnectURL dadosConexao = new ConnectURL();
     DadosSquads dadosSquads = new DadosSquads(1);
     JdbcTemplate jdbcTemplate = new JdbcTemplate(dadosConexao.getDataSource());
     private Integer idSquad = 0;
+    List<ComponentesTela> componentes = new ArrayList<>();
 
-    public TelaMonitoramento(String nomeGerente)  {
+    public TelaMonitoramento(String nomeGerente) {
         initComponents();
 
         DadosSquads dadosSquads = new DadosSquads(1);
+
         lbUsuario.setText(nomeGerente);
         lbArea.setText(dadosSquads.getAreaSquad());
 
@@ -63,26 +59,37 @@ public class TelaMonitoramento extends javax.swing.JFrame implements Job {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("img/rsz_profileicon.png"))); // NOI18N
 
         
-        //buscaFuncionarios();
-        //atualizarFuncionarios();
+        Toolkit toolkit = getToolkit();
+        Dimension size  = toolkit.getScreenSize();
+        setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);
         
-             } 
-    
-    public void atualizarFuncionarios(){
-        while (true){
+        buscaFuncionarios();
+        
+        //atualizarFuncionarios();
+
+    }
+
+    public void atualizarFuncionarios() {
+        while (true) {
             try {
                 Thread.sleep(2000);
-                buscaFuncionarios();
+
+                for (ComponentesTela cp : componentes) {
+//            DadosRAM ram = new DadosRAM(cp.getIdMaquina());
+//            DadosCPU cpu = new DadosCPU(cp.getIdMaquina());
+//            DadosHD hd = new DadosHD(cp.getIdMaquina());
+//            DadosProcessos processos = new DadosProcessos(cp.getIdMaquina());
+                    System.out.println(cp.getIdMaquina());
+                }
+
             } catch (InterruptedException ex) {
                 Logger.getLogger(TelaMonitoramento.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
-        
 
     public void buscaFuncionarios() {
-        
-        
+
         String stringSql = "select * from tblFuncionario where fkSquad = ?";
 
         List<DadosFuncionarios> funcionarios = new ArrayList<>();
@@ -102,7 +109,8 @@ public class TelaMonitoramento extends javax.swing.JFrame implements Job {
         }
 
         definirLayout(funcionarios);
-
+        
+        
     }
 
     private void definirLayout(List<DadosFuncionarios> listFunc) {
@@ -181,20 +189,22 @@ public class TelaMonitoramento extends javax.swing.JFrame implements Job {
             JTable tableProcessos = new JTable(processos.getDados(), colunas);
 
             tableProcessos.setBounds(450, 80, 300, 160);
+            tableProcessos.setEnabled(false);
+            
 
             //Botão mandar mensagem
             JButton btnEnviarMensagem = new JButton("Enviar Mensagem");
             btnEnviarMensagem.setBounds(425, 270, 150, 30);
-            
-            btnEnviarMensagem.addActionListener(new ActionListener(){
+
+            btnEnviarMensagem.addActionListener(new ActionListener() {
                 @Override
-                public void actionPerformed(ActionEvent e){
+                public void actionPerformed(ActionEvent e) {
                     TelaMensagem tm = new TelaMensagem(
                             func.getIdentificador(), func.getNomeFunc());
                     tm.setVisible(true);
                 }
             });
-            
+
             //Botão para cessar TeamViewer
             JButton btnTeamViewer = new JButton("Ver Tela do Usuário");
             btnTeamViewer.setBounds(625, 270, 150, 30);
@@ -226,8 +236,14 @@ public class TelaMonitoramento extends javax.swing.JFrame implements Job {
             nomeJPanel.add(btnEnviarMensagem);
 
             jTabbedPane1.addTab(func.getNomeFunc(), nomeJPanel);
+
+            ComponentesTela cp = new ComponentesTela(func.getIdMaquina(), lbNomeCpu, lbCPU, barCPU, lbRAM, barRAM, lbHD, barHD, tableProcessos);
+            componentes.add(cp);
+
+            
         }
         
+
     }
 
     @SuppressWarnings("unchecked")
@@ -362,21 +378,18 @@ public class TelaMonitoramento extends javax.swing.JFrame implements Job {
      * @param args the command line arguments
      * @throws org.quartz.SchedulerException
      */
-    public static void main(String args[]) throws SchedulerException  {
+    public static void main(String args[]) throws SchedulerException {
 
-        
-        JobDetail job1 = JobBuilder.newJob(TelaMonitoramento.class).build();													  //("0 0 10 1/1 * ? *") Produção
-        Trigger tarefa1 = (Trigger) TriggerBuilder.newTrigger()
-                .withIdentity("CronTrigger")
-                    .withSchedule(CronScheduleBuilder
-                        .cronSchedule("0/30 0/1 * 1/1 * ? *")).build();
-        Scheduler sc;
-        sc = StdSchedulerFactory.getDefaultScheduler();
-        sc.start();
-        sc.scheduleJob(job1, (org.quartz.Trigger) tarefa1);
-        System.out.println("Recebendo dados do Banco");
-        
-
+//        JobDetail job1 = JobBuilder.newJob(TelaMonitoramento.class).build();													  //("0 0 10 1/1 * ? *") Produção
+//        Trigger tarefa1 = (Trigger) TriggerBuilder.newTrigger()
+//                .withIdentity("CronTrigger")
+//                    .withSchedule(CronScheduleBuilder
+//                        .cronSchedule("0/30 0/1 * 1/1 * ? *")).build();
+//        Scheduler sc;
+//        sc = StdSchedulerFactory.getDefaultScheduler();
+//        sc.start();
+//        sc.scheduleJob(job1, (org.quartz.Trigger) tarefa1);
+//        System.out.println("Recebendo dados do Banco");
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

@@ -10,11 +10,11 @@ var gRam = new Chart(ram, {
         labels: ['a','b','c'],
         datasets: [{
             label: "Ram",
-            borderColor: "#ad2929",
+            borderColor: "#299fad",
             data: [5,6,7],
             fill: false,
             pointStyle: 'circle',
-            backgroundColor: '#ad2929',
+            backgroundColor: '#299fad',
             pointRadius: 4,
             pointHoverRadius: 5,
             lineTension: 0,
@@ -28,7 +28,7 @@ var gRam = new Chart(ram, {
             display: true,
             text: 'Consumo médio de Ram neste Squad',
             fontSize: 30,
-            fontColor: "#ad2929",
+            fontColor: "#299fad",
             fontFamily: "'ZCOOL XiaoWei', serif",
             fontStyle: "normal"
         },

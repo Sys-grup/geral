@@ -4,10 +4,17 @@
  * and open the template in the editor.
  */
 package com.mycompany.pmsys;
+
 import java.util.List;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.Toolkit;
+import static java.lang.Thread.sleep;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import org.springframework.jdbc.JdbcUpdateAffectedIncorrectNumberOfRowsException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -18,22 +25,25 @@ import org.springframework.jdbc.core.JdbcTemplate;
  */
 public class TelaLogin extends javax.swing.JFrame {
 
-    
     private Integer idGerente;
     private String nomeGerente;
-    
+
     private ConnectURL dadosConexao = new ConnectURL();
     private JdbcTemplate jdbcTemplate = new JdbcTemplate(dadosConexao.getDataSource());
+
     /**
      * Creates new form TelaLogin
      */
     public TelaLogin() {
         initComponents();
         btEntrarSys.requestFocus();
-        
+
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("img/rsz_11rsz_1rsz_logo.png"))); // NOI18N
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("img/rsz_profileicon.png"))); // NOI18N
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("img/rsz_password-icon.png"))); // NOI18N
+        Toolkit toolkit = getToolkit();
+        Dimension size = toolkit.getScreenSize();
+        setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
     }
 
     /**
@@ -59,6 +69,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PMSys - Productivity Management System");
+        setResizable(false);
 
         jPanel5.setBackground(java.awt.SystemColor.activeCaption);
 
@@ -165,7 +176,7 @@ public class TelaLogin extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(146, 146, 146)
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(90, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btEntrarSys)
@@ -184,68 +195,84 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addComponent(jLabel10)
                 .addGap(18, 18, 18)
                 .addComponent(btEntrarSys)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
- 
-    private void buscaGerente(Integer fkConta){
+
+    private void buscaGerente(Integer fkConta) {
         List<Map<String, Object>> gerente = jdbcTemplate.queryForList("select * from tblFuncionario where fkConta = ?", fkConta);
-        
-        for(Map row : gerente){
+
+        for (Map row : gerente) {
             this.idGerente = Integer.parseInt(row.get("idFuncionario").toString());
             this.nomeGerente = row.get("nomeFuncionario").toString();
         }
     }
-    
+
     private void btEntrarSysActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarSysActionPerformed
-       
-       int fkConta = 0;
-        
-        try{
-            
-            List<Map<String, Object>> login= jdbcTemplate.queryForList("SELECT * from tblContas where login = ? and senha = ?", tfLogin.getText(), pfPassword.getText().toString());
-            
-            if(login != null){
-                
-                for(Map row : login){
-                    fkConta = Integer.parseInt(row.get("idConta").toString());
-                    
-                    buscaGerente(fkConta);
+        Point p = this.getLocation();
+        TelaLogin tl = this;
+
+        int fkConta = 0;
+
+        try {
+            if (tfLogin.getText().equals("") && pfPassword.getText().equals("")) {
+
+                new Thread() {
+                    @Override
+                    public void run() {
+                        try {
+                            for (int i = 0; i < 4; i++) {
+                                tl.setLocation(p.x - 10, p.y);
+                                sleep(20);
+                                tl.setLocation(p.x + 10, p.y);
+                                sleep(20);
+                            }
+                            tl.setLocation(p.x , p.y);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                }.start();
+
+            } else {
+                List<Map<String, Object>> login = jdbcTemplate.queryForList("SELECT * from tblContas where login = ? and senha = ?", tfLogin.getText(), pfPassword.getPassword().toString());
+
+                if (login != null) {
+
+                    for (Map row : login) {
+                        fkConta = Integer.parseInt(row.get("idConta").toString());
+
+                        buscaGerente(fkConta);
+                    }
+
+                    TelaMonitoramento monitoramento = new TelaMonitoramento(this.nomeGerente);
+
+                    monitoramento.setVisible(true);
+                    this.dispose();
+                } else {
+
+                    JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos!", "Erro", JOptionPane.ERROR_MESSAGE);
                 }
-                
-                TelaMonitoramento monitoramento = new TelaMonitoramento(this.nomeGerente);
-                
-                monitoramento.setVisible(true);
-                this.dispose();
-            }else{
-                JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos!", "Erro", JOptionPane.ERROR_MESSAGE);
             }
-            
-        }catch(JdbcUpdateAffectedIncorrectNumberOfRowsException e){
+
+        } catch (JdbcUpdateAffectedIncorrectNumberOfRowsException e) {
             JOptionPane.showMessageDialog(null, "Erro do Sql \n" + e, "Erro", JOptionPane.ERROR_MESSAGE);
         }
-    
-        
-         
+
+
     }//GEN-LAST:event_btEntrarSysActionPerformed
 
     private void tfLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfLoginActionPerformed
@@ -257,13 +284,13 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_pfPasswordActionPerformed
 
     private void tfLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfLoginMouseClicked
-    tfLogin.setText("");
-    tfLogin.setForeground(Color.BLACK);
+        tfLogin.setText("");
+        tfLogin.setForeground(Color.BLACK);
     }//GEN-LAST:event_tfLoginMouseClicked
 
     private void pfPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pfPasswordMouseClicked
-    pfPassword.setText("");
-    pfPassword.setForeground(Color.BLACK);
+        pfPassword.setText("");
+        pfPassword.setForeground(Color.BLACK);
     }//GEN-LAST:event_pfPasswordMouseClicked
 
     private void pfPasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pfPasswordKeyTyped
@@ -301,6 +328,7 @@ public class TelaLogin extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new TelaLogin().setVisible(true);
+
             }
         });
     }
