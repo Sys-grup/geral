@@ -6,7 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
  *
- * @author Ultim
+ * @author Alex Gusmão
  */
 public class DadosSquads {
 

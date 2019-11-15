@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.mycompany.pmsys;
 
 import java.util.List;
@@ -16,7 +12,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import org.springframework.jdbc.JdbcUpdateAffectedIncorrectNumberOfRowsException;
+import log.GerarLog;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
@@ -255,7 +251,6 @@ public class TelaLogin extends javax.swing.JFrame {
                 }.start();
 
             } else {
-                System.out.println(tfLogin.getText() + "|" + pfPassword.getText());
                 List<Map<String, Object>> login = jdbcTemplate.queryForList("SELECT * from tblContas where login = ? and senha = ?", tfLogin.getText(), pfPassword.getText());
                 
                 if(!login.isEmpty()){
@@ -263,14 +258,19 @@ public class TelaLogin extends javax.swing.JFrame {
                             fkConta = Integer.parseInt(row.get("idConta").toString());
 
                             buscaGerente(fkConta);
+                            
+                            GerarLog.escreverLog("Usuário logado!");
+                            
                     }
                 }else{
                     JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos!", "Erro", JOptionPane.ERROR_MESSAGE);
+                    GerarLog.escreverLog("Usuário ou senha inválidos!");
                 }       
             }
 
-        } catch (JdbcUpdateAffectedIncorrectNumberOfRowsException e) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro do Sql \n" + e, "Erro", JOptionPane.ERROR_MESSAGE);
+            GerarLog.escreverLog("Erro ao acessar o banco de dados: " + e.getMessage());
         }
 
 

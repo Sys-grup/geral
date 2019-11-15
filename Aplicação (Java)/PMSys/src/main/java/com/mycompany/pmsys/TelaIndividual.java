@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 import javax.swing.JTable;
+import log.GerarLog;
 
 /**
  *
@@ -97,8 +98,10 @@ public class TelaIndividual extends javax.swing.JFrame {
                 }
             }catch(UnsupportedOperationException e){
                 JOptionPane.showMessageDialog(null, "Não suportado \n" + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+                GerarLog.escreverLog("Não suportado: " + e.getMessage());
             }catch(InterruptedException e){
                 JOptionPane.showMessageDialog(null, "Coleta interrompida! \n" + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+                GerarLog.escreverLog("Coleta interrompida: " + e.getMessage());
             }
         }
     });

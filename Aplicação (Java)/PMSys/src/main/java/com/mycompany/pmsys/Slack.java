@@ -9,6 +9,8 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import javax.swing.JOptionPane;
+import log.GerarLog;
 
 /**
  *
@@ -39,8 +41,9 @@ public class Slack {
                 return true;
             }
         }
-        catch (IOException ioe) {
-            System.out.println(ioe.getMessage());
+        catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao enviar mensagem para o slack: " + e.getMessage());
+            GerarLog.escreverLog("Erro ao enviar mensagem para o slack: " + e.getMessage());
         }
         
         return false;

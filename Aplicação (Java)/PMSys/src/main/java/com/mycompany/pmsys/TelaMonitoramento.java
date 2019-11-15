@@ -35,7 +35,6 @@ public class TelaMonitoramento extends javax.swing.JFrame {
     DadosSquads dadosSquads = new DadosSquads(1);
     JdbcTemplate jdbcTemplate = new JdbcTemplate(dadosConexao.getDataSource());
     private Integer idSquad = 0;
-    List<ComponentesTela> componentes = new ArrayList<>();
     private String nomeGerente;
 
     public TelaMonitoramento(String nomeGerente) {

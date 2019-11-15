@@ -1,7 +1,5 @@
 package com.mycompany.pmsys;
 
-import java.util.List;
-import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
  *
