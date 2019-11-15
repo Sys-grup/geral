@@ -5,32 +5,22 @@
  */
 package com.mycompany.pmsys;
 
+import com.mycompany.pmsys.ConnectURL;
 import com.mycompany.pmsys.DadosProcessos;
 import com.mycompany.pmsys.oshi.OshiDados;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.Timer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 import javax.swing.JButton;
 import javax.swing.JTable;
-import org.quartz.CronScheduleBuilder;
-import org.quartz.Job;
-import org.quartz.JobBuilder;
-import org.quartz.JobDetail;
-import org.quartz.JobExecutionContext;
-import org.quartz.JobExecutionException;
-import org.quartz.Scheduler;
-import org.quartz.SchedulerException;
-import org.quartz.Trigger;
-import org.quartz.TriggerBuilder;
-import org.quartz.impl.StdSchedulerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
@@ -44,11 +34,15 @@ public class TelaMonitoramento extends javax.swing.JFrame {
     JdbcTemplate jdbcTemplate = new JdbcTemplate(dadosConexao.getDataSource());
     private Integer idSquad = 0;
     List<ComponentesTela> componentes = new ArrayList<>();
+    private String nomeGerente;
+    
     Boolean metodoFinalizado = false; 
 
     public TelaMonitoramento(String nomeGerente) {
         initComponents();
-
+        
+        this.nomeGerente = nomeGerente;
+        
         DadosSquads dadosSquads = new DadosSquads(1);
 
         lbUsuario.setText(nomeGerente);
@@ -61,26 +55,7 @@ public class TelaMonitoramento extends javax.swing.JFrame {
         
         //atualizarFuncionarios();
 
-    }
-
-    public void atualizarFuncionarios() {
-        while (true) {
-            try {
-                Thread.sleep(2000);
-
-                for (ComponentesTela cp : componentes) {
-//            DadosRAM ram = new DadosRAM(cp.getIdMaquina());
-//            DadosCPU cpu = new DadosCPU(cp.getIdMaquina());
-//            DadosHD hd = new DadosHD(cp.getIdMaquina());
-//            DadosProcessos processos = new DadosProcessos(cp.getIdMaquina());
-                    System.out.println(cp.getIdMaquina());
-                }
-
-            } catch (InterruptedException ex) {
-                Logger.getLogger(TelaMonitoramento.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }
+    }    
 
     public void buscaFuncionarios() {
 
@@ -103,8 +78,6 @@ public class TelaMonitoramento extends javax.swing.JFrame {
         }
 
         definirLayout(funcionarios);
-        
-        
     }
 
     private void definirLayout(List<DadosFuncionarios> listFunc) {
@@ -197,7 +170,7 @@ public class TelaMonitoramento extends javax.swing.JFrame {
                 }
             });
 
-            //Botão para cessar TeamViewer
+            //Botão para acessar TeamViewer
             JButton btnTeamViewer = new JButton("Ver Tela do Usuário");
             btnTeamViewer.setBounds(625, 270, 150, 30);
 
@@ -208,6 +181,24 @@ public class TelaMonitoramento extends javax.swing.JFrame {
                     tv.abrirTeamViewer();
                 }
             });
+            
+            //Botão para acessar ver informações do usuário em tempo real
+            JButton btnTempoReal = new JButton("Visualizar em Tempo Real");
+            btnTempoReal.setBounds(505, 310, 180, 30);
+
+            btnTempoReal.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    TelaIndividual ti = new TelaIndividual(nomeGerente, func);
+                    ti.setVisible(true);
+                }
+            });
+            
+            //Label dizendo a hora que trouxe os dados
+            Date dt = new Date();
+            Format formaterHoras = new SimpleDateFormat("HH:mm:ss");
+            JLabel lbHoraxtracao = new JLabel(String.format("Dados Atualizados às: %s", formaterHoras.format(dt)));
+            lbHoraxtracao.setBounds(5, 340, 500, 30);
 
             //Adicionando componentes no JPanel
             nomeJPanel.add(lbNomePc);
@@ -226,17 +217,12 @@ public class TelaMonitoramento extends javax.swing.JFrame {
             nomeJPanel.add(tableProcessos);
             nomeJPanel.add(btnTeamViewer);
             nomeJPanel.add(btnEnviarMensagem);
-
+            nomeJPanel.add(btnTempoReal);
+            nomeJPanel.add(lbHoraxtracao);
+            
             jTabbedPane1.addTab(func.getNomeFunc(), nomeJPanel);
-
-            ComponentesTela cp = new ComponentesTela(func.getIdMaquina(), lbNomeCpu, lbCPU, barCPU, lbRAM, barRAM, lbHD, barHD, tableProcessos);
-            componentes.add(cp);
-
             
         }
-        metodoFinalizado = true;
-        
-
     }
 
     @SuppressWarnings("unchecked")
@@ -371,18 +357,9 @@ public class TelaMonitoramento extends javax.swing.JFrame {
      * @param args the command line arguments
      * @throws org.quartz.SchedulerException
      */
-    public static void main(String args[]) throws SchedulerException {
+    public static void main(String args[]){
 
-//        JobDetail job1 = JobBuilder.newJob(TelaMonitoramento.class).build();													  //("0 0 10 1/1 * ? *") Produção
-//        Trigger tarefa1 = (Trigger) TriggerBuilder.newTrigger()
-//                .withIdentity("CronTrigger")
-//                    .withSchedule(CronScheduleBuilder
-//                        .cronSchedule("0/30 0/1 * 1/1 * ? *")).build();
-//        Scheduler sc;
-//        sc = StdSchedulerFactory.getDefaultScheduler();
-//        sc.start();
-//        sc.scheduleJob(job1, (org.quartz.Trigger) tarefa1);
-//        System.out.println("Recebendo dados do Banco");
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
