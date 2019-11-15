@@ -49,10 +49,10 @@ public class Executer {
         try{
             jdbcTemplate.update("INSERT INTO tblStatusFuncionario values (?, ?, ?)", new Date(), null, idFuncionario);
             
-            System.out.println("Usuário Logado");
+            GerarLog.escreverLog("Dados de status logado inseridos", "B");
         }
         catch(Exception e){
-            GerarLog.escreverLog("Erro ao inserir dados de logon: " + e.getMessage());
+            GerarLog.escreverLog("Erro ao inserir dados de logon: " + e.getMessage(), "B");
         }
     }
 }

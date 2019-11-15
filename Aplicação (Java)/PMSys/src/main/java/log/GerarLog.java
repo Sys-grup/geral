@@ -5,6 +5,9 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -26,16 +29,31 @@ public class GerarLog {
         
     }
     
-    public static void escreverLog(String mensagem){
+    public static void escreverLog(String mensagem, String opcao){
         try{
-            File arquivo = new File("C:/temp/app_logs.txt");
+            File arquivo = new File("");
+            
+            switch(opcao){
+                case "A":
+                    arquivo = new File("C:/temp/app_logs.txt");
+                    break;
+                
+                case "B":
+                    arquivo = new File("C:/temp/logs_insercao.txt");
+                    break;
+            }
+            
+            
+            Format formatador = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+            Date dt = new Date();
+            String dataLog = formatador.format(dt);
             
             verificaExistencia(arquivo);
             
             FileWriter fw = new FileWriter(arquivo, true);
             BufferedWriter writer = new BufferedWriter(fw);
             
-            writer.write(mensagem);
+            writer.write("Log gerado em: " + dataLog + " | " + mensagem);
             writer.newLine();
             
             writer.close();

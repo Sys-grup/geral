@@ -132,7 +132,7 @@ public class TelaMensagem extends javax.swing.JFrame {
     }//GEN-LAST:event_btCancelarActionPerformed
 
     private void btEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEnviarActionPerformed
-        if (slack.enviarMensagem(taMensagem.getText(), this.identificador)) {
+        if (slack.enviarMensagem(taMensagem.getText(), this.identificador, this.colaborador)) {
             this.dispose();
         }
         else {
