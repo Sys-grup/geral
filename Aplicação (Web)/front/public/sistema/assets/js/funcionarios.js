@@ -35,7 +35,7 @@ function carregarFuncionarios(lista) {
                     </h6>
                     <p>${funcionario.squad}</p>
                 </td>
-                <td><a href="editar-funcionario.html" class="label theme-bg text-white f-12">
+                <td><a href="funcionario=${funcionario.id}" class="label theme-bg text-white f-12">
                         Editar
                     </a>
                     <div id="exampleModalCenter" class="modal fade" tabindex="-1" role="dialog"
