@@ -5,7 +5,9 @@
  */
 package com.mycompany.pmsys;
 
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.Format;
@@ -36,10 +38,14 @@ public class TelaIndividual extends javax.swing.JFrame {
     JTable tableProcessos;
     Format formaterHoras = new SimpleDateFormat("HH:mm:ss");
     JLabel lbHoraxtracao;
-    
+
     public TelaIndividual(String nomeGerente, DadosFuncionarios func) {
         initComponents();
 
+        Toolkit toolkit = getToolkit();
+        Dimension size = toolkit.getScreenSize();
+        setLocation(size.width / 2 - getWidth() /2, size.height / 2 - getHeight() /2);
+        
         DadosSquads dadosSquads = new DadosSquads(1);
 
         lbUsuario.setText(nomeGerente);
@@ -49,90 +55,90 @@ public class TelaIndividual extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("img/rsz_profileicon.png"))); // NOI18N
 
         criarTela(func);
-        
+
         GerarLog.escreverLog("Tela de monitoramento individual do colaborador " + func.getNomeFunc() + " foi aberta", "A");
-        
+
         t1.start();
-        
+
     }
-    
+
     Thread t1 = new Thread(new Runnable() {
         @Override
         public void run() {
-            try{
-                while(true){
-                    
+            try {
+                while (true) {
+
                     DadosRAM ram = new DadosRAM(idMaquina);
                     DadosCPU cpu = new DadosCPU(idMaquina);
                     DadosHD hd = new DadosHD(idMaquina);
                     DadosProcessos processos = new DadosProcessos(idMaquina);
-                    
+
                     //Atualiza dados CPU
                     lbNomeCpu.setText(cpu.getNomeCpu());
                     lbCPU.setText(cpu.getTotalUso().toString() + "%");
                     barCPU.setValue((int) Math.round(cpu.getTotalUso()));
-                    
+
                     //Atualiza dados RAM
                     lbRAM.setText(formataRamUsada(ram.getTotalRamUsado()) + " GB");
                     barRAM.setValue(Integer.parseInt(ram.getTotalRamUsado().toString().substring(0, 1)));
-                    
+
                     //Atualiza dados HD
                     lbHD.setText(hd.getEspacoTotalDispoivel().toString() + " GB");
                     barHD.setValue(formataHDUsado(hd));
-                    
+
                     //Processos
                     nomeJPanel.remove(tableProcessos);
-                    
+
                     //Processos
                     String colunas[] = {"Nome Processo", "Tempo de Uso"};
 
                     JTable tableProcessos = new JTable(processos.getDados(), colunas);
 
                     tableProcessos.setBounds(450, 80, 300, 160);
-                    
+
                     t1.sleep(10000);
-                    
+
                     //Atualizar momento captura
                     Date dt = new Date();
                     lbHoraxtracao.setText(String.format("Dados Atualizados às: %s", formaterHoras.format(dt)));
-                    
+
                 }
-            }catch(UnsupportedOperationException e){
+            } catch (UnsupportedOperationException e) {
                 JOptionPane.showMessageDialog(null, "Não suportado \n" + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
                 GerarLog.escreverLog("Não suportado: " + e.getMessage(), "A");
-            }catch(InterruptedException e){
+            } catch (InterruptedException e) {
                 JOptionPane.showMessageDialog(null, "Coleta interrompida! \n" + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
                 GerarLog.escreverLog("Coleta interrompida: " + e.getMessage(), "A");
             }
         }
     });
-    
-    private String formataRamUsada(Double valor){
+
+    private String formataRamUsada(Double valor) {
         String ramAntes = valor.toString();
         String statusRamUsada = ramAntes.substring(0, 3);
-        
+
         return statusRamUsada;
     }
-    
-    private Integer formataHDUsado(DadosHD hd){
+
+    private Integer formataHDUsado(DadosHD hd) {
         Integer hdTotal = (int) Math.round(hd.getTotalEspaco());
         Integer hdTotalDisponivel = (int) Math.round(hd.getEspacoTotalDispoivel());
         Integer hdTotalUsado = hdTotal - hdTotalDisponivel;
-        
+
         return hdTotalUsado;
     }
-    
-    private void criarTela(DadosFuncionarios func){
+
+    private void criarTela(DadosFuncionarios func) {
         Font statusFont = new Font("Tahoma", Font.PLAIN, 40);
         Font statusFontHD = new Font("Tahoma", Font.PLAIN, 28);
-        
+
         idMaquina = func.getIdMaquina();
-        
+
         DadosRAM ram = new DadosRAM(func.getIdMaquina());
         DadosCPU cpu = new DadosCPU(func.getIdMaquina());
         DadosHD hd = new DadosHD(func.getIdMaquina());
         DadosProcessos processos = new DadosProcessos(func.getIdMaquina());
-        
+
         nomeJPanel = new javax.swing.JPanel();
         nomeJPanel.setLayout(null);
 
@@ -221,7 +227,7 @@ public class TelaIndividual extends javax.swing.JFrame {
                 tv.abrirTeamViewer();
             }
         });
-        
+
         //Botão para cessar TeamViewer
         JButton btnVoltar = new JButton("Voltar");
         btnVoltar.setBounds(545, 310, 100, 30);
@@ -229,13 +235,13 @@ public class TelaIndividual extends javax.swing.JFrame {
         btnVoltar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+
                 GerarLog.escreverLog("Tela de monitoramento individual do colaborador " + func.getNomeFunc() + " foi fechada", "A");
-                
+
                 dispose();
             }
         });
-        
+
         //Label dizendo a hora que trouxe os dados
         Date dt = new Date();
         lbHoraxtracao = new JLabel(String.format("Dados Atualizados às: %s", formaterHoras.format(dt)));
@@ -260,9 +266,9 @@ public class TelaIndividual extends javax.swing.JFrame {
         nomeJPanel.add(btnEnviarMensagem);
         nomeJPanel.add(btnVoltar);
         nomeJPanel.add(lbHoraxtracao);
-        
+
         jTabbedPane1.addTab(func.getNomeFunc(), nomeJPanel);
-            
+
     }
 
     /**
@@ -283,7 +289,8 @@ public class TelaIndividual extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         lbArea = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(java.awt.SystemColor.activeCaption);
 
