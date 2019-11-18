@@ -7,7 +7,7 @@ package com.mycompany.pmsys.oshi;
 
 import com.mycompany.pmsys.ConnectURL;
 import java.util.Date;
-import javax.swing.JOptionPane;
+import log.GerarLog;
 import org.quartz.CronScheduleBuilder;
 import org.quartz.JobBuilder;
 import org.quartz.JobDetail;
@@ -16,6 +16,7 @@ import org.quartz.Trigger;
 import org.quartz.TriggerBuilder;
 import org.quartz.impl.StdSchedulerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
+
 /**
  *
  * @author Aluno
@@ -23,36 +24,54 @@ import org.springframework.jdbc.core.JdbcTemplate;
 public class Executer {
 
     private static int idFuncionario = 1000;
-    
+
     public static void main(String[] args) throws Exception {
-        
+
         logou();
-        
+
         JobDetail job = JobBuilder.newJob(OshiDados.class).build();													  //("0 0 10 1/1 * ? *") Produção
 
         Trigger tarefa = (Trigger) TriggerBuilder.newTrigger()
                 .withIdentity("CronTrigger")
-                    .withSchedule(CronScheduleBuilder
+                .withSchedule(CronScheduleBuilder
                         .cronSchedule("0 0/1 * 1/1 * ? *")).build();
-        
+
         Scheduler sc = StdSchedulerFactory.getDefaultScheduler();
         sc.start();
         sc.scheduleJob(job, (org.quartz.Trigger) tarefa);
         System.out.println("Iniciando envio de dados ao Banco");
-       
+
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            @Override
+            public void run() {
+                deslogou();
+            }
+        });
+
     }
-    
-    private static void logou(){
+
+    private static void logou() {
         ConnectURL conn = new ConnectURL();
         JdbcTemplate jdbcTemplate = new JdbcTemplate(conn.getDataSource());
-        
-        try{
+
+        try {
             jdbcTemplate.update("INSERT INTO tblStatusFuncionario values (?, ?, ?)", new Date(), null, idFuncionario);
-            
-            System.out.println("Usuário Logado");
+
+            GerarLog.escreverLog("Dados de status logado inseridos", "B");
+        } catch (Exception e) {
+            GerarLog.escreverLog("Erro ao inserir dados de logon: " + e.getMessage(), "B");
         }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Erro do Sql \n" + e, "Erro", JOptionPane.ERROR_MESSAGE);
+    }
+    private static void deslogou() {
+        ConnectURL conn = new ConnectURL();
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(conn.getDataSource());
+
+        try {
+            jdbcTemplate.update("INSERT INTO tblStatusFuncionario values (?, ?, ?)", null, new Date(), idFuncionario);
+
+            GerarLog.escreverLog("Dados de status logado inseridos", "B");
+        } catch (Exception e) {
+            GerarLog.escreverLog("Erro ao inserir dados de logon: " + e.getMessage(), "B");
         }
     }
 }

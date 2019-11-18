@@ -1,3 +1,3 @@
 function login() {
-    window.location.href = 'sistema/src/dashboard-project.html';
+    window.location.href = '/system/';
 }

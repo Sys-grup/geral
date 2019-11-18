@@ -5,17 +5,23 @@
  */
 package com.mycompany.pmsys;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 /**
  *
  * @author marce
  */
 public class TelaMensagem extends javax.swing.JFrame {
-        
+
     Slack slack = new Slack();
     String colaborador;
     String identificador;
-    
+
     public TelaMensagem(String identificador, String colaborador) {
+        Toolkit toolkit = getToolkit();
+        Dimension size = toolkit.getScreenSize();
+        setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
         this.colaborador = colaborador;
         this.identificador = identificador;
         initComponents();
@@ -40,7 +46,8 @@ public class TelaMensagem extends javax.swing.JFrame {
         btCancelar = new javax.swing.JButton();
         lbError = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(java.awt.SystemColor.activeCaption);
 
@@ -132,10 +139,9 @@ public class TelaMensagem extends javax.swing.JFrame {
     }//GEN-LAST:event_btCancelarActionPerformed
 
     private void btEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEnviarActionPerformed
-        if (slack.enviarMensagem(taMensagem.getText(), this.identificador)) {
+        if (slack.enviarMensagem(taMensagem.getText(), this.identificador, this.colaborador)) {
             this.dispose();
-        }
-        else {
+        } else {
             lbError.setText("Erro ao enviar a mensagem.");
         }
     }//GEN-LAST:event_btEnviarActionPerformed
