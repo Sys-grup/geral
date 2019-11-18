@@ -32,8 +32,13 @@ router.get('/squad', function(req, res, next) {
   res.sendFile(html);
 });
 
-router.get(/(\/squad=)[0-9]+$/, function(req, res, next) {
-  const html = path.resolve(src, 'cadastrar-squad.html');
+router.get('/squad=0', function(req, res, next) {
+  const html = path.resolve(src, 'cadastro-squad.html');
+  res.sendFile(html);
+});
+
+router.get(/(\/squad=)[1-9][0-9]*$/, function(req, res, next) {
+  const html = path.resolve(src, 'editar-squad.html');
   res.sendFile(html);
 });
 

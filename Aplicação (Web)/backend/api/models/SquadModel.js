@@ -27,10 +27,10 @@ class SquadModel {
 
         const sql = `
             SELECT
-                apelidoSquad,
-                areaSquad,
-                Descricao,
-                Objetivo
+                apelidoSquad AS nome,
+                areaSquad AS area,
+                Descricao AS descricao,
+                Objetivo AS objetivo
             FROM  tblSquad
             WHERE
             fkConta = ${id}
