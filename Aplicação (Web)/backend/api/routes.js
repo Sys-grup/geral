@@ -43,7 +43,7 @@ routes.get('/funcionarios',  async (req, res) => {
 });
 
 // Retorna sessions para login
-routes.get('/sessions', async(req, res) => {
+routes.post('/sessions', async(req, res) => {
     const response = await FuncController.getSessions(req, res);
     return response;
 });
