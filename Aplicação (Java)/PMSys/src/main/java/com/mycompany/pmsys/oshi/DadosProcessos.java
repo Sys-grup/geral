@@ -118,7 +118,7 @@ public class DadosProcessos {
         try{
             jdbcTemplate.update("INSERT INTO tblInfoProcessos values (?, ?, ?, ?)", this.nomeProcesso, this.tempoDeUso, this.dataCapturada, this.idMaquina);
             
-            GerarLog.escreverLog("Dados de CPU inseridos com sucesso!", "B");
+            GerarLog.escreverLog("Dados de processos inseridos com sucesso!", "B");
         }catch (Exception e){
             GerarLog.escreverLog("Erro ao inserir Dados dos Processos: " + e.getMessage(), "B");
         }
