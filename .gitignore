@@ -23,6 +23,8 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 /Aplicação (Java)/PMSys/target/test-classes
+/Aplicação (Java)/PMSys/target/maven-archiver
+/Aplicação (Java)/PMSys/target/maven-status
 
 #OSHI
 # Output
