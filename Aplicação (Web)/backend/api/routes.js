@@ -47,10 +47,11 @@ routes.post('/sessions', async(req, res) => {
     const response = await FuncController.getSessions(req, res);
     return response;
 });
-
-
 // Dashboard
-
+routes.post('/Dashboard', async(req, res) => {
+    const response = await DashController.getData(req, res);
+    return response;
+});
 // Retorna dados de notificações
 
 routes.get('/notifications', async(req, res) => {
