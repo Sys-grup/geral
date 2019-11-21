@@ -30,9 +30,11 @@ const getSquad = async (req, res) => {
 
     if(id && idSquad) {
     
-        const dadosSquad = await model.index(id, idSquad);
+        let dadosSquad = await model.index(id, idSquad);
 
-        return res.status(200).json(dadosSquad);
+        const response = {"nome": dadosSquad[0].nome, "area": dadosSquad[0].area, "descricao": dadosSquad[0].descricao, "objetivo": dadosSquad[0].objetivo, "funcionarios": dadosSquad.map(dados => { return {"idFuncionario": dados.idFuncionario, "nomeFuncionario": dados.nomeFuncionario} })};
+
+        return res.status(200).json(response);
     
     }else{
 

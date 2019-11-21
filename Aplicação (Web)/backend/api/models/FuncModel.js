@@ -42,7 +42,8 @@ class FuncModel {
 
     async funcionarioSquad() {
         const sql = `
-            SELECT idFuncionario, nomeFuncionario FROM tblFuncionario WHERE fkSquad IS NULL
+            SELECT idFuncionario as id,
+            nomeFuncionario as nome FROM tblFuncionario WHERE fkSquad IS NULL
         `;
 
         let response = await query(connection, sql);
