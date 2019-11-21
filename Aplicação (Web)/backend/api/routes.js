@@ -42,6 +42,12 @@ routes.get('/funcionarios',  async (req, res) => {
     return response;
 });
 
+// Retorna a lista de funcionários
+routes.get('/funcionariosSquad',  async (req, res) => {
+    const response = await FuncController.listFuncSquad(req, res);
+    return response;
+});
+
 // Retorna sessions para login
 routes.post('/sessions', async(req, res) => {
     const response = await FuncController.getSessions(req, res);

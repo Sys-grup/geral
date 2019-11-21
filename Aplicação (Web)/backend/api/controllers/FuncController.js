@@ -9,6 +9,16 @@ const list = async (req, res) => {
     return res.status(200).json(listaFuncionarios);
 }
 
+const listFuncSquad = async (req, res) => {
+    
+    model = new FuncModel();
+
+    const listaFuncionarios = await model.funcionarioSquad();
+
+    return res.status(200).json(listaFuncionarios);
+
+}
+
 const getSessions = async (req, res) => {
     
     const { login, senha } = req.body;
@@ -28,4 +38,5 @@ const getSessions = async (req, res) => {
 module.exports = {
     list,
     getSessions,
+    listFuncSquad,
 };

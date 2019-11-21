@@ -44,12 +44,14 @@ const getSquad = async (req, res) => {
 const createSquad = async (req, res) => {
 
     const { id } = req.headers;
-    const { nome: apelido, area, descricao, objetivo } = req.body;
+    const { nome: apelido, area, descricao, objetivo, listFunc } = req.body;
+
     const model = new SquadModel();
 
     if(id && apelido && area && descricao && objetivo){
 
         await model.create(apelido, area, descricao, objetivo, id);
+        await model.addFuncionarioSquad(listFunc);
         return res.status(201).end();
 
     } else {

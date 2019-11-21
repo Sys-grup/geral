@@ -71,6 +71,29 @@ class SquadModel {
 
     }
 
+    async funcionarioSquad() {
+        const sql = `
+            SELECT idFuncionario, nomeFuncionario FROM tblFuncionario WHERE fkSquad = NULL
+        `;
+
+        let response = await query(connection, sql);
+        return response.recordsets[0];
+
+    }
+
+    async addFuncionarioSquad(listFunc) {
+        const sql = `
+            UPDATE 
+                tblFuncionario
+            SET
+             fkSquad = @@identity
+            WHERE idFuncionario
+            IN
+            (${listFunc})
+        `;
+        await query(connection, sql);
+    }
+
 }
 
 module.exports = SquadModel;

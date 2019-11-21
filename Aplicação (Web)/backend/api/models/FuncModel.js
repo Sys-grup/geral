@@ -40,6 +40,16 @@ class FuncModel {
 
     }
 
+    async funcionarioSquad() {
+        const sql = `
+            SELECT idFuncionario, nomeFuncionario FROM tblFuncionario WHERE fkSquad IS NULL
+        `;
+
+        let response = await query(connection, sql);
+        return response.recordsets[0];
+
+    }
+
 }
 
 module.exports = FuncModel;
