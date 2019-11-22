@@ -72,8 +72,6 @@ const updateSquad = async ( req, res ) => {
     const { nome: apelido, area, descricao, objetivo, listFuncAdd, listFuncRemove } = req.body;
     const model = new SquadModel();
 
-    console.log(listFuncAdd);
-
     if(id && apelido && area && descricao && objetivo){
 
         await model.update(apelido, area, descricao, objetivo, id);
