@@ -53,16 +53,21 @@ routes.post('/sessions', async(req, res) => {
     const response = await FuncController.getSessions(req, res);
     return response;
 });
-
+// Cadastro de Funcionário
 routes.post('/cadastrar', async(req, res) => {
     const reponse = await FuncController.createFunc(req, res);
     return reponse;
 });
-
+// Editar Funcionário
 routes.put('/editar', async (req, res) => {
     const response = await FuncController.updateFunc(req, res);
     return response;
 });
+
+routes.delete('/deletar', async (req, res) => {
+    const response = await FuncController.deleteFunc(req, res);
+    return response;
+})
 
 
 // Dashboard
