@@ -76,10 +76,23 @@ class FuncModel {
         WHERE idFuncionario = ${id}
 
         `;
+        
 
         await query(connection, sql);
     }
 
+    async deleteFunc(id){
+
+    const sql = `
+    DELETE FROM 
+        tblFuncionario
+    WHERE
+        idFuncionario = ${id}
+
+    `;
+
+        await query(connection, sql);
+    }
 
 }
 

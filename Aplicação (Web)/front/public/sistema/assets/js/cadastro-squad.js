@@ -36,26 +36,25 @@ function enviarFormulario() {
         if (!objetivo) return;
     const selecionados = $('#custom-headers').val();
 
-    // fetch("http://localhost:8080/squad",
-    // {
-    //     method: 'POST',
-    //     headers: new Headers({
-    //       'Content-Type': 'application/json',
-    //       'id': 1,
-    //     }),
-    //     body: JSON.stringify({
-    //         "nome": nome,
-    //         "area": "Software",
-    //         "descricao": descricao,
-    //         "objetivo": objetivo,
-    //         "listFunc": 1,
-    //     }),
-    // })
-    // .then(response => {
-    //     console.log(response); 
-    //     // window.location.path = "/system/squad"
-    // })
-    // .catch(err => { 
-    //     console.error(err); 
-    // });
+    fetch("http://localhost:8080/squad",
+    {
+        method: 'POST',
+        headers: new Headers({
+          'Content-Type': 'application/json',
+          'id': 1,
+        }),
+        body: JSON.stringify({
+            "nome": nome,
+            "area": "Software",
+            "descricao": descricao,
+            "objetivo": objetivo,
+            "listFunc": 1,
+        }),
+    })
+    .then(response => {
+        window.location.path = "/system/squad"
+    })
+    .catch(err => { 
+        console.error(err);
+    });
 }
