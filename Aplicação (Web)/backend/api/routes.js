@@ -54,7 +54,7 @@ routes.post('/sessions', async(req, res) => {
     return response;
 });
 // Dashboard
-routes.post('/Dashboard', async(req, res) => {
+routes.post('/dashboard', async(req, res) => {
     const response = await DashController.getData(req, res);
     return response;
 });
