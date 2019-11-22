@@ -48,6 +48,16 @@ routes.get('/sessions', async(req, res) => {
     return response;
 });
 
+routes.post('/cadastrar', async(req, res) => {
+    const reponse = await FuncController.createFunc(req, res);
+    return reponse;
+});
+
+routes.put('/editar', async (req, res) => {
+    const response = await FuncController.updateFunc(req, res);
+    return response;
+});
+
 
 // Dashboard
 
