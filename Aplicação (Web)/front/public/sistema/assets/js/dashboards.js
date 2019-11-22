@@ -205,6 +205,7 @@ function teste(){
     
 
     if(radio1.checked){
+        
         console.log("Mensal");
     }else if(radio2.checked){
         console.log("Semanal");
@@ -213,6 +214,7 @@ function teste(){
     }
 
     if(dash1.checked){
+        
         console.log("Alertas dos squads");
     }
     if(dash2.checked){

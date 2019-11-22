@@ -30,9 +30,11 @@ const getSquad = async (req, res) => {
 
     if(id && idSquad) {
     
-        const dadosSquad = await model.index(id, idSquad);
+        let dadosSquad = await model.index(id, idSquad);
 
-        return res.status(200).json(dadosSquad);
+        const response = {"nome": dadosSquad[0].nome, "area": dadosSquad[0].area, "descricao": dadosSquad[0].descricao, "objetivo": dadosSquad[0].objetivo, "funcionarios": dadosSquad.map(dados => { return {"idFuncionario": dados.idFuncionario, "nomeFuncionario": dados.nomeFuncionario} })};
+
+        return res.status(200).json(response);
     
     }else{
 
@@ -44,12 +46,16 @@ const getSquad = async (req, res) => {
 const createSquad = async (req, res) => {
 
     const { id } = req.headers;
-    const { nome: apelido, area, descricao, objetivo } = req.body;
+    const { nome: apelido, area, descricao, objetivo, listFunc } = req.body;
+
     const model = new SquadModel();
 
     if(id && apelido && area && descricao && objetivo){
 
         await model.create(apelido, area, descricao, objetivo, id);
+        
+        if(listFunc.length) await model.addFuncionarioSquad(listFunc);
+        
         return res.status(201).end();
 
     } else {
@@ -63,12 +69,16 @@ const createSquad = async (req, res) => {
 const updateSquad = async ( req, res ) => {
 
     const { id } = req.query;
-    const { nome: apelido, area, descricao, objetivo } = req.body;
+    const { nome: apelido, area, descricao, objetivo, listFuncAdd, listFuncRemove } = req.body;
     const model = new SquadModel();
+
+    console.log(listFuncAdd);
 
     if(id && apelido && area && descricao && objetivo){
 
         await model.update(apelido, area, descricao, objetivo, id);
+        if(listFuncAdd.length) await model.updateFuncionarioSquad(listFuncAdd, id);
+        if(listFuncRemove.length) await model.removeFuncionarioSquad(listFuncRemove); 
         return res.status(201).end();
 
     } else {

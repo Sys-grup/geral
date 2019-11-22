@@ -29,10 +29,21 @@ class FuncModel {
 
     }
 
-    async index() {
+    async index(login, senha) {
 
         const sql = `
-            
+            SELECT idConta FROM tblContas WHERE login= '${login}' AND senha='${senha}';
+        `;
+
+        let response = await query(connection, sql);
+        return response.recordsets[0];
+
+    }
+
+    async funcionarioSquad() {
+        const sql = `
+            SELECT idFuncionario as id,
+            nomeFuncionario as nome FROM tblFuncionario WHERE fkSquad IS NULL
         `;
 
         let response = await query(connection, sql);

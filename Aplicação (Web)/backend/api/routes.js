@@ -42,8 +42,14 @@ routes.get('/funcionarios',  async (req, res) => {
     return response;
 });
 
+// Retorna a lista de funcionários
+routes.get('/funcionariosSquad',  async (req, res) => {
+    const response = await FuncController.listFuncSquad(req, res);
+    return response;
+});
+
 // Retorna sessions para login
-routes.get('/sessions', async(req, res) => {
+routes.post('/sessions', async(req, res) => {
     const response = await FuncController.getSessions(req, res);
     return response;
 });
@@ -60,7 +66,10 @@ routes.put('/editar', async (req, res) => {
 
 
 // Dashboard
-
+routes.post('/Dashboard', async(req, res) => {
+    const response = await DashController.getData(req, res);
+    return response;
+});
 // Retorna dados de notificações
 
 routes.get('/notifications', async(req, res) => {

@@ -9,13 +9,30 @@ const list = async (req, res) => {
     return res.status(200).json(listaFuncionarios);
 }
 
-const getSessions = async (req, res) => {
+const listFuncSquad = async (req, res) => {
     
     model = new FuncModel();
 
-    const session = await model.index();
+    const listaFuncionarios = await model.funcionarioSquad();
 
-    return res.status(200).json(session);
+    return res.status(200).json(listaFuncionarios);
+
+}
+
+const getSessions = async (req, res) => {
+    
+    const { login, senha } = req.body;
+
+    model = new FuncModel();
+
+    const session = await model.index(login, senha);
+
+    if(session.length > 0) {
+        return res.status(200).json(session);
+    }else {
+        return res.status(404).end();
+    }
+
 } 
 
 const createFunc = async (req, res) => {
@@ -58,4 +75,5 @@ module.exports = {
     getSessions,
     createFunc,
     updateFunc,
+    listFuncSquad,
 };

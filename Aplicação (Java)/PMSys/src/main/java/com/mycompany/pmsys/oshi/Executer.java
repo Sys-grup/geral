@@ -7,6 +7,8 @@ package com.mycompany.pmsys.oshi;
 
 import com.mycompany.pmsys.ConnectURL;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 import log.GerarLog;
 import org.quartz.CronScheduleBuilder;
 import org.quartz.JobBuilder;
@@ -24,6 +26,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 public class Executer {
 
     private static int idFuncionario = 1000;
+    private static int lastID;
 
     public static void main(String[] args) throws Exception {
 
@@ -56,6 +59,13 @@ public class Executer {
 
         try {
             jdbcTemplate.update("INSERT INTO tblStatusFuncionario values (?, ?, ?)", new Date(), null, idFuncionario);
+            
+            System.out.println("Executando select identity");
+            List<Map<String, Object>> id = jdbcTemplate.queryForList("select idStatusFuncionario from tblStatusFuncionario where idStatusFuncionario = @@identity");
+            
+            for(Map row : id){
+                lastID = Integer.parseInt(row.get("idStatusFuncionario").toString());
+            }
 
             GerarLog.escreverLog("Dados de status logado inseridos", "B");
         } catch (Exception e) {
@@ -67,11 +77,11 @@ public class Executer {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(conn.getDataSource());
 
         try {
-            jdbcTemplate.update("INSERT INTO tblStatusFuncionario values (?, ?, ?)", null, new Date(), idFuncionario);
+            jdbcTemplate.update("UPDATE tblStatusFuncionario SET horaSaiu = ? where idStatusFuncionario = ?", new Date(), lastID);
 
-            GerarLog.escreverLog("Dados de status logado inseridos", "B");
+            GerarLog.escreverLog("Usuário deslogou inseridos", "B");
         } catch (Exception e) {
-            GerarLog.escreverLog("Erro ao inserir dados de logon: " + e.getMessage(), "B");
+            GerarLog.escreverLog("Erro ao inserir dados de deslog: " + e.getMessage(), "B");
         }
     }
 }

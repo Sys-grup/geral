@@ -27,15 +27,16 @@ class SquadModel {
 
         const sql = `
             SELECT
-                apelidoSquad AS nome,
-                areaSquad AS area,
-                Descricao AS descricao,
-                Objetivo AS objetivo
-            FROM  tblSquad
-            WHERE
-            fkConta = ${id}
-            AND
-            idSquad= ${idSquad};
+                apelidoSquad nome,
+                areaSquad area,
+                Descricao descricao,
+                objetivo objetivo,
+                f.idFuncionario idFuncionario,
+                f.nomeFuncionario nomeFuncionario
+            FROM tblSquad s
+            INNER JOIN tblFuncionario f ON s.idSquad = f.fkSquad
+            WHERE s.fkConta = ${id} AND s.idSquad = ${idSquad}
+            
         `;
 
         let squad = await query(connection, sql);
@@ -69,6 +70,55 @@ class SquadModel {
 
         await query(connection, sql);
 
+    }
+
+    async funcionarioSquad() {
+        const sql = `
+            SELECT idFuncionario, nomeFuncionario FROM tblFuncionario WHERE fkSquad = NULL
+        `;
+
+        let response = await query(connection, sql);
+        return response.recordsets[0];
+
+    }
+
+    async addFuncionarioSquad(listFunc) {
+        const sql = `
+            UPDATE 
+                tblFuncionario
+            SET
+             fkSquad = @@identity
+            WHERE idFuncionario
+            IN
+            (${listFunc})
+        `;
+        await query(connection, sql);
+    }
+
+    async updateFuncionarioSquad(listFunc, fkSquad) {
+        const sql = `
+            UPDATE 
+                tblFuncionario
+            SET
+             fkSquad = ${fkSquad}
+            WHERE idFuncionario
+            IN
+            (${listFunc})
+        `;
+        await query(connection, sql);
+    }
+
+    async removeFuncionarioSquad(listFunc) {
+        const sql = `
+            UPDATE 
+                tblFuncionario
+            SET
+             fkSquad = null
+            WHERE idFuncionario
+            IN
+            (${listFunc})
+        `;
+        await query(connection, sql);
     }
 
 }

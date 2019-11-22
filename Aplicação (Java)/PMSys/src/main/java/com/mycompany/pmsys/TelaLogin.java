@@ -33,6 +33,7 @@ public class TelaLogin extends javax.swing.JFrame {
     public TelaLogin() {
         initComponents();
         btEntrarSys.requestFocus();
+        
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("img/rsz_11rsz_1rsz_logo.png"))); // NOI18N
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("img/rsz_profileicon.png"))); // NOI18N
