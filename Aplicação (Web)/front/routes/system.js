@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/dashboard', function(req, res, next) {
-  const html = path.resolve(src, 'dashboard.html');
+  const html = path.resolve(src, 'dashboard-project.html');
   res.sendFile(html);
 });
 

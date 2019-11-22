@@ -1,5 +1,3 @@
-
-
 // function Efetuar_login() {
 //   var reg_name = getElementById('reg-senha');
 //   var reg_email = getElementById("reg-email");
@@ -12,11 +10,25 @@
 //   }
 // }
 
-function efetuar_login(nome, email) {
-    if (nome == "grupo.sys@gmail.com" && email == "1234") {
+function efetuar_login(login, senha) {
+    fetch("http://localhost:8080/sessions",
+    {
+        method: 'POST',
+        headers: new Headers({
+          'Content-Type': 'application/json',
+        }),
+        body: JSON.stringify({
+            login,
+            senha
+        })
+    })
+    .then(response => response.json())
+    .then(result => {
+        localStorage.setItem('idConta',result[0].idConta);
         window.location = 'system/';
-    }
-    else {
-        alert("Usuário inválido!")
-    }
+    })
+    .catch(err => {
+        alert("Usuário inválido!");
+        console.log(err);
+    });
 }
