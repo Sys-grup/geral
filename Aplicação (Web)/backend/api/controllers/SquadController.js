@@ -53,7 +53,9 @@ const createSquad = async (req, res) => {
     if(id && apelido && area && descricao && objetivo){
 
         await model.create(apelido, area, descricao, objetivo, id);
-        await model.addFuncionarioSquad(listFunc);
+        
+        if(listFunc.length) await model.addFuncionarioSquad(listFunc);
+        
         return res.status(201).end();
 
     } else {
@@ -67,12 +69,16 @@ const createSquad = async (req, res) => {
 const updateSquad = async ( req, res ) => {
 
     const { id } = req.query;
-    const { nome: apelido, area, descricao, objetivo } = req.body;
+    const { nome: apelido, area, descricao, objetivo, listFuncAdd, listFuncRemove } = req.body;
     const model = new SquadModel();
+
+    console.log(listFuncAdd);
 
     if(id && apelido && area && descricao && objetivo){
 
         await model.update(apelido, area, descricao, objetivo, id);
+        if(listFuncAdd.length) await model.updateFuncionarioSquad(listFuncAdd, id);
+        if(listFuncRemove.length) await model.removeFuncionarioSquad(listFuncRemove); 
         return res.status(201).end();
 
     } else {

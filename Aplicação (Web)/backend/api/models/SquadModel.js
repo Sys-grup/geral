@@ -95,6 +95,32 @@ class SquadModel {
         await query(connection, sql);
     }
 
+    async updateFuncionarioSquad(listFunc, fkSquad) {
+        const sql = `
+            UPDATE 
+                tblFuncionario
+            SET
+             fkSquad = ${fkSquad}
+            WHERE idFuncionario
+            IN
+            (${listFunc})
+        `;
+        await query(connection, sql);
+    }
+
+    async removeFuncionarioSquad(listFunc) {
+        const sql = `
+            UPDATE 
+                tblFuncionario
+            SET
+             fkSquad = null
+            WHERE idFuncionario
+            IN
+            (${listFunc})
+        `;
+        await query(connection, sql);
+    }
+
 }
 
 module.exports = SquadModel;
