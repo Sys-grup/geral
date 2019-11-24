@@ -4,7 +4,7 @@
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 
 <head>
-    <title>PMSys_ - Dashboards</title>
+    <title>PMSys_ - Squad Antigo</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -78,20 +78,7 @@
                                         <i data-feather="x" width="30px" height="30px"></i>
                                     </a>
                                 </div>
-                                <div class="modalCustom-info">
-                                    <div class="modalCustom-header">
-                                        <span class="modalCustom-title" id="modalSquadLabel">
-                                            Squad
-                                        </span>
-                                        <span id="modalCustom-status" class="modalCustom-status"></span>
-                                    </div>
-                                    <div class="modalCustom-info-text">
-                                        <span class="modalCustom-subtitle">Objetivo:</span>
-                                        <span class="modalCustom-description">Squad  trabalhando no projeto 12467, em desenvolvimento de uma aplicação WEB para gerenciamento de lojas.</span>
-                                        <span class="modalCustom-subtitle">Descrição:</span>
-                                        <span class="modalCustom-description">Squad Alpha alocado no 8° andar da empresa com 7 intregantes.</span>
-                                    </div>
-                                </div>
+                              
                                 <div class="modalCustom-func">
                                     <div id="lista-superior" class="modalCustom-superior">
                                         <!-- Div preenchida com superiores -->
@@ -163,38 +150,7 @@
 
 </html>
 <!-- Script para criar cards dos squads no array, simulando o retorno da API -->
-<script>
-    const squads = [{
-        nome: "Alpha",
-        status: "danger",
-    },
-    {
-        nome: "Beta",
-        status: "success",
-    },
-    {
-        nome: "Charlie",
-        status: "warning",
-    },
-    {
-        nome: "Delta",
-        status: "info",
-    }
-    ]
-    let divs = "";
-    squads.map(squad => {
-        divs += `
-                <div class="col-md-3">
-                    <div class="card card-squad">
-                        <div class="card-body" onclick="criarFuncionarios()" data-toggle="modal"
-                            data-target="#modalSquad" data-squad='${JSON.stringify(squad)}'>
-                            <span>${squad.nome}</span>
-                        </div>
-                    </div>
-                </div>
-            `
-    });
-    document.getElementById("conteudo").innerHTML = divs;
+
 </script>
 <!-- Script para gerar funcionarios aleatorios para testes -->
 <script>
