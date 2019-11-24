@@ -1,0 +1,1014 @@
+<!doctype html>
+
+<html class="no-js" lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+  <!-- Page Title Here -->
+  <title>.Sys</title>
+
+  <!-- Meta -->
+  <!-- Page Description Here -->
+  <meta name="description"
+    content="A beautiful and creative portfolio template. It is mobile friend (responsive) and comes with smooth animations">
+
+  <!-- Disable screen scaling-->
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+  <!-- Twitter Meta -->
+  <meta name="twitter:site" content="@miradontsoa">
+  <meta name="twitter:creator" content="@miradontsoa">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Page Title">
+  <meta name="twitter:description" content="Description of the page">
+  <meta name="twitter:image" content="../img/bg-default.html">
+
+  <!-- Facebook Meta -->
+  <meta property="og:url" content="your website url here">
+  <meta property="og:title" content="Page Title">
+  <meta property="og:description" content="Description of the page">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="../img/bg-default.html">
+  <meta property="og:image:secure_url" content="../img/bg-default.html">
+  <meta property="og:image:type" content="image/jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
+  <!-- Web fonts and Web Icons -->
+  <link rel="stylesheet" href="fonts/opensans/stylesheet.css">
+  <link rel="stylesheet" href="fonts/bebas/stylesheet.css">
+  <link rel="stylesheet" href="fonts/ionicons.min.css">
+  <link rel="stylesheet" href="fonts/font-awesome.min.css">
+
+
+  <link rel="shortcut icon" href="img/logo.png" type="image/icon">
+  <link rel="icon" href="img/logo.png" type="image/icon"> .
+
+  <!-- Vendor CSS style -->
+  <link rel="stylesheet" href="css/pageloader.css">
+
+  <!-- Uncomment below to load individualy vendor CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="js/vendor/swiper.min.css">
+  <link rel="stylesheet" href="js/vendor/jquery.fullpage.min.css">
+  <link rel="stylesheet" href="js/vegas/vegas.min.css">
+  <script src="js/index.js"></script>
+  <script src="js/login.js"></script>
+  <!-- Main CSS files -->
+  <link rel="stylesheet" href="css/main.css">
+
+  <!-- add alt layout here -->
+  <link rel="stylesheet" href="css/style-default.css">
+
+  <script src="js/vendor/modernizr-2.7.1.min.js"></script>
+</head>
+
+<body id="menu" class="body-page">
+  <!--[if lt IE 8]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+  <!-- Page Loader : just comment these lines to remove it -->
+  <div class="page-loader" id="page-loader">
+    <div>
+      <div class="icon ion-spin"></div>
+      <p>Carregando...</p>
+    </div>
+  </div>
+
+  <!-- BEGIN OF site header Menu -->
+  <header class="page-header navbar page-header-alpha scrolled-white menu-right topmenu-right">
+
+    <!-- Begin of menu icon toggler -->
+    <button class="navbar-toggler site-menu-icon" id="navMenuIcon">
+      <!-- Available class : menu-icon-dot / menu-icon-thick /menu-icon-random -->
+      <span class="menu-icon menu-icon-random">
+        <span class="bars">
+          <span class="bar1"></span>
+          <span class="bar2"></span>
+          <span class="bar3"></span>
+        </span>
+      </span>
+    </button>
+    <!-- End of menu icon toggler -->
+
+    <!-- Begin of logo/brand -->
+    <a class="navbar-brand" href="#home">
+      <span class="logo">
+        <img class="light-logo" src="img/logo.png" alt="Logo">
+      </span>
+      <span class="text">
+        <span class="line">.Sys</span>
+        <span class="line sub">Somos a extensão do seu sistema</span>
+      </span>
+    </a>
+    <!-- End of logo/brand -->
+
+    <!-- begin of menu wrapper -->
+    <div class="all-menu-wrapper" id="navbarMenu">
+      <!-- Begin of top menu -->
+      <nav class="navbar-topmenu">
+      </nav>
+      <!-- End of top menu -->
+
+      <!-- Begin of hamburger mainmenu menu -->
+      <nav class="navbar-mainmenu">
+        <form class="send_email_form form-container form-container-transparent form-container-white">
+          <div class="form-desc">
+            <h2 class="display-4 display-title  anim-2">Login</h2>
+          </div>
+          <div class="form-input  anim-4">
+            <div class="form-group form-success-gone">
+              <label for="reg-name">Login</label>
+              <input id="regname" name="login" placeholder="Digite seu login:" required
+                class="form-control-line form-control-white" type="text" />
+            </div>
+            <div class="form-group form-success-gone">
+              <label for="reg-email">Senha</label>
+              <input id="regemail" name="senha" class="form-control-line form-control-white" type="password" required
+                placeholder="****" data-validation-type="password" />
+            </div>
+            <div class="form-group mb-0">
+              <div>
+                <p class="email-ok invisible form-text-feedback form-success-visible">Your email has been registred,
+                  thank you.</p>
+              </div>
+              <button id="submit-email" type="button" class="btn btn-white btn-round btn-full form-success-gone"
+                name="submit_email" onclick="efetuar_login(regname.value, regemail.value)">Fazer
+                login</button>
+            </div>
+          </div>
+        </form>
+      </nav>
+      <!-- End of hamburger mainmenu menu -->
+
+      <!-- Begin of sidebar nav menu params class: text-only / icon-only-->
+      <nav class="navbar-sidebar ">
+        <ul class="navbar-nav" id="qmenu">
+          <li class="nav-item" data-menuanchor="home">
+            <a href="#home">
+              <i class="icon ion-ios-home-outline"></i>
+              <span class="txt">Inicio</span>
+            </a>
+          </li>
+          <li class="nav-item" data-menuanchor="about">
+            <a href="#about">
+              <i class="icon ion-ios-information-outline"></i>
+              <span class="txt">Sobre nós</span>
+            </a>
+          </li>
+          <li class="nav-item" data-menuanchor="services">
+            <a href="#services">
+              <i class="icon ion-ios-list-outline"></i>
+              <span class="txt">Serviços</span>
+            </a>
+          </li>
+          <li class="nav-item" data-menuanchor="projects">
+            <a href="#projects">
+              <i class="icon ion-ios-albums-outline"></i>
+              <span class="txt">Projetos</span>
+            </a>
+          </li>
+          <li class="nav-item" data-menuanchor="contact">
+            <a href="#contact">
+              <i class="icon ion-ios-telephone-outline"></i>
+              <span class="txt">Contate-nos</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- End of sidebar nav menu -->
+    </div>
+    <!-- end of menu wrapper -->
+
+  </header>
+  <!-- END OF site header Menu-->
+
+  <!-- BEGIN OF page cover -->
+  <div class="hh-cover page-cover">
+    <!-- Cover Background -->
+    <div class="cover-bg bg-img " data-image-src="img/bg-default1.jpg"></div>
+
+    <!-- Particles as background - uncomment below to use particles/snow -->
+    <div id="particles-js" class="cover-bg pos-abs full-size bg-color" data-bgcolor="rgba(2, 3, 10, 0.7)"></div>
+  </div>
+  <!--END OF page cover -->
+
+  <!-- BEGIN OF page main content -->
+  <main class="page-main page-fullpage main-anim" id="mainpage">
+
+    <!-- Begin of home section -->
+    <div class="section section-home fullscreen-md fp-auto-height-responsive " data-section="home">
+      <!-- Begin of section wrapper -->
+      <div class="section-wrapper">
+        <!-- content -->
+        <div class="section-content anim">
+          <div class="row">
+            <div class="col-12 col-md-6 text-left">
+              <!-- title and description -->
+              <div class="title-desc">
+                <h2 class="display-4 display-title home-title bordered anim-1">Inicio</h2>
+                <h4 class="anim-2">Somos uma empresa especializada em gerenciamento de sistemas.</h4>
+              </div>
+
+              <!-- Action button -->
+              <div class="btns-action anim-3">
+                <a class="btn btn-outline-white btn-round" href="#about">
+                  Saiba mais
+                </a>
+              </div>
+            </div>
+
+            <!-- begin of right content -->
+            <div class="col-12 col-md-6 right-content hidden-sm center-vh">
+              <!-- content -->
+              <div class="section-content">
+                <!-- illustartion -->
+                <div class="illustr zoomout-1">
+                  <img class="logo" src="img/logo_white.png" alt="Logo">
+                </div>
+              </div>
+            </div>
+            <!-- end of right content -->
+          </div>
+        </div>
+
+
+        <!-- Arrows scroll down/up -->
+        <footer class="section-footer scrolldown">
+          <a class="down">
+            <span class="icon"></span>
+            <span class="txt">Rolar para baixo</span>
+          </a>
+        </footer>
+      </div>
+      <!-- End of section wrapper -->
+    </div>
+    <!-- End of home section -->
+
+    <!-- Begin of description section -->
+    <div class="section section-description fp-auto-height-responsive " data-section="about">
+      <!-- Begin of section wrapper -->
+      <div class="section-wrapper center-vh dir-col anim">
+        <!-- title -->
+        <div class="section-title text-center">
+          <h5 class="title-bg">Sobre</h5>
+          <h2 class="display-4 display-title anim-2">"A tecnologia move o mundo"</h2>
+        </div>
+
+        <!-- content -->
+        <div class="section-content reduced anim text-center">
+          <!-- title and description -->
+          <div class="title-desc anim-3">
+            <p>Assim como a frase dita por Steve Jobs, acreditando que sem tecnologia
+              estariamos limitados a uma evolução retrógrada, criamos a .Sys, com intuito de
+              expandir essa ideia através de sistemas inovadores.</p>
+          </div>
+
+        </div>
+
+        <!-- Arrows scroll down/up -->
+        <footer class="section-footer scrolldown">
+          <a class="down">
+            <span class="icon"></span>
+            <span class="txt">Time</span>
+          </a>
+        </footer>
+      </div>
+      <!-- End of section wrapper -->
+    </div>
+    <!-- End of description section -->
+
+    <!-- Begin of description section -->
+    <div class="section section-description fp-auto-height-responsive " data-section="team">
+      <!-- Begin of section wrapper -->
+      <div class="section-wrapper center-vh dir-col anim">
+        <!-- title -->
+        <div class="section-title text-center">
+          <h5 class="title-bg">Time</h5>
+        </div>
+
+        <!-- content -->
+        <div class="section-content anim text-center">
+          <!-- text or illustration order are manipulated via Bootstrap order-md-1, order-md-2 class -->
+          <!-- begin of item -->
+          <div class="item row justify-content-between">
+            <!-- img-frame-normal demo -->
+            <div class="col-12 col-sm-6 col-md-4 center-vh">
+              <div class="section-content anim translateUp">
+                <div class="images text-center">
+                  <div class="img-avatar-alpha">
+                    <div class="img-1 shadow">
+                      <a>
+                        <img class="img" src="img/items/alex.jpeg" alt="Image">
+                      </a>
+                    </div>
+                    <div class="legend text-center pos-abs">
+                      <h5>Alex Buarque</h5>
+                      <p class="small">DBA / Desenvolvedor</p>
+                      <div class="icons">
+                        <a class="icon-btn" href="https://www.linkedin.com/in/alex-buarque-118945171/">
+                          <i class="icon fa fa-linkedin"></i>
+                        </a>
+                        <a class="icon-btn" href="https://github.com/alexbuarque">
+                          <i class="icon fa fa-github"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- img-frame-normal demo -->
+            <div class="col-12 col-sm-6 col-md-4 center-vh">
+              <div class="section-content anim">
+                <div class="images text-center">
+                  <div class="img-avatar-alpha">
+                    <div class="img-1 shadow">
+                      <a>
+                        <img class="img" src="img/items/henrique.jpg" alt="Image">
+                      </a>
+                    </div>
+                    <div class="legend text-center pos-abs">
+                      <h5>Henrique Matos</h5>
+                      <p class="small">Analista / Desenvolvedor</p>
+                      <div class="icons">
+                        <a class="icon-btn" href="https://www.linkedin.com/in/henrique-matos-56062517a/">
+                          <i class="icon fa fa-linkedin"></i>
+                        </a>
+                        <a class="icon-btn" href="https://github.com/henriquemt13">
+                          <i class="icon fa fa-github"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- img-frame-normal demo -->
+            <div class="col-12 col-sm-6 col-md-4 center-vh">
+              <div class="section-content anim translateDown">
+                <div class="images text-center">
+                  <div class="img-avatar-alpha">
+                    <div class="img-1 shadow">
+                      <a>
+                        <img class="img" src="img/items/teodoro.jpg" alt="Image">
+                      </a>
+                    </div>
+                    <div class="legend text-center pos-abs">
+                      <h5>João Alfredo</h5>
+                      <p class="small">Analista / Tester</p>
+                      <div class="icons">
+                        <a class="icon-btn" href="https://www.linkedin.com/in/jo%C3%A3o-alfredo-teodoro-5a1b27108/">
+                          <i class="icon fa fa-linkedin"></i>
+                        </a>
+                        <a class="icon-btn" href="https://github.com/teodorojo">
+                          <i class="icon fa fa-github"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <!-- end of item -->
+          <!-- begin of item -->
+          <div class="item row justify-content-between adjust-top">
+            <!-- img-frame-normal demo -->
+            <div class="col-12 col-sm-6 col-md-4 center-vh">
+              <div class="section-content anim translateUp">
+                <div class="images text-center">
+                  <div class="img-avatar-alpha">
+                    <div class="img-1 shadow">
+                      <a>
+                        <img class="img" src="img/items/joao.jpg" alt="Image">
+                      </a>
+                    </div>
+                    <div class="legend text-center pos-abs">
+                      <h5>João Pedro</h5>
+                      <p class="small">Web Designer / Desenvolvedor</p>
+                      <div class="icons">
+                        <a class="icon-btn" href="https://www.linkedin.com/in/jo%C3%A3o-pedro-soares-992288147/">
+                          <i class="icon fa fa-linkedin"></i>
+                        </a>
+                        <a class="icon-btn" href="https://github.com/jPedroSoares">
+                          <i class="icon fa fa-github"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- img-frame-normal demo -->
+            <div class="col-12 col-sm-6 col-md-4 center-vh">
+              <div class="section-content anim">
+                <div class="images text-center">
+                  <div class="img-avatar-alpha">
+                    <div class="img-1 shadow">
+                      <a>
+                        <img class="img" src="img/items/marcelo.jpg" alt="Image">
+                      </a>
+                    </div>
+                    <div class="legend text-center pos-abs">
+                      <h5>Marcelo Augusto</h5>
+                      <p class="small">Desenvolvedor / UI Designer</p>
+                      <div class="icons">
+                        <a class="icon-btn" href="https://www.linkedin.com/in/marcelo-augusto-santos-960796196">
+                          <i class="icon fa fa-linkedin"></i>
+                        </a>
+                        <a class="icon-btn" href="https://github.com/celoaugusto">
+                          <i class="icon fa fa-github"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- img-frame-normal demo -->
+            <div class="col-12 col-sm-6 col-md-4 center-vh">
+              <div class="section-content anim translateDown">
+                <div class="images text-center">
+                  <div class="img-avatar-alpha">
+                    <div class="img-1 shadow">
+                      <a>
+                        <img class="img" src="img/items/marco.png" alt="Image">
+                      </a>
+                    </div>
+                    <div class="legend text-center pos-abs">
+                      <h5>Marco Antônio</h5>
+                      <p class="small">Gerente de Projetos / Desenvolvedor</p>
+                      <div class="icons">
+                        <a class="icon-btn" href="https://www.linkedin.com/in/marco-antonio-morais-rover-679bb4180/">
+                          <i class="icon fa fa-linkedin"></i>
+                        </a>
+                        <a class="icon-btn" href="https://github.com/marcorover">
+                          <i class="icon fa fa-github"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <!-- end of item -->
+        </div>
+
+
+        <!-- Arrows scroll down/up -->
+        <footer class="section-footer scrolldown">
+          <a class="down">
+            <span class="icon"></span>
+            <span class="txt">Serviços</span>
+          </a>
+        </footer>
+      </div>
+      <!-- End of section wrapper -->
+    </div>
+    <!-- End of description section -->
+
+
+    <!-- Begin of list feature section -->
+    <div class="section section-list-feature fp-auto-height-responsive " data-section="services">
+      <!-- Begin of section wrapper -->
+      <div class="section-wrapper twoside anim">
+        <!-- title -->
+        <div class="section-title text-center">
+          <h2 class="display-4 display-title title-bg">Serviços</h2>
+          <h2 class="anim-2">Funcionalidades do produto</h2>
+          <br>
+          <br>
+        </div>
+
+        <br>
+        <!-- text or illustration 2rder are manipulated via Bootstrap order-md-1, order-md-2 class -->
+        <!-- begin of item -->
+        <div class="item row justify-content-between fade-1">
+          <!-- begin of column content -->
+          <div class="col-12 col-md-6 col-lg-6">
+            <!-- content -->
+            <div class="section-content">
+              <!-- a media object -->
+              <div class="media">
+                <div class="img d-flex mr-3">
+                  <i class="icon ion-ios-browsers-outline"></i>
+                </div>
+                <div class="media-body">
+                  <h4>Alertas</h4>
+                  <p>Integração com ferramenta para comunicar o funcionário sobre alertas.</p>
+                </div>
+              </div>
+              <!-- a media object -->
+              <div class="media">
+                <div class="img d-flex mr-3">
+                  <i class="icon ion-ios-cog-outline"></i>
+                </div>
+                <div class="media-body">
+                  <h4>Customização</h4>
+                  <p>Desenvolvemos sistemas possibilitando a personalização visando a simplicidade.</p>
+                </div>
+              </div>
+              <!-- a media object -->
+              <div class="media">
+                <div class="img d-flex mr-3">
+                  <i class="icon ion-ios-analytics-outline"></i>
+                </div>
+                <div class="media-body">
+                  <h4>Analytics</h4>
+                  <p>Gerar relatórios para análise de registros.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end of column content -->
+
+          <!-- begin of column content -->
+          <div class="col-12 col-md-6 col-lg-6">
+            <!-- content -->
+            <div class="section-content">
+              <!-- a media object -->
+              <div class="media">
+                <div class="img d-flex mr-3">
+                  <i class="icon ion-ios-grid-view-outline"></i>
+                </div>
+                <div class="media-body">
+                  <h4>Squads</h4>
+                  <p>Criação de squads para gerenciar grupos de trabalho.</p>
+                </div>
+              </div>
+              <!-- a media object -->
+              <div class="media">
+                <div class="img d-flex mr-3">
+                  <i class="icon ion-ios-lightbulb-outline"></i>
+                </div>
+                <div class="media-body">
+                  <h4>Inovação</h4>
+                  <p>Acompanhar em tempo real a produtividade de seus funcionários.</p>
+                </div>
+              </div>
+              <!-- a media object -->
+              <div class="media">
+                <div class="img d-flex mr-3">
+                  <i class="icon ion-arrow-expand"></i>
+                </div>
+                <div class="media-body">
+                  <h4>Processamento</h4>
+                  <p>Monitoramento dos principais componentes do processamento do computador.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end of column content -->
+        </div>
+        <!-- end of item -->
+
+        <!-- Arrows scroll down/up -->
+        <footer class="section-footer scrolldown">
+          <a class="down">
+            <span class="icon"></span>
+            <span class="txt">Rolar</span>
+          </a>
+        </footer>
+      </div>
+      <!-- End of section wrapper -->
+    </div>
+    <!-- End of list feature section -->
+
+    <!-- Begin of slider section -->
+    <!-- <div class="section section-twoside fp-auto-height-responsive " data-section="projects"> -->
+      <!-- Begin of section wrapper -->
+      <!-- <div class="section-wrapper twoside"> -->
+        <!-- title -->
+        <!-- <div class="section-title text-center">
+          <h5 class="title-bg ">Projects</h5>
+        </div> -->
+
+
+        <!-- begin of carousel-swiper-beta -->
+        <!-- <div class="slider-wrapper carousel-swiper-beta carousel-smalls carousel-swiper-beta-demo mt-40"> -->
+          <!-- slider -->
+          <!-- <div class="slider-container swiper-container">
+            <ul class="item-list swiper-wrapper"> -->
+              <!-- item -->
+              <!-- <li class="slide-item swiper-slide">
+                <div class="item-wrapper">
+                  <div class="illustr">
+                    <img src="img/items/img-sample3-small.jpg" alt="Image" class="img">
+                  </div>
+                  <a class="legend" href="#">
+                    <h1 class="display-3">PMSys_</h1>
+                  </a>
+                </div>
+              </li> -->
+              <!-- item -->
+              <!-- <li class="slide-item swiper-slide">
+                <div class="item-wrapper">
+                  <div class="illustr">
+                    <img src="img/items/img-sample2-small.jpg" alt="Image" class="img">
+                  </div>
+                  <a class="legend" href="item.html#project_url">
+                    <h3 class="display-3">Mountain</h3>
+                    <h4>Music / Beats</h4>
+                  </a>
+                </div>
+              </li> -->
+              <!-- item -->
+              <!-- <li class="slide-item swiper-slide">
+                <div class="item-wrapper">
+                  <div class="illustr">
+                    <img src="img/items/img-sample4-small.jpg" alt="Image" class="img">
+                  </div>
+                  <a class="legend" href="item.html#project_url">
+                    <h3 class="display-3">Garden</h3>
+                    <h4>Music / Beats</h4>
+                  </a>
+                </div>
+              </li> -->
+              <!-- item
+              <li class="slide-item swiper-slide">
+                <div class="item-wrapper">
+                  <div class="illustr">
+                    <img src="img/items/img-sample5-small.jpg" alt="Image" class="img">
+                  </div>
+                  <a class="legend" href="item.html#project_url">
+                    <h3 class="display-3">Sky</h3>
+                    <h4>Music / Beats</h4>
+                  </a>
+                </div>
+              </li> -->
+            <!-- </ul>
+          </div> -->
+          <!-- pagination -->
+          <!-- <div class="items-pagination bar"></div> -->
+
+          <!-- navigation -->
+          <!-- <div class="items-button bottom fit items-button-prev">
+            <a class="btn btn-transp-arrow btn-primary icon-left" href="#">
+              <span class="icon arrow-left"></span>
+              <span class="text">Anterior</span>
+            </a>
+          </div>
+          <div class="items-button bottom fit items-button-next">
+            <a class="btn btn-transp-arrow btn-primary" href="#">
+              <span class="icon arrow-right"></span>
+              <span class="text">Próximo</span>
+            </a>
+          </div> -->
+        <!-- </div> -->
+        <!-- end of carousel-swiper-beta -->
+
+
+      </div>
+      <!-- End of section wrapper -->
+    </div>
+    <!-- End of slider section -->
+
+    <!-- Begin of list two side 1 section -->
+    <div class="section section-twoside fp-auto-height-responsive " data-section="products">
+      <!-- Begin of section wrapper -->
+      <div class="section-wrapper twoside">
+
+        <!-- title -->
+        <div class="section-title text-center ">
+          <h5 class="title-bg">Projetos</h5>
+          <div class="title-abs">
+            <h2 class="display-4 display-title">Projetos recentes</h2>
+            <p>Aqui está uma lista de projetos incriveis.</p>
+          </div>
+        </div>
+
+        <!-- text or illustration order are manipulated via Bootstrap order-md-1, order-md-2 class -->
+        <!-- begin of item -->
+        <div class="item row justify-content-between">
+          <!-- img-frame-normal demo -->
+          <div class="col-12 col-sm-6 col-md-4 center-vh">
+            <div class="section-content anim translateUp">
+              <div class="images text-center">
+                <div class="img-frame-normal">
+                  <div class="img-1 shadow">
+                    <a>
+                      <img class="img" src="img/demopage/Digital-Fruits-Solutions.png" alt="Image">
+                    </a>
+                  </div>
+                  <div class="legend text-left pos-abs">
+                    <h5>Digital Fruits Solutions</h5>
+                    <p class="small">Monitoramento e controle de temperatura em transportes alimenticios</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- img-frame-normal demo -->
+          <div class="col-12 col-sm-6 col-md-4 center-vh">
+            <div class="section-content anim">
+              <div class="images text-center">
+                <div class="img-frame-normal">
+                  <div class="img-1 shadow">
+                    <a href="http://safeyn.azurewebsites.net">
+                      <img class="img" src="img/demopage/Safeyn.png" alt="Image">
+                    </a>
+                  </div>
+                  <div class="legend text-left pos-abs">
+                    <h5>Safeyn</h5>
+                    <p class="small">O projeto "Weather For life" tem a intenção de ajudar, oferecendo um monitoramento
+                      e registro melhor das temperaturas em salas cirúrgicas.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- img-frame-normal demo -->
+          <div class="col-12 col-sm-6 col-md-4 center-vh">
+            <div class="section-content anim translateDown">
+              <div class="images text-center">
+                <div class="img-frame-normal">
+                  <div class="img-1 shadow">
+                    <a href="http://nodepharmasensors.azurewebsites.net/">
+                      <img class="img" src="img/demopage/PharmaSensors.jpeg" alt="Image">
+                    </a>
+                  </div>
+                  <div class="legend text-left pos-abs">
+                    <h5>PharmaSensors</h5>
+                    <p class="small">Produto focado no desenvolvimento de soluções tecnológicas para o armazenamento de
+                      medicamentos, tendo como diferencial a facilidade de uso de nosso produto.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end of item -->
+      </div>
+      <!-- End of section wrapper -->
+    </div>
+    <!-- End of list two side 1 section -->
+
+    <!-- Begin of list two side 1 section -->
+    <div class="section section-twoside fp-auto-height-responsive " data-section="products-2">
+      <!-- Begin of section wrapper -->
+      <div class="section-wrapper twoside">
+
+        <!-- title -->
+        <div class="section-title text-center">
+          <h5 class="title-bg">Products</h5>
+        </div>
+
+        <!-- text or illustration order are manipulated via Bootstrap order-md-1, order-md-2 class -->
+        <!-- begin of item -->
+        <div class="item row justify-content-between">
+          <!-- img-frame-normal demo -->
+          <div class="col-12 col-md-6 center-vh start-h">
+            <div class="section-content anim translateUp">
+              <div class="images text-center">
+                <div class="img-frame-normal">
+                  <div class="img-1 shadow">
+                    <a href="http://nodegrow7.azurewebsites.net/">
+                      <img class="img" src="img/demopage/Grow7.png" alt="Image">
+                    </a>
+                  </div>
+                  <div class="legend text-left pos-abs">
+                    <h5>Grow7</h5>
+                    <p class="small">Estufa inteligente de controle e monitoramento de cogumelos Indoor, tranformando o
+                      mundo de maneira sustentável.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- img-frame-normal demo -->
+          <div class="col-12 col-md-6 center-vh start-h">
+            <div class="section-content anim translateUp">
+              <div class="images text-center">
+                <div class="img-frame-normal">
+                  <div class="img-1 shadow">
+                    <a href="https://nodeboxzard.azurewebsites.net">
+                      <img class="img" src="img/demopage/BoxZard.png" alt="Image">
+                    </a>
+                  </div>
+                  <div class="legend text-left pos-abs">
+                    <h5>Galpões Inteligentes</h5>
+                    <p class="small">Monitoramento e controle de temperatura em galpões.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end of item -->
+      </div>
+      <!-- End of section wrapper -->
+    </div>
+    <!-- End of list two side 1 section -->
+
+    <!-- Begin of contact section -->
+    <div class="section section-contact fp-auto-height-responsive no-slide-arrows " data-section="contact">
+
+      <!-- begin of information slide -->
+      <div class="slide" id="information" data-anchor="information">
+        <!-- Begin of slide section wrapper -->
+        <div class="section-wrapper">
+          <!-- title -->
+          <div class="section-title text-center">
+            <h5 class="title-bg">Contato</h5>
+          </div>
+
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <!-- content -->
+              <div class="section-content anim text-left">
+                <!-- title and description -->
+                <div class="title-desc">
+                  <div class="anim-2">
+                    <h5>Serviço ao cliente</h5>
+                    <h2 class="display-4 display-title">Contato</h2>
+                    <p>Para perguntas sobre nossa empresa e produtos encontrados em nossas lojas.</p>
+                  </div>
+                  <div class="address-container anim-3">
+
+                    <div class="row">
+                      <div class="col-12 col-md-12 col-lg-6">
+                        <h4>Contato</h4>
+                        <p>Telefone: +55 (11) 2341-59768</p>
+                        <p>Email: dotesys@hotmail.com</p>
+                      </div>
+                      <div class="col-12 col-md-12 col-lg-6">
+                        <h4>Endereço</h4>
+                        <p>Rua Haddock Lobo, 595 - Cerqueira César
+                          <br>São Paulo, Brasil
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Action button -->
+                <div class="btns-action anim-4">
+                  <a class="btn btn-outline-white btn-round" href="#contact/message">
+                    <span class="txt">Enviar mensagem</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-6">
+
+            </div>
+          </div>
+        </div>
+        <!-- End of slide section wrapper -->
+      </div>
+      <!-- end of information slide -->
+
+      <!-- begin of message slide -->
+      <div class="slide" id="message" data-anchor="message">
+        <!-- Begin of slide section wrapper -->
+        <div class="section-wrapper">
+          <div class="row justify-content-between">
+            <div class="col-12 col-md-6 center-vh">
+              <!-- content -->
+              <div class="section-content anim text-left">
+                <!-- title and description -->
+                <div class="title-desc">
+                  <div>
+                    <h5>Serviço ao cliente</h5>
+                    <h2 class="display-4 display-title">Envie um email</h2>
+                    <p>Para perguntas sobre nossa empresa e produtos encontrados em nossas lojas.</p>
+                  </div>
+                </div>
+
+                <!-- Action button -->
+                <div class="btns-action">
+                  <a class="btn btn-outline-white btn-round" href="#contact/information">
+                    <span class="txt">Informações</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-5">
+              <!-- content -->
+              <div class="section-content anim text-left">
+                <!-- title and description -->
+                <div class="">
+                  <div class="form-container form-container-card">
+                    <!-- Message form container -->
+                    <form class="send_message_form message form" method="post"
+                      action="http://demo.highhay.com/simpleux/ajaxserver/serverfile.php" id="message_form">
+                      <div class="form-group name">
+                        <label for="mes-name">Nome :</label>
+                        <input id="mes-name" name="name" type="text" placeholder="Digite seu nome:"
+                          class="form-control-line form-success-clean" required>
+                      </div>
+                      <div class="form-group email">
+                        <label for="mes-email">Email :</label>
+                        <input id="mes-email" type="email" placeholder="Digite seu email:" name="email"
+                          class="form-control-line form-success-clean" required>
+                      </div>
+                      <div class="form-group no-border">
+                        <label for="mes-text">Mensagem</label>
+                        <textarea id="mes-text" placeholder="..." name="message"
+                          class="form-control form-control-outline thick form-success-clean" required></textarea>
+
+                        <div>
+                          <p class="message-ok invisible form-text-feedback form-success-visible">Sua mensagem foi
+                            enviada, obrigado.</p>
+                        </div>
+                      </div>
+
+                      <div class="btns">
+                        <button id="submit-message" class="btn btn-normal btn-white btn-round btn-full email_b"
+                          name="submit_message">
+                          <span class="txt">Enviar</span>
+                          <span class="arrow-icon"></span>
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End of slide section wrapper -->
+      </div>
+      <!-- end of message slide -->
+
+    </div>
+    <!-- End of contact section -->
+  </main>
+  <!-- END OF page main content -->
+
+  <!-- BEGIN OF page footer -->
+  <footer id="site-footer" class="page-footer">
+    <!-- Left content -->
+    <div class="footer-left">
+      <p>Todos o direitos reservados a
+        <a href="http://highhay.com/">
+          <span class="marked">.Sys</span>
+        </a>
+      </p>
+    </div>
+
+    <!-- Right content -->
+    <div class="footer-right">
+      <ul class="social">
+        <li>
+          <a href="#">
+            <i class="icon fa fa-facebook"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="icon fa fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="icon fa fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="icon fa fa-instagram"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+  <!-- END OF site footer -->
+
+  <!-- scripts -->
+  <!-- All Javascript plugins goes here -->
+  <script src="js/vendor/jquery-1.12.4.min.js"></script>
+
+  <!-- All vendor scripts -->
+  <script src="js/vendor/scrolloverflow.min.js"></script>
+  <script src="js/vendor/all.js"></script>
+  <script src="js/particlejs/particles.min.js"></script>
+
+  <!-- Countdown script -->
+  <script src="js/jquery.downCount.js"></script>
+
+  <!-- Form script -->
+  <script src="js/form_script.js"></script>
+
+  <!-- Javascript main files -->
+  <script src="js/main.js"></script>
+  <script src="js/particlejs/particles-init.js"></script>
+
+</body>
+
+
+
+
+<!-- Mirrored from demo.highhay.com/simpleux/index-particle.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 30 Aug 2019 01:31:22 GMT -->
+
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+<head>
+    <title>PMSys_ - Dashboards</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="../assets/fonts/fontawesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="../assets/css/squad2.css">
+    <link rel="stylesheet" href="../assets/css/modalCustom.css">
+    <link rel="stylesheet" href="../assets/plugins/animation/css/animate.min.css">
+    <link href="../assets/css/feather.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/default.css">
+    <link rel="icon" href="../../img/logo.png" type="image/icon">
+    <link rel="shortcut icon" href="../../img/logo.png" type="image/icon">
+    <script src="https://code.iconify.design/1/1.0.3/iconify.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_o5hd5vvqpoqiwwmi.css">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <div id="nav"></div>
+
+    <div class="pcoded-main-container">
+        <div class="pcoded-wrapper">
+            <div class="pcoded-content">
+                <div class="pcoded-inner-content">
+
+                    <div class="page-header">
+                        <div class="page-block">
+                            <div class="row align-items-center">
+                                <div class="col-md-12">
+                                    <div class="page-header-title">
+                                        <h5 class="m-b-10">Squads</h5>
+                                    </div>
+                                    <ul class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="/system" title="Voltar para home"><i data-feather="home"
+                                                    width="13" class="feather icon-anchor"></i></a></li>
+                                        <li class="breadcrumb-item"><a href="#!">Squads</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-body">
+                        <div class="page-wrapper">
+                            <!-- Div onde serão inseridos os cards de cada Squad -->
+                            <div class="squad-header" id="squads">
+                                <div class="content col-md-2 default" id='-1' >
+                                    <span>Carregando...</span>
+                                </div>
+                            </div>
+                            <div class="squad-body" >
+                                <div class="squad-info">
+                                    <div class="Objetivo">
+                                        <h2>Objetivo</h2>
+                                        <p id="squadObjetivo">Squad trabalhando no projeto 12467, em desenvolvimento de uma aplicação WEB para gerenciamento de lojas.</p>
+                                    </div>
+                                    <div class="Descricao">
+                                        <h2>Descrição</h2>
+                                        <p id="squadDescricao">Squad Alpha alocado no 8° andar da empresa com 7 intregantes.</p>
+                                    </div>
+                                    <div class="squad-func">
+                                        <h4>Funcionários</h4>
+                                        <div class="func" onclick="criarFuncionarios()" data-toggle="modal"
+                                            data-target="#modalSquad"
+                                            data-squad="{&quot;nome&quot;:&quot;Beta&quot;,&quot;status&quot;:&quot;success&quot;}">
+                                            <i class="feather icon-aperture" data-feather="users" width="45"
+                                                height="45"></i>
+                                            <div class="point"></div>
+                                            5/10
+
+                                        </div>
+                                       
+
+                                    </div>
+                                </div>
+                                <div class="squad-dash">
+                                        <canvas id="chart-line"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="modalSquad" class="modalCustom" tabindex="-1" role="dialog"
+                            aria-labelledby="modalSquadLabel" aria-hidden="true">
+                            <div class="modalCustom-content" role="document">
+                                    <div class="modalCustom-icons">
+                                            <a data-dismiss="modal" aria-label="Close">
+                                                <i data-feather="x" width="30px" height="30px"></i>
+                                            </a>
+                                        </div>
+                                    <div class="modalCustom-func">
+                                            <div id="lista-superior" class="modalCustom-superior">
+                                                <!-- Div preenchida com superiores -->
+                                            </div>
+                                            <div id="lista-funcionarios" class="modalCustom-funcionarios">
+                                                <!-- Div preenchida com funcionarios -->
+                                            </div>
+                                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script src="../assets/js/squad/squad.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#nav').load('barra-lateral.html', () => $("#squadId").addClass("active"));
+        var element = document.getElementById("squad2");
+        element.classList.add("offline");
+    });
+</script>
+<!-- Bootstrap -->
+<script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<!-- Funções menu lateral -->
+<script src="../assets/js/vendor-all.min.js"></script>
+<!-- Charts -->
+<script src="../assets/plugins/chart-chartjs/js/Chart.min.js"></script>
+
+<script>
+    feather.replace();
+</script>
+<script src="../assets/js/squad/graphs.js"></script>
+<script>
+    function criarFuncionarios() {
+        const numero = Math.floor(Math.random() * 10) +
+            2;
+        const horarios = [];
+        for (i = 0; i < 10; i++) {
+            horarios.push("08:5" + i)
+            horarios.push("09:0" + i)
+            horarios.push("09:1" + i)
+        };
+        const homensNomes = ["José", "Enzo", "Carlos",
+            "Gustavo", "Gabriel", "Alexandre",
+            "Henrique", "Lucas"
+        ];
+        const mulheresNomes = ["Beatriz", "Alice",
+            "Melissa", "Anna", "Raquel"
+        ];
+        const sobrenome = ["Melo", "Sousa", "Silva",
+            "Rocha", "Correia", "Castro", "Ribeiro",
+            "Gomes", "Dias", "Azevedo", "Ferreira",
+            "Cunha", "Cardoso"
+        ];
+        const cargos = ["DESENVOLVEDOR BACKEND",
+            "DESENVOLVEDOR FRONTEND",
+            "GERENTE DE PROJETOS",];
+
+        let funcionarios = "";
+        let superior = "";
+
+        for (i = 0; i < numero; i++) {
+            const genero = Math.floor(Math.random() *
+                2);
+            const funcionario = {
+                avatar: genero + 1,
+                nome: genero ? homensNomes[Math
+                    .floor(Math.random() *
+                        homensNomes.length)] :
+                    mulheresNomes[Math.floor(Math
+                        .random() *
+                        mulheresNomes.length)]
+                    + " " + sobrenome[Math.floor(Math
+                        .random() * sobrenome
+                            .length)] + " " + sobrenome[
+                    Math.floor(Math.random() *
+                        sobrenome.length)],
+                status: Math.floor(Math.random() *
+                    10) ? "Online desde as " +
+                    horarios[Math.floor(Math
+                        .random() * horarios
+                            .length)] : "Offline",
+                cargo:
+                    cargos[Math.floor(Math
+                        .random() *
+                        cargos.length)],
+            }
+            i === 0 ?
+                superior += `
+                <div class="funcionario">
+                    <div class="funcionario-avatar" title="${funcionario.status}">
+                        <img class="rounded-circle funcionario-foto success"
+                            src="../assets/images/user/avatar-${funcionario.avatar}.jpg"
+                            alt="activity-user">
+                        <div class="funcionario-status success"></div>
+                    </div>
+                    <span class="funcionario-nome" title="${funcionario.nome}">${funcionario.nome}</span>
+                    <span class="funcionario-cargo">${Math.floor(Math.random() * 2) ? 'Supervisor' : 'Gerente'}</span>
+                </div>
+            `
+                :
+                funcionarios += `
+                <div class="funcionario">
+                    <div class="funcionario-avatar" title="${funcionario.status}">
+                        <img class="rounded-circle funcionario-foto success"
+                            src="../assets/images/user/avatar-${funcionario.avatar}.jpg"
+                            alt="activity-user">
+                        <div class="funcionario-status success"></div>
+                    </div>
+                    <span class="funcionario-nome" title="${funcionario.nome}">${funcionario.nome}</span>
+                    <span class="funcionario-cargo">${funcionario.cargo}</span>
+                </div>
+            `;
+        }
+        document.getElementById('lista-funcionarios').innerHTML = funcionarios;
+        document.getElementById('lista-superior').innerHTML = superior;
+
+    }
+</script>
+<script>
+    $('#modalSquad').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        var squad = button.data('squad');
+        var modal = $(this);
+        modal.find('.modalCustom-title').text(`Squad ${squad.nome}`);
+        modal.find('#modalCustom-status').removeClass();
+        modal.find('#modalCustom-status').addClass(`modalCustom-status ${squad.status}`);
+    })
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#nav').load('barra-lateral.html', () => $("#squadId").addClass("active"))
+    });
+</script>
+<!-- Bootstrap -->
+<script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<!-- Funções menu lateral -->
+<script src="../assets/js/vendor-all.min.js"></script>
+<script>
+    feather.replace();
+</script>
