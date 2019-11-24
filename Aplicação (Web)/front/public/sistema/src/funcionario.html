@@ -4,7 +4,7 @@
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 
 <head>
-    <title>PMSys_ - Dashboards</title>
+    <title>PMSys_ - Funcionários</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -78,6 +78,37 @@
             </div>
         </div>
     </div>
+    <div id="modalFuncionario" class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="ModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"
+                        id="ModalCenterTitle">
+                        Excluir  </h5>
+                    <button type="button" class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"><span
+                            aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Essa ação não pode ser revertida.
+                    </p>
+                    <p>
+                        Tem certeza que deseja excluir esse funcionário?
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal">Cancelar</button>
+                    <button type="button" onclick="deletarFuncionario()"
+                        class="btn btn-primary">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="botoes-flutuantes-container">
         <a href="funcionario=0" class="botao-flutuante" title="Adicionar Funcionário">
             <i data-feather="plus" width="35px" height="35px" ></i>
@@ -97,11 +128,7 @@
 <!-- Configurações menu lateral -->
 <script src="../assets/js/vendor-all.min.js"></script>
 
-<!-- Charts -->
-<script src="../assets/plugins/chart-chartjs/js/Chart.min.js"></script>
 <script>
     feather.replace()
     </script>
-<script src="../assets/js/pages/dashboard-project.js"></script>
-<script src="../assets/js/dashboards.js"></script>
 <script src="../assets/js/funcionarios.js"></script>

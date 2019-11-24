@@ -19,6 +19,22 @@ const listFuncSquad = async (req, res) => {
 
 }
 
+const getCargos = async (req, res) => {
+    model = new FuncModel();
+
+    const cargos = await model.cargos();
+
+    return res.status(200).json(cargos);
+}
+
+const getMaquinas = async (req, res) => {
+    model = new FuncModel();
+
+    const cargos = await model.maquinas();
+
+    return res.status(200).json(cargos);
+}
+
 const getSessions = async (req, res) => {
     
     const { login, senha } = req.body;
@@ -36,12 +52,13 @@ const getSessions = async (req, res) => {
 } 
 
 const createFunc = async (req, res) => {
-    const { identFunc, nomeFunc, sexoFunc, fkSquad, cargo, maquina, conta } = req.body;
+    const conta = req.headers.id;
+    const { nome, identificador, maquina, cargo, squad, sexo } = req.body;
     model = new FuncModel();
 
-    if(identFunc && nomeFunc && sexoFunc && cargo && maquina ){
+    if(nome && identificador && cargo && sexo){
 
-        await model.createFunc(identFunc, nomeFunc, sexoFunc, fkSquad, cargo, maquina, conta);
+        await model.createFunc(nome, identificador, maquina, cargo, squad, sexo, conta);
         return res.status(201).end();
 
     } else {
@@ -53,14 +70,13 @@ const createFunc = async (req, res) => {
 
 const updateFunc = async (req, res) => {
     const { id } = req.query;
-    const { identFunc, nomeFunc, sexoFunc, fkSquad, cargo, maquina, conta } = req.body;
+    const conta = req.headers.id;
+    const { nome, identificador, maquina, cargo, squad, sexo } = req.body;
     model = new FuncModel();
 
-    console.log(req.body);
+    if(nome && identificador && cargo && sexo){
 
-    if(identFunc && nomeFunc && sexoFunc && cargo && maquina){
-
-        await model.updateFunc(identFunc, nomeFunc, sexoFunc, fkSquad, cargo, maquina, conta, id);
+        await model.updateFunc(nome, identificador, maquina, cargo, squad, sexo, conta, id);
         return res.status(201).end();
 
     } else {
@@ -87,6 +103,8 @@ const deleteFunc = async (req, res) => {
 }
 module.exports = {
     list,
+    getCargos,
+    getMaquinas,
     getSessions,
     createFunc,
     updateFunc,

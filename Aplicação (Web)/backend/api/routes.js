@@ -36,6 +36,18 @@ routes.put('/squad', async (req, res) => {
 
 const FuncController = require('./controllers/FuncController');
 
+// Retorna a lista de cargos
+routes.get('/cargos', async (req, res) => {
+    const response = await FuncController.getCargos(req, res);
+    return response;
+})
+
+// Retorna a lista de maquinas
+routes.get('/maquinas', async (req, res) => {
+    const response = await FuncController.getMaquinas(req, res);
+    return response;
+})
+
 // Retorna a lista de funcionários
 routes.get('/funcionarios',  async (req, res) => {
     const response = await FuncController.list(req, res);
@@ -54,17 +66,17 @@ routes.post('/sessions', async(req, res) => {
     return response;
 });
 // Cadastro de Funcionário
-routes.post('/cadastrar', async(req, res) => {
+routes.post('/funcionarios', async(req, res) => {
     const reponse = await FuncController.createFunc(req, res);
     return reponse;
 });
 // Editar Funcionário
-routes.put('/editar', async (req, res) => {
+routes.put('/funcionarios', async (req, res) => {
     const response = await FuncController.updateFunc(req, res);
     return response;
 });
 
-routes.delete('/deletar', async (req, res) => {
+routes.delete('/funcionarios', async (req, res) => {
     const response = await FuncController.deleteFunc(req, res);
     return response;
 })
