@@ -48,24 +48,6 @@
         <div class="pcoded-wrapper">
             <div class="pcoded-content">
                 <div class="pcoded-inner-content">
-
-                    <!-- <div class="page-header">
-                        <div class="page-block">
-                            <div class="row align-items-center">
-                                <div class="col-md-12">
-                                    <div class="page-header-title">
-                                        <h5 class="m-b-10">Home</h5>
-                                    </div>
-                                    <ul class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="/system"><i data-feather="home"
-                                                    width="13" class="feather icon-anchor"></i></a></li>
-                                        <li class="breadcrumb-item"><a href="#!">Home</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-
                     <div class="row div-linha-pai">
                         <div class="col-md-8 div-esquerda">
                             <div class="row div-linha-filho">
@@ -102,89 +84,17 @@
                                 </div>
                                 <div class="card-block div-scroll ">
                                     <div id="conteudo" class="card-group">
-                                        <!-- <div class="col-md-4">
-                                            <div class="card card-squad">
-                                                <div class="card-body" onclick="criarFuncionarios()" data-toggle="modal"
-                                                    data-target="#modalSquad" data-squad="Alpha">
-                                                    <i class="status" style="background:#55DD55"></i>
-                                                    <span>ALPHA</span>
-                                                    <i data-feather="users" class="feather icon-anchor background"></i>
-                                                </div>
-                                            </div>
-                                        </div> -->
+                                        Carregando...
                                     </div>
                                 </div>
 
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="main-body">
-                        <div class="page-wrapper">
-                             Div onde serão inseridos os cards de cada esquadrão 
-                            <div id="conteudo" class="card-group"></div>
-                             Script para criar cards dos squads no array, simulando o retorno da API 
-                            <script>
-                                const squads = [{
-                                    nome: "Alpha",
-                                    status: "danger",
-                                    info: "Alpha está com o muitos funcionarios offline."
-                                },
-                                {
-                                    nome: "Beta",
-                                    status: "success",
-                                    info: "Beta está com a tarefa pronta."
-                                },
-                                {
-                                    nome: "Beta",
-                                    status: "danger",
-                                    info: "Funcionário com alto nível de consumo de RAM."
-                                },
-                                {
-                                    nome: "Charlie",
-                                    status: "warning",
-                                    info: "Charlie está proximo da data de entrega."
-                                },
-                                {
-                                    nome: "Delta",
-                                    status: "info",
-                                    info: "Delta já entregou a tarefa, está aguardando outra."
-                                }
-                                ]
-                                let divs = "";
-                                squads.map(squad => {
-                                    divs += `
-                                        <div class="col-md-4">
-                                            <div class="card card-squad">
-                                                <div class="card-header">
-                                                    <span>${squad.nome}</span>
-                                                    
-                                                </div>
-                                                    <div class="alert alert-${squad.status} alert-squad">${squad.info}</div>
-                                            </div>
-                                        </div>
-                                `
-                                });
-                                document.getElementById("conteudo").innerHTML = divs;
-                            </script>
-                        </div>
-                    </div> -->
-                    <!-- <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
-                                        </div> -->
                 </div>
             </div>
         </div>
-        <!--(NÃO CONSEGUI FAZER FUNCIONAR) Script para Inserir dados no modal referente ao o esquadrão do botão -->
-
     </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-
 </body>
 
 </html>
@@ -198,42 +108,9 @@
 <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 <!-- Funções menu lateral -->
 <script src="../assets/js/vendor-all.min.js"></script>
+<script src="../assets/js/home.js"></script>
 <script>
     feather.replace();
-</script>
-<script>
-    const squads = [{
-        nome: "Alpha",
-        status: "danger",
-    },
-    {
-        nome: "Beta",
-        status: "success",
-    },
-    {
-        nome: "Charlie",
-        status: "warning",
-    },
-    {
-        nome: "Delta",
-        status: "info",
-    }
-    ]
-    let divs = "";
-    squads.map(squad => {
-        divs += `
-                <div class="col-md-12">
-                    <div class="card card-squad">
-                        <div class="card-body" onclick="criarFuncionarios()" data-toggle="modal"
-                            data-target="#modalSquad" data-squad='${JSON.stringify(squad)}'>
-                            <i class="status" style="background:var(--${squad.status})"></i>
-                            <span>${squad.nome}</span>
-                        </div>
-                    </div>
-                </div>
-            `
-    });
-    document.getElementById("conteudo").innerHTML = divs;
 </script>
 <script>
     function adicionarNotificacao(){
