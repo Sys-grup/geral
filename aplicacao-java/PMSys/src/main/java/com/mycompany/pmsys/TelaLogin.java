@@ -252,7 +252,7 @@ public class TelaLogin extends javax.swing.JFrame {
                 }.start();
 
             } else {
-                List<Map<String, Object>> login = jdbcTemplate.queryForList("SELECT * from tblContas where login = ? and senha = ?", tfLogin.getText(), pfPassword.getText());
+                List<Map<String, Object>> login = jdbcTemplate.queryForList("SELECT * from tblConta where login = ? and senha = ?", tfLogin.getText(), pfPassword.getText());
                 
                 if(!login.isEmpty()){
                     for (Map row : login) {

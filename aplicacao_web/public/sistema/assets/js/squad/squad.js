@@ -36,4 +36,7 @@ function carregarSquads(listSquads) {
 function carregarInfo(objetivo, descricao) {
     document.getElementById('squadObjetivo').innerHTML = objetivo;
     document.getElementById('squadDescricao').innerHTML = descricao;
+    document.getElementById('squad-info').hidden = false;
+    document.getElementById('geral-info').hidden = true;
+    document.getElementById('squad-dash').hidden = false;
 }
