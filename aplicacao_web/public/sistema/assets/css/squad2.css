@@ -43,6 +43,16 @@ html{
     display: flex;
 }
 
+.ger-info {
+    color: #818080;
+    font-size: 2em;
+    height: 404px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .squad-info {
     width: 400px;
 }
