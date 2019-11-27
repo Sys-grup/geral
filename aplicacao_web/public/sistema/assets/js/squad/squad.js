@@ -1,5 +1,5 @@
 window.onload = () => {
-    fetch("http://localhost:8080/squad",
+    fetch("https://nodedotsys.azurewebsites.net/squad",
     {
         method: 'GET',
         headers: new Headers({

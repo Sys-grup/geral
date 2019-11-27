@@ -11,7 +11,7 @@
 // }
 
 function efetuar_login(login, senha) {
-    fetch("http://localhost:8080/sessions",
+    fetch("https://nodedotsys.azurewebsites.net/sessions",
     {
         method: 'POST',
         headers: new Headers({

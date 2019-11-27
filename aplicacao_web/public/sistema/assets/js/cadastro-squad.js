@@ -1,5 +1,5 @@
 window.onload = () => {
-    fetch("http://localhost:8080/funcionariosSquad",
+    fetch("https://nodedotsys.azurewebsites.net/funcionariosSquad",
     {
         method: 'GET',
         headers: new Headers({
@@ -36,7 +36,7 @@ function enviarFormulario() {
         if (!objetivo) return;
     const selecionados = $('#custom-headers').val();
 
-    fetch("http://localhost:8080/squad",
+    fetch("https://nodedotsys.azurewebsites.net/squad",
     {
         method: 'POST',
         headers: new Headers({

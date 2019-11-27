@@ -1,5 +1,5 @@
 window.onload = () => {
-    fetch("http://localhost:8080/squad",
+    fetch("https://nodedotsys.azurewebsites.net/squad",
     {
         method: 'GET',
         headers: new Headers({
@@ -12,7 +12,7 @@ window.onload = () => {
         carregarSquads([{id: 0, nome:"Sem squad"}, ...result]);
     })
     .then(() =>
-        fetch("http://localhost:8080/cargos",
+        fetch("https://nodedotsys.azurewebsites.net/cargos",
         {
             method: 'GET',
             headers: new Headers({
@@ -25,7 +25,7 @@ window.onload = () => {
         carregarCargos(result);
     })
     .then(() =>
-        fetch("http://localhost:8080/maquinas",
+        fetch("https://nodedotsys.azurewebsites.net/maquinas",
         {
             method: 'GET',
             headers: new Headers({
@@ -72,7 +72,7 @@ function enviarFormulario() {
         return false
     }
 
-    fetch("http://localhost:8080/funcionarios",
+    fetch("https://nodedotsys.azurewebsites.net/funcionarios",
     {
         method: 'POST',
         headers: new Headers({
