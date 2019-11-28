@@ -22,19 +22,23 @@ public class OshiDados implements Job{
 
     public void execute(JobExecutionContext args0) throws JobExecutionException {
 
-        DadosCPU dCpu = new DadosCPU(1002);
-        DadosRAM dRam = new DadosRAM(1002);
-        DadosHD dHd = new DadosHD(1002);
-        DadosProcessos dProcessos = new DadosProcessos(1002);
+        DadosCPU dCpu = new DadosCPU(1000);
+        DadosRAM dRam = new DadosRAM(1000);
+        DadosHD dHd = new DadosHD(1000);
+        DadosProcessos dProcessos = new DadosProcessos(1000);
         
         try{
         GerarLog.escreverLog("Inserindo dados de CPU...", "B");
+            System.out.println("Inserindo dados de CPU...");
         dCpu.insereDadosCPU();
         GerarLog.escreverLog("Inserindo dados de RAM...", "B");
+            System.out.println("Inserindo dados de RAM...");
         dRam.insereDadosRam();
         GerarLog.escreverLog("Inserindo dadosde HD...", "B");
+            System.out.println("Inserindo dadosde HD...");
         dHd.insereDadosHD();
         GerarLog.escreverLog("Enviando processos...", "B");
+            System.out.println("Enviando processos...");
         dProcessos.processosAtuais();
         }catch(Exception e){
             GerarLog.escreverLog("Erro ao inserir dados : " +e, "B");
