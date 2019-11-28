@@ -51,7 +51,7 @@ public class DadosProcessos {
             OSProcess p = procs.get(i);
             
             
-            if(this.contador > 10){
+            if(this.contador > 1){
                 break;
             }else{
                 analisaProcessosValidos(p);
