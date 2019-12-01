@@ -92,16 +92,18 @@
                             </div>
                         </div>
                         <div class="botoes-flutuantes-container">
-                                <a class="botao-flutuant" title="Excluir Squad">
+                            <div id="delete-squad" hidden>
+                                <a class="botao-flutuante botao-delete" title="Excluir Squad" data-toggle="modal" data-target="#modal-delete-squad" onclick="deletarSquad()"> 
                                         <i data-feather="trash-2" width="30px" height="30px" stroke="#fff"></i>
                                 </a>
-                                <a href="squad=0" class="botao-flutuante" title="Adicionar Squad">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="35px" height="35px" viewBox="0 0 24 24" fill="none" stroke="currentColor" 
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
-                                    <line x1="12" y1="5" x2="12" y2="19"></line>
-                                    <line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </div>
+                            <div id="edit-squad" hidden>
+                                <a class="botao-flutuante botao-edit" title="Edit Squad" data-toggle="modal" data-target="#modal-edit-squad" onclick="editarSquad()" href="editar-squad.html"> 
+                                        <i data-feather="edit"width="30px" height="30px" stroke="#054f77"></i>
                                 </a>
-                                </div>
+                            </div>
+                               
+                                
                     </div>
                     <div id="modalSquad" class="modalCustom" tabindex="-1" role="dialog"
                             aria-labelledby="modalSquadLabel" aria-hidden="true">
@@ -124,6 +126,37 @@
                                         </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modal-delete-squad" class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="ModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"
+                        id="ModalCenterTitle">
+                        Excluir  </h5>
+                    <button type="button" class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"><span
+                            aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Essa ação não pode ser revertida.
+                    </p>
+                    <p>
+                        Tem certeza que deseja excluir esse squad?
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal">Cancelar</button>
+                    <button type="button" onclick="deletarSquad()"
+                        class="btn btn-primary">Confirmar</button>
                 </div>
             </div>
         </div>
