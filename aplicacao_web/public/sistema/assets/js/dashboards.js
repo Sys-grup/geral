@@ -59,7 +59,8 @@ window.onload = function () {
 
 function carregarPagina() {
     carregando('msg-line', true, 'chart-line');
-    carregando('notificacoesRecorrentes', true);
+    carregando('notificacoesRecorrentes');
+    carregando('tabela-programas');
     // ['msg-line','notificacoesRecorrentes','msg-bar','msg-doughnut','tabela-programas']
     // .forEach(id => carregando(id));
 
@@ -99,7 +100,7 @@ function carregarGraficos(dados) {
     notificacoesRecorrentes(dados.notificacoes);
     // barChart(dados, document.getElementById('chart-bar'));
     // dougnutChart(dados, document.getElementById('chart-dougnut'));
-    // gridChart(dados, document.getElementById('tabela-programas'));
+    programas(dados.programas, document.getElementById('tabela-programas'));
 }
 
 function carregando(elementId, mostrar = true, chartId, comDados = true) {
@@ -495,25 +496,26 @@ function doughnutChart(dados, element) {
     new Chart(element, chart);
 }
 
-function gridTable(dados, element) {
-    squadsData.forEach(squad => {
-        if (!squad.programa || !squad.programa.nome || !squad.programa.tempo || !squad.programa.porcentagem) return;
+function programas(dados, element) {
+    if (!dados.length) carregando('tabela-programas', true, false, false);
+    element.innerHTML = '';
+    dados.squads.forEach((squad, index) => {
+        const porcentagem = (dados.tempoUso[index] / dados.totalUso[index])*100;
+        const horas = `${(dados.tempoUso[index]/60).toFixed()}:${(dados.tempoUso[index]%60).toFixed()}`;
         element.innerHTML += `
             <tr>
                 <td>
-                    <h6 class="mb-1">${squad.programa.nome}</h6>
-                    <p class="m-0">Mais utilizado pelo squad: <span
-                            class="text-c-green">
-                            ${squad.nome}</span></p>
+                    <h6 class="mb-1"><b style="color: ${cores[index]}">${squad}</b></h6>
+                    <p class="m-0">Programa mais usado: <b>${dados.programas[index]}</b>
+                    </p>
+                    <p style="font-size: .9em"> Com <span class="text-c-green">${dados.aparicoes[index]}</span> registros</p>
                 </td>
-                <td><span class="pie_1">${squad.programa.tempo} horas</span></td>
-                <td>
-                    <h6 class="m-0">${squad.programa.porcentagem}%</h6>
+                <td style="text-align: center;"><span class="pie_1">${horas}</span></td>
+                <td style="text-align: center;">
+                    <h6 class="m-0">${porcentagem}%</h6>
                 </td>
-
-
             </tr>`;
-    })
+    });
 }
 
 /////////////////////Relatorios////////////////////////////////////////////////////////
