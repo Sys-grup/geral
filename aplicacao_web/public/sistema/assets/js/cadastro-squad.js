@@ -52,8 +52,9 @@ function enviarFormulario() {
         }),
     })
     .then(response => {
-        window.location.path = "/system/squad"
+        window.location.pathname = "/system/squad"
     })
+  
     .catch(err => { 
         console.error(err);
     });

@@ -31,7 +31,7 @@ function carregarFuncionarios(lista) {
                 <td>
                     <h6 class="text-muted">
                     <i data-feather="bookmark" color="#32CD32"></i>
-                        ${'11 MAY 12:56'}
+                        
                     </h6>
                     <p>${funcionario.squad || 'Sem squad'}</p>
                 </td>
