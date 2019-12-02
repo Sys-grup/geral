@@ -1,12 +1,12 @@
 window.onload = () => {
-    fetch("http://localhost:8080/squad",
-        {
-            method: 'GET',
-            headers: new Headers({
-                'Content-Type': 'text/plain',
-                'id': 1,
-            })
+    fetch(`http://localhost:8080/squad`,
+    {
+        method: 'GET',
+        headers: new Headers({
+          'Content-Type': 'text/plain',
+          'id': 1,
         })
+    })
         .then(response => response.json())
         .then(result => {
             carregarSquads(result);
@@ -56,22 +56,25 @@ $('#modal-delete-squad').on('show.bs.modal', function (event) {
     modal.find('#ModalCenterTitle').text(`Excluir ${squadAtual.nome}`);
 })
 
+function editarSquad() {
+    window.location.pathname = `/system/squad=${squadAtual.id}`;
+}
+
 function deletarSquad() {
     const id = squadAtual.id;
-    console.log("A");
-    fetch("http://localhost:8080/squad",
+    fetch(`http://localhost:8080/squad`,
     {
         method: 'DELETE',
         headers: new Headers({
           'Content-Type': 'application/json',
-          'id':localStorage.getItem('idConta'),
+          'id': localStorage.getItem('idConta'),
         }),
         body: JSON.stringify({
             id,
         })
     })
     .then(response => {
-        console.log("SUC");
+        window.location.reload();
     })
     .catch(err => {
         console.log("err");

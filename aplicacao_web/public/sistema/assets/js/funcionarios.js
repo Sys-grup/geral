@@ -1,5 +1,5 @@
 window.onload = () => {
-    fetch("https://nodedotsys.azurewebsites.net/funcionarios",
+    fetch(`http://localhost:8080/funcionarios`,
     {
         method: 'GET',
         headers: new Headers({
@@ -49,7 +49,7 @@ function carregarFuncionarios(lista) {
 
 let deleteId;
 function deletarFuncionario() {
-    fetch(`https://nodedotsys.azurewebsites.net/funcionarios?id=${deleteId}`,
+    fetch(`http://localhost:8080/funcionarios?id=${deleteId}`,
     {
         method: 'DELETE',
         headers: new Headers({

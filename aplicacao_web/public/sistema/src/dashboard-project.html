@@ -47,45 +47,34 @@
                     </div>
                     <div class="main-body">
                         <div class="page-wrapper">
-                            <div class="sub-titulos-dashboard">Periodo :</div>
-                            <select class="js-example-basic-single form-control">
-                                <option value="AL">Selecione um período...</option>
-                                <option value="AL">Mensal</option>
-                                <option value="WY">Semanal</option>
-                                <option value="WY">Diário</option>
+                            <div class="sub-titulos-dashboard">Período :</div>
+                            <select class="js-example-basic-single form-control" id="select-periodo" onchange="carregarPagina()">
+                                <option value="DIARIO">Diário</option>
+                                <option value="SEMANAL">Semanal</option>
+                                <option value="MENSAL">Mensal</option>
                             </select>
                             <div class="sub-titulos-dashboard">Alertas dos squads:</div>
                             <div class="row">
                                 <div class="col-md-8">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h5>Média de alertas por período</h5>
+                                            <h5>Notificações por squad</h5>
                                         </div>
-                                        <div class="card-block">
-                                            <canvas id="chart-line"></canvas>
+                                        <div class="card-block card-body-height">
+                                            <span id="msg-line"><span style="padding: 30px 25px !important">Carregando...</span></span>
+                                            <canvas id="chart-line" hidden></canvas>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
 
-                                    <div class="card card-squad">
+                                    <div class="card card-squad note-bar">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h5>Notificações frequentes</h5>
+                                                <h5>Notificações recorrentes</h5>
                                             </div>
-                                            <div class="card-block div-scroll ">
-                                                <div class="alert alert-danger ">
-                                                    Alpha está com o muitos funcionarios offline.
-                                                </div>
-                                                <div class="alert alert-danger">
-                                                    Beta está com a tarefa pronta.
-                                                </div>
-                                                <div class="alert alert-danger">
-                                                    Charlie está proximo da data de entrega.
-                                                </div>
-                                                <div class="alert alert-danger">
-                                                    Delta já entregou a tarefa, está aguardando outra.
-                                                </div>
+                                            <div class="card-block div-scroll card-body-height p-0" id="notificacoesRecorrentes">
+                                                Carregando...
                                             </div>
                                         </div>
                                     </div>
@@ -99,8 +88,9 @@
                                     <div class="card-header">
                                         <h5>Média de uso Hardware</h5>
                                     </div>
-                                    <div class="card-block">
-                                        <canvas id="chart-bar"></canvas>
+                                    <div class="card-block card-body-height">
+                                        <span id="msg-bar"><span style="padding: 30px 25px !important">Carregando...</span></span>
+                                        <canvas id="chart-bar" hidden></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -109,8 +99,9 @@
                                     <div class="card-header">
                                         <h5>Tempo Online dos Squads</h5>
                                     </div>
-                                    <div class="card-block">
-                                        <canvas id="chart-horizontal-bar"></canvas>
+                                    <div class="card-block card-body-height">
+                                        <span id="msg-doughnut"><span style="padding: 30px 25px !important">Carregando...</span></span>
+                                        <canvas id="chart-doughnut" hidden></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -119,7 +110,7 @@
                                     <div class="card-header">
                                         <h5>Programas mais usados</h5>
                                     </div>
-                                    <div class="table-responsive">
+                                    <div class="table-responsive div-scroll card-body-height">
                                         <table class="table table-hover">
                                             <thead>
                                                 <tr>
@@ -128,78 +119,11 @@
                                                     <th>Porcentagem de Uso</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="tabela-programas">
                                                 <tr>
-                                                    <!-- <td><img class="rounded-circle" style="width:40px;"
-                                                            src="../assets/images/user/avatar-1.jpg"
-                                                            alt="activity-user">
-                                                    </td> -->
                                                     <td>
-                                                        <h6 class="mb-1">Google Chrome</h6>
-                                                        <p class="m-0">Mais utilizado pelo squad: <span
-                                                                class="text-c-green">
-                                                                Alpha</span></p>
+                                                        <h6 class="mb-1"><span style="padding: 30px 25px !important">Carregando...</span></h6>
                                                     </td>
-                                                    <td><span class="pie_1">3 horas</span></td>
-                                                    <td>
-                                                        <h6 class="m-0">74%</h6>
-                                                    </td>
-
-
-                                                </tr>
-                                                <tr>
-                                                    <!-- <td><img class="rounded-circle" style="width:40px;"
-                                                            src="../assets/images/user/avatar-2.jpg"
-                                                            alt="activity-user">
-                                                    </td> -->
-                                                    <td>
-                                                        <h6 class="mb-1">Visual Studio</h6>
-                                                        <p class="m-0">Mais utilizado pelo squad: <span
-                                                                class="text-c-green">
-                                                                Omega</span></p>
-                                                    </td>
-                                                    <td><span class="pie_2">6 horas</span></td>
-                                                    <td>
-                                                        <h6 class="m-0">46%</h6>
-                                                    </td>
-
-
-                                                </tr>
-                                                <tr>
-                                                    <!-- <td><img class="rounded-circle" style="width:40px;"
-                                                            src="../assets/images/user/avatar-3.jpg"
-                                                            alt="activity-user">
-                                                    </td> -->
-                                                    <td>
-                                                        <h6 class="mb-1">Netbeans</h6>
-                                                        <p class="m-0">Mais utilizado pelo squad: <span
-                                                                class="text-c-green">
-                                                                Bravo</span></p>
-                                                    </td>
-                                                    <td><span class="pie_3">2,5 horas</span></td>
-                                                    <td>
-                                                        <h6 class="m-0">31%</h6>
-                                                    </td>
-
-
-                                                </tr>
-                                                <tr>
-                                                    <!-- <td><img class="rounded-circle" style="width:40px;"
-                                                            src="../assets/images/user/avatar-1.jpg"
-                                                            alt="activity-user">
-                                                    </td> -->
-                                                    <td>
-                                                        <h6 class="mb-1">Excel</h6>
-                                                        <p class="m-0">Mais utilizado pelo squad: <span
-                                                                class="text-c-green">
-                                                                Charlie</span></p>
-                                                    </td>
-                                                    <td><span class="pie_4">8 horas</span></td>
-                                                    <td>
-                                                        <h6 class="m-0">85%</h6>
-                                                    </td>
-
-
                                                 </tr>
                                             </tbody>
                                         </table>

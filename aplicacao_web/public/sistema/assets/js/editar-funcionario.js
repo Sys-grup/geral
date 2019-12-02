@@ -1,6 +1,6 @@
 let funcionario = {};
 window.onload = () => {
-    fetch("https://nodedotsys.azurewebsites.net/funcionarios",
+    fetch(`http://localhost:8080/funcionarios`,
         {
             method: 'GET',
             headers: new Headers({
@@ -14,7 +14,7 @@ window.onload = () => {
         carregarFormulario(funcionario);
     })
     .then(() =>
-        fetch("https://nodedotsys.azurewebsites.net/squad",
+        fetch(`http://localhost:8080/squad`,
         {
             method: 'GET',
             headers: new Headers({
@@ -27,7 +27,7 @@ window.onload = () => {
             carregarSquads([{id: 0, nome:"Sem squad"}, ...result]);
         })
     .then(() =>
-        fetch("https://nodedotsys.azurewebsites.net/cargos",
+        fetch(`http://localhost:8080/cargos`,
         {
             method: 'GET',
             headers: new Headers({
@@ -40,7 +40,7 @@ window.onload = () => {
         carregarCargos(result);
     })
     .then(() =>
-        fetch("https://nodedotsys.azurewebsites.net/maquinas",
+        fetch(`http://localhost:8080/maquinas`,
         {
             method: 'GET',
             headers: new Headers({
@@ -90,12 +90,15 @@ function carregarMaquinas(lista) {
 
 function carregarFormulario(funcionario) {
     document.getElementById("validation-nome").value = funcionario.nome;
+    document.getElementById("validation-entrada").value = funcionario.entrada.substr(11,5);
+    console.log(funcionario.entrada.substr(11,5));
     document.getElementById("validation-identificador").value = funcionario.tag;
     document.getElementById("validation-sexo").value = funcionario.sexo;
 }
 
 function enviarFormulario() {
     const nome = document.getElementById("validation-nome").value;
+    const entrada = document.getElementById("validation-entrada").value;
     const identificador = document.getElementById("validation-identificador").value;
     const maquina = document.getElementById("validation-maquina").value;
     const cargo = document.getElementById("validation-cargo").value;
@@ -106,26 +109,29 @@ function enviarFormulario() {
         return false
     }
 
-    fetch(`https://nodedotsys.azurewebsites.net/funcionarios?id=${funcionario.id}`,
-    {
-        method: 'PUT',
-        headers: new Headers({
-        'Content-Type': 'application/json',
-        'id': localStorage.getItem("idConta"),
-        }),
-        body: JSON.stringify({
-            nome,
-            identificador,
-            maquina,
-            cargo,
-            squad,
-            sexo
-        })
-    })
-    .then(response => {
-        window.location.pathname = "/system/funcionario"
-    })
-    .catch(err => {
-        console.error(err);
-    });
+    console.log(entrada);
+
+    // fetch(`http://localhost:8080/funcionarios?id=${funcionario.id}`,
+    // {
+    //     method: 'PUT',
+    //     headers: new Headers({
+    //     'Content-Type': 'application/json',
+    //     'id': localStorage.getItem("idConta"),
+    //     }),
+    //     body: JSON.stringify({
+    //         nome,
+    //         identificador,
+    //         maquina,
+    //         entrada,
+    //         cargo,
+    //         squad,
+    //         sexo
+    //     })
+    // })
+    // .then(response => {
+    //     window.location.pathname = "/system/funcionario"
+    // })
+    // .catch(err => {
+    //     console.error(err);
+    // });
 }

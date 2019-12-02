@@ -10,8 +10,10 @@
 //   }
 // }
 
+if (localStorage.getItem('idConta') > 0) window.location = 'system/';
+
 function efetuar_login(login, senha) {
-    fetch("https://nodedotsys.azurewebsites.net/sessions",
+    fetch(`http://localhost:8080/sessions`,
     {
         method: 'POST',
         headers: new Headers({

@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="../assets/css/default.css">
     <link rel="icon" href="../../img/logo.png" type="image/icon">
     <link rel="shortcut icon" href="../../img/logo.png" type="image/icon">
-    <link rel="stylesheet" href="../assests/css/default.css"> 
+    <link rel="stylesheet" href="../assests/css/default.css">
     <script src="https://code.iconify.design/1/1.0.3/iconify.min.js"></script>
     <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_o5hd5vvqpoqiwwmi.css">
     <script src="https://unpkg.com/feather-icons"></script>
@@ -42,8 +42,9 @@
                                         <h5 class="m-b-10">Squads</h5>
                                     </div>
                                     <ul class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="/system" title="Voltar para home"><i data-feather="home"
-                                                    width="13" class="feather icon-anchor"></i></a></li>
+                                        <li class="breadcrumb-item"><a href="/system" title="Voltar para home"><i
+                                                    data-feather="home" width="13" class="feather icon-anchor"></i></a>
+                                        </li>
                                         <li class="breadcrumb-item"><a href="#!">Squads</a></li>
                                     </ul>
                                 </div>
@@ -54,24 +55,26 @@
                         <div class="page-wrapper">
                             <!-- Div onde serão inseridos os cards de cada Squad -->
                             <div class="squad-header" id="squads">
-                                <div class="content col-md-2 default" id='-1' >
+                                <div class="content col-md-2 default" id='-1'>
                                     <span>Carregando...</span>
                                 </div>
                             </div>
-                            <div class="squad-body" >
-                                <div class="ger-info" id="geral-info" > 
-                                 Escolha um squad para visualizar informações específicas
+                            <div class="squad-body">
+                                <div class="ger-info" id="geral-info">
+                                    Escolha um squad para visualizar informações específicas
                                 </div>
                                 <div class="squad-info" id="squad-info" hidden>
                                     <div class="Objetivo">
                                         <h2>Objetivo</h2>
-                                        <p id="squadObjetivo">Squad trabalhando no projeto 12467, em desenvolvimento de uma aplicação WEB para gerenciamento de lojas.</p>
+                                        <p id="squadObjetivo">Squad trabalhando no projeto 12467, em desenvolvimento de
+                                            uma aplicação WEB para gerenciamento de lojas.</p>
                                     </div>
                                     <div class="Descricao">
                                         <h2>Descrição</h2>
-                                        <p id="squadDescricao">Squad Alpha alocado no 8° andar da empresa com 7 intregantes.</p>
+                                        <p id="squadDescricao">Squad Alpha alocado no 8° andar da empresa com 7
+                                            intregantes.</p>
                                     </div>
-                                    <div class="squad-func"  id="squad-func">
+                                    <div class="squad-func" id="squad-func">
                                         <h4>Funcionários</h4>
                                         <div class="func" onclick="criarFuncionarios()" data-toggle="modal"
                                             data-target="#modalSquad"
@@ -82,85 +85,80 @@
                                             5/10
 
                                         </div>
-                                       
+
 
                                     </div>
                                 </div>
                                 <div class="squad-dash" id="squad-dash" hidden>
-                                        <canvas id="chart-line"></canvas>
+                                    <canvas id="chart-line"></canvas>
                                 </div>
                             </div>
                         </div>
                         <div class="botoes-flutuantes-container">
                             <div id="delete-squad" hidden>
-                                <a class="botao-flutuante botao-delete" title="Excluir Squad" data-toggle="modal" data-target="#modal-delete-squad" onclick="deletarSquad()"> 
-                                        <i data-feather="trash-2" width="30px" height="30px" stroke="#fff"></i>
+                                <a class="botao-flutuante botao-delete" title="Excluir Squad" data-toggle="modal"
+                                    data-target="#modal-delete-squad">
+                                    <i data-feather="trash-2" width="30px" height="30px" stroke="#fff"></i>
                                 </a>
                             </div>
                             <div id="edit-squad" hidden>
-                                <a class="botao-flutuante botao-edit" title="Edit Squad" data-toggle="modal" data-target="#modal-edit-squad" onclick="editarSquad()" href="editar-squad.html"> 
-                                        <i data-feather="edit"width="30px" height="30px" stroke="#054f77"></i>
+                                <a class="botao-flutuante botao-edit" title="Edit Squad" onclick="editarSquad()">
+                                    <i data-feather="edit" width="30px" height="30px" stroke="#fff"></i>
                                 </a>
                             </div>
-                               
-                                
-                    </div>
-                    <div id="modalSquad" class="modalCustom" tabindex="-1" role="dialog"
+
+
+                        </div>
+                        <div id="modalSquad" class="modalCustom" tabindex="-1" role="dialog"
                             aria-labelledby="modalSquadLabel" aria-hidden="true">
                             <div class="modalCustom-content" role="document">
-                                    <div class="modalCustom-icons">
-                                            <a data-dismiss="modal" arial-label="Open">
-                                                    <i data-feather="cast" width="30px" height="30px"></i>
-                                                </a>
-                                            <a data-dismiss="modal" aria-label="Close">
-                                                <i data-feather="x" width="30px" height="30px"></i>
-                                            </a>
-                                        </div>
-                                    <div class="modalCustom-func">
-                                            <div id="lista-superior" class="modalCustom-superior">
-                                                <!-- Div preenchida com superiores -->
-                                            </div>
-                                            <div id="lista-funcionarios" class="modalCustom-funcionarios">
-                                                <!-- Div preenchida com funcionarios -->
-                                            </div>
-                                        </div>
+                                <div class="modalCustom-icons">
+                                    <a data-dismiss="modal" arial-label="Open">
+                                        <i data-feather="cast" width="30px" height="30px"></i>
+                                    </a>
+                                    <a data-dismiss="modal" aria-label="Close">
+                                        <i data-feather="x" width="30px" height="30px"></i>
+                                    </a>
+                                </div>
+                                <div class="modalCustom-func">
+                                    <div id="lista-superior" class="modalCustom-superior">
+                                        <!-- Div preenchida com superiores -->
+                                    </div>
+                                    <div id="lista-funcionarios" class="modalCustom-funcionarios">
+                                        <!-- Div preenchida com funcionarios -->
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div id="modal-delete-squad" class="modal fade" tabindex="-1" role="dialog"
-    aria-labelledby="ModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title"
-                        id="ModalCenterTitle">
-                        Excluir  </h5>
-                    <button type="button" class="close"
-                        data-dismiss="modal"
-                        aria-label="Close"><span
-                            aria-hidden="true">×</span></button>
-                </div>
-                <div class="modal-body">
-                    <p>
-                        Essa ação não pode ser revertida.
-                    </p>
-                    <p>
-                        Tem certeza que deseja excluir esse squad?
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button"
-                        class="btn btn-secondary"
-                        data-dismiss="modal">Cancelar</button>
-                    <button type="button" onclick="deletarSquad()"
-                        class="btn btn-primary">Confirmar</button>
+        <div id="modal-delete-squad" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModalCenterTitle">
+                            Excluir </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">×</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            Essa ação não pode ser revertida.
+                        </p>
+                        <p>
+                            Tem certeza que deseja excluir esse squad?
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" onclick="deletarSquad()" class="btn btn-primary">Confirmar</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 </body>
 
 </html>
