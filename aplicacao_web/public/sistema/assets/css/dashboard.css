@@ -38,8 +38,12 @@
 
 .div-scroll {
     overflow-y: scroll;
-    height: 371px;
 }
+
+.card-body-height {
+    height: 425px;
+}
+
 .division{
 
     border-left: 1px solid #dddddd;

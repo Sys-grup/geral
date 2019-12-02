@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
@@ -9,6 +10,7 @@ const systemRouter = require('./routes/system');
 const sistema = 'public/sistema';
 const app = express();
 
+dotenv.config();
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

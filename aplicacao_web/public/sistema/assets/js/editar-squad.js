@@ -10,8 +10,8 @@ window.onload = () => {
         })
     })
     .then(response => response.json())
-    .then(result => { 
-        carregarFormulario(result[0]);
+    .then(result => {
+        carregarFormulario(result);
     })
     .catch(err => { 
         console.error(err); 

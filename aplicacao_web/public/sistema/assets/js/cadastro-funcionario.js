@@ -1,7 +1,11 @@
 window.onload = () => {
+<<<<<<< HEAD
     fetch("http://localhost:8080/squad",
+=======
+    fetch(`http://localhost:8080/squad`,
+>>>>>>> 4dcea4b202689304924c2ffc86a3c90d48c89058
     {
-        method: 'GET',
+        method: process.env.API_URL,
         headers: new Headers({
           'Content-Type': 'text/plain',
           'id': localStorage.getItem("idConta"),
@@ -12,7 +16,11 @@ window.onload = () => {
         carregarSquads([{id: 0, nome:"Sem squad"}, ...result]);
     })
     .then(() =>
+<<<<<<< HEAD
         fetch("http://localhost:8080/cargos",
+=======
+        fetch(`http://localhost:8080/cargos`,
+>>>>>>> 4dcea4b202689304924c2ffc86a3c90d48c89058
         {
             method: 'GET',
             headers: new Headers({
@@ -25,7 +33,11 @@ window.onload = () => {
         carregarCargos(result);
     })
     .then(() =>
+<<<<<<< HEAD
         fetch("http://localhost:8080/maquinas",
+=======
+        fetch(`http://localhost:8080/maquinas`,
+>>>>>>> 4dcea4b202689304924c2ffc86a3c90d48c89058
         {
             method: 'GET',
             headers: new Headers({
@@ -72,7 +84,11 @@ function enviarFormulario() {
         return false
     }
 
+<<<<<<< HEAD
     fetch("http://localhost:8080/funcionarios",
+=======
+    fetch(`http://localhost:8080/funcionarios`,
+>>>>>>> 4dcea4b202689304924c2ffc86a3c90d48c89058
     {
         method: 'POST',
         headers: new Headers({
