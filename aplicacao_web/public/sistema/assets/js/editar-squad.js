@@ -1,7 +1,7 @@
 const id = conferirUrl();
 
 window.onload = () => {
-    fetch(`https://nodedotsys.azurewebsites.net/getsquad?idSquad=${id}`,
+    fetch(`http://localhost:8080/getsquad?idSquad=${id}`,
     {
         method: 'GET',
         headers: new Headers({
@@ -41,7 +41,7 @@ function enviarFormulario() {
     const objetivo = document.getElementsByName("validation-objetivo")[0].value;
         if (!objetivo) return;
 
-    fetch(`https://nodedotsys.azurewebsites.net/squad?id=${id}`,
+    fetch(`http://localhost:8080/squad?id=${id}`,
     {
         method: 'PUT',
         headers: new Headers({

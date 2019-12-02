@@ -1,6 +1,6 @@
 let funcionario = {};
 window.onload = () => {
-    fetch("https://nodedotsys.azurewebsites.net/funcionarios",
+    fetch("http://localhost:8080/funcionarios",
         {
             method: 'GET',
             headers: new Headers({
@@ -14,7 +14,7 @@ window.onload = () => {
         carregarFormulario(funcionario);
     })
     .then(() =>
-        fetch("https://nodedotsys.azurewebsites.net/squad",
+        fetch("http://localhost:8080/squad",
         {
             method: 'GET',
             headers: new Headers({
@@ -27,7 +27,7 @@ window.onload = () => {
             carregarSquads([{id: 0, nome:"Sem squad"}, ...result]);
         })
     .then(() =>
-        fetch("https://nodedotsys.azurewebsites.net/cargos",
+        fetch("http://localhost:8080/cargos",
         {
             method: 'GET',
             headers: new Headers({
@@ -40,7 +40,7 @@ window.onload = () => {
         carregarCargos(result);
     })
     .then(() =>
-        fetch("https://nodedotsys.azurewebsites.net/maquinas",
+        fetch("http://localhost:8080/maquinas",
         {
             method: 'GET',
             headers: new Headers({
@@ -106,7 +106,7 @@ function enviarFormulario() {
         return false
     }
 
-    fetch(`https://nodedotsys.azurewebsites.net/funcionarios?id=${funcionario.id}`,
+    fetch(`http://localhost:8080/funcionarios?id=${funcionario.id}`,
     {
         method: 'PUT',
         headers: new Headers({
