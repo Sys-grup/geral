@@ -1,9 +1,5 @@
 window.onload = () => {
-<<<<<<< HEAD
-    fetch("http://localhost:8080/funcionarios",
-=======
     fetch(`http://localhost:8080/funcionarios`,
->>>>>>> 4dcea4b202689304924c2ffc86a3c90d48c89058
     {
         method: 'GET',
         headers: new Headers({
@@ -35,7 +31,7 @@ function carregarFuncionarios(lista) {
                 <td>
                     <h6 class="text-muted">
                     <i data-feather="bookmark" color="#32CD32"></i>
-                        ${'11 MAY 12:56'}
+                        
                     </h6>
                     <p>${funcionario.squad || 'Sem squad'}</p>
                 </td>
