@@ -1,9 +1,5 @@
 window.onload = () => {
-<<<<<<< HEAD
     fetch("http://localhost:8080/funcionariosSquad",
-=======
-    fetch(`http://localhost:8080/funcionariosSquad`,
->>>>>>> 4dcea4b202689304924c2ffc86a3c90d48c89058
     {
         method: 'GET',
         headers: new Headers({
@@ -40,11 +36,7 @@ function enviarFormulario() {
         if (!objetivo) return;
     const selecionados = $('#custom-headers').val();
 
-<<<<<<< HEAD
-    fetch("http://localhost:8080/squad",
-=======
     fetch(`http://localhost:8080/squad`,
->>>>>>> 4dcea4b202689304924c2ffc86a3c90d48c89058
     {
         method: 'POST',
         headers: new Headers({
