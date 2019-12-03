@@ -1,7 +1,7 @@
 window.onload = () => {
     fetch(`http://localhost:8080/squad`,
     {
-        method: process.env.API_URL,
+        method: 'GET',
         headers: new Headers({
           'Content-Type': 'text/plain',
           'id': localStorage.getItem("idConta"),

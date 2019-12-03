@@ -98,9 +98,10 @@ function carregarGraficos(dados) {
     console.log('dados: ', dados);
     notificacoesTotal(dados.notificacoes);
     notificacoesRecorrentes(dados.notificacoes);
+    programas(dados.programas, document.getElementById('tabela-programas'));
+    hardware(dados.hardware);
     // barChart(dados, document.getElementById('chart-bar'));
     // dougnutChart(dados, document.getElementById('chart-dougnut'));
-    programas(dados.programas, document.getElementById('tabela-programas'));
 }
 
 function carregando(elementId, mostrar = true, chartId, comDados = true) {
@@ -176,14 +177,14 @@ function notificacoesRecorrentes(dadosOriginal) {
     try {
         let squads = dadosOriginal.map(notificacao => notificacao.squad);
         squads = squads.filter((squad, index) => squads.indexOf(squad) === index);
-        
+
         let notificacoes = '';
-        
+
         squads.forEach((squad, index) => {
             const dados = JSON.parse(JSON.stringify(dadosOriginal.filter(notificacao => notificacao.squad === squad)));
             const tipos = dados.map(notificacao => notificacao.tipo);
             const tiposUnico = tipos.filter((tipo, index) => tipos.indexOf(tipo) === index);
-            
+
             let tipoRecorrente = {nome: null, aparicoes: 0, recente: null};
             tiposUnico.forEach(tipoUnico => {
                 let count = 0;
@@ -234,8 +235,8 @@ function notificacoesRecorrentes(dadosOriginal) {
             `;
             setTimeout(()=> feather.replace(), 1);
             // conteudo.body = `
-            //     Recente:\n 
-            //     ${tipoRecorrente.recente.funcionario},\n 
+            //     Recente:\n
+            //     ${tipoRecorrente.recente.funcionario},\n
             //     ${tipoRecorrente.recente.observacao}
             // `;
             // const data = new Date(tipoRecorrente.recente.data);
@@ -258,95 +259,46 @@ function notificacoesRecorrentes(dadosOriginal) {
     }
 }
 
-function notificacoesRecorrente(dadosOriginal) {
+function programas(dados, element) {
+    if (!dados.length) return carregando('tabela-programas', true, false, false);
+    element.innerHTML = '';
+    dados.squads.forEach((squad, index) => {
+        const porcentagem = (dados.tempoUso[index] / dados.totalUso[index])*100;
+        const horas = `${(dados.tempoUso[index]/60).toFixed()}:${(dados.tempoUso[index]%60).toFixed()}`;
+        element.innerHTML += `
+            <tr>
+                <td>
+                    <h6 class="mb-1"><b style="color: ${cores[index]}">${squad}</b></h6>
+                    <p class="m-0">Programa mais usado: <b>${dados.programas[index]}</b>
+                    </p>
+                    <p style="font-size: .9em"> Com <span class="text-c-green">${dados.aparicoes[index]}</span> registros</p>
+                </td>
+                <td style="text-align: center;"><span class="pie_1">${horas}</span></td>
+                <td style="text-align: center;">
+                    <h6 class="m-0">${porcentagem}%</h6>
+                </td>
+            </tr>`;
+    });
+}
+
+function hardware(dados) {
     const span = 'msg-bar';
     const div = 'chart-bar';
-    if (!dadosOriginal.length) return carregando(div, true, span, false);
-    carregando(div, true);
+    if(!dados.length) return carregando(span, true, div, false);
+    carregando(span, true, div);
 
-    try {
-        let squads = dadosOriginal.map(notificacao => notificacao.squad);
-        squads = squads.filter((squad, index) => squads.indexOf(squad) === index);
-        
-        let notificacoes = '';
-        
-        squads.forEach((squad, index) => {
-            const dados = JSON.parse(JSON.stringify(dadosOriginal.filter(notificacao => notificacao.squad === squad)));
-            const tipos = dados.map(notificacao => notificacao.tipo);
-            const tiposUnico = tipos.filter((tipo, index) => tipos.indexOf(tipo) === index);
-            
-            let tipoRecorrente = {nome: null, aparicoes: 0, recente: null};
-            tiposUnico.forEach(tipoUnico => {
-                let count = 0;
-                tipos.forEach(tipo => tipo === tipoUnico && count++);
-                if (count>tipoRecorrente.aparicoes) tipoRecorrente = {nome: tipoUnico, aparicoes: count};
-            });
-            tipoRecorrente.recente = dados.filter(notificacao => notificacao.tipo === tipoRecorrente.nome)[0];
-
-            let conteudo = {}
-            if(tipoRecorrente.nome === 'Offline') {
-                conteudo.icone = "user-x";
-                conteudo.title = `<b style="color: ${cores[index]}">${squad}</b> tem ${tipoRecorrente.aparicoes} notificações sobre funcionarios Offline!`;
-            } else
-            if(tipoRecorrente.nome === 'HD') {
-                conteudo.icone = "hard-drive";
-                conteudo.title = `<b style="color: ${cores[index]}">${squad}</b> tem ${tipoRecorrente.aparicoes} notificações sobre funcionarios com problemas de <b>HD</b>!`;
-            } else
-            if(tipoRecorrente.nome === 'CPU') {
-                conteudo.icone = "cpu";
-                conteudo.title = `<b style="color: ${cores[index]}">${squad}</b> tem ${tipoRecorrente.aparicoes} notificações sobre funcionarios com problemas de <b>CPU</b>!`;
-            } else
-            if(tipoRecorrente.nome === 'RAM') {
-                conteudo.icone = "cpu";
-                conteudo.title = `<b style="color: ${cores[index]}">${squad}</b> tem ${tipoRecorrente.aparicoes} notificações sobre funcionarios com problemas de <b>RAM</b>!`;
-            } else
-            if(tipoRecorrente.nome === 'Processo') {
-                conteudo.icone = "cpu";
-                conteudo.title = `<b style="color: ${cores[index]}">${squad}</b> tem ${tipoRecorrente.aparicoes} notificações sobre funcionarios com problemas de <b>Processo</b>!`;
-            } else
-            if(tipoRecorrente.nome === 'Funcionario') {
-                conteudo.icone = "user";
-                conteudo.title = `<b style="color: ${cores[index]}">${squad}</b> tem ${tipoRecorrente.aparicoes} notificações sobre com problemas de <b>funcionários</b>!`;
-            } else
-            {
-                conteudo.icone = "alert-triangle";
-                conteudo.title = `<b style="color: ${cores[index]}">${squad}</b> tem ${tipoRecorrente.aparicoes} notificações sobre com problemas de <b>${tipoRecorrente.nome}</b>!`;
-            }
-
-            notificacoes += `
-                <div class="media friendlist-box">
-                    <div class="mr-3 photo-table">
-                        <i class="feather" data-feather="${conteudo.icone}"></i>
-                    </div>
-                    <div class="media-body">
-                        <h6>${conteudo.title}</h6>
-                    </div>
-                </div>
-            `;
-            setTimeout(()=> feather.replace(), 1);
-            // conteudo.body = `
-            //     Recente:\n 
-            //     ${tipoRecorrente.recente.funcionario},\n 
-            //     ${tipoRecorrente.recente.observacao}
-            // `;
-            // const data = new Date(tipoRecorrente.recente.data);
-            // conteudo.data = `${data.getHours()}:${data.getMinutes()} ${data.getDate()}/${data.getMonth()}/${data.getFullYear()}`;
-
-            // <span class="f-12 float-right text-muted" title="${conteudo.data}">
-            // ${conteudo.data.substr(0,6)}</span>
-            // <p class="text-muted m-0">${conteudo.body}</p>
-
-            // <div class="alert alert-danger">
-            //     ${squad}, ${tipoRecorrente.nome} com ${tipoRecorrente.aparicoes}.
-            // </div>
-        })
-
-        document.getElementById(div).innerHTML = notificacoes;
-
-    } catch (error) {
-        carregando(div, true, false, false);
-        console.log(error);
+    const dimensoes = {
+        xAxes: ["CPU","RAM","HD"],
+        yAxes: dados.map(squad => [squad.CPU,squad.RAM,squad.HD]),
+        series: dados.map(squad => squad.apelidoSquad),
+        color: dados.map((v, i) => cores[i]),
+        labels: {
+            title: getPeriodo(),
+        }
     }
+
+    barChart(dimensoes, div);
+    carregando(span, false, div);
 }
 
 function lineChart(dados, elementId) {
@@ -408,19 +360,19 @@ function barChart(dados, element) {
     const chart = {
         type: 'bar',
         data: {
-            labels: datas,
-            datasets: mediaHardware.map(hardware => ({
-                label: hardware.info,
-                data: hardware.data,
-                backgroundColor: hardware.color,
+            labels: dados.xAxes,
+            datasets: dados.series.map((serie, index) => ({
+                label: serie,
+                data: dados.yAxes[index],
+                backgroundColor:  dados.color[index],
                 borderWidth: 0,
             }))
         },
         options: {
             responsive: true,
             title: {
-                display: true,
-                text: 'Semanal'
+                display: !!dados.labels.title,
+                labelString: dados.labels.title || null
             },
             tooltips: {
                 mode: 'index',
@@ -434,21 +386,21 @@ function barChart(dados, element) {
                 xAxes: [{
                     display: true,
                     scaleLabel: {
-                        display: true,
-                        labelString: 'Período'
+                        display: !!dados.labels.x,
+                        labelString: dados.labels.x || null
                     }
                 }],
                 yAxes: [{
                     display: true,
                     scaleLabel: {
-                        display: true,
-                        labelString: 'Horas '
+                        display: !!dados.labels.y,
+                        labelString: dados.labels.y || null
                     }
                 }]
             }
         }
     };
-    new Chart(element, chart);
+    new Chart(document.getElementById(element), chart);
 }
 
 function doughnutChart(dados, element) {
@@ -496,27 +448,6 @@ function doughnutChart(dados, element) {
     new Chart(element, chart);
 }
 
-function programas(dados, element) {
-    if (!dados.length) carregando('tabela-programas', true, false, false);
-    element.innerHTML = '';
-    dados.squads.forEach((squad, index) => {
-        const porcentagem = (dados.tempoUso[index] / dados.totalUso[index])*100;
-        const horas = `${(dados.tempoUso[index]/60).toFixed()}:${(dados.tempoUso[index]%60).toFixed()}`;
-        element.innerHTML += `
-            <tr>
-                <td>
-                    <h6 class="mb-1"><b style="color: ${cores[index]}">${squad}</b></h6>
-                    <p class="m-0">Programa mais usado: <b>${dados.programas[index]}</b>
-                    </p>
-                    <p style="font-size: .9em"> Com <span class="text-c-green">${dados.aparicoes[index]}</span> registros</p>
-                </td>
-                <td style="text-align: center;"><span class="pie_1">${horas}</span></td>
-                <td style="text-align: center;">
-                    <h6 class="m-0">${porcentagem}%</h6>
-                </td>
-            </tr>`;
-    });
-}
 
 /////////////////////Relatorios////////////////////////////////////////////////////////
 
