@@ -76,14 +76,13 @@
                                     </div>
                                     <div class="squad-func" id="squad-func">
                                         <h4>Funcionários</h4>
-                                        <div class="func" onclick="criarFuncionarios()" data-toggle="modal"
+                                        <div class="func" onclick="abrirModal()" data-toggle="modal"
                                             data-target="#modalSquad"
                                             data-squad="{&quot;nome&quot;:&quot;Beta&quot;,&quot;status&quot;:&quot;success&quot;}">
                                             <i class="feather icon-aperture" data-feather="users" width="45"
                                                 height="45"></i>
                                             <div class="point"></div>
-                                            5/10
-
+                                            <span id="listFuncionarios"></span>
                                         </div>
 
 
@@ -173,7 +172,7 @@
     feather.replace();
 </script>
 <script src="../assets/js/squad/graphs.js"></script>
-<script>
+<!-- <script>
     function criarFuncionarios() {
         const numero = Math.floor(Math.random() * 10) +
             2;
@@ -259,7 +258,7 @@
         document.getElementById('lista-superior').innerHTML = superior;
 
     }
-</script>
+</script> -->
 <script>
     $('#modalSquad').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget);
