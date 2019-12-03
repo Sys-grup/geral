@@ -1,5 +1,5 @@
 window.onload = () => {
-    fetch(`http://localhost:8080/funcionarios`,
+    fetch("http://localhost:8080/funcionarios",
     {
         method: 'GET',
         headers: new Headers({

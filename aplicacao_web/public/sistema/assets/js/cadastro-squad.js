@@ -1,6 +1,5 @@
 window.onload = () => {
     fetch("http://localhost:8080/funcionariosSquad",
-    
     {
         method: 'GET',
         headers: new Headers({
