@@ -47,8 +47,11 @@
 
     font-size: 40px;
     margin-bottom: 2%;
-    
+}
 
+.subtitulo-dashboard {
+    font-size: .7em;
+    padding: 25px 0;
 }
 
 .card-Squad{
@@ -67,7 +70,7 @@
     height: 100%;
 }
 .div-linha-filho{
-    margin-bottom:3%;
+    margin-bottom:10%;
     
 }
 .div-esquerda{
