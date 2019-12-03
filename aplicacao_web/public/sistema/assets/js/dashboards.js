@@ -61,6 +61,8 @@ function carregarPagina() {
     carregando('msg-line', true, 'chart-line');
     carregando('notificacoesRecorrentes');
     carregando('tabela-programas');
+    carregando('msg-bar');
+    carregando('msg-bar2');
     // ['msg-line','notificacoesRecorrentes','msg-bar','msg-doughnut','tabela-programas']
     // .forEach(id => carregando(id));
 
@@ -100,6 +102,7 @@ function carregarGraficos(dados) {
     notificacoesRecorrentes(dados.notificacoes);
     programas(dados.programas, document.getElementById('tabela-programas'));
     hardware(dados.hardware);
+    tempoOnline(dados.online);
     // barChart(dados, document.getElementById('chart-bar'));
     // dougnutChart(dados, document.getElementById('chart-dougnut'));
 }
@@ -260,7 +263,7 @@ function notificacoesRecorrentes(dadosOriginal) {
 }
 
 function programas(dados, element) {
-    if (!dados.length) return carregando('tabela-programas', true, false, false);
+    if (!Object.keys(dados)) return carregando('tabela-programas', true, false, false);
     element.innerHTML = '';
     dados.squads.forEach((squad, index) => {
         const porcentagem = (dados.tempoUso[index] / dados.totalUso[index])*100;
@@ -292,6 +295,32 @@ function hardware(dados) {
         yAxes: dados.map(squad => [squad.CPU,squad.RAM,squad.HD]),
         series: dados.map(squad => squad.apelidoSquad),
         color: dados.map((v, i) => cores[i]),
+        labels: {
+            title: getPeriodo(),
+        }
+    }
+
+    barChart(dimensoes, div);
+    carregando(span, false, div);
+}
+
+function tempoOnline(dados) {
+    const span = 'msg-bar2';
+    const div = 'chart-bar2';
+    if(!dados.length) return carregando(span, true, div, false);
+    carregando(span, true, div);
+
+    let squads = dados.map(dado => dado.apelidoSquad);
+    squads = squads.filter((squad, index) => squads.indexOf(squad) === index);
+
+    let datas = dados.map(dado => dado.dataCapturada);
+    datas = datas.filter((data, index) => datas.indexOf(data) === index);
+
+    const dimensoes = {
+        xAxes: datas,
+        yAxes: squads.map(squad => datas.map(data => dados.filter(dado => dado.apelidoSquad == squad && dado.dataCapturada == data).map(dado => dado.cont))),
+        series: squads,
+        color: squads.map((v, i) => cores[i]),
         labels: {
             title: getPeriodo(),
         }
