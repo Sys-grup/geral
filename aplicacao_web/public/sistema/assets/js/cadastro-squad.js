@@ -1,5 +1,5 @@
 window.onload = () => {
-    fetch(`http://localhost:8080/funcionariosSquad`,
+    fetch("http://localhost:8080/funcionariosSquad",
     {
         method: 'GET',
         headers: new Headers({
@@ -52,8 +52,9 @@ function enviarFormulario() {
         }),
     })
     .then(response => {
-        window.location.path = "/system/squad"
+        window.location.pathname = "/system/squad"
     })
+  
     .catch(err => { 
         console.error(err);
     });

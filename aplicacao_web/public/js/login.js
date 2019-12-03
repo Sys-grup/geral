@@ -13,7 +13,11 @@
 if (localStorage.getItem('idConta') > 0) window.location = 'system/';
 
 function efetuar_login(login, senha) {
+<<<<<<< HEAD
+    fetch("http://localhost:8080/sessions",
+=======
     fetch(`http://localhost:8080/sessions`,
+>>>>>>> 4dcea4b202689304924c2ffc86a3c90d48c89058
     {
         method: 'POST',
         headers: new Headers({

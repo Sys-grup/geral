@@ -1,5 +1,5 @@
 window.onload = () => {
-    fetch(`http://localhost:8080/squad`,
+    fetch("http://localhost:8080/squad",
     {
         method: 'GET',
         headers: new Headers({
@@ -12,7 +12,7 @@ window.onload = () => {
         carregarSquads([{id: 0, nome:"Sem squad"}, ...result]);
     })
     .then(() =>
-        fetch(`http://localhost:8080/cargos`,
+        fetch("http://localhost:8080/cargos",
         {
             method: 'GET',
             headers: new Headers({
@@ -25,7 +25,7 @@ window.onload = () => {
         carregarCargos(result);
     })
     .then(() =>
-        fetch(`http://localhost:8080/maquinas`,
+        fetch("http://localhost:8080/maquinas",
         {
             method: 'GET',
             headers: new Headers({
@@ -72,7 +72,7 @@ function enviarFormulario() {
         return false
     }
 
-    fetch(`http://localhost:8080/funcionarios`,
+    fetch("http://localhost:8080/funcionarios",
     {
         method: 'POST',
         headers: new Headers({
