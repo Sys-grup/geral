@@ -48,7 +48,7 @@
                     <div class="main-body">
                         <div class="page-wrapper">
                             <div class="sub-titulos-dashboard">Período :</div>
-                            <select class="js-example-basic-single form-control" id="select-periodo" onchange="carregarPagina()">
+                            <select class="js-example-basic-single form-control" id="select-periodo" onchange="atualizarDados();loadingFullscreen(true)">
                                 <option value="DIARIO">Diário</option>
                                 <option value="SEMANAL">Semanal</option>
                                 <option value="MENSAL">Mensal</option>
@@ -73,8 +73,10 @@
                                             <div class="card-header">
                                                 <h5>Notificações recorrentes</h5>
                                             </div>
-                                            <div class="card-block div-scroll card-body-height p-0" id="notificacoesRecorrentes">
+                                            <div class="card-block div-scroll card-body-height" id="notificacoesRecorrentesMSG">
                                                 Carregando...
+                                            </div>
+                                            <div class="card-block div-scroll card-body-height p-0" id="notificacoesRecorrentes" hidden>
                                             </div>
                                         </div>
                                     </div>
@@ -115,8 +117,8 @@
                                             <thead>
                                                 <tr>
                                                     <th>Programas</th>
-                                                    <th style="text-align: center;">Tempo de Uso</th>
-                                                    <th style="text-align: center;">Porcentagem de Uso</th>
+                                                    <th style="text-align: center;">Tempo de Uso (h)</th>
+                                                    <th style="text-align: center;">Porcentagem de Uso (%)</th>
                                                 </tr>
                                             </thead>
                                             <tbody id="tabela-programas">

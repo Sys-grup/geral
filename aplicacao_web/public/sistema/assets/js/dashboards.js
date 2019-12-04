@@ -59,12 +59,10 @@ window.onload = function () {
 
 function carregarPagina() {
     carregando('msg-line', true, 'chart-line');
-    carregando('notificacoesRecorrentes');
+    carregando('notificacoesRecorrentesMSG', true, 'notificacoesRecorrentes');
     carregando('tabela-programas');
     carregando('msg-bar');
     carregando('msg-bar2');
-    // ['msg-line','notificacoesRecorrentes','msg-bar','msg-doughnut','tabela-programas']
-    // .forEach(id => carregando(id));
 
     buscarDados()
         .then(dados => carregarGraficos(dados))
@@ -72,8 +70,26 @@ function carregarPagina() {
 }
 
 function getPeriodo() {
-    return 'SEMANAL';
+    // return 'SEMANAL';
     return document.getElementById('select-periodo').value;
+}
+
+function getCor(i, v) {
+    switch (v) {
+        case 'Alpha':
+            return cores[0];
+            break;
+        case 'Beta':
+            return cores[1];
+            break;
+        case 'Hotel':
+            return cores[2];
+            break;
+    
+        default:
+            return cores[i]
+            break;
+    }
 }
 
 function buscarDados() {
@@ -97,17 +113,36 @@ function buscarDados() {
 }
 
 function carregarGraficos(dados) {
-    console.log('dados: ', dados);
+    // console.log('dados: ', dados);
     notificacoesTotal(dados.notificacoes);
     notificacoesRecorrentes(dados.notificacoes);
     programas(dados.programas, document.getElementById('tabela-programas'));
     hardware(dados.hardware);
     tempoOnline(dados.online);
-    // barChart(dados, document.getElementById('chart-bar'));
-    // dougnutChart(dados, document.getElementById('chart-dougnut'));
+
+    setInterval(() => {
+        atualizarDados();
+    }, 6000);
+}
+
+
+function atualizarDados() {
+    buscarDados()
+    .then(dados => {
+        charts.forEach(chart => {
+            chart.destroy()
+        });
+        charts = [];
+        if (dados.notificacoes.length) notificacoesTotal(dados.notificacoes) && notificacoesRecorrentes(dados.notificacoes);
+        if (!Object.keys(dados.programas).length) programas(dados.programas, document.getElementById('tabela-programas'));
+        if (dados.hardware.length) hardware(dados.hardware);
+        if (dados.online.length) tempoOnline(dados.online);
+    })
+    loadingFullscreen(false);
 }
 
 function carregando(elementId, mostrar = true, chartId, comDados = true) {
+    loadingFullscreen(mostrar);
     const element = document.getElementById(elementId);
     const msg = comDados ? 'Carregando...' : 'Sem dados para este período';
     element.innerHTML = msg;
@@ -156,7 +191,7 @@ function notificacoesTotal(dadosOriginal) {
             xAxes,
             yAxes,
             series: squads,
-            colors: squads.map((v, i) => cores[i]),
+            colors: squads.map((v, i) => getCor(i, v)),
             labels: {
                 title: getPeriodo(),
                 y: 'Notificações',
@@ -173,9 +208,10 @@ function notificacoesTotal(dadosOriginal) {
 }
 
 function notificacoesRecorrentes(dadosOriginal) {
+    const msg = 'notificacoesRecorrentesMSG';
     const div = 'notificacoesRecorrentes';
-    if (!dadosOriginal.length) return carregando(div, true, null, false);
-    carregando(div, true);
+    if (!dadosOriginal.length) return carregando(msg, true, div, false);
+    carregando(msg, true, div);
 
     try {
         let squads = dadosOriginal.map(notificacao => notificacao.squad);
@@ -199,31 +235,31 @@ function notificacoesRecorrentes(dadosOriginal) {
             let conteudo = {}
             if(tipoRecorrente.nome === 'Offline') {
                 conteudo.icone = "user-x";
-                conteudo.title = `<b style="color: ${cores[index]}">${squad}</b> tem ${tipoRecorrente.aparicoes} notificações sobre funcionarios Offline!`;
+                conteudo.title = `<b style="color: ${getCor(index, squad)}">${squad}</b> tem ${tipoRecorrente.aparicoes} notificações sobre funcionarios Offline!`;
             } else
             if(tipoRecorrente.nome === 'HD') {
                 conteudo.icone = "hard-drive";
-                conteudo.title = `<b style="color: ${cores[index]}">${squad}</b> tem ${tipoRecorrente.aparicoes} notificações sobre funcionarios com problemas de <b>HD</b>!`;
+                conteudo.title = `<b style="color: ${getCor(index, squad)}">${squad}</b> tem ${tipoRecorrente.aparicoes} notificações sobre funcionarios com problemas de <b>HD</b>!`;
             } else
             if(tipoRecorrente.nome === 'CPU') {
                 conteudo.icone = "cpu";
-                conteudo.title = `<b style="color: ${cores[index]}">${squad}</b> tem ${tipoRecorrente.aparicoes} notificações sobre funcionarios com problemas de <b>CPU</b>!`;
+                conteudo.title = `<b style="color: ${getCor(index, squad)}">${squad}</b> tem ${tipoRecorrente.aparicoes} notificações sobre funcionarios com problemas de <b>CPU</b>!`;
             } else
             if(tipoRecorrente.nome === 'RAM') {
                 conteudo.icone = "cpu";
-                conteudo.title = `<b style="color: ${cores[index]}">${squad}</b> tem ${tipoRecorrente.aparicoes} notificações sobre funcionarios com problemas de <b>RAM</b>!`;
+                conteudo.title = `<b style="color: ${getCor(index, squad)}">${squad}</b> tem ${tipoRecorrente.aparicoes} notificações sobre funcionarios com problemas de <b>RAM</b>!`;
             } else
             if(tipoRecorrente.nome === 'Processo') {
                 conteudo.icone = "cpu";
-                conteudo.title = `<b style="color: ${cores[index]}">${squad}</b> tem ${tipoRecorrente.aparicoes} notificações sobre funcionarios com problemas de <b>Processo</b>!`;
+                conteudo.title = `<b style="color: ${getCor(index, squad)}">${squad}</b> tem ${tipoRecorrente.aparicoes} notificações sobre funcionarios com problemas de <b>Processo</b>!`;
             } else
             if(tipoRecorrente.nome === 'Funcionario') {
                 conteudo.icone = "user";
-                conteudo.title = `<b style="color: ${cores[index]}">${squad}</b> tem ${tipoRecorrente.aparicoes} notificações sobre com problemas de <b>funcionários</b>!`;
+                conteudo.title = `<b style="color: ${getCor(index, squad)}">${squad}</b> tem ${tipoRecorrente.aparicoes} notificações sobre com problemas de <b>funcionários</b>!`;
             } else
             {
                 conteudo.icone = "alert-triangle";
-                conteudo.title = `<b style="color: ${cores[index]}">${squad}</b> tem ${tipoRecorrente.aparicoes} notificações sobre com problemas de <b>${tipoRecorrente.nome}</b>!`;
+                conteudo.title = `<b style="color: ${getCor(index, squad)}">${squad}</b> tem ${tipoRecorrente.aparicoes} notificações sobre com problemas de <b>${tipoRecorrente.nome}</b>!`;
             }
 
             notificacoes += `
@@ -254,31 +290,31 @@ function notificacoesRecorrentes(dadosOriginal) {
             // </div>
         })
 
+        carregando(msg, false, div);
         document.getElementById(div).innerHTML = notificacoes;
 
     } catch (error) {
-        carregando(div, true, false, false);
+        carregando(msg, true, div, false);
         console.log(error);
     }
 }
 
 function programas(dados, element) {
-    if (!Object.keys(dados)) return carregando('tabela-programas', true, false, false);
+    if (!Object.keys(dados).length) return carregando('tabela-programas', true, false, false);
     element.innerHTML = '';
-    dados.squads.forEach((squad, index) => {
-        const porcentagem = (dados.tempoUso[index] / dados.totalUso[index])*100;
-        const horas = `${(dados.tempoUso[index]/60).toFixed()}:${(dados.tempoUso[index]%60).toFixed()}`;
+    dados.squad.forEach((squad, index) => {
+        const horas = new Date(0,0,0,(dados.tempoUso[index]/60).toFixed(),(dados.tempoUso[index]%60).toFixed()).toTimeString().substr(0,5);
         element.innerHTML += `
             <tr>
                 <td>
-                    <h6 class="mb-1"><b style="color: ${cores[index]}">${squad}</b></h6>
-                    <p class="m-0">Programa mais usado: <b>${dados.programas[index]}</b>
+                    <h6 class="mb-1"><b style="color: ${getCor(index, squad)}">${squad}</b></h6>
+                    <p class="m-0">Programa mais usado: <b>${dados.programa[index]}</b>
                     </p>
-                    <p style="font-size: .9em"> Com <span class="text-c-green">${dados.aparicoes[index]}</span> registros</p>
+                    <p style="font-size: .9em"> Com <span class="text-c-green">${dados.tempoUso[index]}</span> registros</p>
                 </td>
                 <td style="text-align: center;"><span class="pie_1">${horas}</span></td>
                 <td style="text-align: center;">
-                    <h6 class="m-0">${porcentagem}%</h6>
+                    <h6 class="m-0">${dados.porcentagem[index].toFixed(2)}%</h6>
                 </td>
             </tr>`;
     });
@@ -292,9 +328,9 @@ function hardware(dados) {
 
     const dimensoes = {
         xAxes: ["CPU","RAM","HD"],
-        yAxes: dados.map(squad => [squad.CPU,squad.RAM,squad.HD]),
+        yAxes: dados.map(squad => [squad.CPU.toFixed(2),squad.RAM.toFixed(2),squad.HD.toFixed(2)]),
         series: dados.map(squad => squad.apelidoSquad),
-        color: dados.map((v, i) => cores[i]),
+        color: dados.map((v, i) => getCor(i, v.apelidoSquad)),
         labels: {
             title: getPeriodo(),
         }
@@ -320,7 +356,7 @@ function tempoOnline(dados) {
         xAxes: datas,
         yAxes: squads.map(squad => datas.map(data => dados.filter(dado => dado.apelidoSquad == squad && dado.dataCapturada == data).map(dado => dado.cont))),
         series: squads,
-        color: squads.map((v, i) => cores[i]),
+        color: squads.map((v, i) => getCor(i, v)),
         labels: {
             title: getPeriodo(),
         }
@@ -330,6 +366,7 @@ function tempoOnline(dados) {
     carregando(span, false, div);
 }
 
+let charts = [];
 function lineChart(dados, elementId) {
     const element = document.getElementById(elementId);
     const chart = {
@@ -346,18 +383,20 @@ function lineChart(dados, elementId) {
                     borderWidth: 3,
                     fill: false,
                 }
-            ))
-        },
-        options: {
-            responsive: true,
-            title: {
-                display: !!dados.labels.title,
-                labelString: dados.labels.title || null
+                ))
             },
+            options: {
+                animation: false,
+                maintainAspectRatio: false,
+                responsive: true,
+                title: {
+                    display: !!dados.labels.title,
+                    labelString: dados.labels.title || null
+                },
             tooltips: {
                 mode: 'nearest',
                 intersect: false,
-
+                
             },
             hover: {
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
@@ -382,7 +421,8 @@ function lineChart(dados, elementId) {
             }
         }
     };
-    new Chart(element, chart);
+    const lineChart = new Chart(element, chart);
+    charts.push(lineChart);
 };
 
 function barChart(dados, element) {
@@ -398,6 +438,8 @@ function barChart(dados, element) {
             }))
         },
         options: {
+            animation: false,
+            maintainAspectRatio: false,
             responsive: true,
             title: {
                 display: !!dados.labels.title,
@@ -429,7 +471,8 @@ function barChart(dados, element) {
             }
         }
     };
-    new Chart(document.getElementById(element), chart);
+    const barChart = new Chart(document.getElementById(element), chart);
+    charts.push(barChart);
 }
 
 function doughnutChart(dados, element) {
