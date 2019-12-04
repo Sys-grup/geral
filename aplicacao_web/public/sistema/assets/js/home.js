@@ -23,7 +23,7 @@ function carregarSquads(listSquads) {
                 <div class="col-md-12">
                     <div class="card card-squad">
                         <div class="card-body" onclick="window.location.pathname='/system/squad'">
-                            <i class="status" style="background:var(--${"primary"})"></i>
+                            <i class="status" style="background:var(--${squad.online/squad.total*100>50? "success":"danger"})"></i>
                             <span>${squad.nome}</span>
                         </div>
                     </div>

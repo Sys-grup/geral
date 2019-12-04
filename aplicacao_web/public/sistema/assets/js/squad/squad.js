@@ -37,6 +37,7 @@ function carregarSquads(listSquads) {
     }
     
     function carregarInfo(objetivo, descricao, online, total) {
+    document.getElementById('listFuncionariosPoint').style = `background-color: ${online/total*100>50? "#28a745":"#dc3545"} !important`;
     document.getElementById('listFuncionarios').innerHTML = `${online}/${total}`;
     document.getElementById('squadObjetivo').innerHTML = objetivo;
     document.getElementById('squadDescricao').innerHTML = descricao;

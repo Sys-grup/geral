@@ -2,8 +2,8 @@
     position: fixed;
     display: flex;
     height: 50px;
-    right: 50px;
-    bottom: 50px;
+    right: 25px;
+    bottom: 60px;
 }
 ​
 .bug{

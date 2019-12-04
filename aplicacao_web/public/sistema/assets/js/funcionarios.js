@@ -21,19 +21,17 @@ function carregarFuncionarios(lista) {
         div += 
             `<tr class="unread">
                 <td><img class="rounded-circle" style="width:40px;"
-                        src="../assets/images/user/avatar-${funcionario.sexo=='F'? 1 : 2}.jpg"
+                        src="../assets/images/user/avatar-${funcionario.sexo}.jpg"
                         alt="activity-user">
                 </td>
                 <td>
-                    <h6 class="mb-1">${funcionario.nome}</h6>
+                    <h6 class="mb-1">${funcionario.nome} <i data-feather="power" color="${funcionario.Online? '#32CD32': '#dc3545'}" style="width:17px;padding-left:5px"></i></h6>
                     <p class="m-0">${funcionario.cargo}</p>
                 </td>
                 <td>
                     <h6 class="text-muted">
-                    <i data-feather="bookmark" color="#32CD32"></i>
-                        
+                        <span>${funcionario.squad || 'Sem squad'}</span>
                     </h6>
-                    <p>${funcionario.squad || 'Sem squad'}</p>
                 </td>
                 <td><a href="funcionario=${funcionario.id}" class="label theme-bg text-white f-12">
                         Editar
