@@ -95,8 +95,9 @@ html{
 
 .squad-dash {
     display: block;
-    width: 700px;
-    margin: auto;
+    height: 400px;
+    width: 90%;
+    padding: 10px 24px;
 }
 
 #chart-line {
