@@ -134,7 +134,7 @@ function atualizarDados() {
         });
         charts = [];
         if (dados.notificacoes.length) notificacoesTotal(dados.notificacoes) && notificacoesRecorrentes(dados.notificacoes);
-        if (!Object.keys(dados.programas).length) programas(dados.programas, document.getElementById('tabela-programas'));
+        if (Object.keys(dados.programas).length) programas(dados.programas, document.getElementById('tabela-programas'));
         if (dados.hardware.length) hardware(dados.hardware);
         if (dados.online.length) tempoOnline(dados.online);
     })
@@ -142,7 +142,7 @@ function atualizarDados() {
 }
 
 function carregando(elementId, mostrar = true, chartId, comDados = true) {
-    loadingFullscreen(mostrar);
+    // loadingFullscreen(mostrar);
     const element = document.getElementById(elementId);
     const msg = comDados ? 'Carregando...' : 'Sem dados para este período';
     element.innerHTML = msg;
