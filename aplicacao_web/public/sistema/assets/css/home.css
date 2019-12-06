@@ -135,7 +135,7 @@ transition: ease-in-out 0.1s;
 
 }
 .card-corection{
-
+    border-radius: 4px !important;
     margin-bottom: 0 !important;
     padding: 0 !important;
 }
@@ -145,6 +145,21 @@ transition: ease-in-out 0.1s;
     top: 20px;
     text-align: center;
 }
+
+.div-alerta h6 {
+    display: flex;
+    width: 100%;
+}
+
+.div-alerta h6 span:first-of-type {
+    left: 0 !important;
+    right: initial;
+}
+
+.div-alerta h6 span {
+    right: 0;
+}
+
 html, body {
   overflow: hidden;
 }
