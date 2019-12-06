@@ -85,7 +85,7 @@ function carregarMaquinas(lista) {
     document.getElementById("validation-maquina").innerHTML = "";
     lista.map(maquina => document.getElementById("validation-maquina").innerHTML += `<option value="${maquina.id}">${maquina.nome}</option>`);
     
-    document.getElementById("validation-maquina").value = funcionario.idMaquina || 0;
+    document.getElementById("validation-maquina").value = funcionario.apelidoMaquina || '';
 }
 
 function carregarFormulario(funcionario) {
