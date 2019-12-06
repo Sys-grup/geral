@@ -85,9 +85,18 @@ function getCor(i, v) {
         case 'Hotel':
             return cores[2];
             break;
+        case 'Omega':
+            return cores[3];
+            break;
+        case 'Thor':
+            return cores[4];
+            break;
+        case 'Hercules':
+            return cores[5];
+            break;
     
         default:
-            return cores[i]
+            return cores[i+6]
             break;
     }
 }

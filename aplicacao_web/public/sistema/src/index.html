@@ -35,7 +35,7 @@
         </div>
         <div  class="dropdown-menu card-corection" aria-labelledby="dropdownMenuButton">
             <div class="card card-squad-notificacao card-corection">
-                <div class="card-header">
+                <div class="noti-head">
                     <h5>Notificações frequentes</h5>
                 </div>
                 <div id="div-drop-conteudo" class="card div-scroll-notificacao card-corection">
@@ -110,52 +110,4 @@
 <script src="../assets/js/home.js"></script>
 <script>
     feather.replace();
-</script>
-<script>
-    function adicionarNotificacao(){
-    const alertas = [{
-        mensagem: "Sobrecarga de RAM",
-        status: "danger",
-    },
-    {
-        mensagem: "Sobrecarga de HD",
-        status: "success",
-    },
-    {
-        mensagem: "Sobrecarga de RAM",
-        status: "warning",
-    },
-    {
-        mensagem: "Sobrecarga de CPU",
-        status: "info",
-    },
-    {
-        mensagem: "Muito tempo Offline",
-        status: "warning",
-    },
-    {
-        mensagem: "Toda Equipe Online",
-        status: "info",
-    },
-    {
-        mensagem: "Todos da equipe Offline",
-        status: "warning",
-    },
-    {
-        mensagem: "Tempo Ocioso",
-        status: "info",
-    }
-    ]
-    let divs = "";
-    alertas.map(alerta => {
-        divs += `
-                    <div class="col-md-12 espaco-correto">
-                        <div class="alert alert-${alerta.status} div-alerta">
-                            ${alerta.mensagem}
-                        </div>
-                    </div>
-                `
-    });
-    document.getElementById("div-drop-conteudo").innerHTML = divs;
-}
 </script>

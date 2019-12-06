@@ -21,6 +21,17 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.noti-head {
+    border-bottom: 1px solid #f1f1f1;
+    padding: 15px 20px;
+    font-size: .8em !important;
+}
+
+.dropdown-menu.show:before{
+	left: unset !important;
+    right: 100px !important;
+}
+
 .feather-activity:before {
 	content: "\e900";
 }
